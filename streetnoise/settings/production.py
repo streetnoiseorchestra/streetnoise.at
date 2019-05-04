@@ -38,3 +38,4 @@ except ImportError:
     pass
 
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)}
+ALLOWED_HOSTS = ['test.streetnoise.at', 'streetnoise.at']
