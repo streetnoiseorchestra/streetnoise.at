@@ -17,10 +17,6 @@ COPY . /code/
 # Set the working directory to /code/
 WORKDIR /code/
 
-RUN python manage.py migrate
-RUN python manage.py sync_page_translation_fields
-RUN python manage.py update_translation_fields
-
 RUN useradd wagtail
 RUN chown -R wagtail /code
 USER wagtail
