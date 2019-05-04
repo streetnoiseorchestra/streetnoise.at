@@ -1,7 +1,6 @@
-import os
+import dj_database_url
+
 from .base import *
-
-
 
 # Secret key
 # In order to support Docker secrets, which can only be mounted as files, we allow
@@ -25,7 +24,6 @@ except KeyError:
     with open(os.environ['DATABASE_URL_FILE']) as f:
         DATABASE_URL = f.read().strip()
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.sparkpostmail.com"
 EMAIL_PORT = 587
@@ -38,3 +36,6 @@ try:
     from .local import *
 except ImportError:
     pass
+
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
