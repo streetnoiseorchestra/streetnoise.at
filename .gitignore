@@ -3,5 +3,5 @@ venv
 *.sqlite3
 media/
 .idea
-__pychache__
+__pycache__
 secrets
