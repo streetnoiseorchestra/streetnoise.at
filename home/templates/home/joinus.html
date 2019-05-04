@@ -1,0 +1,38 @@
+{% load static wagtailcore_tags wagtailimages_tags%}
+<!--SECTION: JOIN US-->
+<section class="section mb-4">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 ">
+        <h1 class="title" id="join">
+          {{ self.join_us_title }}
+        </h1>
+        <h2 class="subtitle">
+          {{ self.join_us_subtitle }}
+        </h2>
+
+        <div class="content">
+          {{ self.join_us_text }}
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-half accordions">
+        {% with blocks=self.join_us_infos%}
+        {% for block in blocks %}
+        {{block}}
+        {% endfor %}
+        {% endwith %}
+      </div>
+      <div class="column is-half accordions">
+        <div class="xs-feature-image-box image-1">
+          {% image self.join_us_image_1 width-370 %}
+        </div>
+        <div class="xs-feature-image-box image-2">
+          {% image self.join_us_image_2 width-370 %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

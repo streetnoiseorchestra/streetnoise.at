@@ -1,0 +1,99 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<!--SECTION: FESTIVAL INTRO-->
+<section class="section">
+
+  <div class="container">
+    <h2 class="title has-text-centered title-section caption-text" id="festival">
+      {{ self.festival_intro_title }}
+    </h2>
+    <div class="separator is-centered"></div>
+    <div class="columns is-multiline">
+      <div class="column is-full content is-size-4">
+        {{ self.festival_intro_text|richtext }}
+      </div>
+    </div>
+
+    <div class="columns">
+      {% for bandfriend in page.festival_bands.all %}
+      {% with band=bandfriend.band_friend %}
+      <div class="column is-3">
+        <!--      Start: Band profile-->
+        <div class="tile is-child">
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-128x128">
+                    {% image band.square_logo max-256x256 class="is-rounded" %}
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">
+                    {{ band.name }}
+                  </p>
+                  <p class="subtitle is-6">{{ band.location }}</p>
+                </div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item"><span><a href="{{ band.website }}">website</a></span></p>
+              <p class="card-footer-item"><span><a href="{{band.facebook}}">facebook</a></span></p>
+            </footer>
+          </div>
+        </div>
+        <!--      End: Band profile-->
+      </div>
+      {% endwith %}
+      {% endfor %}
+    </div>
+
+    <h2 class="title has-text-centered title-section caption-text">
+      {{ self.festival_intro_title2 }}
+    </h2>
+    <div class="separator is-centered"></div>
+    <div class="columns is-multiline">
+
+      <div class="column is-full content is-size-4">
+        {{ self.festival_intro_text2|richtext }}
+      </div>
+      <div class="column is-4 is-offset-4 has-text-centered is-size-5 content">
+        {{ self.festival_intro_footer |richtext }}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!--SECTION: FESTIVAL PROGRAM-->
+<section class="hero is-info is-bold">
+  <div class="hero-body">
+    <div class="container is-size-5 ">
+      <h1 class="title" id="">{{ self.festival_program_title }}</h1>
+      <div class="columns is-mobile is-multiline">
+        <div class="column is-two-thirds-mobile is-half-tablet is-offset-2-mobile">
+          <div class="timeline">
+            {% with blocks=self.festival_program_timeline %}
+            {% for block in blocks %}
+            {{block}}
+            {% endfor %}
+            {% endwith %}
+          </div>
+        </div>
+        <div class="column is-full-mobile is-half-tablet content">
+
+          {% with blocks=self.festival_program_content %}
+          {% for block in blocks %}
+          {% if block.block_type == 'heading' %}
+          <h2 class="subtitle">{{ block }}</h2>
+          {% elif block.block_type == 'paragraph' %}
+          {{block}}
+          {% endif %}
+          {% endfor %}
+          {% endwith %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

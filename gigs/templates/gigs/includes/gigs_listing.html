@@ -1,0 +1,58 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if gigs %}
+<div class="">
+  <ul class="cards">
+    {% for gig in gigs %}
+    <li class="cards__item">
+      <div class="card">
+        {% if gig.feed_image %}
+        <div class="card-image">
+          <figure class="image is-2by1">
+            {% image gig.feed_image fill-800x350 %}
+            <!--                  <img src="img/Wir-retten-Lebensmittel-2by1.jpg" alt="Placeholder image">-->
+          </figure>
+        </div>
+        {% endif %}
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">{{ gig.title }}</p>
+              <ul>
+                <li class="is-6">
+                  {% if gig.partner %}
+                  <span class="icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></span>
+                  {{ gig.partner }}
+                  {% endif %}
+                </li>
+                <li class="is-6">
+                  {% if gig.location%}
+                  <span class="icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>
+                  {{ gig.location}}
+                  {% endif %}
+                </li>
+                <li class="is-6">
+                  {% if gig.date_from %}
+                  <span class="icon">
+                          <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        </span>
+                  {{ gig.date_from|date:"j F Y" }} {% if gig.set_time %}@ {{ gig.set_time }}{% endif %}
+                  {% endif %}
+                </li>
+                <li class="is-6">
+                  {% if gig.link %}
+                  <span class="icon"><i class="fas fa-info" aria-hidden="true"></i></span>
+                  <a href="{{ gig.link }}" target="_blank">mehr info</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+

@@ -1,0 +1,7 @@
+Django>=2.2,<2.3
+wagtail>=2.5,<2.6
+wagtail-modeltranslation
+django-debug-toolbar
+django-compressor==2.2
+django-libsass==0.7
+libsass==0.14.5

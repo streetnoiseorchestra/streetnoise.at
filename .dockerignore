@@ -1,0 +1,11 @@
+_*
+node_modules
+venv
+*.sqlite3
+media
+*iml
+package.json
+package-lock.json
+rollup*js
+.idea
+secrets/

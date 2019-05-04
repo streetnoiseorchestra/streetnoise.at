@@ -1,0 +1,23 @@
+{% load static wagtailcore_tags wagtailimages_tags gigs_utils%}
+<!--SECTION: GIGS`-->
+<section class="hero is-info is-bold">
+  <div class="hero-body">
+    <!--https://bulma.io/images/placeholders/640x320.png-->
+    <div class="container ">
+      <h1 class="title" id="upcoming">{{ self.gigs_title }}</h1>
+      <h2 class="subtitle">{{ self.gigs_subtitle }}</h2>
+      {% upcoming_gigs %}
+      <div class="columns">
+        <!--        <div class="column is-half is-offset-one-quarter has-text-centered content">-->
+        <!--          <a href="gig-request.html" class="button is-large is-primary">-->
+        <!--            <span>Request a Gig</span>-->
+        <!--            <span class="icon is-large"><i class="fa fa-angle-right"></i></span>-->
+        <!--          </a>-->
+        <!--        </div>-->
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

@@ -1,0 +1,51 @@
+from modeltranslation.decorators import register
+from modeltranslation.translator import TranslationOptions
+
+from .models import HomePage, GigRequestPage, GigType
+
+
+@register(HomePage)
+class HomePageTR(TranslationOptions):
+    fields = (
+        'festival_intro_title',
+        'festival_intro_title2',
+        'festival_intro_text',
+        'festival_intro_text2',
+        'festival_intro_footer',
+        'festival_program_title',
+        'festival_program_content',
+        'festival_program_timeline',
+        'about_text',
+        'whoweare_title',
+        'whoweare_text',
+        'gigs_title',
+        'gigs_subtitle',
+        'merch_title',
+        'merch_subtitle',
+        'merch_text',
+        'merch_items',
+        'donate_title',
+        'donate_online',
+        'donate_offline',
+        'donate_footer',
+        'join_us_title',
+        'join_us_subtitle',
+        'join_us_text',
+        'join_us_infos',
+        'cta_title',
+        'cta_subtitle',
+        'cta_button1',
+        'cta_button2',
+    )
+
+
+@register(GigType)
+class GigTypeTR(TranslationOptions):
+    fields = (
+        'name',
+    )
+
+
+@register(GigRequestPage)
+class GigRequestPageTR(TranslationOptions):
+    fields = ()

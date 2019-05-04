@@ -1,0 +1,42 @@
+footer .social-icons {
+  margin: 0 auto 3rem;
+  a.button {
+    background-color: transparent;
+    color: #fff;
+    border-radius: 100%;
+    margin: 0 .2rem;
+    height: 47px;
+    width: 47px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    &.is-medium {
+      font-size: 1.05rem;
+    }
+    .icon.is-small {
+      height: 1.4em;
+      width: 1.4em;
+    }
+    &:hover {
+      background: #fff;
+      color: $color-primary-0;
+      border: 2px solid #fff;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  footer .social-icons {
+    margin: 0 auto 3.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  footer .social-icons a.button {
+    margin: 0 0.8rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  footer .social-icons a.button.is-medium {
+    font-size: 1.18rem;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "streetnoise-at",
+  "version": "0.0.2",
+  "description": "",
+  "author": "Casey Link",
+  "license": "GPLv3+",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/helper-module-imports": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "bulma": "^0.7.4",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.3",
+    "postcss-cli": "^6.1.2",
+    "rollup": "^1.11.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3"
+  },
+  "scripts": {
+    "css-deploy": "npm run css-build && npm run css-postcss",
+    "css-build": "node-sass _css/streetnoise.scss streetnoise/static/css/streetnoise.css",
+    "css-postcss": "postcss --use autoprefixer --output streetnoise/static/css/streetnoise.css streetnoise/static/css/streetnoise.css",
+    "css-watch": "npm run css-build -- --watch",
+    "deploy": "npm run css-deploy && npm run js-build",
+    "js-build": "babel _javascript --out-dir streetnoise/static/js",
+    "js-watch": "npm run js-build -- --watch",
+    "wagtail": "make serve",
+    "start": "npm-run-all --parallel css-watch js-watch wagtail"
+  },
+  "dependencies": {
+    "bulma-accordion": "^2.0.1",
+  }
+}

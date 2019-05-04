@@ -1,0 +1,26 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="column is-3">
+  <!--      Start: Band profile-->
+  <div class="tile is-child">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-128x128">
+              {% image self.logo width-900 class="is-rounded" %}
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">Street Noise Orchestra</p>
+            <p class="subtitle is-6">Innsbruck, Austria</p>
+          </div>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item"><span><a href="https://streetnoise.at">streetnoise.at</a></span></p>
+        <p class="card-footer-item"><span><a href="https://www.facebook.com/StreetNoise.OrchestraIBK">Facebook</a></span></p>
+      </footer>
+    </div>
+  </div>
+  <!--      End: Band profile-->
+</div>

@@ -1,0 +1,17 @@
+.is-form-page .container form input.is-large, .is-form-page .container form textarea.is-large, .is-form-page .container form select.is-large {
+
+  font-size: 1.4rem;
+
+}
+
+//.field {
+//  ul {
+//    margin-left: 50px;
+//    list-style: disc;
+//  }
+//}
+
+.errorlist {
+  @extend .help;
+  @extend .is-danger;
+}

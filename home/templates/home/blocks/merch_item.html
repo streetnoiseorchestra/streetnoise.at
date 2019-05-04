@@ -1,0 +1,6 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="column is-narrow has-text-centered product ">
+  {% image self.image width-200 %}
+  <p class="product__name">{{value.title}} <span>{{value.price}}</span></p>
+  <p>{{ value.detail }}</p>
+</div>

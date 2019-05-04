@@ -1,0 +1,53 @@
+version: '3.1'
+secrets:
+  db_password:
+    file: ./secrets/db_password
+  django_secret:
+    file: ./secrets/django_secret
+  email_password:
+    file: ./secrets/email_password
+  db_url:
+    file: ./secrets/db_url
+services:
+  db:
+    environment:
+      POSTGRES_DB: streetnoise_cms
+      POSTGRES_USER: streetnoise_cms
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    restart: always
+    image: postgres:9.6
+    expose:
+      - "5432"
+  redis:
+    restart: always
+    image: redis:3.0
+    expose:
+      - "6379"
+  elasticsearch:
+    image: elasticsearch:2.3
+    restart: always
+    expose:
+      - "9200"
+  app:
+    environment:
+      DJANGO_SECRET_KEY_FILE: ./secrets/django_secret
+      DATABASE_URL_FILE: ./secrets/db_url
+      CACHE_URL: redis://redis
+      ELASTICSEARCH_ENDPOINT: elasticsearch
+      VIRTUAL_HOST: streetnoise.at
+      LETSENCRYPT_HOST: streetnoise.at
+      LETSENCRYPT_EMAIL: orchestra@streetnoise.at
+      VIRTUAL_PORT: 8001
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    links:
+      - db:db
+      - redis:redis
+      - elasticsearch:elasticsearch
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+      - redis
+      - elasticsearch

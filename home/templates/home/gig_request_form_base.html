@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streetnoise Orchestra</title>
+  <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700|Permanent+Marker|Sedgwick+Ave+Display"
+      rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
+  <link rel="preload" href="{% static 'fonts/feltnoisy-webfont.woff2' %}" as="font">
+
+</head>
+<body>
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <p class="buttons">
+            <a class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close"
+               href="https://streetnoise.at">
+              <span class="icon is-small"><i class="fas fa-times"></i></span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+
+{% endblock content %}
+<script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+</body>
+</html>
