@@ -31,6 +31,6 @@
     "start": "npm-run-all --parallel css-watch js-watch wagtail"
   },
   "dependencies": {
-    "bulma-accordion": "^2.0.1",
+    "bulma-accordion": "^2.0.1"
   }
 }

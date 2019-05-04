@@ -49,19 +49,6 @@ h1, h2, h3, h4 {
   height: auto;
 }
 
-.bg1 {
-  background-image: url(../_img/intro-bg.jpg);
-  //background-image: url(../_img/_MG_9888.JPG);
-  //background-image: url(../_img/skapa-short.JPG);
-  //background-image: url(../_img/klausi.jpg);
-  background-attachment: fixed;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  //background-size: auto;
-  //background-image: url(../img/colors-1-s.png);
-}
-
 .hero-header {
   @extend .hero;
   background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;

@@ -17,6 +17,9 @@ COPY . /code/
 # Set the working directory to /code/
 WORKDIR /code/
 
+# Call collectstatic with dummy environment variables:
+RUN COLLECT_STATIC_OVERRIDE=True  python manage.py collectstatic --noinput
+
 RUN useradd wagtail
 RUN chown -R wagtail /code
 USER wagtail

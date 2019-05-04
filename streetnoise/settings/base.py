@@ -173,4 +173,3 @@ COMPRESS_CACHEABLE_PRECOMPILERS = (
 )
 
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'website@notifications.streetnoise.at'
-

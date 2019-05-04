@@ -9555,13 +9555,6 @@ h1, h2, h3, h4 {
   width: 50%;
   height: auto; }
 
-.bg1 {
-  background-image: url(../_img/intro-bg.jpg);
-  background-attachment: fixed;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: cover; }
-
 .hero-header {
   background: #ffa500 url("../img/background-optimized.jpg") no-repeat local center center;
   background-size: cover; }
