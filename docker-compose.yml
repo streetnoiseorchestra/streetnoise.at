@@ -20,6 +20,8 @@ services:
       - "5432"
     volumes:
       - streetnoise_at_db:/var/lib/postgresql/data/
+    secrets:
+      - db_password
   redis:
     restart: always
     image: redis:3.0
@@ -32,10 +34,15 @@ services:
       - "9200"
   app:
     environment:
-      DJANGO_SECRET_KEY_FILE: ./secrets/django_secret
-      DATABASE_URL_FILE: ./secrets/db_url
+      DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret
+      DATABASE_URL_FILE: /run/secrets/db_url
       CACHE_URL: redis://redis
       ELASTICSEARCH_ENDPOINT: elasticsearch
+      EMAIL_HOST_PASSWORD_FILE: /run/secrets/email_password
+    secrets:
+      - django_secret
+      - email_password
+      - db_url
     build:
       context: .
       dockerfile: ./Dockerfile

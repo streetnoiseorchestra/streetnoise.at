@@ -8,5 +8,4 @@ package.json
 package-lock.json
 rollup*js
 .idea
-secrets/
 __pycache__
