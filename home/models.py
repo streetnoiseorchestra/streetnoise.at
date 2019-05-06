@@ -29,8 +29,8 @@ class BandFriend(models.Model):
 
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
-    website = models.URLField()
-    facebook = models.URLField()
+    website = models.URLField(blank=True)
+    facebook = models.URLField(blank=True)
     square_logo = models.ForeignKey(
         'wagtailimages.Image',
         blank=True,
