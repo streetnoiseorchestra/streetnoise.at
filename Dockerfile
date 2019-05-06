@@ -20,9 +20,10 @@ WORKDIR /code/
 # Call collectstatic with dummy environment variables:
 RUN COLLECT_STATIC_OVERRIDE=True  python manage.py collectstatic --noinput
 
-RUN useradd wagtail
-RUN chown -R wagtail /code
-USER wagtail
+RUN groupadd -r -g 3993 cms && useradd --uid 3993 --gid 3993 cms
+RUN chown -R cms /code
+USER cms
+RUN mkdir /code/media
 
 EXPOSE 8000
 CMD exec gunicorn streetnoise.wsgi:application --bind 0.0.0.0:8000 --workers 3
