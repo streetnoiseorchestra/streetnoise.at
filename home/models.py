@@ -73,6 +73,13 @@ class HomePageBandFriend(Orderable, BandFriend):
 class HomePage(Page):
     subtitle = models.CharField(max_length=100, blank=True)
 
+    menu_festival = models.CharField(max_length=100, blank=True)
+    menu_who_we_are = models.CharField(max_length=100, blank=True)
+    menu_upcoming_gigs = models.CharField(max_length=100, blank=True)
+    menu_merch = models.CharField(max_length=100, blank=True)
+    menu_join_us = models.CharField(max_length=100, blank=True)
+    menu_request_gig = models.CharField(max_length=100, blank=True)
+    menu_contact = models.CharField(max_length=100, blank=True)
     festival_intro_title = models.CharField(max_length=100, blank=True)
     festival_intro_title2 = models.CharField(max_length=100, blank=True)
     festival_intro_text = RichTextField(blank=True, features=['bold', 'italic', 'link'])
@@ -141,7 +148,15 @@ class HomePage(Page):
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            FieldPanel('subtitle'),
+            FieldPanel('menu_festival'),
+            FieldPanel('menu_who_we_are'),
+            FieldPanel('menu_upcoming_gigs'),
+            FieldPanel('menu_merch'),
+            FieldPanel('menu_join_us'),
+            FieldPanel('menu_request_gig'),
+            FieldPanel('menu_contact'),
+        ], "Menu Navigation"),
+        MultiFieldPanel([
             FieldPanel('festival_intro_title'),
             FieldPanel('festival_intro_text'),
             InlinePanel('festival_bands', label="Bands"),
