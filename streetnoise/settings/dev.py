@@ -1,4 +1,8 @@
+import dj_database_url
+
 from .base import *
+
+DATABASE_URL = os.environ.get('DATABASE_URL',  'postgres://streetnoise_cms:dev@localhost/streetnoise_cms')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,14 +24,11 @@ INSTALLED_APPS = INSTALLED_APPS + [
 
 INTERNAL_IPS = ('127.0.0.1')
 
+
+DATABASES = {'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)}
+
 try:
     from .local import *
 except ImportError:
     pass
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
