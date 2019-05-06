@@ -20,7 +20,7 @@ services:
     expose:
       - "5432"
     volumes:
-      - /srv/streetnoise.at/postgres:/var/lib/postgresql/data/
+      - /srv/streetnoise.at/postgres:/var/lib/postgresql/data/:rw
       - /etc/passwd:/etc/passwd:ro
     secrets:
       - db_password
@@ -40,7 +40,7 @@ services:
       - email_password
       - db_url
     volumes:
-      - /srv/streetnoise.at/media:/code/media
+      - /srv/streetnoise.at/media:/code/media:rw
     build:
       context: .
       dockerfile: ./Dockerfile
