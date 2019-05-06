@@ -29,17 +29,11 @@ services:
     image: redis:3.0
     expose:
       - "6379"
-  elasticsearch:
-    image: elasticsearch:2.3
-    restart: always
-    expose:
-      - "9200"
   cms:
     environment:
       DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret
       DATABASE_URL_FILE: /run/secrets/db_url
       CACHE_URL: redis://redis
-      ELASTICSEARCH_ENDPOINT: elasticsearch
       EMAIL_HOST_PASSWORD_FILE: /run/secrets/email_password
     secrets:
       - django_secret
@@ -53,10 +47,8 @@ services:
     links:
       - db:db
       - redis:redis
-      - elasticsearch:elasticsearch
     ports:
       - "8001:8000"
     depends_on:
       - db
       - redis
-      - elasticsearch
