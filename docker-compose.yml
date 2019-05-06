@@ -34,7 +34,7 @@ services:
     restart: always
     expose:
       - "9200"
-  app:
+  cms:
     environment:
       DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret
       DATABASE_URL_FILE: /run/secrets/db_url
