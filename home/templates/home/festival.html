@@ -13,10 +13,10 @@
       </div>
     </div>
 
-    <div class="columns">
+    <div class="columns is-multiline">
       {% for bandfriend in page.festival_bands.all %}
       {% with band=bandfriend.band_friend %}
-      <div class="column is-3">
+      <div class="column is-3-desktop">
         <!--      Start: Band profile-->
         <div class="tile is-child">
           <div class="card">
@@ -36,8 +36,12 @@
               </div>
             </div>
             <footer class="card-footer">
+              {% if website %}
               <p class="card-footer-item"><span><a href="{{ band.website }}">website</a></span></p>
+              {% endif %}
+              {% if facebook %}
               <p class="card-footer-item"><span><a href="{{band.facebook}}">facebook</a></span></p>
+              {% endif %}
             </footer>
           </div>
         </div>
