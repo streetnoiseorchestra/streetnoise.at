@@ -189,10 +189,11 @@ h1, h2, h3, h4 {
 }
 
 .xs-feature-image-box.image-1 {
-  text-align: right;
   z-index: 1;
-  @include mobile {
-    text-align: center;
+  text-align: center;
+  @include desktop {
+    text-align: right;
+
   }
 }
 
@@ -204,16 +205,18 @@ h1, h2, h3, h4 {
 .xs-feature-image-box {
   position: relative;
 
-  @include mobile {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  @include desktop {
+    margin-bottom: initial;
   }
 }
 
 .xs-feature-image-box.image-2 {
-  margin-top: -250px;
-  @include mobile {
-    text-align: center;
-    margin-top: 0;
+  text-align: center;
+  margin-top: 0;
+  @include desktop {
+    text-align: left;
+    margin-top: -250px;
   }
 }
 

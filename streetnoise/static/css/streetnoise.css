@@ -9656,27 +9656,29 @@ h1, h2, h3, h4 {
       box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); } }
 
 .xs-feature-image-box.image-1 {
-  text-align: right;
-  z-index: 1; }
-  @media screen and (max-width: 768px) {
+  z-index: 1;
+  text-align: center; }
+  @media screen and (min-width: 1088px) {
     .xs-feature-image-box.image-1 {
-      text-align: center; } }
+      text-align: right; } }
 
 .xs-feature-image-box img {
   width: 370px; }
 
 .xs-feature-image-box {
-  position: relative; }
-  @media screen and (max-width: 768px) {
+  position: relative;
+  margin-bottom: 20px; }
+  @media screen and (min-width: 1088px) {
     .xs-feature-image-box {
-      margin-bottom: 20px; } }
+      margin-bottom: initial; } }
 
 .xs-feature-image-box.image-2 {
-  margin-top: -250px; }
-  @media screen and (max-width: 768px) {
+  text-align: center;
+  margin-top: 0; }
+  @media screen and (min-width: 1088px) {
     .xs-feature-image-box.image-2 {
-      text-align: center;
-      margin-top: 0; } }
+      text-align: left;
+      margin-top: -250px; } }
 
 .section.call-to-action .box {
   margin-top: -8rem;
