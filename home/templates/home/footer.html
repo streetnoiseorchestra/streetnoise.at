@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags%}
+{% load static wagtailcore_tags wagtailimages_tags wagtail_modeltranslation  %}
 <!--SECTION: CTA (Call To Action)-->
 <section class="section call-to-action is-primary has-text-centered">
   <div class="container is-narrow">
@@ -76,7 +76,13 @@
         </a>
       </p>
     </div>
-
+    <div class="copyright">
+      {% if request.LANGUAGE_CODE == 'de' %}
+      <a href="{% change_lang 'en' %}"><span class=" is-hidden-desktop">🇬🇧 </span> English</a>
+      {% else %}
+      <a href="{% change_lang 'de' %}"><span class=" is-hidden-desktop">🇦🇹</span> Deutsch</a>
+      {% endif %}
+    </div>
     <div class="copyright">
       Fotos und Bilder von
       <a href="https://streetnoise.at">StreetNoiseOrchestra</a>,

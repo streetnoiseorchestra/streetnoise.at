@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
 <html>
 <head>
   <meta charset="utf-8">
@@ -87,13 +87,14 @@
 
         </div>
         <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-light is-outlined" href="https://data.streetnoise.at">
-                Mitglieder Anmeldung
-              </a>
-            </div>
-          </div>
+          {% if request.LANGUAGE_CODE == 'de' %}
+          <a href="{% change_lang 'en' %}" class="navbar-item"><span class=" is-hidden-desktop">🇬🇧 </span> English</a>
+          {% else %}
+          <a href="{% change_lang 'de' %}" class="navbar-item"><span class=" is-hidden-desktop">🇦🇹</span> Deutsch</a>
+          {% endif %}
+          <a class="navbar-item" href="https://data.streetnoise.at">
+            Mitglieder Anmeldung
+          </a>
         </div>
       </div>
     </nav>
@@ -114,12 +115,12 @@
         </div>
       </div>
       <div class="container has-text-centered-desktop">
-        <img src="{% static 'img/strafiato-letters-vector.svg' %}" class="logo-type" alt="Strafiato"/>
+        <img src="{% static 'img/strafiato-letters-vector.svg' %}" class="logo-type" alt="Strafiato 2019 Street band Festival in Innsbruck"/>
       </div>
       <div class="columns is-gapless is-multiline  is-centered">
         <div class="column is-half has-text-centered">
           <img src="{% static 'img/logo-mark-300w.png' %}"
-               alt="The Strafiato logo. Two tubas with fire coming out of the bells"
+               alt="Strafiato 2019 Street band Festival in Innsbruck"
                srcset="{% static 'img/logo-mark-600w-optimized.png' %} 768w"
                class="logo-mark"/>
         </div>
@@ -127,7 +128,7 @@
           <h2 class="title has-text-centered">Urban Brass Band Festival</h2>
         </div>
         <div class="column is-full">
-          <h2 class="title has-text-centered">7 - 10 June • Innsbruck</h2>
+          <h2 class="title has-text-centered">7 &ndash; 10 June • Innsbruck</h2>
         </div>
       </div>
 
