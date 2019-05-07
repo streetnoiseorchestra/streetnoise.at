@@ -71,7 +71,14 @@ class HomePageBandFriend(Orderable, BandFriend):
 
 
 class HomePage(Page):
-    subtitle = models.CharField(max_length=100, blank=True)
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        help_text="The image shown on Facebook and other social media",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     menu_festival = models.CharField(max_length=100, blank=True)
     menu_who_we_are = models.CharField(max_length=100, blank=True)
@@ -205,6 +212,10 @@ class HomePage(Page):
             FieldPanel('cta_button1'),
             FieldPanel('cta_button2'),
         ], "Call To Action + Footer"),
+    ]
+
+    promote_panels = Page.promote_panels + [
+        ImageChooserPanel('feed_image'),
     ]
 
 

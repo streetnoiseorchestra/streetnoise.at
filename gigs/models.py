@@ -87,7 +87,8 @@ class GigPage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        help_text="The gig banner image",
     )
     content_panels = Page.content_panels + [
         FieldPanel('gigomatic_id', classname="full title"),

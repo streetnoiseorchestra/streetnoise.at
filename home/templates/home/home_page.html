@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Streetnoise Orchestra</title>
+  <title>{{ page.title }}</title>
   <link
       href="https://fonts.googleapis.com/css?family=Montserrat:700|Permanent+Marker|Sedgwick+Ave+Display"
       rel="stylesheet">
@@ -19,6 +19,19 @@
   <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
   <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
   <link rel="preload" href="{% static 'fonts/feltnoisy-webfont.woff2' %}" as="font">
+
+  <meta property="og:site_name" content="Street Noise Orchestra"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
+  <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+  <meta property="twitter:site" content="@StreetNoiseIBK"/>
+  <meta property="twitter:creator" content="@StreetNoiseIBK"/>
+  <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}"/>
+  <meta name="twitter:card" content="summary" />
+  {% if self.feed_image %}
+  {% image self.feed_image width-1200 as img %}
+  <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ img.url }}"/>
+  {% endif %}
 
 </head>
 <body>
