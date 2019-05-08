@@ -9751,8 +9751,11 @@ footer .title {
   height: 450px; }
 
 .footer-logo svg {
-  width: 380px;
+  width: 200px;
   overflow: hidden; }
+  @media screen and (min-width: 769px), print {
+    .footer-logo svg {
+      width: 380px; } }
 
 #donate_form input {
   max-width: 10rem; }
