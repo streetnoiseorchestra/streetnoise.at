@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import HomePage, GigRequestPage, GigType, ImpressumPage, DataPrivacyPage
+from .models import HomePage, GigRequestPage, GigType, ImpressumPage, DataPrivacyPage, DonationPage
 
 
 @register(HomePage)
@@ -66,3 +66,15 @@ class ImpressumPageTR(TranslationOptions):
 @register(DataPrivacyPage)
 class DataPrivacyPageTR(TranslationOptions):
         fields = ['privacy_content']
+
+
+@register(DonationPage)
+class DonationPageTR(TranslationOptions):
+        fields = [
+                'donation_intro',
+                'label_donation_amount',
+                'label_donation',
+                'label_donation_detail',
+                'thank_you',
+                'thank_you_text',
+        ]

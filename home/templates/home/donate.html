@@ -1,6 +1,6 @@
 {% load static wagtailcore_tags wagtailimages_tags%}
 <!--SECTION: DONATE-->
-<section class="hero is-warning is-bold">
+<section class="hero is-warning is-bold" id="donation">
   <div class="hero-body">
     <div class="container ">
       <div class="columns">
@@ -14,14 +14,32 @@
               <p class="title is-4">
                 {{ self.donate_online }}
               </p>
-              <p class="">
-                <a class="button is-medium  is-primary"
-                   href="https://www.paypal.com/donate/?token=AdAsnIyDN0mavWG6cNZZW-6WkU8hMRvE0jFSSndpGSuWzbI5HI-_jWqqkUhy2KdxI_bmJm&country.x=AT&locale.x=AT"
-                   target="_blank">
-                  <span class="icon"><i class="fab fa-paypal"></i></span>
-                  <span>Paypal</span>
-                </a>
-              </p>
+              <div class="columns is-centered ">
+                <div class="column is-full">
+                  <form id="donate_form" accept-charset="UTF-8" action="{{ donation_page_url }}" method="POST">
+                    {% csrf_token %}
+                    {% for hidden_field in form.hidden_fields %}
+                      {{ hidden_field }}
+                    {% endfor %}
+                    <div class="field has-addons has-addons-centered">
+                      <div class="control has-icons-left">
+                        <label for="donation_amount"></label>
+                        <input name="donation_amount" id="donation_amount" class="input is-medium"
+                               type="number" placeholder="10">
+                        <span class="icon is-medium is-left"><i class="fa fa-euro-sign"></i></span>
+                      </div>
+                      <div class="control">
+                        <button type="submit" class="button is-primary is-medium">
+                          <span>Donate</span>
+                          <span class="icon is-small">
+                        <i class="far fa-credit-card"></i>
+                      </span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
             <div class="column is-6">
               <p class="title is-4">

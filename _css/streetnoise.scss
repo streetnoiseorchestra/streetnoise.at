@@ -322,3 +322,9 @@ footer .title {
   width: 380px;
   overflow: hidden;
 }
+
+#donate_form {
+  input {
+    max-width: 10rem;
+  }
+}

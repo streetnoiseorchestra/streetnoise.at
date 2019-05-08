@@ -41,3 +41,7 @@ class GigRequestForm(forms.Form):
             'donation_amount',
             'details',
         ]
+
+class DonationForm(forms.Form):
+    widget = forms.TextInput(attrs={'class': 'input is-large', 'type': 'number'})
+    donation_amount = forms.IntegerField(widget=widget, required=False)

@@ -1,5 +1,5 @@
-from django.core.mail import send_mail
 from django.conf import settings
+from django.core.mail import send_mail
 from django.db import models
 from django.shortcuts import render
 from modelcluster.fields import ParentalKey
@@ -219,6 +219,17 @@ class HomePage(Page):
         ImageChooserPanel('feed_image'),
     ]
 
+    def get_context(self, request):
+        from home.forms import DonationForm
+
+        context = super(HomePage, self).get_context(request)
+        donation_page = DonationPage.objects.first()
+        if donation_page is not None:
+            url = donation_page.get_url()
+            context['donation_form'] = DonationForm()
+            context['donation_page_url'] = url
+        return context
+
 
 @register_snippet
 class GigType(models.Model):
@@ -376,3 +387,69 @@ class DataPrivacyPage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel('privacy_content')
     ]
+
+
+class DonationPage(Page):
+    donation_intro = StreamField([
+        ('heading', blocks.CharBlock()),
+        ('paragraph', blocks.RichTextBlock()),
+    ], null=True, blank=True)
+
+    label_donation_amount = models.CharField(max_length=100, blank=True)
+    label_donation = models.CharField(max_length=100, blank=True, verbose_name='Donation line item', help_text='The word "donation" used on the official donation receipt')
+    label_donation_detail = models.CharField(max_length=255, blank=True, verbose_name='Donation line item description', help_text='A small description of the donation used on the official donation receipt')
+
+    thank_you = models.CharField(max_length=100, blank=True, help_text='The title displayed after the user successful donates.')
+    thank_you_text = RichTextField(blank=True, features=['bold', 'italic', 'link', 'ol', 'ul'], help_text='Text displayed after the user successful donates.')
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('donation_intro'),
+        FieldPanel('label_donation_amount'),
+        FieldPanel('label_donation'),
+        FieldPanel('label_donation_detail'),
+        FieldPanel('thank_you'),
+        FieldPanel('thank_you_text'),
+    ]
+
+    def serve(self, request):
+        from home.forms import DonationForm
+        import stripe
+        from django.templatetags.static import static
+
+        if request.method == 'POST':
+            form = DonationForm(request.POST)
+            if form.is_valid():
+                img_url = '{}{}'.format(request.site.root_url, static('/img/unterstuetzen.jpg'))
+                stripe.api_key = settings.STRIPE_TEST_SK
+                session = stripe.checkout.Session.create(
+                    payment_method_types=['card'],
+                    line_items=[{
+                        'name': self.label_donation,
+                        'description': self.label_donation_detail,
+                        'images': [img_url],
+                        'amount': 100 * form.cleaned_data['donation_amount'],
+                        'currency': 'eur',
+                        'quantity': 1,
+                    }],
+                    success_url='{}?checkout=success'.format(self.get_full_url()),
+                    cancel_url=request.site.root_url
+                )
+                self.checkout_session_id = session.id
+                self.stripe_pk = settings.STRIPE_TEST_PK
+                return render(request, 'home/donation_checkout.html', {
+                    'page': self,
+                    'form': form
+                })
+        elif request.GET.get('checkout', False) == 'success':
+            return render(request, 'home/donation_success.html', {
+                'page': self
+            })
+        elif request.GET.get('amount') :
+            form = DonationForm(initial={'donation_amount': request.GET.get('amount', 0)})
+        else:
+            form = DonationForm()
+
+        return render(request, 'home/donation_page.html', {
+            'page': self,
+            'form': form,
+        })

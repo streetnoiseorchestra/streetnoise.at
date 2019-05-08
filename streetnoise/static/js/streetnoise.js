@@ -18,15 +18,7 @@ var BulmaAccordion = unwrapExports(bulmaAccordion_min);
 var bulmaAccordion_min_1 = bulmaAccordion_min.bulmaAccordion;
 
 document.addEventListener('DOMContentLoaded', function () {
-  var accordions = BulmaAccordion.attach(); // // To access to bulmaCalendar instance of an element
-  //   const element = document.querySelector('#my-element');
-  //   if (element) {
-  //     // bulmaCalendar instance is available as element.bulmaCalendar
-  //     element.bulmaCalendar.on('select', datepicker => {
-  //       console.log(datepicker.data.value());
-  //     });
-  //   }
-  // Get all "navbar-burger" elements
+  var accordions = BulmaAccordion.attach(); // Get all "navbar-burger" elements
 
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0); // Check if there are any navbar burgers
 

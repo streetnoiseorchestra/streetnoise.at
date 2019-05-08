@@ -9753,3 +9753,6 @@ footer .title {
 .footer-logo svg {
   width: 380px;
   overflow: hidden; }
+
+#donate_form input {
+  max-width: 10rem; }
