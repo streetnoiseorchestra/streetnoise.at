@@ -9765,3 +9765,15 @@ footer .title {
   @media screen and (min-width: 769px), print {
     .slider-container {
       height: 550px; } }
+
+.mobile-lang-switch {
+  padding-left: 0;
+  padding-right: 0; }
+  .mobile-lang-switch a {
+    color: #fff; }
+    @media screen and (max-width: 768px) {
+      .mobile-lang-switch a {
+        font-size: 0.8rem; } }
+    .mobile-lang-switch a:hover {
+      background-color: #118fe4;
+      color: #fff; }

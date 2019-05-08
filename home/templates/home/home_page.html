@@ -47,6 +47,13 @@
         <a class="navbar-item" href="https://streetnoise.at">
           <img src="/static/img/logotype.svg">
         </a>
+      <div class="navbar-item  mobile-lang-switch">
+           {% if request.LANGUAGE_CODE == 'de' %}
+          <a href="{% change_lang 'en' %}" class="navbar-item"><span class="">🇬🇧</span>&nbsp; English</a>
+          {% else %}
+          <a href="{% change_lang 'de' %}" class="navbar-item"><span class="">🇦🇹</span>&nbsp; Deutsch</a>
+          {% endif %}
+      </div>
 
         <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu"
            aria-expanded="false">
@@ -55,8 +62,10 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
+
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
+
           <a class="navbar-item" href="#festival">
             {{ page.menu_festival }}
           </a>
@@ -87,11 +96,7 @@
 
         </div>
         <div class="navbar-end">
-          {% if request.LANGUAGE_CODE == 'de' %}
-          <a href="{% change_lang 'en' %}" class="navbar-item"><span class=" is-hidden-desktop">🇬🇧 </span> English</a>
-          {% else %}
-          <a href="{% change_lang 'de' %}" class="navbar-item"><span class=" is-hidden-desktop">🇦🇹</span> Deutsch</a>
-          {% endif %}
+
           <a class="navbar-item" href="https://data.streetnoise.at">
             Mitglieder Anmeldung
           </a>

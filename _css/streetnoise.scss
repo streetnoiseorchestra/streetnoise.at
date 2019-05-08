@@ -319,7 +319,10 @@ footer .title {
   height: 450px;
 }
 .footer-logo  svg {
-  width: 380px;
+  width: 200px;
+  @include tablet {
+    width: 380px;
+  }
   overflow: hidden;
 }
 
@@ -332,5 +335,22 @@ footer .title {
   height: 330px;
   @include tablet {
     height: 550px;
+  }
+}
+
+.mobile-lang-switch {
+  padding-left: 0;
+  padding-right: 0;
+  a {
+    color: #fff;
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
+
+    &:hover {
+      background-color: #118fe4;
+      color: #fff;
+    }
   }
 }
