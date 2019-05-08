@@ -8,6 +8,10 @@ secrets:
     file: ./secrets/email_password
   db_url:
     file: ./secrets/db_url
+  stripe_pk:
+    file: ./secrets/stripe_pk
+  stripe_sk:
+    file: ./secrets/stripe_sk
 services:
   db:
     environment:
@@ -35,10 +39,14 @@ services:
       DATABASE_URL_FILE: /run/secrets/db_url
       CACHE_URL: redis://redis
       EMAIL_HOST_PASSWORD_FILE: /run/secrets/email_password
+      STRIPE_PK_FILE: /run/secrets/stripe_pk
+      STRIPE_SK_FILE: /run/secrets/stripe_sk
     secrets:
       - django_secret
       - email_password
       - db_url
+      - stripe_pk
+      - stripe_sk
     volumes:
       - /srv/streetnoise.at/media:/code/media:rw
     build:

@@ -2,6 +2,13 @@ import dj_database_url
 
 from .base import *
 
+def read_env_file(name):
+    try:
+        return os.environ[name]
+    except KeyError:
+        with open(os.environ[name+'_FILE']) as f:
+            return f.read().strip()
+
 if os.environ.get('COLLECT_STATIC_OVERRIDE', False):
     SECRET_KEY = 'collect static override'
     DATABASE_URL = 'postgres://none'
@@ -11,23 +18,13 @@ else:
     # In order to support Docker secrets, which can only be mounted as files, we allow
     # for the secret key to come from the environment or a file specified using an
     # environment variable.
-    try:
-        SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
-    except KeyError:
-        with open(os.environ['DJANGO_SECRET_KEY_FILE']) as f:
-            SECRET_KEY = f.read().strip()
 
-    try:
-        EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-    except KeyError:
-        with open(os.environ['EMAIL_HOST_PASSWORD_FILE']) as f:
-            EMAIL_HOST_PASSWORD = f.read().strip()
+    SECRET_KEY = read_env_file('DJANGO_SECRET_KEY')
+    EMAIL_HOST_PASSWORD = read_env_file('EMAIL_HOST_PASSWORD')
+    DATABASE_URL = read_env_file('DATABASE_URL')
+    STRIPE_PK = read_env_file('STRIPE_PK')
+    STRIPE_SK = read_env_file('STRIPE_SK')
 
-    try:
-        DATABASE_URL = os.environ['DATABASE_URL']
-    except KeyError:
-        with open(os.environ['DATABASE_URL_FILE']) as f:
-            DATABASE_URL = f.read().strip()
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.sparkpostmail.com"

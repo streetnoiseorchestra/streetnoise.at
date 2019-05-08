@@ -420,7 +420,7 @@ class DonationPage(Page):
             form = DonationForm(request.POST)
             if form.is_valid():
                 img_url = '{}{}'.format(request.site.root_url, static('/img/unterstuetzen.jpg'))
-                stripe.api_key = settings.STRIPE_TEST_SK
+                stripe.api_key = settings.STRIPE_SK
                 session = stripe.checkout.Session.create(
                     payment_method_types=['card'],
                     line_items=[{
@@ -435,7 +435,7 @@ class DonationPage(Page):
                     cancel_url=request.site.root_url
                 )
                 self.checkout_session_id = session.id
-                self.stripe_pk = settings.STRIPE_TEST_PK
+                self.stripe_pk = settings.STRIPE_PK
                 return render(request, 'home/donation_checkout.html', {
                     'page': self,
                     'form': form
