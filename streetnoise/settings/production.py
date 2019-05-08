@@ -71,3 +71,4 @@ LOGGING = {
     },
 }
 
+CONTACT_FORM_RECIPIENTS = ['orchestra@streetnoise.at']

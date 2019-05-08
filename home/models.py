@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.conf import settings
 from django.db import models
 from django.shortcuts import render
 from modelcluster.fields import ParentalKey
@@ -322,8 +323,6 @@ class GigRequestPage(Page):
 
 
 def send_form_mail(form):
-    contact_name = form.cleaned_data['contact_name']
-    contact_org = form.cleaned_data['contact_org']
     message = '''
     Liebe Band,
     
@@ -349,9 +348,8 @@ def send_form_mail(form):
     
     '''.format(**form.cleaned_data).strip()
 
-    sender = 'website@notifications.streetnoise.at'
-    # recipients = ['orchestra@streetnoise.at']
-    recipients = ['me@caseylink.com']
+    sender = 'Street Noise Orchestra <website@notifications.streetnoise.at>'
+    recipients =  settings.CONTACT_FORM_RECIPIENTS
 
     subject = 'Gig Request from {contact_name} @ {contact_org}'.format(**form.cleaned_data)
     send_mail(subject, message, sender, recipients)

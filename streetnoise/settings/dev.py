@@ -27,6 +27,8 @@ INTERNAL_IPS = ('127.0.0.1')
 
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)}
 
+CONTACT_FORM_RECIPIENTS = ['me@caseylink.com']
+
 try:
     from .local import *
 except ImportError:
