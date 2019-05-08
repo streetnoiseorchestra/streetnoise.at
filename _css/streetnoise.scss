@@ -328,3 +328,9 @@ footer .title {
     max-width: 10rem;
   }
 }
+.slider-container {
+  height: 330px;
+  @include tablet {
+    height: 550px;
+  }
+}

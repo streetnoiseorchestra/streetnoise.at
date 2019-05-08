@@ -31,12 +31,12 @@
             {{ self.whoweare_text | richtext }}
           </div>
         </div>
-        <div class="column is-6-desktop ">
+        <div class="column is-6-desktop slider-container">
           <div class="slider-wir">
             {% with blocks=self.whoweare_gallery %}
             {% for block in blocks %}
             <div>
-              {% image block.value height-500 class="image-prettify" %}
+              {% image block.value max-800x500 class="image-prettify" %}
             </div>
             {% endfor %}
             {% endwith %}

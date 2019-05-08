@@ -9756,3 +9756,9 @@ footer .title {
 
 #donate_form input {
   max-width: 10rem; }
+
+.slider-container {
+  height: 330px; }
+  @media screen and (min-width: 769px), print {
+    .slider-container {
+      height: 550px; } }
