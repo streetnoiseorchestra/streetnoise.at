@@ -64,11 +64,13 @@
       </div>
 
       <div class="navbar-menu" id="navMenu">
-        <div class="navbar-start">
+          <div class="navbar-start">
 
-          <a class="navbar-item" href="#festival">
-            {{ page.menu_festival }}
-          </a>
+              {% comment %}
+              <a class="navbar-item" href="#festival">
+                  {{ page.menu_festival }}
+              </a>
+              {% endcomment %}
           <a class="navbar-item" href="#wer-sind">
             {{ page.menu_who_we_are }}
           </a>
@@ -109,16 +111,19 @@
       <div class="columns is-gapless is-multiline">
         <div class="column is-full">
           <h1 class="title has-text-centered has-text-weight-bold">
-            Streetnoise Orchestra
+            Street Noise Orchestra
           </h1>
         </div>
 
+	{% comment %}
         <div class="column is-full">
           <h2 class="subtitle has-text-centered has-text-weight-bold">
             presents
           </h2>
         </div>
+      {% endcomment %}
       </div>
+      {% comment %}
       <div class="container has-text-centered-desktop">
         <img src="{% static 'img/strafiato-letters-vector.svg' %}" class="logo-type" alt="Strafiato 2019 Street band Festival in Innsbruck"/>
       </div>
@@ -133,16 +138,17 @@
           <h2 class="title has-text-centered">Urban Brass Band Festival</h2>
         </div>
         <div class="column is-full">
-          <h2 class="title has-text-centered">7 &ndash; 10 June • Innsbruck</h2>
+            <h2 class="title has-text-centered">7 &ndash; 10 June • Innsbruck</h2>
         </div>
       </div>
+      {% endcomment %}
 
 
     </div>
   </div>
 </section>
 
-{% include 'home/festival.html' %}
+{# {% include 'home/festival.html' %} #}
 {% include 'home/about_us.html' %}
 {% include 'home/gigs.html' %}
 {% include 'home/merch.html' %}
