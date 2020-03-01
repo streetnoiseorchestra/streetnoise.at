@@ -4,7 +4,9 @@
 @import "colors";
 
 
-$primary: $color-primary-0;
+
+$primary: palette(green, "base");
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Poppins&display=swap');
 
 @font-face {
   font-family: 'noisy-felt';
@@ -34,10 +36,18 @@ $link: #3e8fd5;
 
 
 
+body {
+  font-family: 'Open Sans', sans-serif;
+
+}
 h1, h2, h3, h4 {
   font-family: 'Montserrat', sans-serif;
   //font-family: 'Sedgwick Ave Display', cursive;
   //font-family: 'Permanent Marker', cursive;
+}
+.navbar a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
 }
 
 .product__name {
@@ -52,8 +62,20 @@ h1, h2, h3, h4 {
 .hero-header {
   @extend .hero;
   //background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
-  background: #ffa500 url('../img/background-optimized-2020.jpg') no-repeat local center center;
+  background: palette(orange, "base") url('../img/background-optimized-2020.jpg') no-repeat local center center;
   background-size: cover;
+}
+
+.hero-header {
+  .navbar {
+    background-color: palette(orange, "base");
+    a {
+      color: #fff;
+    }
+  }
+  a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+    background-color: palette(orange, "dark");
+  }
 }
 
 .logo-type {
@@ -96,7 +118,7 @@ h1, h2, h3, h4 {
   .title, .subtitle {
     font-family: 'noisy-felt', cursive;
     font-weight: 800;
-    color: #111;
+    color: #fff;
   }
 
   .title {
@@ -221,6 +243,9 @@ h1, h2, h3, h4 {
   }
 }
 
+.section.call-to-action {
+  margin-top: 8rem;
+}
 .section.call-to-action .box {
   margin-top: -8rem;
 
@@ -229,8 +254,8 @@ h1, h2, h3, h4 {
     padding: 3.5rem 1.25rem;
   }
 
-  background-color: $color-primary-3;
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px $color-primary-3;
+  background-color: palette(green, "darkesterest");
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px palette(green, "darkester");
   color: white;
   border: none;
 }
@@ -299,7 +324,7 @@ footer .title {
 }
 
 .tns-nav > [aria-selected="true"] {
-  background: $color-secondary-2-0;
+  background: palette(orange, "base");
 }
 
 .separator {
@@ -354,4 +379,30 @@ footer .title {
       color: #fff;
     }
   }
+}
+
+
+.rich-text p {
+  font-size: 1.3rem;
+}
+.content .tile {
+  margin-top: 2rem;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /*16:9*/
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
