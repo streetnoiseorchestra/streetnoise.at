@@ -31,6 +31,13 @@ dev-migrate: dev-makemigrations
 	python manage.py update_translation_fields
 
 prod-migrate:
-	$(DC_PROD) run --rm cms python manage.py migrate
-	$(DC_PROD) run --rm cms python manage.py sync_page_translation_fields
-	$(DC_PROD) run --rm cms python manage.py update_translation_fields
+	$(DC_PROD) run cms python manage.py migrate
+	$(DC_PROD) run cms python manage.py sync_page_translation_fields
+	$(DC_PROD) run cms python manage.py update_translation_fields
+
+prod-upgrade:
+	$(DC_PROD) build
+	$(DC_PROD) pull
+	$(DC_PROD) stop cms
+	$(MAKE) prod-migrate
+	$(DC_PROD) up -d
