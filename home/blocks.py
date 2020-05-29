@@ -32,6 +32,7 @@ class TimelineItemBlock(blocks.StructBlock):
         template = 'home/blocks/timeline_item.html'
 
 
+
 class MerchItemBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     title = blocks.CharBlock()
@@ -46,3 +47,22 @@ class InfoItemBlock(blocks.StructBlock):
     detail = blocks.RichTextBlock()
     class Meta:
         template = 'home/blocks/info_item.html'
+
+class ImageTileBlock(blocks.StreamBlock):
+    image = ImageChooserBlock()
+    class Meta:
+        template = 'home/blocks/image_tile.html'
+
+class FooterCTABlock(blocks.StructBlock):
+    cta_title = blocks.CharBlock(blank=True, verbose_name="CTA Title")
+    cta_subtitle = blocks.CharBlock(blank=True, verbose_name="CTA Subtitle")
+    cta_button1 = blocks.CharBlock(blank=True, verbose_name="Button 1 Text")
+    cta_button2 = blocks.CharBlock(blank=True, verbose_name="Button 2 Text")
+    cta_button1_url = blocks.URLBlock(classname="full title")
+    cta_button2_url = blocks.URLBlock(classname="full title")
+
+    class Meta:
+        icon = 'placeholder'
+        label = 'Footer CTA'
+        admin_text = 'The Call-To-Action at the bottom above the footer'
+        template = 'home/blocks/footer_cta.html'

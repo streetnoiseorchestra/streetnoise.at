@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import HomePage, GigRequestPage, GigType, ImpressumPage, DataPrivacyPage, DonationPage
+from .models import HomePage, GigRequestPage, GigType, ImpressumPage, DataPrivacyPage, DonationPage, GenericPage
 
 
 @register(HomePage)
@@ -57,6 +57,9 @@ class GigTypeTR(TranslationOptions):
 class GigRequestPageTR(TranslationOptions):
     fields = ()
 
+@register(GenericPage)
+class GenericPageTR(TranslationOptions):
+        fields = ['content']
 
 @register(ImpressumPage)
 class ImpressumPageTR(TranslationOptions):

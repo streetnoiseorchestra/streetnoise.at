@@ -1,12 +1,21 @@
-DC=sudo docker-compose
+#DC=sudo docker-compose
+DC=podman-compose
 DC_PROD=$(DC) -f docker-compose.yml
 DC_DEV=$(DC) -f docker-compose.dev.yml
 
 dev-db-up:
-	$(DC_DEV) up -d db
+	podman-compose -f docker-compose.dev.yml up -d
 
 dev-serve:
 	python manage.py runserver 8001
+
+dev-reset:
+	podman-compose -f docker-compose.dev.yml down
+	podman volume rm cms_streetnoise_dev_db
+	podman-compose -f docker-compose.dev.yml up -d
+	sleep 5
+	psql -h localhost -U streetnoise_cms streetnoise_cms < streetnoise_cms.dump
+
 
 serve: dev-migrate dev-serve
 

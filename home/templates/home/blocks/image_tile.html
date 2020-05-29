@@ -1,0 +1,16 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="tile is-ancestor">
+    {% for block in self %}
+    {% if block.block_type == 'image' %}
+    {% image block.value fill-480x320 as my_image %}
+    {% image block.value width-1280 as orig_image %}
+    <div class="tile is-child ">
+        <a href="{{ orig_image.url }}" target="_blank">
+        <figure class="image is-16x9">
+            <img src="{{ my_image.url }}" alt="{{my_image.alt}}" >
+        </figure>
+        </a>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

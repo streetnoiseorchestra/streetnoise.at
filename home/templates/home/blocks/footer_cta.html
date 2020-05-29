@@ -1,0 +1,33 @@
+<!doctype html>
+{% load static wagtailcore_tags wagtailimages_tags wagtail_modeltranslation  %}
+<!--SECTION: CTA (Call To Action)-->
+<section class="section call-to-action is-primary has-text-centered">
+  <div class="container is-narrow">
+    <div class="box">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <h1 class="title" id="contact">
+            {{ self.cta_title }}
+          </h1>
+        </div>
+        <div class="column">
+          <p class="subtitle">
+            {{ self.cta_subtitle }}
+          </p>
+        </div>
+        <div class="column">
+          <div class="buttons is-centered">
+          <a class="button is-primary  is-rounded is-medium" href="{{self.cta_button1_url}}">
+            {{ self.cta_button1 }}
+          </a>
+          <a class="button is-primary is-outlined is-rounded is-medium"
+             href="{{self.cta_button2_url}}">
+            {{ self.cta_button2 }}
+          </a>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

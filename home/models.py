@@ -10,11 +10,12 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page, Orderable
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from home.blocks import TimelineHeaderBlock, TimelineItemBlock, MerchItemBlock, InfoItemBlock
+from home.blocks import TimelineHeaderBlock, TimelineItemBlock, MerchItemBlock, InfoItemBlock, ImageTileBlock, FooterCTABlock
 
 
 @register_snippet
@@ -366,6 +367,38 @@ def send_form_mail(form):
     send_mail(subject, message, sender, recipients)
     return True
 
+
+class GenericPage(Page):
+    content = StreamField([
+        ('heading', blocks.CharBlock()),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('rawhtml', blocks.RawHTMLBlock()),
+        ('quote', blocks.BlockQuoteBlock()),
+        ('embed', EmbedBlock()),
+        ('imagetile', ImageTileBlock()),
+        ('footercta', FooterCTABlock()),
+    ], null=True, blank=True)
+
+
+    cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
+    cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
+    cta_button1 = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 1 Text")
+    cta_button1_url = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 1 Link")
+    cta_button2 = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 2 Text")
+    cta_button2_url = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 2 Link")
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content'),
+         MultiFieldPanel([
+            FieldPanel('cta_title'),
+            FieldPanel('cta_subtitle'),
+            FieldPanel('cta_button1'),
+            FieldPanel('cta_button1_url'),
+            FieldPanel('cta_button2'),
+            FieldPanel('cta_button2_url'),
+        ], "Call To Action + Footer"),
+    ]
 
 class ImpressumPage(Page):
     impressum_content = StreamField([
