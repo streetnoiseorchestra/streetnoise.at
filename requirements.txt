@@ -1,5 +1,5 @@
 Django>=2.2,<2.3
-wagtail==2.5.1
+wagtail==2.9
 wagtail-modeltranslation==0.10.13
 django-debug-toolbar
 django-compressor==2.2
