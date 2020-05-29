@@ -49,9 +49,9 @@
         </a>
       <div class="navbar-item  mobile-lang-switch">
            {% if request.LANGUAGE_CODE == 'de' %}
-          <a href="{% change_lang 'en' %}" class="navbar-item"><span class="">🇬🇧</span>&nbsp; English</a>
+          <a href="{% change_lang 'en' page %}" class="navbar-item"><span class="">🇬🇧</span>&nbsp; English</a>
           {% else %}
-          <a href="{% change_lang 'de' %}" class="navbar-item"><span class="">🇦🇹</span>&nbsp; Deutsch</a>
+          <a href="{% change_lang 'de' page %}" class="navbar-item"><span class="">🇦🇹</span>&nbsp; Deutsch</a>
           {% endif %}
       </div>
 
