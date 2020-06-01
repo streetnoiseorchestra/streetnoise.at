@@ -1,10 +1,10 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import HomePage, GigRequestPage, GigType, ImpressumPage, DataPrivacyPage, DonationPage, GenericPage
+from .models import FestivalPage, GigRequestPage, GigType, ImpressumPage, DataPrivacyPage, DonationPage, GenericPage
 
 
-@register(HomePage)
+@register(FestivalPage)
 class HomePageTR(TranslationOptions):
     fields = (
             'menu_festival',

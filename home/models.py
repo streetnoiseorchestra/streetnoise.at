@@ -61,7 +61,7 @@ class BandFriend(models.Model):
 
 class HomePageBandFriend(Orderable, BandFriend):
     home_page = ParentalKey(
-        'HomePage',
+        'FestivalPage',
         related_name='festival_bands',
         on_delete=models.CASCADE
     )
@@ -72,7 +72,7 @@ class HomePageBandFriend(Orderable, BandFriend):
     ]
 
 
-class HomePage(Page):
+class FestivalPage(Page):
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         help_text="The image shown on Facebook and other social media",
@@ -223,7 +223,7 @@ class HomePage(Page):
     def get_context(self, request):
         from home.forms import DonationForm
 
-        context = super(HomePage, self).get_context(request)
+        context = super(FestivalPage, self).get_context(request)
         donation_page = DonationPage.objects.first()
         if donation_page is not None:
             url = donation_page.get_url()

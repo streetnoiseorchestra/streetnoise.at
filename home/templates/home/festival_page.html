@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+  <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700|Permanent+Marker|Sedgwick+Ave+Display"
+      rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/tiny-slider.css">
+
+
+  <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
+  <link rel="preload" href="{% static 'fonts/feltnoisy-webfont.woff2' %}" as="font">
+
+  <meta property="og:site_name" content="Street Noise Orchestra"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
+  <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+  <meta property="twitter:site" content="@StreetNoiseIBK"/>
+  <meta property="twitter:creator" content="@StreetNoiseIBK"/>
+  <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}"/>
+  <meta name="twitter:card" content="summary" />
+  {% if self.feed_image %}
+  {% image self.feed_image width-1200 as img %}
+  <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ img.url }}"/>
+  <meta property="og:image:width" content="{{ img.width }}" />
+  <meta property="og:image:height" content="{{ img.height }}" />
+  {% endif %}
+
+</head>
+<body>
+
+    <section class="hero-header-strafiato  is-fullheight-with-navbar">
+  <!-- Hero header: will stick at the top -->
+  <div class="hero-head">
+
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+
+            <div class="navbar-brand">
+        <a class="navbar-item" href="https://streetnoise.at">
+          <img src="/static/img/logotype.svg">
+        </a>
+      <div class="navbar-item  mobile-lang-switch">
+           {% if request.LANGUAGE_CODE == 'de' %}
+          <a href="{% change_lang 'en' page %}" class="navbar-item"><span class="">🇬🇧</span>&nbsp; English</a>
+          {% else %}
+          <a href="{% change_lang 'de' page %}" class="navbar-item"><span class="">🇦🇹</span>&nbsp; Deutsch</a>
+          {% endif %}
+      </div>
+
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu"
+           aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+              <a class="navbar-item" href="#festival">
+                  {{ page.menu_festival }}
+              </a>
+              <a class="navbar-item" href="/request-gig">
+                  {{ page.menu_request_gig }}
+              </a>
+
+              <a class="navbar-item" href="#contact">
+                  {{ page.menu_contact }}
+              </a>
+          </div>
+        <div class="navbar-end">
+
+          <a class="navbar-item" href="https://data.streetnoise.at">
+            Mitglieder Anmeldung
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-gapless is-multiline">
+        <div class="column is-full">
+          <h1 class="title has-text-centered has-text-weight-bold">
+            Streetnoise Orchestra
+          </h1>
+        </div>
+
+        <div class="column is-full">
+          <h2 class="subtitle has-text-centered has-text-weight-bold">
+            presents
+          </h2>
+        </div>
+      </div>
+      <div class="container has-text-centered-desktop">
+        <img src="{% static 'img/strafiato-letters-vector.svg' %}" class="logo-type" alt="Strafiato 2019 Street band Festival in Innsbruck"/>
+      </div>
+      <div class="columns is-gapless is-multiline  is-centered">
+        <div class="column is-half has-text-centered">
+          <img src="{% static 'img/logo-mark-300w.png' %}"
+               alt="Strafiato 2019 Street band Festival in Innsbruck"
+               srcset="{% static 'img/logo-mark-600w-optimized.png' %} 768w"
+               class="logo-mark"/>
+        </div>
+        <div class="column is-full ">
+          <h2 class="title has-text-centered">Urban Brass Band Festival</h2>
+        </div>
+        <div class="column is-full">
+            <h2 class="title has-text-centered">7 &ndash; 10 June • Innsbruck</h2>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+    </section>
+
+{% include 'home/festival.html' %}
+{% include 'home/footer.html' %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/min/tiny-slider.js"></script>
+<script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+</body>
+</html>

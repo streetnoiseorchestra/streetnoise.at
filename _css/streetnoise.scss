@@ -28,7 +28,7 @@ $primary: palette(green, "base");
 $link: #3e8fd5;
 //$link-visited: $color-secondary-2-0;
 //$link-invert: $color-secondary-2-0;
-//$link: $color-secondary-2-1;
+//$link: #fff;
 //$info: $color-secondary-2-0;
 
 @import "../node_modules/bulma/bulma";
@@ -66,9 +66,13 @@ h1, h2, h3, h4 {
   height: auto;
 }
 
+.hero-header-strafiato {
+  @extend .hero;
+  background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
+  background-size: cover;
+}
 .hero-header {
   @extend .hero;
-  //background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
   background: palette(orange, "base") url('../img/background-optimized-2020.jpg') no-repeat local center center;
   background-size: cover;
 }
@@ -119,6 +123,33 @@ h1, h2, h3, h4 {
 
   }
 }
+
+
+.hero-header-strafiato {
+  .title, .subtitle {
+    font-family: 'noisy-felt', cursive;
+    font-weight: 800;
+    color: #111;
+  }
+
+  .title {
+
+    font-size: 2rem;
+    @include desktop {
+      font-size: 3.5rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    @include desktop {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+
 
 .header-title-box {
   position: absolute;
@@ -431,4 +462,13 @@ footer .title {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+.festival-program {
+  .rich-text {
+    a {
+      color: white;
+    }
+  }
 }
