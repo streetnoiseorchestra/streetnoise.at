@@ -17,6 +17,13 @@ $primary: palette(green, "base");
   unicode-range: U+000-5FF; /* Latin glyphs */
 }
 
+@font-face {
+  font-family: 'obelix-pro';
+  src:  url('../fonts/obelixpro-webfont.woff2') format('woff2'),
+        url('../fonts/obelixpro-webfont.woff') format('woff');
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
 
 $link: #3e8fd5;
 //$link-visited: $color-secondary-2-0;
@@ -113,27 +120,46 @@ h1, h2, h3, h4 {
   }
 }
 
-
-.hero-header {
-  .title, .subtitle {
-    font-family: 'noisy-felt', cursive;
-    font-weight: 800;
-    color: #fff;
+.header-title-box {
+  position: absolute;
+  width: 100%;
+  bottom: -1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @include desktop {
+  align-items: center;
   }
-
   .title {
-
+    font-family: 'obelix-pro', sans-serif;
+    color: #fff;
+    width: 80%;
+    text-shadow: 4px 2px 0px #000000d6;
+    margin: 0;
     font-size: 2rem;
+      font-weight: normal;
+
     @include desktop {
+      font-weight: 800;
+      line-height: 4rem;
+      margin: 0 auto;
       font-size: 3.5rem;
     }
   }
 
-  .subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
+  .undertitle {
+    color: #fff;
+    font-family: 'Open sans', 'sans-serif';
+    letter-spacing: 0;
+    margin: 0 auto;
+    display: inline-block;
+    background: palette(orange, "base");
+    transform: rotate(-3deg);
+    padding: 4px 8px;
     @include desktop {
-      font-size: 2.5rem;
+      line-height: 3rem;
+      margin: 0 auto;
+      font-size: 2rem;
     }
   }
 }

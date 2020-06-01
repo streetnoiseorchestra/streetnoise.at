@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<section class="hero-header is-halfheight">
+    <section class="hero-header  is-fullheight-with-navbar">
   <!-- Hero header: will stick at the top -->
   <div class="hero-head">
 
@@ -106,14 +106,15 @@
       </div>
     </nav>
   </div>
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-gapless is-multiline">
-        <div class="column is-full">
-          <h1 class="title has-text-centered has-text-weight-bold">
-            Street Noise Orchestra
+  <div class="hero-body is-relative">
+      <div style="" class="header-title-box">
+          <h1 class="title has-text-centered">
+              Street Noise <br>Orchestra
           </h1>
-        </div>
+          <h2 class="undertitle has-text-centered">
+              mehr groove auf die Straße
+          </h2>
+      </div>
 
 	{% comment %}
         <div class="column is-full">
@@ -122,7 +123,6 @@
           </h2>
         </div>
       {% endcomment %}
-      </div>
       {% comment %}
       <div class="container has-text-centered-desktop">
         <img src="{% static 'img/strafiato-letters-vector.svg' %}" class="logo-type" alt="Strafiato 2019 Street band Festival in Innsbruck"/>
