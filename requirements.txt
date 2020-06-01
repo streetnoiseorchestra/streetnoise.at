@@ -1,9 +1,10 @@
-Django>=2.2,<2.3
+Django>=3.0,<3.1
 wagtail==2.9
-wagtail-modeltranslation==0.10.13
+-e git://github.com/infoportugal/wagtail-modeltranslation.git#egg=wagtail-modeltranslation
 django-debug-toolbar
 django-compressor==2.2
 django-libsass==0.7
+django-modeltranslation==0.14.2
 libsass==0.14.5
 dj-database-url==0.5.0
 psycopg2-binary==2.8.2
