@@ -21,15 +21,15 @@ else:
 
     SECRET_KEY = read_env_file('DJANGO_SECRET_KEY')
     EMAIL_HOST_PASSWORD = read_env_file('EMAIL_HOST_PASSWORD')
+    EMAIL_HOST_USER = read_env_file('EMAIL_HOST_USER')
+    EMAIL_HOST = read_env_file('EMAIL_HOST')
     DATABASE_URL = read_env_file('DATABASE_URL')
     STRIPE_PK = read_env_file('STRIPE_PK')
     STRIPE_SK = read_env_file('STRIPE_SK')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.sparkpostmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "SMTP_Injection"
 EMAIL_USE_TLS = True
 
 DEBUG = False

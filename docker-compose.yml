@@ -39,11 +39,15 @@ services:
       DATABASE_URL_FILE: /run/secrets/db_url
       CACHE_URL: redis://redis
       EMAIL_HOST_PASSWORD_FILE: /run/secrets/email_password
+      EMAIL_HOST_USER_FILE: /run/secrets/email_user
+      EMAIL_HOST_FILE: /run/secrets/email_host
       STRIPE_PK_FILE: /run/secrets/stripe_pk
       STRIPE_SK_FILE: /run/secrets/stripe_sk
     secrets:
       - django_secret
       - email_password
+      - email_user
+      - email_host
       - db_url
       - stripe_pk
       - stripe_sk

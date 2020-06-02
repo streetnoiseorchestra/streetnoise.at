@@ -4,7 +4,7 @@ DC_ARGS ?=
 DC_BUILD_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
 DC_DEV ?= $(DC) $(DC_ARGS) -f docker-compose.dev.yml
-
+DB_DUMP ?= ./streetnoise_cms.dump
 dev-db-up:
 	 $(DC_DEV) up -d
 
@@ -16,7 +16,7 @@ dev-reset:
 	$(DOCKER) volume rm cms_streetnoise_dev_db
 	$(DC_DEV) up -d
 	sleep 5
-	psql -h localhost -U streetnoise_cms streetnoise_cms < streetnoise_cms.dump
+	psql -h localhost -U streetnoise_cms streetnoise_cms < $(DB_DUMP)
 
 
 serve: dev-migrate dev-serve
@@ -25,7 +25,7 @@ dev-makemigrations:
 	python manage.py makemigrations
 
 dev-db-load-dump:
-	cat ./streetnoise_cms.dump |  sudo docker exec  -i cms_db_1 psql -U streetnoise_cms
+	cat $(DB_DUMP) |  sudo $(DOCKER) exec  -i cms_db_1 psql -U streetnoise_cms
 
 dev-migrate: dev-makemigrations
 	python manage.py migrate
