@@ -71,6 +71,136 @@ class HomePageBandFriend(Orderable, BandFriend):
         SnippetChooserPanel('band_friend'),
     ]
 
+class HomePage2(Page):
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        help_text="The image shown on Facebook and other social media",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    menu_festival = models.CharField(max_length=100, blank=True)
+    menu_who_we_are = models.CharField(max_length=100, blank=True)
+    menu_upcoming_gigs = models.CharField(max_length=100, blank=True)
+    menu_merch = models.CharField(max_length=100, blank=True)
+    menu_join_us = models.CharField(max_length=100, blank=True)
+    menu_request_gig = models.CharField(max_length=100, blank=True)
+    menu_contact = models.CharField(max_length=100, blank=True)
+    about_text = RichTextField(blank=True, features=['bold', 'italic', 'link'],
+                               verbose_name="About SNO")
+    whoweare_title = models.CharField(max_length=100, blank=True, verbose_name="Who We Are title")
+    whoweare_text = RichTextField(blank=True, features=['bold', 'italic', 'link'],
+                                  verbose_name="Who We Are text")
+    whoweare_gallery = StreamField([
+        ('image', ImageChooserBlock(label="Gallery Image")),
+    ], null=True, blank=True, verbose_name="Who We Are Gallery")
+
+    gigs_title = models.CharField(max_length=100, blank=True)
+    gigs_subtitle = models.CharField(max_length=100, blank=True)
+
+    merch_title = models.CharField(max_length=100, blank=True)
+    merch_subtitle = models.CharField(max_length=100, blank=True)
+    merch_text = RichTextField(blank=True, features=['bold', 'italic', 'link'],
+                               verbose_name="Merch Detail")
+    merch_items = StreamField([
+        ('merch', MerchItemBlock(label="Merch Item")),
+    ], null=True, blank=True, verbose_name="Merchandise")
+
+    donate_title = models.CharField(max_length=100, blank=True)
+    donate_online = models.CharField(max_length=100, blank=True)
+    donate_offline = models.CharField(max_length=100, blank=True)
+    donate_footer = models.CharField(max_length=100, blank=True)
+
+    join_us_title = models.CharField(max_length=100, blank=True)
+    join_us_subtitle = models.CharField(max_length=100, blank=True)
+    join_us_text = models.CharField(max_length=100, blank=True)
+    join_us_image_1 = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    join_us_image_2 = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    join_us_infos = StreamField([
+        ('info', InfoItemBlock())
+    ], null=True, blank=True, verbose_name="Join Us Info")
+
+    cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
+    cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
+    cta_button1 = models.CharField(max_length=100, blank=True, verbose_name="Request Gig Button")
+    cta_button2 = models.CharField(max_length=100, blank=True, verbose_name="Contact Us Button")
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            FieldPanel('menu_festival'),
+            FieldPanel('menu_who_we_are'),
+            FieldPanel('menu_upcoming_gigs'),
+            FieldPanel('menu_merch'),
+            FieldPanel('menu_join_us'),
+            FieldPanel('menu_request_gig'),
+            FieldPanel('menu_contact'),
+        ], "Menu Navigation"),
+        MultiFieldPanel([
+            FieldPanel('about_text'),
+            FieldPanel('whoweare_title'),
+            FieldPanel('whoweare_text'),
+            StreamFieldPanel('whoweare_gallery'),
+        ], "About SNO"),
+        MultiFieldPanel([
+            FieldPanel('gigs_title'),
+            FieldPanel('gigs_subtitle'),
+        ], "Gigs"),
+        MultiFieldPanel([
+            FieldPanel('merch_title'),
+            FieldPanel('merch_subtitle'),
+            FieldPanel('merch_text'),
+            StreamFieldPanel('merch_items'),
+        ], "Merch"),
+        MultiFieldPanel([
+            FieldPanel('donate_title'),
+            FieldPanel('donate_online'),
+            FieldPanel('donate_offline'),
+            FieldPanel('donate_footer'),
+        ], "Donate"),
+        MultiFieldPanel([
+            FieldPanel('join_us_title'),
+            FieldPanel('join_us_subtitle'),
+            FieldPanel('join_us_text'),
+            ImageChooserPanel('join_us_image_1'),
+            ImageChooserPanel('join_us_image_2'),
+            StreamFieldPanel('join_us_infos')
+        ], "Join Us"),
+        MultiFieldPanel([
+            FieldPanel('cta_title'),
+            FieldPanel('cta_subtitle'),
+            FieldPanel('cta_button1'),
+            FieldPanel('cta_button2'),
+        ], "Call To Action + Footer"),
+    ]
+
+    promote_panels = Page.promote_panels + [
+        ImageChooserPanel('feed_image'),
+    ]
+
+    def get_context(self, request):
+        from home.forms import DonationForm
+
+        context = super(HomePage2, self).get_context(request)
+        donation_page = DonationPage.objects.first()
+        if donation_page is not None:
+            url = donation_page.get_url()
+            context['donation_form'] = DonationForm()
+            context['donation_page_url'] = url
+        return context
 
 class FestivalPage(Page):
     feed_image = models.ForeignKey(
