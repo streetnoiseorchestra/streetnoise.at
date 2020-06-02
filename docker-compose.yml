@@ -6,6 +6,10 @@ secrets:
     file: ./secrets/django_secret
   email_password:
     file: ./secrets/email_password
+  email_user:
+    file: ./secrets/email_user
+  email_host:
+    file: ./secrets/email_host
   db_url:
     file: ./secrets/db_url
   stripe_pk:
