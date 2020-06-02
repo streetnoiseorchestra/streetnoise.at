@@ -1,6 +1,7 @@
 DOCKER ?= sudo docker
 DC ?= sudo docker-compose
 DC_ARGS ?=
+DC_BUILD_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
 DC_DEV ?= $(DC) $(DC_ARGS) -f docker-compose.dev.yml
 
@@ -37,7 +38,7 @@ prod-migrate:
 	$(DC_PROD) run cms python manage.py update_translation_fields
 
 prod-upgrade:
-	$(DC_PROD) build
+	$(DC_PROD) build $(DC_BUILD_ARGS)
 	$(DC_PROD) pull
 	$(DC_PROD) stop cms
 	$(MAKE) prod-migrate
