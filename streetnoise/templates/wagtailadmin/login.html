@@ -1,0 +1,11 @@
+{% extends "wagtailadmin/login.html" %}
+{% load static wagtailcore_tags wagtailimages_tags app_tags %}
+{% block login_form %}
+{% use_conventional_auth as conventional_auth_enabled %}
+{% if conventional_auth_enabled %}
+{{block.super}}
+
+{% else %}
+<a href="/accounts/nextcloud/login/?process=login"><button type="button" class="button">Login</button>
+{% endif %}
+{% endblock %}

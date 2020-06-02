@@ -7,6 +7,13 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+
+from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
+admin.site.login = staff_member_required(login_url='/', redirect_field_name='')(admin.site.login)
+
 # from search import views as search_views
 
 urlpatterns = [
@@ -14,6 +21,9 @@ urlpatterns = [
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+
+    url(r'', include('allauth.urls')), # Creates urls like yourwebsite.com/login/
+    url(r'^accounts/', include('allauth.urls')),
 
     # url(r'^search/$', search_views.search, name='search'),
 

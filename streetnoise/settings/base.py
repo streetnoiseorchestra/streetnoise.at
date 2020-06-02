@@ -54,7 +54,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.nextcloud',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,6 +95,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+             "libraries": {
+                 "app_tags": "streetnoise.templatetags.app_tags",
+            },
         },
     },
 ]
@@ -114,6 +125,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -174,3 +193,43 @@ COMPRESS_CACHEABLE_PRECOMPILERS = (
 
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'Street Noise Orchestra <website@notifications.streetnoise.at>'
 DEFAULT_FROM_EMAIL = WAGTAILADMIN_NOTIFICATION_FROM_EMAIL
+
+
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/admin/'
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_LOGOUT_REDIRECT_URL = '/login/'
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_BLACKLIST = ["admin", "god"]
+ACCOUNT_USERNAME_MIN_LENGTH = 2
+
+SOCIALACCOUNT_PROVIDERS = {
+    'nextcloud': {
+        'SERVER': 'https://data.streetnoise.at',
+    }
+}
+
+# Extra Wagtail config to disable password usage (SSO should be the only way in)
+# https://docs.wagtail.io/en/v2.6.3/advanced_topics/settings.html#password-management
+# Don't let users change or reset their password
+WAGTAIL_PASSWORD_MANAGEMENT_ENABLED = False
+WAGTAIL_PASSWORD_RESET_ENABLED = False
+
+# Don't require a password when creating a user,
+# and blank password means cannot log in unless SSO
+WAGTAILUSERS_PASSWORD_ENABLED = False
+
+ACCOUNT_ADAPTER = 'streetnoise.auth_adapter.SNOAccountAdapter'
+
+# If True (which should only be done in settings.local), then show username and
+# password fields. You'll also need to enable the model backend in local settings
+USE_CONVENTIONAL_AUTH = False
