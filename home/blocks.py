@@ -12,14 +12,14 @@ class FestivalBandsBlock(blocks.StructBlock):
     link2_url = blocks.URLBlock(classname="full title")
 
     class Meta:
-        template = 'home/blocks/festival_bands.html'
+        template = "home/blocks/festival_bands.html"
 
 
 class TimelineHeaderBlock(blocks.StructBlock):
     title = blocks.CharBlock()
 
     class Meta:
-        template = 'home/blocks/timeline_header.html'
+        template = "home/blocks/timeline_header.html"
 
 
 class TimelineItemBlock(blocks.StructBlock):
@@ -29,8 +29,7 @@ class TimelineItemBlock(blocks.StructBlock):
     small_detail = blocks.CharBlock(required=False, label="Extra Detail")
 
     class Meta:
-        template = 'home/blocks/timeline_item.html'
-
+        template = "home/blocks/timeline_item.html"
 
 
 class MerchItemBlock(blocks.StructBlock):
@@ -40,18 +39,23 @@ class MerchItemBlock(blocks.StructBlock):
     detail = blocks.CharBlock()
 
     class Meta:
-        template = 'home/blocks/merch_item.html'
+        template = "home/blocks/merch_item.html"
+
 
 class InfoItemBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     detail = blocks.RichTextBlock()
+
     class Meta:
-        template = 'home/blocks/info_item.html'
+        template = "home/blocks/info_item.html"
+
 
 class ImageTileBlock(blocks.StreamBlock):
     image = ImageChooserBlock()
+
     class Meta:
-        template = 'home/blocks/image_tile.html'
+        template = "home/blocks/image_tile.html"
+
 
 class FooterCTABlock(blocks.StructBlock):
     cta_title = blocks.CharBlock(blank=True, verbose_name="CTA Title")
@@ -62,7 +66,7 @@ class FooterCTABlock(blocks.StructBlock):
     cta_button2_url = blocks.URLBlock(classname="full title")
 
     class Meta:
-        icon = 'placeholder'
-        label = 'Footer CTA'
-        admin_text = 'The Call-To-Action at the bottom above the footer'
-        template = 'home/blocks/footer_cta.html'
+        icon = "placeholder"
+        label = "Footer CTA"
+        admin_text = "The Call-To-Action at the bottom above the footer"
+        template = "home/blocks/footer_cta.html"

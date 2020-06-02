@@ -1,5 +1,6 @@
 from allauth.account.adapter import DefaultAccountAdapter
 
+
 class SNOAccountAdapter(DefaultAccountAdapter):
     """
     https://django-allauth.readthedocs.io/en/latest/advanced.html#custom-redirects """

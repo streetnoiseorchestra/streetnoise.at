@@ -11,8 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-django_env = os.getenv('DJANGO_ENV', 'development')
-if django_env == 'production':
+django_env = os.getenv("DJANGO_ENV", "development")
+if django_env == "production":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "streetnoise.settings.production")
 else:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "streetnoise.settings.dev")

@@ -3,9 +3,11 @@ import os
 import sys
 
 if __name__ == "__main__":
-    django_env = os.getenv('DJANGO_ENV', 'development')
-    if django_env == 'production':
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "streetnoise.settings.production")
+    django_env = os.getenv("DJANGO_ENV", "development")
+    if django_env == "production":
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE", "streetnoise.settings.production"
+        )
     else:
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "streetnoise.settings.dev")
 

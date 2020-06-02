@@ -2,8 +2,9 @@ from django.core.management.base import BaseCommand, CommandError
 
 from home.models import HomePage2, FestivalPage
 
+
 class Command(BaseCommand):
-    help = 'copy the festival sub pages to the new home page root'
+    help = "copy the festival sub pages to the new home page root"
 
     def add_arguments(self, parser):
         pass

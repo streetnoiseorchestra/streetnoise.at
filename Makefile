@@ -8,6 +8,9 @@ DB_DUMP ?= ./streetnoise_cms.dump
 dev-db-up:
 	 $(DC_DEV) up -d
 
+fmt:
+	black --exclude ".*/migrations/.*" .
+
 dev-serve:
 	python manage.py runserver 8001
 
