@@ -1,7 +1,8 @@
 DOCKER ?= sudo docker
 DC ?= sudo docker-compose
-DC_PROD ?= $(DC) -f docker-compose.yml
-DC_DEV ?= $(DC) -f docker-compose.dev.yml
+DC_ARGS ?=
+DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
+DC_DEV ?= $(DC) $(DC_ARGS) -f docker-compose.dev.yml
 
 dev-db-up:
 	 $(DC_DEV) up -d
