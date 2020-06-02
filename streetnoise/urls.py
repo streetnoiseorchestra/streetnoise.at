@@ -24,6 +24,7 @@ urlpatterns = [
     url(r"^documents/", include(wagtaildocs_urls)),
     url(r"", include("allauth.urls")),  # Creates urls like yourwebsite.com/login/
     url(r"^accounts/", include("allauth.urls")),
+    url(r'^blog/', include('blog.urls', namespace="blog")),
     # url(r'^search/$', search_views.search, name='search'),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

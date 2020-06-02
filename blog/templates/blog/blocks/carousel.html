@@ -1,0 +1,20 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{# Use owlcarousel or another slider plugin #}
+<div class="carousel-wrapper">
+	<ul class="controls carousel-controls">
+		<li class="prev">
+			{% include 'streetnoise/svg/arrow-right.svg' %}
+		</li>
+		<li class="next">
+			{% include 'streetnoise/svg/arrow-right.svg' %}
+		</li>
+	</ul>
+	<div class="carousel">
+		{% for block in self %}
+		<div>
+			{% image block.image height-600 class="is-rounded" %}
+		</div>
+		{% endfor %}
+	</div>
+</div>

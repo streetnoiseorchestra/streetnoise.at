@@ -25,12 +25,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "streetnoise",
+    #"livesync",
     "wagtail_modeltranslation",
     "wagtail_modeltranslation.makemigrations",
     "wagtail_modeltranslation.migrate",
-    "home",
-    "gigs",
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -56,8 +54,46 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.nextcloud",
-]
 
+    "home",
+    "blog",
+    "gigs",
+    "streetnoise",
+]
+EXCLUDED_APPS = [
+
+    "wagtail_modeltranslation",
+    "wagtail_modeltranslation.makemigrations",
+    "wagtail_modeltranslation.migrate",
+    "wagtail.contrib.modeladmin",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
+    "modelcluster",
+    "taggit",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+
+    "livesync",
+
+    "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.nextcloud",
+]
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -72,6 +108,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "wagtail.core.middleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    #'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
 
 ROOT_URLCONF = "streetnoise.urls"
@@ -83,10 +120,12 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
             "libraries": {"app_tags": "streetnoise.templatetags.app_tags",},
         },

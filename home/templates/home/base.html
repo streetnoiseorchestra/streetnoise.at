@@ -37,10 +37,68 @@
 
 </head>
 <body>
-    {% include 'home/navigation.html' %}
 
     <section class="hero-header  is-fullheight-with-navbar">
   <!-- Hero header: will stick at the top -->
+  <div class="hero-head">
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://streetnoise.at">
+          <img src="/static/img/logotype.svg">
+        </a>
+      <div class="navbar-item  mobile-lang-switch">
+           {% if request.LANGUAGE_CODE == 'de' %}
+          <a href="{% change_lang 'en' page %}" class="navbar-item"><span class="">🇬🇧</span>&nbsp; English</a>
+          {% else %}
+          <a href="{% change_lang 'de' page %}" class="navbar-item"><span class="">🇦🇹</span>&nbsp; Deutsch</a>
+          {% endif %}
+      </div>
+
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu"
+           aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+              <a class="navbar-item" href="#wer-sind">
+                  {{ page.menu_who_we_are }}
+              </a>
+              <a class="navbar-item" href="#upcoming">
+                  {{ page.menu_upcoming_gigs }}
+              </a>
+
+              <a class="navbar-item" href="#merchandise">
+                  {{ page.menu_merch }}
+              </a>
+
+              <a class="navbar-item" href="#join">
+                  {{ page.menu_join_us }}
+              </a>
+
+              <a class="navbar-item" href="/request-gig">
+                  {{ page.menu_request_gig }}
+              </a>
+              <a class="navbar-item" href="/strafiato-2019">
+                  {{ page.menu_festival }}
+              </a>
+              <a class="navbar-item" href="#contact">
+                  {{ page.menu_contact }}
+              </a>
+          </div>
+          <div class="navbar-end">
+
+              <a class="navbar-item" href="https://data.streetnoise.at">
+                  Mitglieder Anmeldung
+              </a>
+          </div>
+      </div>
+    </nav>
+  </div>
   <div class="hero-body is-relative">
       <div style="" class="header-title-box">
           <h1 class="title has-text-centered">
@@ -54,14 +112,9 @@
   </div>
 </section>
 
-{% include 'home/about_us.html' %}
-{% include 'home/gigs.html' %}
-{% include 'home/merch.html' %}
-{% comment %}
-{% include 'home/donate.html' %}
-{% endcomment %}
-{% include 'home/joinus.html' %}
-{% include 'home/home_cta.html' %}
+
+{% block content %}{% endblock %}
+
 {% include 'home/footer.html' %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/min/tiny-slider.js"></script>

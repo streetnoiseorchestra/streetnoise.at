@@ -1,0 +1,94 @@
+{% extends "blog/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+<div class="news-single" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <section class="hero is-halfheight is-primary has-background">
+        {% image blog.header_image fill-1908x700 class="hero-background is-transparent"%}
+        <div class="hero-body is-relative">
+
+            <div style="" class="header-title-box">
+                <h1 class="title has-text-centered" itemprop="headline">
+                    {{ blog.title }}
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section is-small">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-one-quarter is-half">
+                    <div class="news-single-intro">
+                        <h4 class="news-post-meta">
+                            <span class="news-post-category">
+                                {% if blog.categories.all %}
+                                {% for cat in blog.categories.all %}
+                                <a itemprop="keywords" href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </span>
+
+                            <time class="news-post-date" itemprop="datePublished" datetime="{{ blog.date|date:"Y-m-d" }}">
+                                {{ blog.date|date:"F jS, Y" }}
+                            </time>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% for block in self.body %}
+    {% if block.block_type == 'image_carousel' %}
+    <section class="block-{{ block.block_type }}">
+        {% include_block block %}
+    </section>
+    {% else %}
+    <section class="section is-small">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-one-quarter is-half">
+                    <div class="blog-body content">
+                        {% if block.block_type == 'heading' %}
+                        <h2>{{ block.value }}</h2>
+                        {% elif block.block_type == 'embedded_video' %}
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                {% include_block block %}
+                            </div>
+                        </div>
+                        {% else %}
+                        <section class="block-{{ block.block_type }}">
+                            {% include_block block %}
+                        </section>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% endfor %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-one-quarter is-half news-post-footer">
+                    <p class="has-text-weight-bold news-post-signoff">Mit groovigen Grüßen,</p>
+                    {% if blog.author  %}
+                    <p class="news-post-author">{{ blog.author }} // SNO</p>
+                    {% else %}
+                    <p class="news-post-author">SNO</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="section">
+    <div class="container">
+        <div class="level">
+            <h1 class="title">More News</h1>
+        </div>
+        {% include "blog/blog_tile_list.html" %}
+    </div>
+</section>
+{% endblock %}

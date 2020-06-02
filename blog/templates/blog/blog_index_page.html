@@ -1,0 +1,97 @@
+{% extends "blog/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+{% image page.feed_image fill-1908x216 as header_image %}
+<section id="intro-header" style="background: url('{{header_image.url}}')">
+</section>
+
+<div class="news-category-menu">
+    <ul class="container is-flex is-size-4-desktop is-size-5-mobile">
+        <li class="{% if not category %}current{% endif %}">
+            <a href="{% if not category %}{% pageurl page %}{% else %}{% pageurl page %}{% endif %}" title="All">All</a>
+        </li>
+        {% for a_category in root_categories %}
+        <li class="{% if a_category == category %}current{% endif %}">
+            <a href="{% url 'blog:category' a_category.slug %}" title="{{ a_category.name }}">{{ a_category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8"">
+                {% for blog in blogs|slice:":1" %}
+                <a href="{% pageurl blog %}">
+                    <figure class="image is-4by3">
+                        {% image blog.header_image fill-1000x750 %}
+                    </figure>
+                </a>
+
+                <div class="card-content is-paddingless">
+                    <div class="card-post-header">
+                        <h4 class="news-post-meta">
+                            <span class="news-post-category">
+                                {% if blog.categories.all %}
+                                {% for cat in blog.categories.all %}
+                                <a itemprop="keywords" href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </span>
+                            <span class="is-uppercase news-post-date" itemprop="datePublished">{{ blog.date|date:"F jS, Y" }}</span>
+                        </h4>
+                        <h1 class="title is-2" itemprop="name headline"><a href="{% pageurl blog %}">{{ blog.title }}</a></h1>
+                    </div>
+                    <div class="content">
+                        <p>
+                            {{ blog.intro|richtext|truncatewords_html:25}}
+                        </p>
+                        <p class="has-text-right">
+                            <a href="{% pageurl blog %}" class="is-uppercase" itemprop="url">Read More</a>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="column is-4-desktop is-12-tablet">
+                <div class="news-sidebar">
+                    <div class="is-flex-centered">
+                        <div class="news-sidebar-icon">
+                            {% include 'streetnoise/svg/fire.svg' %}
+                        </div>
+                        <h2 class="title is-4">Hot Posts</h2>
+                    </div>
+                    <div class="news-list-popular">
+                        {% for blog in blogs|slice:":3" %}
+                        <div class="article article-popular" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                            <div class="article-popular-headline">
+                                <h4 class="title is-4">
+                                    <a title="{{ blog.title }}" href="{% pageurl blog %}">
+                                        <span itemprop="name headline">{{ blog.title }}</span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="article-popular-text has-text-grey" itemprop="description">
+                                {{ blog.intro|richtext|truncatewords_html:25}}
+                            </div>
+                            <div class="article-popular-more has-text-right">
+                                <a class="more" title="{{ blog.title }}" href="{% pageurl blog %}" itemprop="url">Read more</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        {% include "blog/blog_tile_list.html" %}
+    </div>
+</section>
+
+{% endblock %}

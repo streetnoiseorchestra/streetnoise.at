@@ -1,7 +1,8 @@
-import BulmaAccordion from 'bulma-accordion';
+//import BulmaAccordion from 'bulma-accordion';
 
 document.addEventListener('DOMContentLoaded', () => {
-  var accordions = BulmaAccordion.attach();
+  if (typeof BulmaAccordion !== 'undefined')
+    var accordions = BulmaAccordion.attach();
 
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -24,20 +25,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    var slider = tns({
-      autoHeight: false,
-      container: '.slider-wir',
-      items: 1,
-      slideBy: 'page',
-      autoplay: true,
-      controls: false,
-      axis: 'vertical',
-      mouseDrag: true,
-      autoplayButtonOutput: false,
-      // autoplayHoverPause: true,
-      // swipeAngle: false,
-      speed: 400
-    });
+    if(document.getElementsByClassName('slider-wir').length > 0)
+      tns({
+        autoHeight: false,
+        container: '.slider-wir',
+        items: 1,
+        slideBy: 'page',
+        autoplay: true,
+        controls: false,
+        axis: 'vertical',
+        mouseDrag: true,
+        autoplayButtonOutput: false,
+        // autoplayHoverPause: true,
+        // swipeAngle: false,
+        speed: 400
+      });
+    if(document.getElementsByClassName('carousel').length > 0)
+      tns({
+        container: '.carousel',
+        nav: false,
+        controlsContainer: ".carousel-controls",
+        hasControls: true,
+        autoWidth: true,
+        items: 3,
+        slideBy: 'page',
+        autoplay: false,
+        controls: true,
+        mouseDrag: true,
+        swipeAngle: false,
+        autoplayButtonOutput: false,
+        // autoplayHoverPause: true,
+        // swipeAngle: false,
+        speed: 600
+      });
   }
   console.log('LOADED');
 });

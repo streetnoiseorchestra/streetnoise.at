@@ -1,0 +1,58 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+<div class="columns">
+    <div class="column">
+        {% if blogs %}
+        <div class="card-posts columns is-multiline news-posts">
+            {% for blog in blogs|slice:"1:" %}
+            <div class="card-post-item is-blog column is-one-third" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <div class="card card-post is-shadowless">
+                    <div class="card-image">
+                        <a href="{% pageurl blog %}">
+                            <figure class="image is-4by3">
+                                {% image blog.header_image fill-640x480 %}
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="card-content is-paddingless">
+                        <div class="card-post-header">
+                            <h4 class="news-post-meta">
+                                <span class="news-post-category">
+                                {% if blog.categories.all %}
+                                {% for cat in blog.categories.all %}
+                                <a itemprop="keywords" href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                </span>
+                                <span class="is-uppercase news-post-date" itemprop="datePublished">{{ blog.date|date:"F jS, Y" }}</span>
+                            </h4>
+                            <h1 class="title is-3" itemprop="name headline"><a href="{% pageurl blog %}" itemprop="url">{{ blog.title }}</a></h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                                {{ blog.intro|richtext|truncatewords_html:25}}
+                            </p>
+                            <p class="has-text-right">
+                                <a href="{% pageurl blog %}" class="is-uppercase">Read More</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <ul class="pager">
+                {% if blogs.has_next %}
+                <li class="previous"><a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&larr; Older</a></li>
+                {% endif %}
+                {% if blogs.has_previous %}
+                <li class="next"><a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Newer &rarr;</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+
+        {% else %}
+        <p>There are currently no blog posts</p>
+        {% endif %}
+    </div>
+</div>

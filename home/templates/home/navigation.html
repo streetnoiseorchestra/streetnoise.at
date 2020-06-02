@@ -1,0 +1,57 @@
+{% load static  wagtail_modeltranslation %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://streetnoise.at">
+            <img src="/static/img/logotype.svg">
+        </a>
+        <div class="navbar-item  mobile-lang-switch">
+            {% if request.LANGUAGE_CODE == 'de' %}
+            <a href="{% change_lang 'en' page %}" class="navbar-item"><span class="">🇬🇧</span>&nbsp; English</a>
+            {% else %}
+            <a href="{% change_lang 'de' page %}" class="navbar-item"><span class="">🇦🇹</span>&nbsp; Deutsch</a>
+            {% endif %}
+        </div>
+
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu"
+           aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="#wer-sind">
+                {{ page.menu_who_we_are }}
+            </a>
+            <a class="navbar-item" href="#upcoming">
+                {{ page.menu_upcoming_gigs }}
+            </a>
+
+            <a class="navbar-item" href="#merchandise">
+                {{ page.menu_merch }}
+            </a>
+
+            <a class="navbar-item" href="#join">
+                {{ page.menu_join_us }}
+            </a>
+
+            <a class="navbar-item" href="/request-gig">
+                {{ page.menu_request_gig }}
+            </a>
+            <a class="navbar-item" href="/strafiato-2019">
+                {{ page.menu_festival }}
+            </a>
+            <a class="navbar-item" href="#contact">
+                {{ page.menu_contact }}
+            </a>
+        </div>
+        <div class="navbar-end">
+
+            <a class="navbar-item" href="https://data.streetnoise.at">
+                Mitglieder Anmeldung
+            </a>
+        </div>
+    </div>
+</nav>
