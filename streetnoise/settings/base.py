@@ -191,7 +191,8 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_USERNAME_BLACKLIST = ["admin", "god"]
 ACCOUNT_USERNAME_MIN_LENGTH = 2
-
+ACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOSocialAccountAdapter"
 SOCIALACCOUNT_PROVIDERS = {"nextcloud": {"SERVER": "https://data.streetnoise.at",}}
 
 # Extra Wagtail config to disable password usage (SSO should be the only way in)
@@ -204,7 +205,6 @@ WAGTAIL_PASSWORD_RESET_ENABLED = False
 # and blank password means cannot log in unless SSO
 WAGTAILUSERS_PASSWORD_ENABLED = False
 
-ACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOAccountAdapter"
 
 # If True (which should only be done in settings.local), then show username and
 # password fields. You'll also need to enable the model backend in local settings
