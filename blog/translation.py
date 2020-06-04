@@ -1,6 +1,5 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
-from taggit.models import Tag
 
 from .models import (
     BlogIndexPage,
@@ -25,10 +24,6 @@ class BlogCategoryTR(TranslationOptions):
     fields = (
         'name', 'description'
     )
-
-@register(Tag)
-class TagTR(TranslationOptions):
-    fields = ( 'name', 'slug' )
 
 
 @register(BlogTag)
