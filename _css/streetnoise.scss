@@ -132,33 +132,6 @@ h1, h2, h3, h4 {
   }
 }
 
-
-.hero-header-strafiato {
-  .title, .subtitle {
-    font-family: 'noisy-felt', cursive;
-    font-weight: 800;
-    color: #111;
-  }
-
-  .title {
-
-    font-size: 2rem;
-    @include desktop {
-      font-size: 3.5rem;
-    }
-  }
-
-  .subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    @include desktop {
-      font-size: 2.5rem;
-    }
-  }
-}
-
-
-
 .header-title-box {
   position: absolute;
   width: 100%;

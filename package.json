@@ -22,9 +22,11 @@
   },
   "scripts": {
     "css-deploy": "npm run css-build && npm run css-postcss",
-    "css-build": "node-sass _css/streetnoise.scss streetnoise/static/css/streetnoise.css",
+    "css-build": "npm run css-build-sno && npm run css-build-strafiato",
+    "css-build-sno": "node-sass _css/streetnoise.scss streetnoise/static/css/streetnoise.css",
+    "css-build-strafiato": "node-sass _css/strafiato.scss streetnoise/static/css/strafiato.css",
     "css-postcss": "postcss --use autoprefixer --output streetnoise/static/css/streetnoise.css streetnoise/static/css/streetnoise.css",
-    "css-watch": "npm run css-build -- --watch",
+    "css-watch": "npm run css-build-sno -- --watch",
     "deploy": "npm run css-deploy && npm run js-build",
     "js-build": "npx babel _javascript --out-dir streetnoise/static/js",
     "js-watch": "npm run js-build -- --watch",

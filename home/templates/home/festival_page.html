@@ -12,11 +12,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/tiny-slider.css">
 
 
   <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
+  <link rel="stylesheet" href="{% static 'css/strafiato.css' %}">
   <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
   <link rel="preload" href="{% static 'fonts/feltnoisy-webfont.woff2' %}" as="font">
 
@@ -66,8 +65,8 @@
 
       <div class="navbar-menu" id="navMenu">
           <div class="navbar-start">
-              <a class="navbar-item" href="#festival">
-                  {{ page.menu_festival }}
+              <a class="navbar-item" href="/">
+                  SNO
               </a>
               <a class="navbar-item" href="/request-gig">
                   {{ page.menu_request_gig }}
@@ -127,7 +126,5 @@
 {% include 'home/festival.html' %}
 {% include 'home/footer.html' %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/min/tiny-slider.js"></script>
-<script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
 </body>
 </html>

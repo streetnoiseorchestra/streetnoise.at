@@ -9851,24 +9851,6 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     .header-bg-style {
       background-position: center top; } }
 
-.hero-header-strafiato .title, .hero-header-strafiato .subtitle {
-  font-family: 'noisy-felt', cursive;
-  font-weight: 800;
-  color: #111; }
-
-.hero-header-strafiato .title {
-  font-size: 2rem; }
-  @media screen and (min-width: 1024px) {
-    .hero-header-strafiato .title {
-      font-size: 3.5rem; } }
-
-.hero-header-strafiato .subtitle {
-  font-size: 1.5rem;
-  font-weight: 300; }
-  @media screen and (min-width: 1024px) {
-    .hero-header-strafiato .subtitle {
-      font-size: 2.5rem; } }
-
 .header-title-box {
   position: absolute;
   width: 100%;
