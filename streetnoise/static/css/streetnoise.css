@@ -9815,6 +9815,10 @@ h1, h2, h3, h4 {
 
 .navbar {
   background-color: #ffa600; }
+  .navbar.is-transparent {
+    background: none; }
+    .navbar.is-transparent a {
+      color: inherit; }
   .navbar a {
     color: #fff; }
 

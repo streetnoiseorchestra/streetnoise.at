@@ -84,18 +84,21 @@ h1, h2, h3, h4 {
   background-size: cover;
 }
 
-//.hero-header {
-  .navbar {
-    background-color: palette(orange, "base");
+.navbar {
+  background-color: palette(orange, "base");
+  &.is-transparent {
+    background: none;
     a {
-      color: #fff;
+      color: inherit;
     }
   }
-  a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
-    background-color: palette(orange, "dark");
+  a {
+    color: #fff;
   }
-
-//}
+}
+a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+  background-color: palette(orange, "dark");
+}
 
 .logo-type {
   @include mobile {
