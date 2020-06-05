@@ -1,8 +1,9 @@
 from datetime import date, datetime
+from django.utils.translation import gettext_lazy as _
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, FieldRowPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -62,50 +63,68 @@ GigIndexPage.promote_panels = [
 
 
 class GigPage(Page):
-    gigomatic_id = models.CharField(max_length=255, null=True, blank=False)
+    gigomatic_id = models.CharField(max_length=255, null=True, blank=True)
 
-    date_from = models.DateField("Start date")
+    date_from = models.DateField(_("Start date"))
     date_to = models.DateField(
-        "End date",
+        _("End date"),
         null=True,
         blank=True,
-        help_text="Not required if gig is on a single day",
+        help_text=_("Not required if gig is on a single day"),
     )
-    call_time = models.TimeField("Call time", null=True, blank=True)
-    set_time = models.TimeField("Set time", null=True, blank=True)
-    end_time = models.TimeField("End time", null=True, blank=True)
+    call_time = models.TimeField(_("Call time"), null=True, blank=True)
+    set_time = models.TimeField(_("Set time"), null=True, blank=True)
+    end_time = models.TimeField(_("End time"), null=True, blank=True)
 
-    location = models.CharField(max_length=255, null=True, blank=True)
+    location = models.CharField(max_length=255, null=True, blank=True,
+        help_text=_("Where is the gig taking place?"),
+    )
     partner = models.CharField(
         max_length=255,
         null=True,
         blank=True,
-        help_text="The organization we're doing the gig for",
+        help_text=_("Which organization are we doing the gig with?"),
     )
-    link = models.URLField(blank=True)
-    body = RichTextField(blank=True)
+    link = models.URLField(blank=True, help_text=_("A link to a blog, facebook page, or other site about this gig."))
+    body = RichTextField(_("Details"), blank=True,
+                         help_text=_("A sentence or two describing the gig."))
     feed_image = models.ForeignKey(
         "wagtailimages.Image",
+        verbose_name=_("Gig Image"),
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="The gig banner image",
+        help_text=_("A photo representing the gig or organization. Best if it has a 2x1 aspect ratio (example: 800x400)."),
     )
     content_panels = Page.content_panels + [
-        FieldPanel("gigomatic_id", classname="full title"),
-        FieldPanel("date_from"),
-        FieldPanel("date_to"),
-        FieldPanel("call_time"),
-        FieldPanel("set_time"),
-        FieldPanel("end_time"),
-        FieldPanel("location"),
-        FieldPanel("partner"),
-        FieldPanel("link"),
-        FieldPanel("body", classname="full"),
+        ImageChooserPanel("feed_image",
+        ),
+        MultiFieldPanel(
+            [
+                FieldRowPanel([
+                    FieldPanel("date_from"),
+                    FieldPanel("date_to"),
+                ]),
+                FieldRowPanel([
+                    FieldPanel("call_time"),
+                    FieldPanel("set_time"),
+                    FieldPanel("end_time"),
+                ]),
+            ],
+            _("Date & Time"),
+        ),
+        MultiFieldPanel([
+            FieldPanel("location"),
+            FieldPanel("partner"),
+            FieldPanel("link"),
+            FieldPanel("body", classname="full"),
+            FieldPanel("gigomatic_id", classname=""),
+        ],
+                        _("Gig Details"),
+        ),
     ]
     promote_panels = Page.promote_panels + [
-        ImageChooserPanel("feed_image"),
     ]
 
     @property
