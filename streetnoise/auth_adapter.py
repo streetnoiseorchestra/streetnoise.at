@@ -8,6 +8,7 @@ class SNOAccountAdapter(DefaultAccountAdapter):
     def is_open_for_signup(self, request):
         return False
 
+
 class SNOSocialAccountAdapter(DefaultSocialAccountAdapter):
     """https://django-allauth.readthedocs.io/en/latest/advanced.html#creating-and-populating-user-instances """
 

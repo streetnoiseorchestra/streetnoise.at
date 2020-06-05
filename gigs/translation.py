@@ -8,8 +8,7 @@ from .models import GigPage, GigIndexPage
 class GigIndexPageTR(TranslationOptions):
     pass
 
+
 @register(GigPage)
 class GigPageTR(TranslationOptions):
-    fields = (
-        'body',
-    )
+    fields = ("body",)

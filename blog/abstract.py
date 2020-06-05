@@ -3,8 +3,12 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from wagtail.admin.edit_handlers import (
-    FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel,
-StreamFieldPanel)
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    FieldRowPanel,
+    StreamFieldPanel,
+)
 from wagtail.api import APIField
 from wagtail.core.models import Page as WagtailPage
 from wagtail.images import get_image_model_string
@@ -32,39 +36,42 @@ class BlogIndexPageAbstract(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+',
-        verbose_name=_('Header image')
+        related_name="+",
+        verbose_name=_("Header image"),
     )
 
     class Meta:
-        verbose_name = _('Blog index')
+        verbose_name = _("Blog index")
         abstract = True
 
 
 class BlogCategoryAbstract(models.Model):
-    name = models.CharField(
-        max_length=80, unique=True, verbose_name=_('Category Name'))
+    name = models.CharField(max_length=80, unique=True, verbose_name=_("Category Name"))
     slug = models.SlugField(unique=True, max_length=80)
     parent = models.ForeignKey(
-        'self', blank=True, null=True, related_name="children",
+        "self",
+        blank=True,
+        null=True,
+        related_name="children",
         help_text=_(
-            'Categories, unlike tags, can have a hierarchy. You might have a '
-            'Jazz category, and under that have children categories for Bebop'
-            ' and Big Band. Totally optional.'),
+            "Categories, unlike tags, can have a hierarchy. You might have a "
+            "Jazz category, and under that have children categories for Bebop"
+            " and Big Band. Totally optional."
+        ),
         on_delete=models.CASCADE,
     )
     description = models.CharField(max_length=500, blank=True)
 
     class Meta:
         abstract = True
-        ordering = ['name']
+        ordering = ["name"]
         verbose_name = _("Blog Category")
         verbose_name_plural = _("Blog Categories")
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('parent'),
-        FieldPanel('description'),
+        FieldPanel("name"),
+        FieldPanel("parent"),
+        FieldPanel("description"),
     ]
 
     def __str__(self):
@@ -74,9 +81,9 @@ class BlogCategoryAbstract(models.Model):
         if self.parent:
             parent = self.parent
             if self.parent == self:
-                raise ValidationError('Parent category cannot be self.')
+                raise ValidationError("Parent category cannot be self.")
             if parent.parent and parent.parent == self:
-                raise ValidationError('Cannot have circular Parents.')
+                raise ValidationError("Cannot have circular Parents.")
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -86,23 +93,23 @@ class BlogCategoryAbstract(models.Model):
 
 class BlogCategoryBlogPageAbstract(models.Model):
     category = models.ForeignKey(
-        'BlogCategory',
+        "BlogCategory",
         related_name="+",
-        verbose_name=_('Category'),
+        verbose_name=_("Category"),
         on_delete=models.CASCADE,
     )
 
     class Meta:
         abstract = True
 
-    page = ParentalKey('BlogPage', related_name='categories')
+    page = ParentalKey("BlogPage", related_name="categories")
     panels = [
-        FieldPanel('category'),
+        FieldPanel("category"),
     ]
 
 
 class BlogPageTagAbstract(TaggedItemBase):
-    content_object = ParentalKey('BlogPage', related_name='tagged_items')
+    content_object = ParentalKey("BlogPage", related_name="tagged_items")
 
     class Meta:
         abstract = True
@@ -110,7 +117,7 @@ class BlogPageTagAbstract(TaggedItemBase):
 
 def limit_author_choices():
     """ Limit choices in blog author field based on config settings """
-    LIMIT_AUTHOR_CHOICES = getattr(settings, 'BLOG_LIMIT_AUTHOR_CHOICES_GROUP', None)
+    LIMIT_AUTHOR_CHOICES = getattr(settings, "BLOG_LIMIT_AUTHOR_CHOICES_GROUP", None)
     if LIMIT_AUTHOR_CHOICES:
         if isinstance(LIMIT_AUTHOR_CHOICES, str):
             limit = Q(groups__name=LIMIT_AUTHOR_CHOICES)
@@ -118,77 +125,80 @@ def limit_author_choices():
             limit = Q()
             for s in LIMIT_AUTHOR_CHOICES:
                 limit = limit | Q(groups__name=s)
-        if getattr(settings, 'BLOG_LIMIT_AUTHOR_CHOICES_ADMIN', False):
+        if getattr(settings, "BLOG_LIMIT_AUTHOR_CHOICES_ADMIN", False):
             limit = limit | Q(is_staff=True)
     else:
-        limit = {'is_staff': True}
+        limit = {"is_staff": True}
     return limit
 
 
 class BlogPageAbstract(Page):
     body = StreamField(
         [
-            ('heading', blocks.CharBlock(classname="full title")),
-            ('paragraph', blocks.RichTextBlock()),
-            ('image', ImageChooserBlock(icon="image")),
+            ("heading", blocks.CharBlock(classname="full title")),
+            ("paragraph", blocks.RichTextBlock()),
+            ("image", ImageChooserBlock(icon="image")),
+            ("embedded_video", EmbedBlock(icon="media", classname="full title")),
             (
-                'embedded_video',
-                EmbedBlock(
-                    icon="media",
-                    classname="full title"
-                )
-            ),
-            (
-                'image_carousel',
+                "image_carousel",
                 blocks.ListBlock(
                     ImageCarouselBlock(),
-                    template='blog/blocks/carousel.html',
-                    icon="image"
-                )
+                    template="blog/blocks/carousel.html",
+                    icon="image",
+                ),
             ),
         ],
         null=True,
-        blank=True
+        blank=True,
     )
     intro = models.CharField(max_length=512, blank=True, null=True)
-    tags = ClusterTaggableManager(through='BlogPageTag', blank=True)
+    tags = ClusterTaggableManager(through="BlogPageTag", blank=True)
     date = models.DateField(
-        _("Post date"), default=datetime.datetime.today,
-        help_text=_("This date may be displayed on the blog post. It is not "
-                    "used to schedule posts to go live at a later date.")
+        _("Post date"),
+        default=datetime.datetime.today,
+        help_text=_(
+            "This date may be displayed on the blog post. It is not "
+            "used to schedule posts to go live at a later date."
+        ),
     )
     header_image = models.ForeignKey(
         get_image_model_string(),
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+',
-        verbose_name=_('Header image')
+        related_name="+",
+        verbose_name=_("Header image"),
     )
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        blank=True, null=True,
+        blank=True,
+        null=True,
         limit_choices_to=limit_author_choices,
-        verbose_name=_('Author'),
+        verbose_name=_("Author"),
         on_delete=models.SET_NULL,
-        related_name='author_pages',
+        related_name="author_pages",
     )
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
+        index.SearchField("body"),
     ]
     blog_categories = ParentalManyToManyField(
-        'BlogCategory', through='BlogCategoryBlogPage', blank=True)
+        "BlogCategory", through="BlogCategoryBlogPage", blank=True
+    )
 
     settings_panels = [
-        MultiFieldPanel([
-            FieldRowPanel([
-                FieldPanel('go_live_at'),
-                FieldPanel('expire_at'),
-            ], classname="label-above"),
-        ], 'Scheduled publishing', classname="publishing"),
-        FieldPanel('date'),
-        FieldPanel('author'),
+        MultiFieldPanel(
+            [
+                FieldRowPanel(
+                    [FieldPanel("go_live_at"), FieldPanel("expire_at"),],
+                    classname="label-above",
+                ),
+            ],
+            "Scheduled publishing",
+            classname="publishing",
+        ),
+        FieldPanel("date"),
+        FieldPanel("author"),
     ]
 
     def save_revision(self, *args, **kwargs):
@@ -201,17 +211,17 @@ class BlogPageAbstract(Page):
 
     class Meta:
         abstract = True
-        verbose_name = _('Blog page')
-        verbose_name_plural = _('Blog pages')
-    
-    api_fields = [APIField('body')]
+        verbose_name = _("Blog page")
+        verbose_name_plural = _("Blog pages")
+
+    api_fields = [APIField("body")]
     content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        MultiFieldPanel([
-            FieldPanel('tags'),
-            FieldPanel('blog_categories'),
-        ], heading="Tags and Categories"),
-        ImageChooserPanel('header_image'),
-        StreamFieldPanel('body'),
+        FieldPanel("title", classname="full title"),
+        FieldPanel("intro", classname="full"),
+        MultiFieldPanel(
+            [FieldPanel("tags"), FieldPanel("blog_categories"),],
+            heading="Tags and Categories",
+        ),
+        ImageChooserPanel("header_image"),
+        StreamFieldPanel("body"),
     ]

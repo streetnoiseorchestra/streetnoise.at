@@ -1,29 +1,22 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import (
-    BlogIndexPage,
-    BlogPage,
-    BlogCategory,
-    BlogTag
-)
+from .models import BlogIndexPage, BlogPage, BlogCategory, BlogTag
+
 
 @register(BlogIndexPage)
 class BlogIndexPageTR(TranslationOptions):
     pass
 
+
 @register(BlogPage)
 class BlogPageTR(TranslationOptions):
-    fields = (
-        'body',
-    )
+    fields = ("body",)
 
 
 @register(BlogCategory)
 class BlogCategoryTR(TranslationOptions):
-    fields = (
-        'name', 'description'
-    )
+    fields = ("name", "description")
 
 
 @register(BlogTag)

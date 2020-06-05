@@ -2,6 +2,7 @@ from django.db import models
 from wagtail.core.models import Page as WagtailPage
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+
 class Page(WagtailPage):
     feed_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -15,5 +16,6 @@ class Page(WagtailPage):
     promote_panels = WagtailPage.promote_panels + [
         ImageChooserPanel("feed_image"),
     ]
+
     class Meta:
         abstract = True

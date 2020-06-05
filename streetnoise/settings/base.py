@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    #"livesync",
+    # "livesync",
     "wagtail_modeltranslation",
     "wagtail_modeltranslation.makemigrations",
     "wagtail_modeltranslation.migrate",
@@ -47,14 +47,12 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.nextcloud",
-
     "home",
     "blog",
     "gigs",
     "streetnoise",
 ]
 EXCLUDED_APPS = [
-
     "wagtail_modeltranslation",
     "wagtail_modeltranslation.makemigrations",
     "wagtail_modeltranslation.migrate",
@@ -77,9 +75,7 @@ EXCLUDED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-
     "livesync",
-
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "allauth",
@@ -243,4 +239,4 @@ WAGTAILUSERS_PASSWORD_ENABLED = False
 # password fields. You'll also need to enable the model backend in local settings
 USE_CONVENTIONAL_AUTH = False
 
-LOCALE_PATHS = [ "locale" ]
+LOCALE_PATHS = ["locale"]

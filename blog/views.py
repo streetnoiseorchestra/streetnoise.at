@@ -21,10 +21,10 @@ def author_view(request, author):
 
 
 class LatestEntriesFeed(Feed):
-    '''
+    """
     If a URL ends with "rss" try to find a matching BlogIndexPage
     and return its items.
-    '''
+    """
 
     def get_object(self, request, blog_slug):
         return get_object_or_404(BlogIndexPage, slug=blog_slug)
@@ -41,8 +41,8 @@ class LatestEntriesFeed(Feed):
         return blog.search_description
 
     def items(self, blog):
-        num = getattr(settings, 'BLOG_PAGINATION_PER_PAGE', 10)
-        return blog.get_descendants().order_by('-first_published_at')[:num]
+        num = getattr(settings, "BLOG_PAGINATION_PER_PAGE", 10)
+        return blog.get_descendants().order_by("-first_published_at")[:num]
 
     def item_title(self, item):
         return item.title
@@ -74,8 +74,7 @@ class LatestCategoryFeed(Feed):
         return get_object_or_404(BlogCategory, slug=category)
 
     def items(self, obj):
-        return BlogPage.objects.filter(
-            categories__category=obj).order_by('-date')[:5]
+        return BlogPage.objects.filter(categories__category=obj).order_by("-date")[:5]
 
     def item_title(self, item):
         return item.title

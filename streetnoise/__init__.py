@@ -1,1 +1,1 @@
-default_app_config = 'streetnoise.apps.StreetnoiseConfig'
+default_app_config = "streetnoise.apps.StreetnoiseConfig"
