@@ -1,3 +1,5 @@
+import re
+
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -69,6 +71,9 @@ class Command(BaseCommand):
             title = gig["title"]
             gig_id = gig["id"]
 
+            if re.match("^Probe.*", title, re.I):
+                print(f"skipping gig that is probably a probe: '{title}'")
+                continue
             status = gig["status"]
             if status != 1:
                 print(f"Ignoring unconfirmed gig '{title}'")
