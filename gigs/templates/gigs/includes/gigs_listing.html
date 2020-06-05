@@ -22,20 +22,26 @@
                    "doorTime": "{{ gig.set_time }}",
                    {% endif %}
                    {% if gig.location %}
-                   "location": "{{ gig.location }}",
+                   "location": {
+                       "@type": "Place",
+                       name: "{{ gig.location }}"  ,
+                       address: "{{ gig.location }}"  ,
+                   },
                    {% endif %}
                    "isAccessibleForFree": true,
                    "contributor": "{{ gig.partner }}",
                    {% if gig.link %}
                    "sameAs": ["{{ gig.link }}"],
                    {% endif %}
-                   "performer": [
-                       {
-                           "@type": "MusicGroup",
-                           "name": "Street Noise Orchestra",
-                           "mainEntityOfPage": "https://streetnoise.at",
-                       },
-                   ],
+                   {% if gig.feed_image %}
+                   {% image gig.feed_image original as image %}
+                   "image": "{{ image.url }}",
+                   {% endif %}
+                   "performer": {
+                       "@type": "MusicGroup",
+                       "name": "Street Noise Orchestra",
+                       "mainEntityOfPage": "https://streetnoise.at"
+                   }
                }
               </script>
               {% if gig.feed_image %}
