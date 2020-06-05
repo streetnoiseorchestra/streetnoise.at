@@ -35,6 +35,11 @@ dev-migrate: dev-makemigrations
 	python manage.py sync_page_translation_fields
 	python manage.py update_translation_fields
 
+dev-i18n:
+	python manage.py makemessages -l de -i 'venv*'
+	python manage.py compilemessages  -l de -i 'venv*'
+
+
 prod-migrate:
 	$(DC_PROD) run cms python manage.py migrate
 	$(DC_PROD) run cms python manage.py sync_page_translation_fields

@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static i18n %}
 
 {% if gigs %}
 <div class="">
@@ -93,5 +93,5 @@
   </ul>
 </div>
 {% else %}
-No upcoming gigs.
+{% trans "No upcoming gigs." %}
 {% endif %}

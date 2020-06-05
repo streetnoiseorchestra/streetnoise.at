@@ -249,3 +249,5 @@ WAGTAILUSERS_PASSWORD_ENABLED = False
 # If True (which should only be done in settings.local), then show username and
 # password fields. You'll also need to enable the model backend in local settings
 USE_CONVENTIONAL_AUTH = False
+
+LOCALE_PATHS = [ "locale" ]
