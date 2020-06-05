@@ -655,27 +655,6 @@ class GenericPage(Page):
         ),
     ]
 
-
-class ImpressumPage(Page):
-    impressum_content = StreamField(
-        [("heading", blocks.CharBlock()), ("paragraph", blocks.RichTextBlock()),],
-        null=True,
-        blank=True,
-    )
-
-    content_panels = Page.content_panels + [StreamFieldPanel("impressum_content")]
-
-
-class DataPrivacyPage(Page):
-    privacy_content = StreamField(
-        [("heading", blocks.CharBlock()), ("paragraph", blocks.RichTextBlock()),],
-        null=True,
-        blank=True,
-    )
-
-    content_panels = Page.content_panels + [StreamFieldPanel("privacy_content")]
-
-
 class DonationPage(Page):
     donation_intro = StreamField(
         [("heading", blocks.CharBlock()), ("paragraph", blocks.RichTextBlock()),],

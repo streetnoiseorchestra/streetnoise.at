@@ -6,8 +6,6 @@ from .models import (
     FestivalPage,
     GigRequestPage,
     GigType,
-    ImpressumPage,
-    DataPrivacyPage,
     DonationPage,
     GenericPage,
 )
@@ -102,17 +100,6 @@ class GigRequestPageTR(TranslationOptions):
 @register(GenericPage)
 class GenericPageTR(TranslationOptions):
     fields = ["content"]
-
-
-@register(ImpressumPage)
-class ImpressumPageTR(TranslationOptions):
-    fields = ["impressum_content"]
-
-
-@register(DataPrivacyPage)
-class DataPrivacyPageTR(TranslationOptions):
-    fields = ["privacy_content"]
-
 
 @register(DonationPage)
 class DonationPageTR(TranslationOptions):
