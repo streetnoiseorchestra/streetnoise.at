@@ -13,3 +13,4 @@ whitenoise==5.1.0
 stripe==2.27.0
 python-dateutil==2.8.1
 black
+flake8

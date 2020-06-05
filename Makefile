@@ -8,8 +8,11 @@ DB_DUMP ?= ./streetnoise_cms.dump
 dev-db-up:
 	 $(DC_DEV) up -d
 
+lint:
+	flake8 --exclude "*migrations*,venv,node_modules" -v --max-line-length 999 .
+
 fmt:
-	black --exclude ".*/migrations/.*" .
+	black --exclude "(.*/migrations/.*|node_modules|.git)" .
 
 dev-watch:
 	npm run watch
