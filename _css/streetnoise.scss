@@ -96,8 +96,14 @@ h1, h2, h3, h4 {
     color: #fff;
   }
 }
-a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+.navbar-menu.is-active {
+  a {
+    color: inherit;
+  }
+}
+.navbar-menu.is-active a:active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
   background-color: palette(orange, "dark");
+  color: #fff;
 }
 
 .logo-type {
