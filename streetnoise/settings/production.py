@@ -28,6 +28,8 @@ else:
     DATABASE_URL = read_env_file("DATABASE_URL")
     STRIPE_PK = read_env_file("STRIPE_PK")
     STRIPE_SK = read_env_file("STRIPE_SK")
+    GIGO_PASSWORD = read_env_file("GIGO_PASSWORD")
+    GIGO_EMAIL = read_env_file("GIGO_EMAIL")
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

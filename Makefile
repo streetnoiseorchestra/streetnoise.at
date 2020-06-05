@@ -54,3 +54,6 @@ prod-upgrade:
 
 prod-dump-db:
 	$(DC_PROD) exec db pg_dump -U streetnoise_cms streetnoise_cms > ~/$(shell date +"%Y-%m-%d")-streetnoise_cms.dump
+
+prod-update-gigs:
+	$(DC_PROD) run cms python manage.py update-gigs-from-gigo
