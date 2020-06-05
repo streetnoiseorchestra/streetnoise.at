@@ -32,6 +32,7 @@ else:
     GIGO_EMAIL = read_env_file("GIGO_EMAIL")
 
 
+GIGO_BAND = "SNO"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
