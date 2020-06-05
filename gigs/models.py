@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
@@ -71,7 +71,7 @@ class GigPage(Page):
         blank=True,
         help_text="Not required if gig is on a single day",
     )
-    call_time = models.TimeField("Set time", null=True, blank=True)
+    call_time = models.TimeField("Call time", null=True, blank=True)
     set_time = models.TimeField("Set time", null=True, blank=True)
     end_time = models.TimeField("End time", null=True, blank=True)
 
@@ -107,3 +107,20 @@ class GigPage(Page):
     promote_panels = Page.promote_panels + [
         ImageChooserPanel("feed_image"),
     ]
+
+    @property
+    def date_start_time(self):
+        if self.call_time is None:
+            return self.date_from
+        return datetime.combine(self.date_from, self.call_time)
+
+    @property
+    def date_end_time(self):
+        if self.end_time is None:
+            if self.date_to is None:
+                return self.date_from
+            return self.date_to
+        if self.date_to is None:
+            return datetime.combine(self.date_from, self.end_time)
+        else:
+            return datetime.combine(self.date_to, self.end_time)

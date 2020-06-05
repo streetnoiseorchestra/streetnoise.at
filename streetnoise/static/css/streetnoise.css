@@ -9890,25 +9890,6 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
         margin: 0 auto;
         font-size: 2rem; } }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-
-.cards__item {
-  display: flex;
-  padding: 1rem; }
-  @media (min-width: 40rem) {
-    .cards__item {
-      width: 50%; } }
-  @media (min-width: 56rem) {
-    .cards__item {
-      width: 33.3333%; } }
-  .cards__item .card {
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); }
-
 .hero .card .title, .hero-header-strafiato .card .title, .hero-header .card .title {
   color: #363636; }
 
@@ -10269,3 +10250,20 @@ footer .title {
 
 .title {
   font-family: 'obelix-pro', sans-serif; }
+
+.card.gig {
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); }
+  .card.gig .card-image {
+    height: 180px; }
+  .card.gig .card-image.placeholder {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #ffa600; }
+    .card.gig .card-image.placeholder .title {
+      color: white;
+      margin: 0; }
+    .card.gig .card-image.placeholder h2 {
+      text-shadow: 4px 2px 0px #000000d6; }
+    .card.gig .card-image.placeholder h3 {
+      text-shadow: 2px 2px 0px #000000d6; }

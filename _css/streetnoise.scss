@@ -176,31 +176,6 @@ h1, h2, h3, h4 {
   }
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-}
-
-.cards__item {
-  display: flex;
-  padding: 1rem;
-
-  @media(min-width: 40rem) {
-    width: 50%;
-  }
-  @media(min-width: 56rem) {
-    width: 33.3333%;
-  }
-
-  .card {
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
-  }
-}
-
 .hero .card .title {
   color: #363636;
 }
@@ -691,4 +666,27 @@ footer .title {
 
 .title {
   font-family: 'obelix-pro', sans-serif;
+}
+
+.card.gig {
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  .card-image {
+    height: 180px;
+  }
+  .card-image.placeholder {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: palette(orange, "base");
+    .title {
+      color: white;
+      margin: 0;
+    }
+    h2 {
+      text-shadow: 4px 2px 0px #000000d6;
+    }
+    h3 {
+      text-shadow: 2px 2px 0px #000000d6;
+    }
+  }
 }
