@@ -1,8 +1,7 @@
-//import BulmaAccordion from 'bulma-accordion';
+import BulmaAccordion from 'bulma-accordion';
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof BulmaAccordion !== 'undefined')
-    var accordions = BulmaAccordion.attach();
+  BulmaAccordion.attach();
 
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -54,10 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseDrag: true,
         swipeAngle: false,
         autoplayButtonOutput: false,
-        // autoplayHoverPause: true,
-        // swipeAngle: false,
         speed: 600
       });
   }
-  console.log('LOADED');
 });

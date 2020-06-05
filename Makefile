@@ -11,6 +11,8 @@ dev-db-up:
 fmt:
 	black --exclude ".*/migrations/.*" .
 
+dev-watch:
+	npm run watch
 dev-serve:
 	python manage.py runserver 8001
 

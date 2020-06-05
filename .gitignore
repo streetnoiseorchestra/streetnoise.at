@@ -8,3 +8,4 @@ secrets
 *.dump
 *.sql
 */settings/local.py
+*.map
