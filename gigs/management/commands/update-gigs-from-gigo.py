@@ -119,6 +119,7 @@ class Command(BaseCommand):
                     end_time=endtime,
                     title=title,
                     draft_title=title,
+                    location=location,
                     body=details,
                 )
                 gig_page.live = False
