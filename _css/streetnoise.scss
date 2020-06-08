@@ -636,6 +636,13 @@ footer .title {
   .news-post-author {
     margin-top: 10px;
   }
+  .news-body {
+    .block-button {
+      .buttons {
+        @extend .is-centered;
+      }
+    }
+  }
 }
 
 .block-image_carousel {

@@ -70,3 +70,14 @@ class FooterCTABlock(blocks.StructBlock):
         label = "Footer CTA"
         admin_text = "The Call-To-Action at the bottom above the footer"
         template = "home/blocks/footer_cta.html"
+
+
+class ButtonBlock(blocks.StructBlock):
+    button_text = blocks.CharBlock(blank=True)
+    button_url = blocks.URLBlock(label="Button link")
+
+    class Meta:
+        icon = "placeholder"
+        label = "Button"
+        admin_text = "Add a big button for someone to push"
+        template = "home/blocks/button.html"
