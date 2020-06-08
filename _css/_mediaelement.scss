@@ -1,0 +1,11 @@
+@import "../node_modules/mediaelement/build/mediaelementplayer";
+
+.mejs__overlay-button {
+    background-image: url("../img/mejs-controls.svg");
+}
+.mejs__overlay-loading-bg-img {
+    background-image: url("../img/mejs-controls.svg");
+}
+.mejs__button > button {
+    background-image: url("../img/mejs-controls.svg");
+}

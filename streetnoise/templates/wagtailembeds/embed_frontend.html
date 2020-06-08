@@ -1,0 +1,7 @@
+{% if embed.provider_name == 'audio' %}
+<figure class="image">
+{% else %}
+<figure class="image is-16by9">
+{% endif %}
+{{ embed.html|safe }}
+</figure>

@@ -115,6 +115,7 @@ class DonationPageTR(TranslationOptions):
         "thank_you_text",
     ]
 
+
 @register(MainMenuItem)
 class MainMenuItemTR(TranslationOptions):
     fields = [

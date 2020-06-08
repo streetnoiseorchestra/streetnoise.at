@@ -21,13 +21,14 @@
     "css-build-strafiato": "node-sass _css/strafiato.scss streetnoise/static/css/strafiato.css",
     "css-watch": "npm run css-build-sno -- --watch",
     "deploy": "npm run css-deploy && npm run js-build",
-    "js-build": "rollup -c" ,
-    "js-watch": "rollup -w -c" ,
+    "js-build": "rollup -c",
+    "js-watch": "rollup -w -c",
     "build": "npm-run-all --parallel css-build js-build",
     "watch": "npm-run-all --parallel css-watch js-watch"
   },
   "dependencies": {
     "bulma-accordion": "^2.0.1",
-    "bulma-extensions": "^6.2.7"
+    "bulma-extensions": "^6.2.7",
+    "mediaelement": "^4.2.16"
   }
 }

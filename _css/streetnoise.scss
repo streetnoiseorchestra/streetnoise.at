@@ -2,21 +2,12 @@
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "colors";
+@import "mediaelement";
 
 
 
 $primary: palette(green, "base");
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-//@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Poppins&display=swap');
-
-//@font-face {
-//  font-family: 'noisy-felt';
-//  font-style: normal;
-//  font-weight: 400;
-//  src:  url('../fonts/feltnoisy-webfont.woff2') format('woff2'),
-//  url('../fonts/feltnoisy-webfont.woff') format('woff');
-//  unicode-range: U+000-5FF; /* Latin glyphs */
-//}
 
 @font-face {
   font-family: 'obelix-pro';

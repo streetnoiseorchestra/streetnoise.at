@@ -1,4 +1,5 @@
 import BulmaAccordion from 'bulma-accordion';
+import MediaElement from 'mediaelement';
 
 document.addEventListener('DOMContentLoaded', () => {
   BulmaAccordion.attach();
@@ -55,5 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
         autoplayButtonOutput: false,
         speed: 600
       });
+
+    if(document.querySelector('audio')) {
+      const player = new MediaElementPlayer(document.querySelector('audio'), {
+        //pluginPath: "/path/to/shims/",
+        // When using `MediaElementPlayer`, an `instance` argument
+        // is available in the `success` callback
+        success: function(mediaElement, originalNode, instance) {
+          // do things
+        }
+      });
+    }
   }
 });

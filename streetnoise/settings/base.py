@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIGRATION_MODULES = {
-    'wagtailmenus': 'streetnoise.contrib.wagtailmenus.migrations',
+    "wagtailmenus": "streetnoise.contrib.wagtailmenus.migrations",
 }
 
 SITE_ID = 1
@@ -214,3 +214,28 @@ WAGTAILUSERS_PASSWORD_ENABLED = False
 USE_CONVENTIONAL_AUTH = False
 
 LOCALE_PATHS = ["locale"]
+
+WAGTAILEMBEDS_FINDERS = [
+    {
+        "class": "streetnoise.embeds.finders.AudioFinder",
+        "extensions": ["mp3"],
+        "mimetype": "audio/mpeg",
+    },
+    {
+        "class": "streetnoise.embeds.finders.AudioFinder",
+        "extensions": ["ogg", "oga"],
+        "mimetype": "audio/ogg",
+    },
+    {
+        "class": "streetnoise.embeds.finders.AudioFinder",
+        "extensions": ["wav"],
+        "mimetype": "audio/wav",
+    },
+    {
+        "class": "streetnoise.embeds.finders.AudioFinder",
+        "extensions": ["m4a"],
+        "mimetype": "audio/mp4",
+    },
+    # Handles all other oEmbed providers the default way
+    {"class": "wagtail.embeds.finders.oembed",},
+]
