@@ -708,3 +708,9 @@ footer .title {
     }
   }
 }
+
+.block-embedded_video {
+  iframe {
+    @extend .has-ratio;
+  }
+}

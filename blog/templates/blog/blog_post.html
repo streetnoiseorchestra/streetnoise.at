@@ -73,6 +73,21 @@
     <section class="block-{{ block.block_type }}">
         {% include_block block %}
     </section>
+
+    {% elif block.block_type == 'embedded_video' %}
+    <section class="section-is-small">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-one-quarter is-half">
+                    <div class="block-{{ block.block_type }}">
+                        <figure class="image is-16by9">
+                            {% include_block block %}
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     {% else %}
     <section class="section is-small">
         <div class="container">
@@ -81,12 +96,6 @@
                     <div class="news-body content">
                         {% if block.block_type == 'heading' %}
                         <h2>{{ block.value }}</h2>
-                        {% elif block.block_type == 'embedded_video' %}
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="embed-responsive embed-responsive-4by3">
-                                {% include_block block %}
-                            </div>
-                        </div>
                         {% else %}
                         <section class="block-{{ block.block_type }}">
                             {% include_block block %}
