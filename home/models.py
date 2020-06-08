@@ -655,6 +655,7 @@ class GenericPage(Page):
         ),
     ]
 
+
 class DonationPage(Page):
     donation_intro = StreamField(
         [("heading", blocks.CharBlock()), ("paragraph", blocks.RichTextBlock()),],

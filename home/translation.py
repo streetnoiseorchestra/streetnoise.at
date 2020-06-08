@@ -101,6 +101,7 @@ class GigRequestPageTR(TranslationOptions):
 class GenericPageTR(TranslationOptions):
     fields = ["content"]
 
+
 @register(DonationPage)
 class DonationPageTR(TranslationOptions):
     fields = [
