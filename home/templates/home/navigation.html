@@ -1,4 +1,6 @@
 {% load static  wagtail_modeltranslation %}
+{% load menu_tags %}
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://streetnoise.at">
@@ -19,39 +21,6 @@
             <span aria-hidden="true"></span>
         </a>
     </div>
-
-    <div class="navbar-menu" id="navMenu">
-        <div class="navbar-start">
-            <a class="navbar-item" href="#wer-sind">
-                {{ page.menu_who_we_are }}
-            </a>
-            <a class="navbar-item" href="#upcoming">
-                {{ page.menu_upcoming_gigs }}
-            </a>
-
-            <a class="navbar-item" href="#merchandise">
-                {{ page.menu_merch }}
-            </a>
-
-            <a class="navbar-item" href="#join">
-                {{ page.menu_join_us }}
-            </a>
-
-            <a class="navbar-item" href="/request-gig">
-                {{ page.menu_request_gig }}
-            </a>
-            <a class="navbar-item" href="/strafiato-2019">
-                {{ page.menu_festival }}
-            </a>
-            <a class="navbar-item" href="#contact">
-                {{ page.menu_contact }}
-            </a>
-        </div>
-        <div class="navbar-end">
-
-            <a class="navbar-item" href="https://data.streetnoise.at">
-                Mitglieder Anmeldung
-            </a>
-        </div>
-    </div>
+    {% load menu_tags %}
+    {% main_menu max_levels=3 %}
 </nav>

@@ -1,0 +1,13 @@
+{% load menu_tags %}
+<div class="navbar-menu" id="navMenu">
+    <div class="navbar-start">
+        {% for item in menu_items %}
+        <a class="navbar-item" href="{{ item.href }}">{{ item.text }}</a>
+        {% endfor %}
+    </div>
+    <div class="navbar-end">
+        <a class="navbar-item" href="https://data.streetnoise.at">
+            Mitglieder Anmeldung
+        </a>
+    </div>
+</div>

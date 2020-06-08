@@ -1,5 +1,6 @@
 Django>=3.0,<3.1
 wagtail==2.9
+wagtailmenus==3.0.1
 git+git://github.com/infoportugal/wagtail-modeltranslation.git@306ea8b0087f6ce735cee80058a717162b581c85#egg=wagtail-modeltranslation
 django-debug-toolbar
 django-compressor==2.2

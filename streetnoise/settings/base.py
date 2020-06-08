@@ -18,7 +18,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    # "livesync",
     "wagtail_modeltranslation",
     "wagtail_modeltranslation.makemigrations",
     "wagtail_modeltranslation.migrate",
@@ -51,38 +50,13 @@ INSTALLED_APPS = [
     "blog",
     "gigs",
     "streetnoise",
+    "wagtailmenus",
 ]
-EXCLUDED_APPS = [
-    "wagtail_modeltranslation",
-    "wagtail_modeltranslation.makemigrations",
-    "wagtail_modeltranslation.migrate",
-    "wagtail.contrib.modeladmin",
-    "wagtail.contrib.forms",
-    "wagtail.contrib.redirects",
-    "wagtail.embeds",
-    "wagtail.sites",
-    "wagtail.users",
-    "wagtail.snippets",
-    "wagtail.documents",
-    "wagtail.images",
-    "wagtail.search",
-    "wagtail.admin",
-    "wagtail.core",
-    "modelcluster",
-    "taggit",
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "livesync",
-    "django.contrib.staticfiles",
-    "django.contrib.sites",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.nextcloud",
-]
+
+MIGRATION_MODULES = {
+    'wagtailmenus': 'streetnoise.contrib.wagtailmenus.migrations',
+}
+
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -97,7 +71,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "wagtail.core.middleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    #'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
 
 ROOT_URLCONF = "streetnoise.urls"
@@ -115,6 +88,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
+                "wagtailmenus.context_processors.wagtailmenus",
             ],
             "libraries": {"app_tags": "streetnoise.templatetags.app_tags",},
         },

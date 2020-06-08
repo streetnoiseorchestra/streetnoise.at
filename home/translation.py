@@ -10,6 +10,8 @@ from .models import (
     GenericPage,
 )
 
+from wagtailmenus.models.menuitems import MainMenuItem, FlatMenuItem
+
 
 @register(HomePage2)
 class HomePage2TR(TranslationOptions):
@@ -111,4 +113,17 @@ class DonationPageTR(TranslationOptions):
         "label_donation_detail",
         "thank_you",
         "thank_you_text",
+    ]
+
+@register(MainMenuItem)
+class MainMenuItemTR(TranslationOptions):
+    fields = [
+        "link_text",
+    ]
+
+
+@register(FlatMenuItem)
+class FlatMenuItemTR(TranslationOptions):
+    fields = [
+        "link_text",
     ]

@@ -2,55 +2,54 @@
 {% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
 <html>
 <head>
-  <title>{{ page.title }}</title>
-  {% include "home/header_assets.html" %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/tiny-slider.css">
+    <title>{{ page.title }}</title>
+    {% include "home/header_assets.html" %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/tiny-slider.css">
 
-  <meta property="og:site_name" content="Street Noise Orchestra"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
-  <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
-  <meta property="twitter:site" content="@StreetNoiseIBK"/>
-  <meta property="twitter:creator" content="@StreetNoiseIBK"/>
-  <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}"/>
-  <meta name="twitter:card" content="summary" />
-  {% if self.feed_image %}
-  {% image self.feed_image width-1200 as img %}
-  <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ img.url }}"/>
-  <meta property="og:image:width" content="{{ img.width }}" />
-  <meta property="og:image:height" content="{{ img.height }}" />
-  {% endif %}
+    <meta property="og:site_name" content="Street Noise Orchestra"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+    <meta property="twitter:site" content="@StreetNoiseIBK"/>
+    <meta property="twitter:creator" content="@StreetNoiseIBK"/>
+    <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}"/>
+    <meta name="twitter:card" content="summary" />
+    {% if self.feed_image %}
+    {% image self.feed_image width-1200 as img %}
+    <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ img.url }}"/>
+    <meta property="og:image:width" content="{{ img.width }}" />
+    <meta property="og:image:height" content="{{ img.height }}" />
+    {% endif %}
 
 </head>
 <body>
     {% include 'home/navigation.html' %}
-
     <section class="hero-header  is-fullheight-with-navbar">
-  <!-- Hero header: will stick at the top -->
-  <div class="hero-body is-relative">
-      <div style="" class="header-title-box">
-          <h1 class="title has-text-centered">
-              Street Noise <br>Orchestra
-          </h1>
-          <h2 class="undertitle has-text-centered">
-              mehr groove auf die Straße
-          </h2>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Hero header: will stick at the top -->
+        <div class="hero-body is-relative">
+            <div style="" class="header-title-box">
+                <h1 class="title has-text-centered">
+                    Street Noise <br>Orchestra
+                </h1>
+                <h2 class="undertitle has-text-centered">
+                    mehr groove auf die Straße
+                </h2>
+            </div>
+        </div>
+        </div>
+    </section>
 
-{% include 'home/about_us.html' %}
-{% include 'home/gigs.html' %}
-{% include 'home/merch.html' %}
-{% comment %}
-{% include 'home/donate.html' %}
-{% endcomment %}
-{% include 'home/joinus.html' %}
-{% include 'home/home_cta.html' %}
-{% include 'home/footer.html' %}
+    {% include 'home/about_us.html' %}
+    {% include 'home/gigs.html' %}
+    {% include 'home/merch.html' %}
+    {% comment %}
+    {% include 'home/donate.html' %}
+    {% endcomment %}
+    {% include 'home/joinus.html' %}
+    {% include 'home/home_cta.html' %}
+    {% include 'home/footer.html' %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/min/tiny-slider.js"></script>
-<script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/min/tiny-slider.js"></script>
+    <script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
 </body>
 </html>
