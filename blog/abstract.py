@@ -154,7 +154,9 @@ class BlogPageAbstract(Page):
         null=True,
         blank=True,
     )
-    intro = models.CharField(max_length=512, blank=True, null=True)
+    intro = models.CharField(max_length=512, blank=True, null=True,
+                             verbose_name=_("Post summary"),
+                             help_text=_("A short summary of the post in one or two sentences."))
     tags = ClusterTaggableManager(through="BlogPageTag", blank=True)
     date = models.DateField(
         _("Post date"),
