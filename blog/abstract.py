@@ -138,7 +138,7 @@ class BlogPageAbstract(Page):
     body = StreamField(
         [
             ("heading", blocks.CharBlock(classname="full title")),
-            ("paragraph", blocks.RichTextBlock()),
+            ("paragraph", blocks.RichTextBlock(features=['h1', 'h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'strikethrough',  'ol', 'ul', 'hr', 'link', 'document-link', 'image','embed', 'blockquote'])),
             ("image", ImageChooserBlock(icon="image")),
             ("embedded_video", EmbedBlock(icon="media", classname="full title")),
             (
