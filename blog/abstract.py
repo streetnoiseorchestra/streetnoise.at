@@ -186,6 +186,11 @@ class BlogPageAbstract(Page):
         "BlogCategory", through="BlogCategoryBlogPage", blank=True
     )
 
+    hide_author = models.BooleanField(default=False, help_text="Hide the author sign-off.")
+    hide_header_title = models.BooleanField(default=False, help_text="Hide the blog title from the header image on the blog post page.")
+    hide_header_overlay = models.BooleanField(default=False, help_text="Do not apply the subtle color overlay to the header image on the blog post page.")
+    extra_css = models.TextField(blank=True, verbose_name="Extra CSS")
+
     settings_panels = [
         MultiFieldPanel(
             [
@@ -199,6 +204,16 @@ class BlogPageAbstract(Page):
         ),
         FieldPanel("date"),
         FieldPanel("author"),
+        MultiFieldPanel(
+            [
+                FieldPanel("hide_author"),
+                FieldPanel("hide_header_title"),
+                FieldPanel("hide_header_overlay"),
+                FieldPanel("extra_css"),
+            ],
+            "Appearance",
+            classname="appearance",
+        ),
     ]
 
     def save_revision(self, *args, **kwargs):
