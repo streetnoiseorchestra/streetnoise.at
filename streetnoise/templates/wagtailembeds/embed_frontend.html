@@ -1,7 +1,11 @@
+{{embed.provider_name}}
+{{embed.type}}
 {% if embed.provider_name == 'audio' %}
 <figure class="image">
-{% else %}
+{% elif embed.provider_name == 'YouTube' %}
 <figure class="image is-16by9">
+{% else %}
+<figure class="image">
 {% endif %}
 {{ embed.html|safe }}
 </figure>
