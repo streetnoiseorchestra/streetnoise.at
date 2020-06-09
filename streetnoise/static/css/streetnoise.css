@@ -665,15 +665,6 @@ Reference: http://blog.rrwd.nl/2015/04/04/the-screen-reader-text-class-why-and-h
   width: 100%; }
 
 /* End: Error */
-.mejs__overlay-button {
-  background-image: url("../img/mejs-controls.svg"); }
-
-.mejs__overlay-loading-bg-img {
-  background-image: url("../img/mejs-controls.svg"); }
-
-.mejs__button > button {
-  background-image: url("../img/mejs-controls.svg"); }
-
 @font-face {
   font-family: 'obelix-pro';
   src: url("../fonts/badaboom-webfont.woff2") format("woff2"), url("../fonts/badaboom-webfont.woff") format("woff");
