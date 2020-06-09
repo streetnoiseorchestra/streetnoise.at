@@ -10784,7 +10784,8 @@ footer .title {
 #intro-header {
   position: relative;
   min-height: 216px;
-  background-size: cover !important;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   margin-bottom: 10px; }
