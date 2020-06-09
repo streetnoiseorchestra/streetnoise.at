@@ -637,6 +637,12 @@ footer .title {
   }
 }
 
+.richtext-image.left {
+  float: left;
+}
+.richtext-image.right {
+  float: right;
+}
 .block-image_carousel {
   padding: 30px 0;
   .carousel-wrapper {

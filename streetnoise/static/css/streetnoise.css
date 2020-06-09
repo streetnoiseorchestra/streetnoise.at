@@ -10925,6 +10925,12 @@ footer .title {
 .news-single .news-post-author {
   margin-top: 10px; }
 
+.richtext-image.left {
+  float: left; }
+
+.richtext-image.right {
+  float: right; }
+
 .block-image_carousel {
   padding: 30px 0; }
   .block-image_carousel .carousel-wrapper {
