@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static i18n%}
 
 {% block content %}
 {% image page.feed_image fill-1908x216 as header_image %}
@@ -84,6 +84,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+    </div>
+</section>
+<section id="newsletter" class="section has-background-primary">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-half">
+                <p class="title has-text-white">SNOZeitung</p>
+                <p class="subtitle is-4 has-text-white">{% trans "Stay up to date with SNO happenings." %}</p>
+                <p class="has-text-white">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
+            </div>
+            {% include "home/newsletter_subscribe_form.html"  with dark=True %}
         </div>
 
     </div>

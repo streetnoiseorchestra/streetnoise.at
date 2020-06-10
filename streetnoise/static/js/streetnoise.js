@@ -8529,7 +8529,98 @@
 
 	unwrapExports(mediaelementAndPlayer);
 
+	function showConfirmation() {
+	  Array.from(document.getElementsByClassName("form-view")).forEach(el => el.classList.add("is-hidden"));
+	  Array.from(document.getElementsByClassName("success-view")).forEach(el => el.classList.remove("is-hidden"));
+	}
+	function getFieldForInput(field_id) {
+	  return document.getElementById(field_id).closest(".field")
+	}
+	function enableErrors(field) {
+	  let e = field.querySelector('.control');
+	  if(e)
+	    e.classList.add("has-icons-right");
+	  e = field.querySelector('input');
+	  if(e)
+	    e.classList.add("is-danger");
+	  e = field.querySelector('.error-icon');
+	  if(e)
+	    e.classList.remove("is-hidden");
+	  e = field.querySelector('.error-message');
+	  if(e)
+	    e.classList.remove("is-hidden");
+	}
+
+	function disableErrors(field) {
+	  let e = field.querySelector('.control');
+	  if(e)
+	    e.classList.remove("has-icons-right");
+	  e = field.querySelector('input');
+	  if(e)
+	    e.classList.remove("is-danger");
+	  e = field.querySelector('.error-icon');
+	  if(e)
+	    e.classList.add("is-hidden");
+	  e = field.querySelector('.error-message');
+	  if(e)
+	    e.classList.add("is-hidden");
+	  e = field.querySelector('.error-message');
+	  if(e)
+	    e.textContent = "";
+	}
+	function displayError(field_id, msgs) {
+	  const field = document.getElementById(field_id);
+	  if(!field) return;
+	  msgs.forEach(msg => {
+
+	    const fieldElement = getFieldForInput(field_id);
+	    enableErrors(fieldElement);
+	    fieldElement.querySelector('.error-message').textContent = msg;
+	  });
+	}
+	async function newsletterSubscribeErrors(response) {
+	  const payload = await response.json();
+	  if(!payload.errors) {
+	    console.log("TODO display generic error message");
+	    return
+	  }
+	  console.log(payload.errors);
+	  Object.keys(payload.errors).forEach(field_id => {
+	    displayError(field_id, payload.errors[field_id]);
+	  });
+	}
+
+	function disableAllErrors(form) {
+	  Array.from(form.querySelector('.field').children).forEach(disableErrors);
+	}
+
+	function setupNewsletterSubscribe() {
+	  const form = document.getElementById("newsletter_subscribe_form");
+	  if (!form) {
+	    return;
+	  }
+	  form.onsubmit = async(e) => {
+	    e.preventDefault();
+	    disableAllErrors(form);
+	    const data = new FormData(e.target);
+	    const response = await postNewsletterSubscribe(form.action, data);
+	    if ( response.status == 400) {
+	      return newsletterSubscribeErrors(response)
+	    }
+	    showConfirmation();
+	  };
+
+	}
+	async function postNewsletterSubscribe(url, data) {
+	  return fetch(url, {
+	    method: 'POST',
+	    body: data
+	  })
+	}
+
 	document.addEventListener('DOMContentLoaded', () => {
+	  setupNewsletterSubscribe();
+
 	  BulmaAccordion.attach();
 
 	  // Get all "navbar-burger" elements

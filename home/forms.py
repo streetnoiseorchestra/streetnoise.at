@@ -49,5 +49,12 @@ class GigRequestForm(forms.Form):
 
 
 class DonationForm(forms.Form):
-    widget = forms.TextInput(attrs={"class": "input is-large", "type": "number"})
+    widget = forms.TextInput(
+        attrs={"class": "input is-large", "type": "number", "required": True}
+    )
     donation_amount = forms.IntegerField(widget=widget, required=False)
+
+
+class NewsletterSubscribeForm(forms.Form):
+    subscriber_name = forms.CharField(max_length=100)
+    subscriber_email = forms.EmailField(widget=forms.TextInput(attrs={"type": "email"}))

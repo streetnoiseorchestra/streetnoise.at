@@ -178,7 +178,6 @@ WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = (
 )
 DEFAULT_FROM_EMAIL = WAGTAILADMIN_NOTIFICATION_FROM_EMAIL
 
-
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/admin/"
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
@@ -239,3 +238,8 @@ WAGTAILEMBEDS_FINDERS = [
     # Handles all other oEmbed providers the default way
     {"class": "wagtail.embeds.finders.oembed",},
 ]
+
+
+MAILGUN_NEWSLETTER_LIST = "news@mg.streetnoise.at"
+
+MAILGUN_NEWSLETTER_FROM = "StreetNoise Orchestra <news@mg.streetnoise.at>"

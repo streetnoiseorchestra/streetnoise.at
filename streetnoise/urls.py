@@ -12,6 +12,8 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
+from home.views import newsletter_subscribe, newsletter_confirm, newsletter_unsubscribe
+
 admin.site.login = staff_member_required(login_url="/", redirect_field_name="")(
     admin.site.login
 )
@@ -25,6 +27,9 @@ urlpatterns = [
     url(r"", include("allauth.urls")),  # Creates urls like yourwebsite.com/login/
     url(r"^accounts/", include("allauth.urls")),
     url(r"^blog/", include("blog.urls", namespace="blog")),
+    url(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
+    url(r"^newsletter/unsubscribe/", newsletter_unsubscribe, name="Unsubscribe"),
+    url(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
     # url(r'^search/$', search_views.search, name='search'),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

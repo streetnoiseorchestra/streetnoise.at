@@ -162,7 +162,14 @@ class BlogPageAbstract(Page):
                 ),
             ),
             ("image", ImageChooserBlock(icon="image")),
-            ("embedded_video", EmbedBlock(icon="media", label=_("Embed media"), help_text=_("Paste a link to a video, audio file, instagram, etc."))),
+            (
+                "embedded_video",
+                EmbedBlock(
+                    icon="media",
+                    label=_("Embed media"),
+                    help_text=_("Paste a link to a video, audio file, instagram, etc."),
+                ),
+            ),
             (
                 "image_carousel",
                 blocks.ListBlock(

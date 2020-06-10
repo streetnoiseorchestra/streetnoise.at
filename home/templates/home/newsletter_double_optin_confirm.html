@@ -1,0 +1,25 @@
+{% extends "home/info_base.html" %}
+{% load static i18n %}
+{% block content %}
+<div class="is-form-page">
+  <section class="is-white ">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters has-text-centered">
+          {% include 'home/trumpet-svg.html' %}
+          <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
+              {% trans "Thank you!" %}
+          </h1>
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+          <div class="column is-one-quarter content">
+              <h2>{% trans "You are subscribed!" %}</h2>
+              <p class="">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
+          </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}

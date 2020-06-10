@@ -30,6 +30,7 @@ else:
     STRIPE_SK = read_env_file("STRIPE_SK")
     GIGO_PASSWORD = read_env_file("GIGO_PASSWORD")
     GIGO_EMAIL = read_env_file("GIGO_EMAIL")
+    MAILGUN_KEY = read_env_file("MAILGUN_KEY")
 
 
 GIGO_BAND = "SNO"

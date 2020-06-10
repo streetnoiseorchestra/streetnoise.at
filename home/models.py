@@ -12,12 +12,14 @@ from wagtail.admin.edit_handlers import (
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Page, Orderable
+from wagtail.core.models import Orderable
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+
+from streetnoise.models import Page
 
 from home.blocks import (
     TimelineHeaderBlock,
@@ -85,15 +87,6 @@ class HomePageBandFriend(Orderable, BandFriend):
 
 
 class HomePage2(Page):
-    feed_image = models.ForeignKey(
-        "wagtailimages.Image",
-        help_text="The image shown on Facebook and other social media",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     menu_festival = models.CharField(max_length=100, blank=True)
     menu_who_we_are = models.CharField(max_length=100, blank=True)
     menu_upcoming_gigs = models.CharField(max_length=100, blank=True)
@@ -234,10 +227,6 @@ class HomePage2(Page):
         ),
     ]
 
-    promote_panels = Page.promote_panels + [
-        ImageChooserPanel("feed_image"),
-    ]
-
     def get_context(self, request):
         from home.forms import DonationForm
 
@@ -251,14 +240,6 @@ class HomePage2(Page):
 
 
 class FestivalPage(Page):
-    feed_image = models.ForeignKey(
-        "wagtailimages.Image",
-        help_text="The image shown on Facebook and other social media",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
 
     menu_festival = models.CharField(max_length=100, blank=True)
     menu_who_we_are = models.CharField(max_length=100, blank=True)
@@ -444,10 +425,6 @@ class FestivalPage(Page):
             ],
             "Call To Action + Footer",
         ),
-    ]
-
-    promote_panels = Page.promote_panels + [
-        ImageChooserPanel("feed_image"),
     ]
 
     def get_context(self, request):

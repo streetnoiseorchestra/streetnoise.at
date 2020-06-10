@@ -1,0 +1,30 @@
+{% extends "home/info_base.html" %}
+{% load static i18n %}
+{% block content %}
+<div class="is-form-page">
+  <section class="is-white ">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters has-text-centered">
+          {% include 'home/trumpet-svg.html' %}
+          <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
+              {% trans "Unsubscribe" %}
+          </h1>
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+          <div class="column is-one-quarter content">
+              <h2>{% trans "You are unsubscribed!" %}</h2>
+              <p>
+                  <pre>{{ subscriber_email }}</pre>
+                  {% blocktrans %}This email address will no longer receive emails with updates about SNO. {% endblocktrans %}
+              </p>
+              <p>{% trans "Made a mistake?" %} <a href="{{ subscribe_page_url }}">{% trans "Re-subscribe" %}</a>.</p>
+              <p class=" is-size-6"><a href="/datenschutz" class="has-text-grey">Datenschutz</a></p>
+          </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}

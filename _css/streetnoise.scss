@@ -648,6 +648,7 @@ footer .title {
   .carousel-wrapper {
     position: relative;
   }
+
   .controls {
     display: flex;
     justify-content: center;
@@ -711,4 +712,13 @@ footer .title {
   iframe {
     @extend .has-ratio;
   }
+}
+
+.link-notice {
+  border-bottom: 1px solid grey;
+  padding-bottom: 2px;
+}
+.link-notice.has-text-link-light {
+  border-bottom: 1px solid rgba(255,255,255,.5);
+  padding-bottom: 2px;
 }
