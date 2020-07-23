@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 import requests
 import dateutil
-from dateutil.parser import parse as parse_date
+from dateutil.parser import parse as _parse_date
 
 import gigs
 from home.models import HomePage2, FestivalPage
@@ -38,6 +38,17 @@ def parse_time(val):
             return None
         return v
     except dateutil.parser._parser.ParserError:
+        return None
+    except TypeError:
+        return None
+
+
+def parse_date(val):
+    try:
+        return _parse_date(val)
+    except dateutil.parser._parser.ParserError:
+        return None
+    except TypeError:
         return None
 
 
