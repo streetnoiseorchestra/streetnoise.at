@@ -9,3 +9,4 @@ secrets
 *.sql
 */settings/local.py
 static/
+*.pyc
