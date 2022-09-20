@@ -4,10 +4,14 @@ venv
 *.sqlite3
 media
 *iml
-package.json
-package-lock.json
 rollup*js
 .idea
 __pycache__
 *.dump
 *.sql
+.env*
+static
+.git
+secrets
+Dockerfile
+docker-compose*

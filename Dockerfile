@@ -1,6 +1,16 @@
 # Use an official Python runtime as a parent image
-FROM python:3.10
+FROM docker.io/library/python:3.10
 LABEL maintainer="Casey Link"
+
+# Install nodejs
+RUN set -e; \
+  echo "deb https://deb.nodesource.com/node_16.x buster main" > /etc/apt/sources.list.d/nodesource.list; \
+  wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -; \
+  apt-get update; \
+  apt-get install -yqq nodejs; \
+  pip install -U pip; \
+  npm i -g npm@^8; \
+  rm -rf /var/lib/apt/lists/*
 
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1
@@ -12,10 +22,13 @@ RUN pip install --upgrade pip
 RUN pip install -r /code/requirements.txt
 RUN pip install gunicorn
 
+
 # Copy the current directory contents into the container at /code/
 COPY . /code/
 # Set the working directory to /code/
 WORKDIR /code/
+
+RUN npm install --omit=dev
 
 # Call collectstatic with dummy environment variables:
 RUN COLLECT_STATIC_OVERRIDE=True  python manage.py collectstatic --noinput
