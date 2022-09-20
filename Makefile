@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 DOCKER ?= sudo docker
 DC ?= sudo docker-compose
 DC_ARGS ?=
@@ -17,7 +18,7 @@ fmt:
 dev-watch:
 	npm run watch
 dev-serve:
-	python manage.py runserver 8001
+	 source .env && python manage.py runserver 8001
 
 dev-reset:
 	$(DC_DEV) down

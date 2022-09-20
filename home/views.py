@@ -8,6 +8,11 @@ from django.templatetags.static import static
 from .newsletter import first_opt_in, second_opt_in, mailgun_unsubscribe
 
 
+def is_ajax(request):
+    print(request.META.get("HTTP_X_REQUESTED_WITH"))
+    return request.META.get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest"
+
+
 def handle_newsletter_subscribe(form, host):
     name = form.cleaned_data["subscriber_name"]
     email = form.cleaned_data["subscriber_email"]
@@ -38,10 +43,7 @@ def newsletter_subscribe(request):
     from home.forms import NewsletterSubscribeForm
 
     if request.method == "POST":
-        if request.is_ajax:
-            return ajax_newsletter_subscribe(request)
-        else:
-            return HttpResponse(status=400)
+        return ajax_newsletter_subscribe(request)
     else:
         form = NewsletterSubscribeForm()
     return render(
