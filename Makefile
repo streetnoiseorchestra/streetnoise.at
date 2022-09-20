@@ -33,7 +33,7 @@ dev-makemigrations:
 	python manage.py makemigrations
 
 dev-db-load-dump:
-	cat $(DB_DUMP) |  sudo $(DOCKER) exec  -i cms_db_1 psql -U streetnoise_cms
+	cat $(DB_DUMP) |  $(DOCKER) exec  -i cms-db-1 psql -U streetnoise_cms
 
 dev-migrate: dev-makemigrations
 	python manage.py migrate

@@ -12,7 +12,7 @@ from wagtail.admin.edit_handlers import (
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable
+from wagtail.core.models import Orderable, Site
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -104,7 +104,9 @@ class HomePage2(Page):
         blank=True, features=["bold", "italic", "link"], verbose_name="Who We Are text"
     )
     whoweare_gallery = StreamField(
-        [("image", ImageChooserBlock(label="Gallery Image")),],
+        [
+            ("image", ImageChooserBlock(label="Gallery Image")),
+        ],
         null=True,
         blank=True,
         verbose_name="Who We Are Gallery",
@@ -119,7 +121,9 @@ class HomePage2(Page):
         blank=True, features=["bold", "italic", "link"], verbose_name="Merch Detail"
     )
     merch_items = StreamField(
-        [("merch", MerchItemBlock(label="Merch Item")),],
+        [
+            ("merch", MerchItemBlock(label="Merch Item")),
+        ],
         null=True,
         blank=True,
         verbose_name="Merchandise",
@@ -185,7 +189,11 @@ class HomePage2(Page):
             "About SNO",
         ),
         MultiFieldPanel(
-            [FieldPanel("gigs_title"), FieldPanel("gigs_subtitle"),], "Gigs"
+            [
+                FieldPanel("gigs_title"),
+                FieldPanel("gigs_subtitle"),
+            ],
+            "Gigs",
         ),
         MultiFieldPanel(
             [
@@ -285,7 +293,9 @@ class FestivalPage(Page):
         blank=True, features=["bold", "italic", "link"], verbose_name="Who We Are text"
     )
     whoweare_gallery = StreamField(
-        [("image", ImageChooserBlock(label="Gallery Image")),],
+        [
+            ("image", ImageChooserBlock(label="Gallery Image")),
+        ],
         null=True,
         blank=True,
         verbose_name="Who We Are Gallery",
@@ -300,7 +310,9 @@ class FestivalPage(Page):
         blank=True, features=["bold", "italic", "link"], verbose_name="Merch Detail"
     )
     merch_items = StreamField(
-        [("merch", MerchItemBlock(label="Merch Item")),],
+        [
+            ("merch", MerchItemBlock(label="Merch Item")),
+        ],
         null=True,
         blank=True,
         verbose_name="Merchandise",
@@ -385,7 +397,11 @@ class FestivalPage(Page):
             "About SNO",
         ),
         MultiFieldPanel(
-            [FieldPanel("gigs_title"), FieldPanel("gigs_subtitle"),], "Gigs"
+            [
+                FieldPanel("gigs_title"),
+                FieldPanel("gigs_subtitle"),
+            ],
+            "Gigs",
         ),
         MultiFieldPanel(
             [
@@ -542,7 +558,12 @@ class GigRequestPage(Page):
             form = GigRequestForm()
 
         return render(
-            request, "home/gig_request_form.html", {"page": self, "form": form,}
+            request,
+            "home/gig_request_form.html",
+            {
+                "page": self,
+                "form": form,
+            },
         )
 
 
@@ -635,7 +656,10 @@ class GenericPage(Page):
 
 class DonationPage(Page):
     donation_intro = StreamField(
-        [("heading", blocks.CharBlock()), ("paragraph", blocks.RichTextBlock()),],
+        [
+            ("heading", blocks.CharBlock()),
+            ("paragraph", blocks.RichTextBlock()),
+        ],
         null=True,
         blank=True,
     )
@@ -679,12 +703,12 @@ class DonationPage(Page):
         import stripe
         from django.templatetags.static import static
 
+        site = Site.find_for_request(request)
+
         if request.method == "POST":
             form = DonationForm(request.POST)
             if form.is_valid():
-                img_url = "{}{}".format(
-                    request.site.root_url, static("/img/unterstuetzen.jpg")
-                )
+                img_url = "{}{}".format(site.root_url, static("/img/unterstuetzen.jpg"))
                 stripe.api_key = settings.STRIPE_SK
                 session = stripe.checkout.Session.create(
                     payment_method_types=["card"],
@@ -699,7 +723,7 @@ class DonationPage(Page):
                         }
                     ],
                     success_url="{}?checkout=success".format(self.get_full_url()),
-                    cancel_url=request.site.root_url,
+                    cancel_url=site.root_url,
                 )
                 self.checkout_session_id = session.id
                 self.stripe_pk = settings.STRIPE_PK
@@ -715,4 +739,11 @@ class DonationPage(Page):
         else:
             form = DonationForm()
 
-        return render(request, "home/donation_page.html", {"page": self, "form": form,})
+        return render(
+            request,
+            "home/donation_page.html",
+            {
+                "page": self,
+                "form": form,
+            },
+        )

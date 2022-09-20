@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-05 10:41+0000\n"
+"POT-Creation-Date: 2020-06-10 13:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: blog/abstract.py:36 blog/abstract.py:166
+#: blog/abstract.py:42 blog/abstract.py:208
 msgid "Header image"
 msgstr ""
 
-#: blog/abstract.py:40 blog/models.py:26
+#: blog/abstract.py:46 blog/models.py:26
 msgid "Blog index"
 msgstr ""
 
-#: blog/abstract.py:46
+#: blog/abstract.py:51
 msgid "Category Name"
 msgstr ""
 
-#: blog/abstract.py:51
+#: blog/abstract.py:59
 msgid ""
 "Categories, unlike tags, can have a hierarchy. You might have a Jazz "
 "category, and under that have children categories for Bebop and Big Band. "
 "Totally optional."
 msgstr ""
 
-#: blog/abstract.py:61 blog/models.py:98
+#: blog/abstract.py:70 blog/models.py:99
 msgid "Blog Category"
 msgstr ""
 
-#: blog/abstract.py:62 blog/models.py:99
+#: blog/abstract.py:71 blog/models.py:100
 msgid "Blog Categories"
 msgstr ""
 
-#: blog/abstract.py:91
+#: blog/abstract.py:100
 msgid "Category"
 msgstr ""
 
-#: blog/abstract.py:156
+#: blog/abstract.py:169
+msgid "Embed media"
+msgstr ""
+
+#: blog/abstract.py:170
+msgid "Paste a link to a video, audio file, instagram, etc."
+msgstr ""
+
+#: blog/abstract.py:190
+msgid "Post summary"
+msgstr ""
+
+#: blog/abstract.py:191
+msgid "A short summary of the post in one or two sentences."
+msgstr ""
+
+#: blog/abstract.py:195
 msgid "Post date"
 msgstr ""
 
-#: blog/abstract.py:157
+#: blog/abstract.py:198
 msgid ""
 "This date may be displayed on the blog post. It is not used to schedule "
 "posts to go live at a later date."
@@ -61,27 +77,201 @@ msgstr ""
 "Dieses Datum kann im Blog-Beitrag angezeigt werden. Es wird nicht verwendet, "
 "um Posts so zu planen, dass sie zu einem späteren Zeitpunkt online gehen."
 
-#: blog/abstract.py:172
+#: blog/abstract.py:215
 msgid "Author"
 msgstr "Autor"
 
-#: blog/abstract.py:204 blog/models.py:137
+#: blog/abstract.py:275 blog/models.py:140
 msgid "Blog page"
 msgstr ""
 
-#: blog/abstract.py:205 blog/models.py:138
+#: blog/abstract.py:276 blog/models.py:141
 msgid "Blog pages"
 msgstr ""
 
-#: gigs/templates/gigs/includes/gigs_listing.html:96
+#: blog/templates/blog/blog_index_page.html:96
+#: home/templates/home/home_page2.html:54
+#: home/templates/home/newsletter_subscribe.html:19
+msgid "Stay up to date with SNO happenings."
+msgstr ""
+
+#: blog/templates/blog/blog_index_page.html:97
+#: home/templates/home/home_page2.html:55
+#: home/templates/home/newsletter_double_optin_confirm.html:19
+#: home/templates/home/newsletter_subscribe.html:20
+msgid ""
+"You'll receive one email every couple weeks about upcoming gigs and news "
+"posts. You can unsubscribe at anytime."
+msgstr ""
+
+#: gigs/models.py:68
+msgid "Start date"
+msgstr ""
+
+#: gigs/models.py:70
+msgid "End date"
+msgstr ""
+
+#: gigs/models.py:73
+msgid "Not required if gig is on a single day"
+msgstr ""
+
+#: gigs/models.py:75
+msgid "Call time"
+msgstr ""
+
+#: gigs/models.py:76
+msgid "Set time"
+msgstr ""
+
+#: gigs/models.py:77
+msgid "End time"
+msgstr ""
+
+#: gigs/models.py:83
+msgid "Where is the gig taking place?"
+msgstr ""
+
+#: gigs/models.py:89
+msgid "Which organization are we doing the gig with?"
+msgstr ""
+
+#: gigs/models.py:93
+msgid "A link to a blog, facebook page, or other site about this gig."
+msgstr ""
+
+#: gigs/models.py:96
+msgid "Details"
+msgstr ""
+
+#: gigs/models.py:96
+msgid "A sentence or two describing the gig."
+msgstr ""
+
+#: gigs/models.py:100
+msgid "Gig Image"
+msgstr ""
+
+#: gigs/models.py:106
+msgid ""
+"A photo representing the gig or organization. Best if it has a 2x1 aspect "
+"ratio (example: 800x400)."
+msgstr ""
+
+#: gigs/models.py:122
+msgid "Date & Time"
+msgstr ""
+
+#: gigs/models.py:132
+msgid "Gig Details"
+msgstr ""
+
+#: gigs/templates/gigs/includes/gigs_listing.html:102
 msgid "No upcoming gigs."
 msgstr "Es gibt derzeit keine bevorstehenden Veranstaltungen."
 
-#: streetnoise/settings/base.py:174
+#: home/newsletter.py:103
+msgid "Confirm to receive StreetNoise Orchestra announcements and updates."
+msgstr ""
+
+#: home/newsletter.py:106
+msgid ""
+"We take privacy seriously, we'll only use your information to send you an "
+"update every so often. You can always contact us at orchestra@streetnoise.at"
+msgstr ""
+
+#: home/newsletter.py:108
+msgid "You can withdraw your consent at anytime: "
+msgstr ""
+
+#: home/newsletter.py:109
+msgid "unsubscribe"
+msgstr ""
+
+#: home/newsletter.py:112
+msgid "Yes, I confirm"
+msgstr ""
+
+#: home/newsletter.py:114
+msgid "Can StreetNoise Orchestra send you emails?"
+msgstr ""
+
+#: home/templates/home/newsletter_double_optin_confirm.html:11
+msgid "Thank you!"
+msgstr ""
+
+#: home/templates/home/newsletter_double_optin_confirm.html:18
+msgid "You are subscribed!"
+msgstr ""
+
+#: home/templates/home/newsletter_subscribe.html:11
+#: home/templates/home/newsletter_subscribe_form.html:41
+msgid "Subscribe"
+msgstr ""
+
+#: home/templates/home/newsletter_subscribe.html:18
+msgid "SNOZeitung"
+msgstr ""
+
+#: home/templates/home/newsletter_subscribe_form.html:12
+msgid "Name"
+msgstr ""
+
+#: home/templates/home/newsletter_subscribe_form.html:26
+msgid "Email"
+msgstr ""
+
+#: home/templates/home/newsletter_subscribe_form.html:50
+msgid "Almost there! Please check your email to confirm!"
+msgstr ""
+
+#: home/templates/home/newsletter_subscribe_form.html:58
+#, python-format
+msgid ""
+"We 100%% respect your rights to privacy. We will only use your information "
+"to send you SNO updates."
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe.html:11
+#: home/templates/home/newsletter_unsubscribe.html:32
+#: home/templates/home/newsletter_unsubscribe_confirm.html:11
+msgid "Unsubscribe"
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe.html:18
+msgid "We're sorry to see you go"
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe.html:19
+msgid "Just enter your details and we'll stop sending you SNO updates."
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe_confirm.html:18
+msgid "You are unsubscribed!"
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe_confirm.html:21
+msgid ""
+"This email address will no longer receive emails with updates about SNO. "
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe_confirm.html:23
+msgid "Made a mistake?"
+msgstr ""
+
+#: home/templates/home/newsletter_unsubscribe_confirm.html:23
+msgid "Re-subscribe"
+msgstr ""
+
+#: streetnoise/embeds/finders.py:13
+msgid "Your browser cannot play audio files"
+msgstr ""
+
+#: streetnoise/settings/base.py:137
 msgid "German"
 msgstr "Deutsch"
 
-#: streetnoise/settings/base.py:175
+#: streetnoise/settings/base.py:138
 msgid "English"
 msgstr "Englisch"
 

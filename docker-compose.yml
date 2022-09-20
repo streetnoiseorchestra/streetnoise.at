@@ -42,7 +42,7 @@ services:
       - db_password
   redis:
     restart: always
-    image: redis:3.0
+    image: redis:latest
     expose:
       - "6379"
   cms:

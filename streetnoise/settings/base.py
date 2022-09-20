@@ -69,7 +69,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    "wagtail.core.middleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -78,7 +77,9 @@ ROOT_URLCONF = "streetnoise.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(PROJECT_DIR, "templates"),],
+        "DIRS": [
+            os.path.join(PROJECT_DIR, "templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -90,7 +91,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "wagtailmenus.context_processors.wagtailmenus",
             ],
-            "libraries": {"app_tags": "streetnoise.templatetags.app_tags",},
+            "libraries": {
+                "app_tags": "streetnoise.templatetags.app_tags",
+            },
         },
     },
 ]
@@ -108,9 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -195,7 +204,11 @@ ACCOUNT_USERNAME_BLACKLIST = ["admin", "god"]
 ACCOUNT_USERNAME_MIN_LENGTH = 2
 ACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOAccountAdapter"
 SOCIALACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOSocialAccountAdapter"
-SOCIALACCOUNT_PROVIDERS = {"nextcloud": {"SERVER": "https://data.streetnoise.at",}}
+SOCIALACCOUNT_PROVIDERS = {
+    "nextcloud": {
+        "SERVER": "https://data.streetnoise.at",
+    }
+}
 
 # Extra Wagtail config to disable password usage (SSO should be the only way in)
 # https://docs.wagtail.io/en/v2.6.3/advanced_topics/settings.html#password-management
@@ -236,7 +249,9 @@ WAGTAILEMBEDS_FINDERS = [
         "mimetype": "audio/mp4",
     },
     # Handles all other oEmbed providers the default way
-    {"class": "wagtail.embeds.finders.oembed",},
+    {
+        "class": "wagtail.embeds.finders.oembed",
+    },
 ]
 
 
