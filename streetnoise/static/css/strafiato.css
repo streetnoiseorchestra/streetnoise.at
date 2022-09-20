@@ -1,25 +1,31 @@
 @font-face {
-  font-family: 'noisy-felt';
+  font-family: "noisy-felt";
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/feltnoisy-webfont.woff2") format("woff2"), url("../fonts/feltnoisy-webfont.woff") format("woff");
-  unicode-range: U+000-5FF;
-  /* Latin glyphs */ }
-
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
 .hero-header-strafiato .title, .hero-header-strafiato .subtitle {
-  font-family: 'noisy-felt', cursive;
+  font-family: "noisy-felt", cursive;
   font-weight: 800;
-  color: #111; }
-
+  color: #111;
+}
 .hero-header-strafiato .title {
-  font-size: 2rem; }
-  @media screen and (min-width: 1024px) {
-    .hero-header-strafiato .title {
-      font-size: 3.5rem; } }
-
+  font-size: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  .hero-header-strafiato .title {
+    font-size: 3.5rem;
+  }
+}
 .hero-header-strafiato .subtitle {
   font-size: 1.5rem;
-  font-weight: 300; }
-  @media screen and (min-width: 1024px) {
-    .hero-header-strafiato .subtitle {
-      font-size: 2.5rem; } }
+  font-weight: 300;
+}
+@media screen and (min-width: 1024px) {
+  .hero-header-strafiato .subtitle {
+    font-size: 2.5rem;
+  }
+}
+
+/*# sourceMappingURL=strafiato.css.map */

@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     "streetnoise",
     "wagtailmenus",
     "plausible",
+    "mjml",
+    "birdsong",
+    "newsletter",
 ]
 
 MIGRATION_MODULES = {
@@ -262,3 +265,5 @@ MAILGUN_NEWSLETTER_FROM = "StreetNoise Orchestra <news@mg.streetnoise.at>"
 
 PLAUSIBLE_DOMAIN = "stats.streetnoise.at"
 PLAUSIBLE_SCRIPT_NAME = "app2.js"
+
+MJML_EXEC_CMD = "./node_modules/.bin/mjml"

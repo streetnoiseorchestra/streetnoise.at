@@ -16,3 +16,5 @@ python-dateutil==2.8.2
 black
 flake8
 django-plausible
+wagtail-birdsong
+django-mjml
