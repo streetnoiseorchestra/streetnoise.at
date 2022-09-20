@@ -30,7 +30,7 @@ services:
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
     user: "3993:3993"
     restart: always
-    image: postgres:9.6
+    image: postgres:14
     expose:
       - "5432"
     ports:
