@@ -22,7 +22,7 @@ dev-serve:
 
 dev-reset:
 	$(DC_DEV) down
-	$(DOCKER) volume rm cms_streetnoise_dev_db
+	$(DOCKER) volume rm cms_streetnoise_dev_db14
 	$(DC_DEV) up -d
 	sleep 5
 	psql -h localhost -U streetnoise_cms streetnoise_cms < $(DB_DUMP)

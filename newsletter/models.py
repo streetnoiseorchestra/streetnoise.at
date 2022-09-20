@@ -15,7 +15,7 @@ class Newsletter(Campaign):
 
     header_background = models.ForeignKey(
         "wagtailimages.Image",
-        blank=False,
+        blank=True,
         null=True,
         related_name="+",
         help_text="The image to use for the header backgound.",
