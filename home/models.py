@@ -20,6 +20,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from streetnoise.models import Page
+from blog.models import BlogPage
 
 from home.blocks import (
     TimelineHeaderBlock,
@@ -244,7 +245,12 @@ class HomePage2(Page):
             url = donation_page.get_url()
             context["donation_form"] = DonationForm()
             context["donation_page_url"] = url
+
+        context["blogs"] = self.blogs()
         return context
+
+    def blogs(self):
+        return BlogPage.objects.all().order_by("-date")
 
 
 class FestivalPage(Page):
