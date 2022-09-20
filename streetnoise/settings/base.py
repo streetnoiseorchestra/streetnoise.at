@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "gigs",
     "streetnoise",
     "wagtailmenus",
+    "plausible",
 ]
 
 MIGRATION_MODULES = {
@@ -258,3 +259,6 @@ WAGTAILEMBEDS_FINDERS = [
 MAILGUN_NEWSLETTER_LIST = "news@mg.streetnoise.at"
 
 MAILGUN_NEWSLETTER_FROM = "StreetNoise Orchestra <news@mg.streetnoise.at>"
+
+PLAUSIBLE_DOMAIN = "stats.streetnoise.at"
+PLAUSIBLE_SCRIPT_NAME = "app2.js"

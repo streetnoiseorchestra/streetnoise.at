@@ -1,4 +1,4 @@
-{% load static wagtailuserbar cache %}
+{% load static wagtailuserbar cache plausible %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -8,5 +8,7 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
         {% block content %}{% endblock %}
+
+        {% plausible %}
     </body>
 </html>

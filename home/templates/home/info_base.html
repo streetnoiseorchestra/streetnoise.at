@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags plausible %}
 <html>
 <head>
   <title>{{ page.title }} :: Streetnoise Orchestra</title>
@@ -29,5 +29,6 @@
 
 {% block content %}{% endblock content %}
 <script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+{% plausible %}
 </body>
 </html>

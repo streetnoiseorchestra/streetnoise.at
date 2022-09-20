@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation plausible %}
 <html>
     <head>
         <title>{{ page.title }}</title>
@@ -36,5 +36,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
         <script type="module" src="{% static 'js/streetnoise.js' %}"></script>
         {% block extra_js %}{% endblock %}
+        {% plausible %}
     </body>
+
 </html>
