@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db.models import Count
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import slugify
 from wagtail.snippets.models import register_snippet
@@ -33,7 +33,9 @@ class BlogIndexPage(BlogIndexPageAbstract):
             blogs.order_by("-date")
             .select_related("owner")
             .prefetch_related(
-                "tagged_items__tag", "categories", "categories__category",
+                "tagged_items__tag",
+                "categories",
+                "categories__category",
             )
         )
         return blogs
@@ -117,7 +119,7 @@ class BlogTag(Tag):
 
 
 def get_blog_context(context):
-    """ Get context data useful on all blog related pages """
+    """Get context data useful on all blog related pages"""
     context["authors"] = (
         get_user_model()
         .objects.filter(
@@ -128,9 +130,15 @@ def get_blog_context(context):
     )
     context["all_categories"] = BlogCategory.objects.all()
     context["root_categories"] = (
-        BlogCategory.objects.filter(parent=None,)
-        .prefetch_related("children",)
-        .annotate(blog_count=Count("blogpage"),)
+        BlogCategory.objects.filter(
+            parent=None,
+        )
+        .prefetch_related(
+            "children",
+        )
+        .annotate(
+            blog_count=Count("blogpage"),
+        )
     )
     return context
 

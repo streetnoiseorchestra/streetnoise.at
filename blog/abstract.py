@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     InlinePanel,
@@ -118,7 +118,7 @@ class BlogPageTagAbstract(TaggedItemBase):
 
 
 def limit_author_choices():
-    """ Limit choices in blog author field based on config settings """
+    """Limit choices in blog author field based on config settings"""
     LIMIT_AUTHOR_CHOICES = getattr(settings, "BLOG_LIMIT_AUTHOR_CHOICES_GROUP", None)
     if LIMIT_AUTHOR_CHOICES:
         if isinstance(LIMIT_AUTHOR_CHOICES, str):
@@ -241,7 +241,10 @@ class BlogPageAbstract(Page):
         MultiFieldPanel(
             [
                 FieldRowPanel(
-                    [FieldPanel("go_live_at"), FieldPanel("expire_at"),],
+                    [
+                        FieldPanel("go_live_at"),
+                        FieldPanel("expire_at"),
+                    ],
                     classname="label-above",
                 ),
             ],
@@ -280,7 +283,10 @@ class BlogPageAbstract(Page):
         FieldPanel("title", classname="full title"),
         FieldPanel("intro", classname="full"),
         MultiFieldPanel(
-            [FieldPanel("tags"), FieldPanel("blog_categories"),],
+            [
+                FieldPanel("tags"),
+                FieldPanel("blog_categories"),
+            ],
             heading="Tags and Categories",
         ),
         ImageChooserPanel("header_image"),

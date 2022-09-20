@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import include, url, re_path
+from django.urls import include, re_path
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path
@@ -21,15 +21,15 @@ admin.site.login = staff_member_required(login_url="/", redirect_field_name="")(
 # from search import views as search_views
 
 urlpatterns = [
-    url(r"^django-admin/", admin.site.urls),
-    url(r"^admin/", include(wagtailadmin_urls)),
-    url(r"^documents/", include(wagtaildocs_urls)),
-    url(r"", include("allauth.urls")),  # Creates urls like yourwebsite.com/login/
-    url(r"^accounts/", include("allauth.urls")),
-    url(r"^blog/", include("blog.urls", namespace="blog")),
-    url(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
-    url(r"^newsletter/unsubscribe/", newsletter_unsubscribe, name="Unsubscribe"),
-    url(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
+    re_path(r"^django-admin/", admin.site.urls),
+    re_path(r"^admin/", include(wagtailadmin_urls)),
+    re_path(r"^documents/", include(wagtaildocs_urls)),
+    re_path(r"", include("allauth.urls")),  # Creates urls like yourwebsite.com/login/
+    re_path(r"^accounts/", include("allauth.urls")),
+    re_path(r"^blog/", include("blog.urls", namespace="blog")),
+    re_path(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
+    re_path(r"^newsletter/unsubscribe/", newsletter_unsubscribe, name="Unsubscribe"),
+    re_path(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
     # url(r'^search/$', search_views.search, name='search'),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
