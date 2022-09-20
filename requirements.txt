@@ -15,6 +15,6 @@ stripe==2.27.0
 python-dateutil==2.8.2
 black
 flake8
-django-plausible
-wagtail-birdsong
-django-mjml
+django-plausible==0.3.0
+wagtail-birdsong==1.1.0
+django-mjml==0.12.0
