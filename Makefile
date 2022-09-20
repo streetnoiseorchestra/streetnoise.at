@@ -17,8 +17,9 @@ fmt:
 
 dev-watch:
 	npm run watch
+
 dev-serve:
-	 source .env && python manage.py runserver 8001
+	 python manage.py runserver 8001
 
 dev-reset:
 	$(DC_DEV) down

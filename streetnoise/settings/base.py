@@ -53,8 +53,8 @@ INSTALLED_APPS = [
     "wagtailmenus",
     "plausible",
     "mjml",
-    "birdsong",
     "newsletter",
+    "birdsong",
 ]
 
 MIGRATION_MODULES = {

@@ -3,8 +3,9 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdminGroup,
     modeladmin_register,
 )
-from home.models import BandFriend
+
+# from home.models import BandFriend
 
 
-class BandFriendAdmin(ModelAdmin):
-    model = BandFriend
+# class BandFriendAdmin(ModelAdmin):
+# model = BandFriend
