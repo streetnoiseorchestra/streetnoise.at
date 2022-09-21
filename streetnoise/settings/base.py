@@ -268,3 +268,5 @@ PLAUSIBLE_DOMAIN = "stats.streetnoise.at"
 PLAUSIBLE_SCRIPT_NAME = "app2.js"
 
 MJML_EXEC_CMD = "./node_modules/.bin/mjml"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
