@@ -1,12 +1,12 @@
 from django_filters import FilterSet
 from django_filters.filters import AllValuesFilter
 
-from .models import ExtendedContact
+from .models import NewsletterSubscriber
 
 
 class ContactFilter(FilterSet):
     location = AllValuesFilter()
 
     class Meta:
-        model = ExtendedContact
+        model = NewsletterSubscriber
         fields = ("subscribed",)

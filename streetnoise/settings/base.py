@@ -181,6 +181,7 @@ WAGTAIL_SITE_NAME = "streetnoise"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = "https://streetnoise.at"
+WAGTAILADMIN_BASE_URL = "https://streetnoise.at"
 
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 

@@ -5,7 +5,12 @@ from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.templatetags.static import static
 
-from .newsletter import first_opt_in, second_opt_in, mailgun_unsubscribe
+from .newsletter import (
+    first_opt_in,
+    second_opt_in,
+    mailgun_unsubscribe,
+    mailgun_handle_bounce,
+)
 
 
 def is_ajax(request):
@@ -122,3 +127,12 @@ def newsletter_unsubscribe(request):
                 "subscriber_email": email,
             },
         )
+
+
+def newsletter_bounce(request):
+    if request.method != "POST":
+        return HttpResponse(status=400)
+    if "signature" not in request.POST:
+        return HttpResponse(status=400)
+
+    return mailgun_handle_bounce(request.POST)

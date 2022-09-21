@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.urls import include, re_path
+from django.urls import include, re_path, path
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path
@@ -7,12 +7,18 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from birdsong import urls as birdsong_urls
 
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-from home.views import newsletter_subscribe, newsletter_confirm, newsletter_unsubscribe
+from home.views import (
+    newsletter_subscribe,
+    newsletter_confirm,
+    newsletter_unsubscribe,
+    newsletter_bounce,
+)
 
 admin.site.login = staff_member_required(login_url="/", redirect_field_name="")(
     admin.site.login
@@ -30,6 +36,10 @@ urlpatterns = [
     re_path(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
     re_path(r"^newsletter/unsubscribe/", newsletter_unsubscribe, name="Unsubscribe"),
     re_path(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
+    re_path(
+        r"^newsletter/webhook/bounce", newsletter_bounce, name="E-mail Bounce Webhook"
+    ),
+    re_path(r"^newsletters/", include(birdsong_urls))
     # url(r'^search/$', search_views.search, name='search'),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
