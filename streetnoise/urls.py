@@ -36,9 +36,7 @@ urlpatterns = [
     re_path(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
     re_path(r"^newsletter/unsubscribe/", newsletter_unsubscribe, name="Unsubscribe"),
     re_path(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
-    re_path(
-        r"^newsletter/webhook/bounce", newsletter_bounce, name="E-mail Bounce Webhook"
-    ),
+    re_path(r"^newsletter/mailgun", newsletter_bounce, name="Mailgun webhooks"),
     re_path(r"^newsletters/", include(birdsong_urls))
     # url(r'^search/$', search_views.search, name='search'),
     # For anything not caught by a more specific rule above, hand over to

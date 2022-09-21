@@ -8,7 +8,7 @@ from django.templatetags.static import static
 from .newsletter import (
     first_opt_in,
     second_opt_in,
-    mailgun_unsubscribe,
+    unsubscribe,
     mailgun_handle_bounce,
 )
 
@@ -67,7 +67,15 @@ def newsletter_confirm(request):
     email = request.GET["subscriber_email"]
     result = second_opt_in(code, email, datetime.utcnow().isoformat())
     if not result:
-        return HttpResponse(status=500)
+        return render(
+            request,
+            "home/newsletter_confirm_error.html",
+            {
+                "subscribe_page_url": reverse(newsletter_subscribe),
+                "unsubscribe_page_url": reverse(newsletter_unsubscribe),
+                "subscriber_email": email,
+            },
+        )
     return render(
         request,
         "home/newsletter_double_optin_confirm.html",
@@ -84,12 +92,7 @@ def newsletter_unsubscribe(request):
         if "subscriber_email" not in request.POST:
             return HttpResponse(status=400)
         email = request.POST["subscriber_email"]
-        result = True
-        # result = mailgun_unsubscribe(email, datetime.utcnow().isoformat())
-        if result == 400:
-            return HttpResponse(status=400)
-        elif not result:
-            return HttpResponse(status=500)
+        unsubscribe(email, datetime.utcnow().isoformat())
         return render(
             request,
             "home/newsletter_unsubscribe_confirm.html",
@@ -104,11 +107,7 @@ def newsletter_unsubscribe(request):
         if "subscriber_email" in request.GET:
             email = request.GET["subscriber_email"]
         if "confirm" in request.GET:
-            result = mailgun_unsubscribe(email, datetime.utcnow().isoformat())
-            if result == 400:
-                return HttpResponse(status=400)
-            elif not result:
-                return HttpResponse(status=500)
+            result = unsubscribe(email, datetime.utcnow().isoformat())
             return render(
                 request,
                 "home/newsletter_unsubscribe_confirm.html",

@@ -14,6 +14,17 @@ from django.http import HttpResponse, JsonResponse
 
 from newsletter.models import NewsletterSubscriber
 
+
+# Bounce score added to the user when a temporary bounce happens.
+SOFT_BOUNCE_SCORE = 1
+# Bounce score added to the user when a permanent bounce happens.
+HARD_BOUNCE_SCORE = 2
+# Max bounce score before we will stop emailing a user.
+BOUNCE_SCORE_THRESHOLD = 4
+# Automatically reset bounce score after X days.
+RESET_BOUNCE_AFTER_DAYS = 30
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -33,13 +44,13 @@ def first_opt_in(
     name, email, consented_at, consented_from, confirm_url_base, withdraw_url_base
 ):
 
-    NewsletterSubscriber.objects.get_or_create(
-        email=email,
-        name=name,
-        first_optin_at=consented_at,
-        consented_from=consented_from,
-        subscribed=False,
-    )
+    subscriber = NewsletterSubscriber.objects.get_or_create(email=email)
+
+    subscriber.name = name
+    subscriber.first_optin_at = consented_at
+    subscriber.consented_from = consented_from
+    subscriber.subscribed = False
+    subscriber.save()
 
     confirm_code = sign_confirmation_code(email, settings.SECRET_KEY)
     confirm_params = urlencode({"subscriber_email": email, "code": confirm_code})
@@ -57,7 +68,7 @@ def first_opt_in(
 def second_opt_in(code, email, double_optin_at):
     if not validate_confirmation_code(code, email, settings.SECRET_KEY):
         logger.error("Invalid second opt in code")
-        return False
+        return
 
     try:
         subscriber = NewsletterSubscriber.objects.get(email=email)
@@ -73,13 +84,12 @@ def second_opt_in(code, email, double_optin_at):
     return True
 
 
-def mailgun_unsubscribe(email, consent_withdrawn_at):
-
+def unsubscribe(email, consent_withdrawn_at):
     try:
         subscriber = NewsletterSubscriber.objects.get(email=email)
     except NewsletterSubscriber.DoesNotExist:
         logger.error("cannot find NewsletterSubscriber for email")
-        return 404
+        return False
 
     subscriber.consent_withdrawn_at = consent_withdrawn_at
     subscriber.subscribed = False
@@ -103,6 +113,7 @@ def send_double_optin_email(name, email, confirm_url, withdraw_url):
     }
     subject = _("Can StreetNoise Orchestra send you emails?")
     to = f"{name} <{email}>"
+    logger.info(f"sent subscription confirmation to {email}")
     return requests.post(
         "https://api.eu.mailgun.net/v3/mg.streetnoise.at/messages",
         auth=("api", settings.MAILGUN_KEY),
@@ -147,6 +158,7 @@ def mailgun_handle_bounce(params):
     if not valid_mailgun_signature(
         signature["token"], signature["timestamp"], signature["signature"]
     ):
+        logger.error("Invalid mailgun signature on bounce webhook")
         return HttpResponse(401)
 
     data = params["event-data"]
@@ -157,21 +169,12 @@ def mailgun_handle_bounce(params):
 
     if data["event"] == "failed":
         if severity == "temporary":
-            process_bounce(message_id, to_address, "soft", error_code)
+            process_bounce(message_id, to_address, SOFT_BOUNCE_SCORE, error_code)
         elif severity == "permanent":
-            process_bounce(message_id, to_address, "hard", error_code)
+            process_bounce(message_id, to_address, HARD_BOUNCE_SCORE, error_code)
 
+    logger.info(f"handled mailgun bounce webhook")
     return HttpResponse(200)
-
-
-# Bounce score added to the user when a temporary bounce happens.
-SOFT_BOUNCE_SCORE = 1
-# Bounce score added to the user when a permanent bounce happens.
-HARD_BOUNCE_SCORE = 2
-# Max bounce score before we will stop emailing a user.
-BOUNCE_SCORE_THRESHOLD = 4
-# Automatically reset bounce score after X days.
-RESET_BOUNCE_AFTER_DAYS = 30
 
 
 def process_bounce(message_id, to_address, bounce_score, error_code):
@@ -195,5 +198,7 @@ def process_bounce(message_id, to_address, bounce_score, error_code):
 
     if new_score >= RESET_BOUNCE_AFTER_DAYS:
         subscriber.subscribed = False
+
+    logger.info(f"updated bounce score for {subscriber.id} to {new_score}")
 
     subscriber.save()
