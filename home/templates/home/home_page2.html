@@ -39,19 +39,7 @@
     </section>
 
     {% include 'home/latest_news.html' %}
-    <section id="newsletter" class="section has-background-primary">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-half">
-                    <p class="title has-text-white">SNOZeitung</p>
-                    <p class="subtitle is-4 has-text-white">{% trans "Stay up to date with SNO happenings." %}</p>
-                    <p class="has-text-white">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
-                </div>
-                {% include "home/newsletter_subscribe_form.html"  with dark=True %}
-            </div>
-
-        </div>
-    </section>
+    {% include 'home/newsletter.html' %}
     {% include 'home/about_us.html' %}
     {% include 'home/gigs.html' %}
     {% comment %}
@@ -61,7 +49,7 @@
     {% include 'home/donate.html' %}
     {% endcomment %}
     {% include 'home/joinus.html' %}
-    {% include 'home/home_cta.html' %}
+    {% include 'home/home_cta.html' with homepage=self%}
     {% include 'home/footer.html' %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.7/min/tiny-slider.js"></script>

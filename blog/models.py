@@ -9,6 +9,7 @@ from django.template.defaultfilters import slugify
 from wagtail.snippets.models import register_snippet
 from taggit.models import Tag
 
+
 from .abstract import (
     BlogCategoryAbstract,
     BlogCategoryBlogPageAbstract,
@@ -157,6 +158,11 @@ class BlogPage(BlogPageAbstract):
         context["blogs"] = self.get_blog_index().blogindexpage.blogs
         context = get_blog_context(context)
         context["COMMENTS_APP"] = COMMENTS_APP
+
+        from home.models import HomePage2
+
+        homepage = HomePage2.objects.first()
+        context["homepage"] = homepage
         return context
 
     parent_page_types = ["blog.BlogIndexPage"]
