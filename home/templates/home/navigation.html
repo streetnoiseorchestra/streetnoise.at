@@ -1,9 +1,9 @@
-{% load static  wagtail_modeltranslation %}
+{% load static  wagtail_modeltranslation wagtailcore_tags %}
 {% load menu_tags %}
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://streetnoise.at">
+        <a class="navbar-item" href="{% pageurl home_page %}">
             <img src="/static/img/logotype.svg">
         </a>
         <div class="navbar-item  mobile-lang-switch">

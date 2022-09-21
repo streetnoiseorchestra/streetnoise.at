@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags%}
+{% load static wagtailcore_tags wagtailimages_tags app_tags %}
 <!--SECTION: DONATE-->
 <section class="hero is-warning is-bold" id="donation">
   <div class="hero-body">
@@ -26,13 +26,13 @@
                         <label for="donation_amount"></label>
                         <input name="donation_amount" id="donation_amount" class="input is-medium"
                                type="number" placeholder="10">
-                        <span class="icon is-medium is-left"><i class="fa fa-euro-sign"></i></span>
+                        <span class="icon is-medium is-left">{% icon_euro_outline %}</span>
                       </div>
                       <div class="control">
                         <button type="submit" class="button is-primary is-medium">
                           <span>Donate</span>
                           <span class="icon is-small">
-                        <i class="far fa-credit-card"></i>
+                            {% icon_credit_card_outline %}
                       </span>
                         </button>
                       </div>

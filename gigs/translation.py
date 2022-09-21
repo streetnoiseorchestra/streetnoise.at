@@ -11,4 +11,4 @@ class GigIndexPageTR(TranslationOptions):
 
 @register(GigPage)
 class GigPageTR(TranslationOptions):
-    fields = ("body",)
+    fields = ("body", "body2")

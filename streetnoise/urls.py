@@ -32,7 +32,7 @@ urlpatterns = [
     re_path(r"^documents/", include(wagtaildocs_urls)),
     re_path(r"", include("allauth.urls")),  # Creates urls like yourwebsite.com/login/
     re_path(r"^accounts/", include("allauth.urls")),
-    re_path(r"^blog/", include("blog.urls", namespace="blog")),
+    re_path(r"^blog/", include("blog.urls", namespace="blog"), name="blog"),
     re_path(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
     path(
         "newsletter/unsubscribe/<str:subscriber_email>",

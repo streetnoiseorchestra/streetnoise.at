@@ -1,0 +1,60 @@
+{% load wagtailcore_tags wagtailimages_tags static i18n app_tags %}
+<div class="card gig">
+    {% include "gigs/gig_schema_tag.html" %}
+    {% if gig.feed_image %}
+        <div class="card-image">
+            <figure class="image is-2by1">
+                {% image gig.feed_image fill-800x400 %}
+            </figure>
+        </div>
+    {% else %}
+        <div class="card-image placeholder has-text-centered">
+            <h2 class="title is-3">{{ gig.title }} </h2>
+        </div>
+    {% endif %}
+    <div class="card-content">
+        <div class="media">
+            <div class="media-content">
+                <p class="title is-3">{{ gig.title }}</p>
+                <ul>
+                    <li class="is-6">
+                        {% if gig.partner %}
+                            <span class="icon">{% icon_handshake_angle %}</span>
+                            {{ gig.partner }}
+                        {% endif %}
+                    </li>
+                    <li class="is-6">
+                        {% if gig.location%}
+                            <span class="icon">{% icon_map_pin %}</span>
+                            {{ gig.location}}
+                        {% endif %}
+                    </li>
+                    <li class="is-6">
+                        {% if gig.date_from %}
+                            <span class="icon">
+                                {% icon_calendar %}
+                            </span>
+                            {{ gig.date_start_time }}
+                        {% endif %}
+                        {% if gig.date_to %}
+                            &ndash; {{ gig.date_end_time }}
+                        {% endif %}
+                    </li>
+                        {% if with_link %}
+                    <li class="is-6">
+                        {% if gig.body2 %}
+                            <span class="icon">{% icon_info %}</span>
+                            <a class="has-text-success" href="{% pageurl gig %}" target="_blank">mehr info</a>
+                        {% else %}
+                            {% if gig.link %}
+                                <span class="icon">{% icon_info %}</span>
+                                <a class="has-text-success" href="{{ gig.link }}" target="_blank">mehr info</a>
+                            {% endif %}
+                        {% endif %}
+                    </li>
+                        {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

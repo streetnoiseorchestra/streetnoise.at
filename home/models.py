@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models
 from django.shortcuts import render
+from datetime import date
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
     FieldPanel,
@@ -247,7 +248,17 @@ class HomePage2(Page):
             context["donation_page_url"] = url
 
         context["blogs"] = self.blogs()
+        context["gigs"] = self.gigs()
+        context["home_page"] = self
         return context
+
+    def gigs(self):
+        from gigs.models import GigPage
+
+        gigs = GigPage.objects.filter(live=True)
+        gigs = gigs.filter(date_from__gte=date.today())
+        gigs = gigs.all().order_by("date_from")
+        return gigs
 
     def blogs(self):
         return BlogPage.objects.all().order_by("-date")

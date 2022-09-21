@@ -1,5 +1,5 @@
 {% extends "home/info_base.html" %}
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags app_tags %}
 {% block content %}
 <div class="is-form-page">
   <section class="is-white ">
@@ -39,7 +39,9 @@
               <div class="control is-expanded has-icons-left">
                 {{ form.contact_name }}
                 {{ form.contact_name.errors }}
-                <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+                <span class="icon is-small is-left">
+                  {% icon_user %}
+                  </span>
               </div>
             </div>
           </div>
@@ -50,7 +52,9 @@
               <div class="control is-expanded has-icons-left">
                 {{ form.contact_org }}
                 {{ form.contact_org.errors }}
-                <span class="icon is-small is-left"><i class="fa fa-globe"></i></span>
+                <span class="icon is-small is-left">
+                  {% icon_globe_europe %}
+                </span>
               </div>
             </div>
           </div>
@@ -61,7 +65,9 @@
               <div class="control is-expanded has-icons-left">
                 {{ form.contact_email }}
                 {{ form.contact_email.errors }}
-                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                <span class="icon is-small is-left">
+                  {% icon_envelope %}
+                </span>
               </div>
             </div>
           </div>
@@ -75,7 +81,7 @@
                 {{ form.event_date }}
                 {{ form.event_date.errors }}
                 <p class="help"></p>
-                <span class="icon is-small is-left"><i class="fa fa-calendar-alt"></i></span>
+                <span class="icon is-small is-left">{% icon_calendar %}</span>
               </div>
             </div>
           </div>
@@ -86,7 +92,7 @@
                 {{ form.event_time }}
                 {{ form.event_time.errors }}
                 <p class="help"></p>
-                <span class="icon is-small is-left"><i class="fa fa-clock"></i></span>
+                <span class="icon is-small is-left">{% icon_clock %}</span>
               </div>
             </div>
           </div>
@@ -97,7 +103,7 @@
               <div class="control is-expanded has-icons-left">
                 {{ form.deadline_date }}
                 {{ form.deadline_date.errors }}
-                <span class="icon is-small is-left"><i class="fa fa-calendar-alt"></i></span>
+                <span class="icon is-small is-left">{% icon_calendar %}</span>
                 <p class="help">
                   {{ page.label_deadline_detail }}
                 </p>
@@ -141,7 +147,7 @@
                 <div class="control is-expanded has-icons-left">
                   {{ form.location }}
                   {{ form.location.errors }}
-                  <span class="icon is-small is-left"><i class="fa fa-map-marker-alt"></i></span>
+                  <span class="icon is-small is-left">{% icon_map_pin %}</span>
                 </div>
               </div>
             </div>
@@ -153,7 +159,7 @@
               <div class="control is-expanded has-icons-left">
                 {{ form.donation_amount }}
                 {{ form.donation_amount.errors }}
-                <span class="icon is-small is-left"><i class="fa fa-euro-sign"></i></span>
+                <span class="icon is-small is-left">{% icon_euro_outline %}</span>
                 <p class="help">
                   {{ page.label_donation_detail }}
                 </p>

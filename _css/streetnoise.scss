@@ -687,6 +687,7 @@ footer .title {
 
 .card.gig {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  max-width: 350px;
   .card-image {
     height: 180px;
   }
@@ -721,4 +722,8 @@ footer .title {
 .link-notice.has-text-link-light {
   border-bottom: 1px solid rgba(255,255,255,.5);
   padding-bottom: 2px;
+}
+
+.control.has-icons-left .icon svg {
+  width: 1.5rem;
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags plausible app_tags %}
+<html>
+<head>
+  <title>{{ page.title }} :: Streetnoise Orchestra</title>
+  {% include "home/header_assets.html" %}
+</head>
+<body>
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <p class="buttons">
+            <a class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close"
+               href="{% pageurl home_page %}#upcoming">
+                <span class="icon is-small">{% icon_arrow_uturn_left %}</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% block content %}{% endblock content %}
+<section class="is-white ">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters has-text-centered">
+            <a class="button is-medium tooltip is-tooltip-bottom is-hidden-desktop" data-tooltip="Close"
+               href="{% pageurl home_page %}#upcoming">
+              <span class="icon is-small">{% icon_arrow_uturn_left %}</span>
+            </a>
+            <a href="{% pageurl blog_index_page %}" class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close">
+            Aktuelles
+            </a>
+            <a href="{% pageurl home_page %}" class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close">
+            Home
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+{% plausible %}
+</body>
+</html>

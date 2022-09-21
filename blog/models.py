@@ -90,6 +90,11 @@ class BlogIndexPage(BlogIndexPageAbstract):
         context["paginator"] = paginator
         context = get_blog_context(context)
 
+        from home.models import HomePage2
+
+        home_page = HomePage2.objects.first()
+        context["home_page"] = home_page
+
         return context
 
     subpage_types = ["blog.BlogPage"]
@@ -161,8 +166,8 @@ class BlogPage(BlogPageAbstract):
 
         from home.models import HomePage2
 
-        homepage = HomePage2.objects.first()
-        context["homepage"] = homepage
+        home_page = HomePage2.objects.first()
+        context["home_page"] = home_page
         return context
 
     parent_page_types = ["blog.BlogIndexPage"]

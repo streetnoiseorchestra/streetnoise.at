@@ -7,6 +7,14 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, FieldRowPan
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.core.fields import StreamField
+
+
+from wagtail.core import blocks
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+
+from home.blocks import ButtonBlock
 
 
 class GigIndexPage(Page):
@@ -95,6 +103,48 @@ class GigPage(Page):
     body = RichTextField(
         _("Details"), blank=True, help_text=_("A sentence or two describing the gig.")
     )
+
+    body2 = StreamField(
+        [
+            ("heading", blocks.CharBlock(classname="full title")),
+            (
+                "paragraph",
+                blocks.RichTextBlock(
+                    features=[
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "h5",
+                        "bold",
+                        "italic",
+                        "strikethrough",
+                        "ol",
+                        "ul",
+                        "hr",
+                        "link",
+                        "document-link",
+                        "image",
+                        "embed",
+                        "blockquote",
+                    ]
+                ),
+            ),
+            ("image", ImageChooserBlock(icon="image")),
+            (
+                "embedded_video",
+                EmbedBlock(
+                    icon="media",
+                    label=_("Embed media"),
+                    help_text=_("Paste a link to a video, audio file, instagram, etc."),
+                ),
+            ),
+            ("button", ButtonBlock()),
+        ],
+        null=True,
+        blank=True,
+        help_text=_("A sentence or two describing the gig."),
+    )
     feed_image = models.ForeignKey(
         "wagtailimages.Image",
         verbose_name=_("Gig Image"),
@@ -107,10 +157,17 @@ class GigPage(Page):
         ),
     )
     content_panels = Page.content_panels + [
-        ImageChooserPanel("feed_image",),
+        ImageChooserPanel(
+            "feed_image",
+        ),
         MultiFieldPanel(
             [
-                FieldRowPanel([FieldPanel("date_from"), FieldPanel("date_to"),]),
+                FieldRowPanel(
+                    [
+                        FieldPanel("date_from"),
+                        FieldPanel("date_to"),
+                    ]
+                ),
                 FieldRowPanel(
                     [
                         FieldPanel("call_time"),
@@ -126,7 +183,7 @@ class GigPage(Page):
                 FieldPanel("location"),
                 FieldPanel("partner"),
                 FieldPanel("link"),
-                FieldPanel("body", classname="full"),
+                FieldPanel("body2", classname="full"),
                 FieldPanel("gigomatic_id", classname=""),
             ],
             _("Gig Details"),
@@ -150,3 +207,12 @@ class GigPage(Page):
             return datetime.combine(self.date_from, self.end_time)
         else:
             return datetime.combine(self.date_to, self.end_time)
+
+    def get_context(self, request, *args, **kwargs):
+        from blog.models import BlogIndexPage
+        from home.models import HomePage2
+
+        context = super().get_context(request, *args, **kwargs)
+        context["blog_index_page"] = BlogIndexPage.objects.first()
+        context["home_page"] = HomePage2.objects.first()
+        return context

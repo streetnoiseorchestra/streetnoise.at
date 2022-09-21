@@ -1,5 +1,5 @@
 {% extends "home/info_base.html" %}
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags app_tags %}
 {% block content %}
   <div class="is-form-page">
     <section class="is-white ">
@@ -44,7 +44,7 @@
               <div class="control is-expanded has-icons-left">
                 {{ form.donation_amount }}
                 {{ form.donation_amount.errors }}
-                <span class="icon is-small is-left"><i class="fa fa-euro-sign"></i></span>
+                <span class="icon is-small is-left">{% icon_euro_outline %}</span>
                 <p class="help">
                   {{ page.label_donation_detail }}
                 </p>
@@ -58,7 +58,7 @@
                      for="">&nbsp;</label>
               <div class="control">
                 <button type="submit" class="button is-primary  is-medium is-fullwidth is-rounded">
-                  Next&nbsp;<i class="fas fa-long-arrow-alt-right"></i>
+                  Next&nbsp;{% icon_long_arrow_right %}
                 </button>
               </div>
             </div>

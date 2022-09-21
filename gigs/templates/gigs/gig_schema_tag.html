@@ -1,0 +1,39 @@
+{% load wagtailimages_tags %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "MusicEvent",
+    "name": "{{ gig.title }}",
+    {% if gig.body %}
+    "description": "{{ gig.body }}",
+    {% endif %}
+    "startDate": "{{ gig.date_start_time | date:'c'  }}",
+    {% if gig.date_to %}
+    "endDate": "{{ gig.date_end_time | date:'c'  }}",
+    {% endif %}
+    {% if gig.set_time %}
+    "doorTime": "{{ gig.set_time }}",
+    {% endif %}
+    {% if gig.location %}
+    "location": {
+        "@type": "Place",
+        "name": "{{ gig.location }}",
+        "address": "{{ gig.location }}"
+    },
+    {% endif %}
+    "isAccessibleForFree": true,
+    "contributor": "{{ gig.partner }}",
+    {% if gig.link %}
+    "sameAs": ["{{ gig.link }}"],
+    {% endif %}
+    {% if gig.feed_image %}
+    {% image gig.feed_image original as image %}
+    "image": "{{ image.url }}",
+    {% endif %}
+    "performer": {
+        "@type": "MusicGroup",
+        "name": "Street Noise Orchestra",
+        "mainEntityOfPage": "https://streetnoise.at"
+    }
+}
+</script>

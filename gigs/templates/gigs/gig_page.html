@@ -1,0 +1,72 @@
+{% extends "gigs/gig_base.html" %}
+{% load static  i18n wagtailcore_tags wagtailimages_tags app_tags %}
+
+
+{% block content %}
+    <div class="">
+        {% include "gigs/gig_schema_tag.html" with gig=self %}
+        <section class="is-white ">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-three-quarters has-text-centered">
+                        {% sno_logo fill="#000"%}
+                        <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section is-small">
+            <div class="container">
+                <div class="columns">
+                    {% if self.feed_image %}
+                        <div class="column is-flex is-offset-one-quarter is-one-quarter">
+                            {% include "gigs/gig_card.html" with gig=self with_link=False %}
+                        </div>
+                        <div class="column">
+                    {% else %}
+                            <div class="column is-half is-offset-one-quarter">
+                    {% endif %}
+                    {% if self.body2 %}
+                        {% for block in self.body2 %}
+                            <div class="news-body content">
+                                {% if block.block_type == 'heading' %}
+                                    <h2>{{ block.value }}</h2>
+                                {% else %}
+                                    <section class="block-{{ block.block_type }}">
+                                        {% include_block block %}
+                                    </section>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>
+                            Street Noise Orchestra is playing at {{ self.title }}
+                            {% if self.partner %} with {{ self.partner }}{%  endif %}.
+                        </p>
+
+                        <p>
+                            {% if self.location and gig.date_start_time %}
+                                Join us at {{self.location}} on {{ gig.date_start_time }}!
+                            {% elif self.location %}
+                                Join us at {{self.location}}!
+                            {% elif self.date_start_time %}
+                                See you at {{ self.date_start_time }}
+                            {% endif %}
+                        </p>
+                    {% endif %}
+
+                    {% if self.link %}
+                        <div class="news-body content">
+                            <p>
+                                <a href="{{ self.link }}" target="_blank">For more information..</a>
+                            </p>
+                        </div>
+                    {% endif %}
+                            </div>
+                        </div>
+                </div>
+        </section>
+            </div>
+{% endblock %}

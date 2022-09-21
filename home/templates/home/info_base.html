@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags plausible %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags plausible app_tags %}
 <html>
 <head>
   <title>{{ page.title }} :: Streetnoise Orchestra</title>
@@ -18,7 +18,7 @@
           <p class="buttons">
             <a class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close"
                href="https://streetnoise.at">
-              <span class="icon is-small"><i class="fas fa-times"></i></span>
+              <span class="icon is-small">{% icon_x_mark %}</span>
             </a>
           </p>
         </div>

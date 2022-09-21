@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n app_tags %}
 <form id="newsletter_subscribe_form" accept-charset="UTF-8" action="{{ subscribe_page_url }}" method="POST">
     {% csrf_token %}
     {% for hidden_field in form.hidden_fields %}
@@ -11,10 +11,10 @@
                     <div class="control has-icons-left is-expanded">
                         <input type="text" value="" name="subscriber_name" id="subscriber_name" class="input is-medium is-flat" placeholder="{% trans "Name" %}">
                         <span class="icon is-small is-left">
-                            <i class="fa fa-user icon"></i>
+                            {% icon_user %}
                         </span>
                         <span class="icon is-small is-right is-hidden  error-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
+                            {% icon_exclamation_triangle %}
                         </span>
                         <p class="help is-danger is-hidden error-message"></p>
                     </div>
@@ -25,10 +25,10 @@
                     <div class="control has-icons-left  is-expanded">
                         <input type="email" value="" name="subscriber_email" id="subscriber_email" class="input is-medium is-flat" placeholder="{% trans "Email" %}" required="">
                         <span class="icon is-small is-left">
-                            <i class="fa fa-envelope icon"></i>
+                            {% icon_envelope %}
                         </span>
                         <span class="icon is-small is-right is-hidden  error-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
+                            {% icon_exclamation_triangle %}
                         </span>
                     </div>
                     <p class="help is-danger is-hidden error-message"></p>
