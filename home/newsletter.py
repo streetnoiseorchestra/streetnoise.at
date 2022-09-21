@@ -54,9 +54,9 @@ def first_opt_in(
 
     confirm_code = sign_confirmation_code(email, settings.SECRET_KEY)
     confirm_params = urlencode({"subscriber_email": email, "code": confirm_code})
-    withdraw_params = urlencode({"subscriber_email": email, "confirm": "yes"})
+    withdraw_params = urlencode({"confirm": "yes"})
     confirm_url = f"{confirm_url_base}?{confirm_params}"
-    withdraw_url = f"{withdraw_url_base}?{withdraw_params}"
+    withdraw_url = f"{withdraw_url_base}/{email}?{withdraw_params}"
 
     r = send_double_optin_email(name, email, confirm_url, withdraw_url)
     if r.status_code != 200:

@@ -1,6 +1,6 @@
 {% extends "mail/base.html" %}
 
-{% load static wagtailimages_tags %}
+{% load static wagtailimages_tags newsletter %}
 
 {% block email_head %}
     <mj-style>
@@ -36,10 +36,10 @@
     <mj-section>
     <mj-column>
         <mj-text align="center">
-            Share SNO: <a href="https://streetnoise.at">web</a> | <a href="https://www.facebook.com/StreetNoise.OrchestraIBK">facebook</a> | <a href="https://www.instagram.com/streetnoiseorchestra/">instagram</a>
+            Share SNO: <a href="https://streetnoise.at/?{% email_utm self %}">web</a> | <a href="https://www.facebook.com/StreetNoise.OrchestraIBK">facebook</a> | <a href="https://www.instagram.com/streetnoiseorchestra/">instagram</a>
         </mj-text>
         <mj-text align="center">
-            To unsubscribe from the SNOZeitung, click <a href="{{ site.full_url }}{% url 'birdsong:unsubscribe' contact.id %}">here</a>.
+            To unsubscribe from the SNOZeitung, click <a href="{{ site.root_url }}{% url 'newsletter_unsubscribe_email' contact.email %}?{% email_utm self %}">here</a>.
         </mj-text>
     </mj-column>
     </mj-section>

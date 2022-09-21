@@ -34,7 +34,16 @@ urlpatterns = [
     re_path(r"^accounts/", include("allauth.urls")),
     re_path(r"^blog/", include("blog.urls", namespace="blog")),
     re_path(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
-    re_path(r"^newsletter/unsubscribe/", newsletter_unsubscribe, name="Unsubscribe"),
+    path(
+        "newsletter/unsubscribe/<str:subscriber_email>",
+        newsletter_unsubscribe,
+        name="newsletter_unsubscribe_email",
+    ),
+    re_path(
+        r"^newsletter/unsubscribe/$",
+        newsletter_unsubscribe,
+        name="newsletter_unsubscribe",
+    ),
     re_path(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
     re_path(r"^newsletter/mailgun", newsletter_bounce, name="Mailgun webhooks"),
     re_path(r"^newsletters/", include(birdsong_urls))

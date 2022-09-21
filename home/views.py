@@ -87,7 +87,7 @@ def newsletter_confirm(request):
     )
 
 
-def newsletter_unsubscribe(request):
+def newsletter_unsubscribe(request, subscriber_email=""):
     if request.method == "POST":
         if "subscriber_email" not in request.POST:
             return HttpResponse(status=400)
@@ -103,9 +103,7 @@ def newsletter_unsubscribe(request):
             },
         )
     elif request.method == "GET":
-        email = None
-        if "subscriber_email" in request.GET:
-            email = request.GET["subscriber_email"]
+        email = subscriber_email
         if "confirm" in request.GET:
             result = unsubscribe(email, datetime.utcnow().isoformat())
             return render(

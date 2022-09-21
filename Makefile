@@ -1,6 +1,6 @@
 SHELL := /bin/bash
-DOCKER ?= sudo docker
-DC ?= sudo docker-compose
+DOCKER ?= podman
+DC ?= docker-compose
 DC_ARGS ?=
 DC_BUILD_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
@@ -25,8 +25,8 @@ dev-reset:
 	$(DC_DEV) down
 	$(DOCKER) volume rm cms_streetnoise_dev_db14
 	$(DC_DEV) up -d
-	sleep 5
-	psql -h localhost -U streetnoise_cms streetnoise_cms < $(DB_DUMP)
+	sleep 10
+	cat $(DB_DUMP) |  $(DOCKER) exec  -i cms-db-1 psql -U streetnoise_cms
 
 
 serve: dev-migrate dev-serve
