@@ -39,12 +39,6 @@
     </section>
 
     {% include 'home/latest_news.html' %}
-    {% include 'home/about_us.html' %}
-    {% include 'home/gigs.html' %}
-    {% include 'home/merch.html' %}
-    {% comment %}
-    {% include 'home/donate.html' %}
-    {% endcomment %}
     <section id="newsletter" class="section has-background-primary">
         <div class="container">
             <div class="columns is-vcentered">
@@ -58,6 +52,14 @@
 
         </div>
     </section>
+    {% include 'home/about_us.html' %}
+    {% include 'home/gigs.html' %}
+    {% comment %}
+    {% include 'home/merch.html' %}
+    {% endcomment %}
+    {% comment %}
+    {% include 'home/donate.html' %}
+    {% endcomment %}
     {% include 'home/joinus.html' %}
     {% include 'home/home_cta.html' %}
     {% include 'home/footer.html' %}
