@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags plausible app_tags %}
+<html>
+    <head>
+        <title>{{ page.title }} :: Streetnoise Orchestra</title>
+        {% include "home/header_assets.html" %}
+    </head>
+    <body>
+        <section class="hero is-primary is-fullheight">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                            <div class="content box">
+                            {% block content %}{% endblock content %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+        {% plausible %}
+    </body>
+</html>
