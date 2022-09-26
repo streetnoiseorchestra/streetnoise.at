@@ -261,7 +261,6 @@ class HomePage2(Page):
         return gigs
 
     def get_blog_index(self):
-        # Find closest ancestor which is a blog index
         return BlogIndexPage.objects.first()
 
     def blogs(self):
