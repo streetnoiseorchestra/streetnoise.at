@@ -21,7 +21,7 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from streetnoise.models import Page
-from blog.models import BlogPage
+from blog.models import BlogPage, BlogIndexPage
 
 from home.blocks import (
     TimelineHeaderBlock,
@@ -260,8 +260,12 @@ class HomePage2(Page):
         gigs = gigs.all().order_by("date_from")
         return gigs
 
+    def get_blog_index(self):
+        # Find closest ancestor which is a blog index
+        return BlogIndexPage.objects.first()
+
     def blogs(self):
-        return BlogPage.objects.all().order_by("-date")
+        return self.get_blog_index().blogindexpage.blogs
 
 
 class FestivalPage(Page):
