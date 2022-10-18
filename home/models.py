@@ -474,6 +474,30 @@ class FestivalPage(Page):
             context["donation_page_url"] = url
         return context
 
+    def get_template(self, requeist, *args, **kwargs):
+        if "2023" in self.title:
+            return "home/festival2023_page.html"
+        return "home/festival_page.html"
+
+
+"""
+Festival Landing Page
+
+
+Save the Date (full width) w/ signup CTA
+
+IMAGE Intro Blurb
+
+Musik in der ganzen Stadt IMAGE
+
+IMAGE  Acitivist blurb
+
+Sign up for updates (full width)
+
+
+
+"""
+
 
 @register_snippet
 class GigType(models.Model):

@@ -1,23 +1,34 @@
 @charset "utf-8";
-
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+@import "../node_modules/bulma/sass/utilities/mixins";
 @font-face {
   font-family: 'noisy-felt';
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
   src:  url('../fonts/feltnoisy-webfont.woff2') format('woff2'),
   url('../fonts/feltnoisy-webfont.woff') format('woff');
   unicode-range: U+000-5FF; /* Latin glyphs */
 }
 
-.hero-header-strafiato {
+.noisy-felt {
+      font-family: 'noisy-felt', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-header-strafiato_oldXX {
   .title, .subtitle {
-    font-family: 'noisy-felt', cursive;
-    font-weight: 800;
+    @extend .noisy-felt;
     color: #111;
   }
 
   .title {
-
     font-size: 2rem;
     @media screen and (min-width: 1024px) {
       font-size: 3.5rem;
@@ -26,9 +37,80 @@
 
   .subtitle {
     font-size: 1.5rem;
-    font-weight: 300;
     @media screen and (min-width: 1024px) {
       font-size: 2.5rem;
+    }
+  }
+}
+
+.hero-header-strafiato, .hero-strafiato2023_4 {
+  position: relative;
+  color: #000;
+}
+.hero-header-strafiato:before, .hero-strafiato2023_4:before {
+  content: "";
+  z-index: -1; // should be below the contents of the container
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-800.png');
+  background-position-y: 9%;
+  background-position-x: 51%;
+  @media screen and (min-width: 499px) {
+  background-position-y: 0;
+  }
+  @media screen and (min-width: 580px) {
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
+  }
+  @include tablet {
+    background-image: url('../img/strafiato2023/save-the-date-header-concept3-1200.png');
+  }
+  @include desktop {
+    background-image: url('../img/strafiato2023/save-the-date-header-concept3.png');
+  }
+  //filter: grayscale(20%);
+}
+.hero-header-strafiato, .hero.hero-strafiato2023 {
+  .hero-body {
+    @include tablet {
+      padding: 3rem 3rem;
+    }
+  }
+  color: #1d1d1b;
+  .title, .subtitle {
+    color: inherit;
+    @extend .noisy-felt;
+
+    transform: perspective(133px) rotateX(340deg);
+    @include tablet {
+      transform: perspective(400px) rotateX(340deg);
+    }
+  }
+  .title {
+    font-size: 2.8rem;;
+    @include tablet {
+      font-size: 4rem;;
+    }
+    @include desktop {
+      font-size: 5rem;;
+    }
+  }
+  .subtitle {
+    font-size: 2.4rem;;
+    @include tablet{
+      font-size: 4.5rem;
+    }
+  }
+  .logo-type-container {
+    .logo-type {
+      padding: 0 1rem;
+      @include tablet{
+        padding: 0 0;
+      }
     }
   }
 }

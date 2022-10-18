@@ -64,6 +64,7 @@ h1, h2, h3, h4 {
   height: auto;
 }
 
+/*
 .hero-header-strafiato {
   @extend .hero;
   background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
@@ -74,6 +75,7 @@ h1, h2, h3, h4 {
   background: palette(orange, "base") url('../img/background-optimized-2020.jpg') no-repeat local center center;
   background-size: cover;
 }
+*/
 
 .navbar {
   background-color: palette(orange, "base");
@@ -726,4 +728,104 @@ footer .title {
 
 .control.has-icons-left .icon svg {
   width: 1.5rem;
+}
+
+
+
+.highlight-container, .highlight {
+  position: relative;
+}
+
+.highlight-container {
+  display: inline-block;
+}
+.highlight-container:before {
+  content: " ";
+  display: block;
+  height: 90%;
+  width: 100%;
+  margin-left: -3px;
+  margin-right: -3px;
+  position: absolute;
+  background: #ffa500;
+  transform: rotate(2deg);
+  top: -1px;
+  left: -1px;
+  border-radius: 20% 25% 20% 24%;
+  padding: 10px 3px 3px 10px;
+}
+
+$transition-duration: 0.3s;
+
+.modal {
+  display: flex;
+  visibility: hidden;
+
+  // Common fx modal background
+    .modal-background {
+        transition: opacity $transition-duration;
+        opacity: 0;
+        background-color: rgba(10,10,10,.86);
+    }
+
+    &.is-active {
+      visibility: visible;
+      .modal-background {
+        opacity: 1;
+      }
+    }
+    .modal-content {
+      opacity: 0;
+      transition: opacity $transition-duration;
+
+       // size
+        &.is-huge {
+            width: 100%;
+            margin: 0px 20px;
+            max-height: calc(100vh - 40px);
+        }
+        @include from($tablet) {
+            &.is-huge {
+                width: 100%;
+                margin: 0px 20px;
+                max-height: calc(100vh - 40px);
+            }
+        }
+        &.is-tiny {
+            max-width: 400px;
+        }
+
+        // type
+        &.is-image {
+            text-align: center;
+
+            &.is-huge {
+                width:auto;
+            }
+
+            img {
+                max-height: calc(100vh - 50px);
+            }
+        }
+    }
+
+    &.is-active {
+      .modal-content {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+}
+
+
+
+.bg-pattern {
+    background-image: url('../img/bg-pattern.png');
+    background-position: 50% 50%;
+    background-size: 300px;
+}
+
+.hero-rounded {
+  margin: 1rem;
+  border-radius: 9px;
 }

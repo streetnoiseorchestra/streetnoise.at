@@ -19,7 +19,7 @@ dev-watch:
 	npm run watch
 
 dev-serve:
-	 python manage.py runserver 8001
+	 python manage.py runserver 0.0.0.0:8001
 
 dev-reset:
 	$(DC_DEV) down
