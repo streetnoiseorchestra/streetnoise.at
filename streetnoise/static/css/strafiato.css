@@ -8,7 +8,7 @@
   src: url("../fonts/feltnoisy-webfont.woff2") format("woff2"), url("../fonts/feltnoisy-webfont.woff") format("woff");
   unicode-range: U+000-5FF; /* Latin glyphs */
 }
-.noisy-felt, .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero.hero-strafiato2023 .subtitle, .hero-header-strafiato_oldXX .title, .hero-header-strafiato_oldXX .subtitle {
+.noisy-felt, .festival-counts .item, .festival-counts .label, .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero.hero-strafiato2023 .subtitle, .hero-header-strafiato_oldXX .title, .hero-header-strafiato_oldXX .subtitle, .title {
   font-family: "noisy-felt", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -37,6 +37,33 @@
   }
 }
 
+.hero.festival-newsletter {
+  position: relative;
+}
+.hero.festival-newsletter .container > .columns {
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.5);
+}
+@media screen and (min-width: 769px), print {
+  .hero.festival-newsletter .container > .columns {
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.hero.festival-newsletter:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom, rgba(70, 184, 35, 0.1) 0%, rgba(70, 184, 35, 0.7) 95%, rgba(70, 184, 35, 0.8) 100%), url("../img/strafiato2019/edited/seegrube-bw.jpg");
+  background-position-y: 50%;
+  background-position-x: 51%;
+}
 .hero-header-strafiato, .hero-strafiato2023_4 {
   position: relative;
   color: #000;
@@ -95,6 +122,7 @@
 }
 .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
   font-size: 2.8rem;
+  filter: drop-shadow(3px 4px 0px #fdf9e9);
 }
 @media screen and (min-width: 769px), print {
   .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
@@ -108,6 +136,7 @@
 }
 .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
   font-size: 2.4rem;
+  filter: drop-shadow(3px 4px 0px #fdf9e9);
 }
 @media screen and (min-width: 769px), print {
   .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
@@ -115,12 +144,45 @@
   }
 }
 .hero-header-strafiato .logo-type-container .logo-type, .hero.hero-strafiato2023 .logo-type-container .logo-type {
+  height: 18rem;
+  filter: drop-shadow(3px 5px 0px #fdf9e9);
   padding: 0 1rem;
 }
 @media screen and (min-width: 769px), print {
   .hero-header-strafiato .logo-type-container .logo-type, .hero.hero-strafiato2023 .logo-type-container .logo-type {
     padding: 0 0;
   }
+}
+
+.strafiato-inline {
+  display: inline-flex;
+  align-self: center;
+  top: 0.125em;
+  position: relative;
+}
+
+.strafiato-inline svg {
+  height: 2em;
+}
+
+.festival-counts {
+  background-color: hsl(106deg, 68%, 43%);
+}
+.festival-counts .item, .festival-counts .label {
+  text-align: center;
+}
+.festival-counts .item {
+  display: block;
+  font-size: 4rem;
+}
+.festival-counts .item .icon-euro {
+  width: 2.5rem;
+  height: auto;
+  margin-left: -1rem;
+}
+.festival-counts .label {
+  display: block;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=strafiato.css.map */

@@ -1,5 +1,6 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 
 
 class FestivalBandsBlock(blocks.StructBlock):
@@ -81,3 +82,13 @@ class ButtonBlock(blocks.StructBlock):
         label = "Button"
         admin_text = "Add a big button for someone to push"
         template = "home/blocks/button.html"
+
+
+class ImageGridBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    caption = blocks.TextBlock(required=False)
+
+    class Meta:
+        admin_text = "Warning: Works best with images with 4x3 ratio."
+        template = "home/blocks/image_grid.html"
+        icon = "image"

@@ -47,7 +47,7 @@
             <div class="column success-view is-hidden">
                 <div class="field">
                     <div class="control">
-                        <p class="is-size-3 {% if dark %}has-text-white{%endif%}">{% trans "Almost there! Please check your email to confirm!" %}</p>
+                        <p class="is-size-3 {% if dark %}has-text-white{%else%}has-text-black{%endif%}">{% trans "Almost there! Please check your email to confirm!" %}</p>
                     </div>
 
                 </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="columns">
             <div class="column ">
-                <p class="{% if dark %}has-text-white{%endif%}">{% trans "We 100% respect your rights to privacy. We will only use your information to send you SNO updates." %} <a href="/datenschutz" class="{% if dark %}has-text-link-light{%endif%} link-notice">Datenschutz</a>.</p>
+                <p class="{% if dark %}has-text-white{%else%}has-text-black{%endif%}">{% trans "We 100% respect your rights to privacy. We will only use your information to send you SNO updates." %} <a href="/datenschutz" class="{% if dark %}has-text-link-light{%endif%} link-notice">Datenschutz</a>.</p>
             </div>
         </div>
     </div>

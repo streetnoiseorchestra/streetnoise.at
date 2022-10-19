@@ -30,6 +30,7 @@ from home.blocks import (
     InfoItemBlock,
     ImageTileBlock,
     FooterCTABlock,
+    ImageGridBlock,
 )
 
 
@@ -493,6 +494,19 @@ Musik in der ganzen Stadt IMAGE
 IMAGE  Acitivist blurb
 
 Sign up for updates (full width)
+
+---BLOCKS--
+
+choose template
+
+Title cenetered with line below
+Paragraph centered
+Band Friends
+Sponsor logos w/ link
+Program
+Image Grid
+
+Footer
 
 
 

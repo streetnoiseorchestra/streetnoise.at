@@ -1,6 +1,7 @@
 @charset "utf-8";
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/mixins";
+@import "colors";
 @font-face {
   font-family: 'noisy-felt';
   font-style: normal;
@@ -20,6 +21,9 @@
       -webkit-font-smoothing: antialiased;
       -webkit-text-stroke-width: 0.2px;
       -moz-osx-font-smoothing: grayscale;
+}
+.title {
+  @extend .noisy-felt;
 }
 
 .hero-header-strafiato_oldXX {
@@ -43,6 +47,43 @@
   }
 }
 
+.hero.festival-newsletter {
+  position: relative;
+  & .container > .columns {
+    border-radius: 5px;
+    background: rgba(255,255,255,0.5);
+    @include tablet {
+    background: rgba(255,255,255,0.8);
+    }
+  }
+}
+.hero.festival-newsletter:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image:
+                   linear-gradient(to bottom, rgba(70,184,35,0.1) 0%, rgba(70,184,35,0.7) 95%, rgba(70,184,35,0.8) 100%),
+
+                    url('../img/strafiato2019/edited/seegrube-bw.jpg');
+  background-position-y: 50%;
+  background-position-x: 51%;
+  @media screen and (min-width: 499px) {
+  }
+  @media screen and (min-width: 580px) {
+  }
+  @include tablet {
+  }
+  @include desktop {
+  }
+
+}
+
 .hero-header-strafiato, .hero-strafiato2023_4 {
   position: relative;
   color: #000;
@@ -55,6 +96,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+
 
   background-repeat: no-repeat;
   background-image: url('../img/strafiato2023/save-the-date-header-concept3-800.png');
@@ -72,7 +114,6 @@
   @include desktop {
     background-image: url('../img/strafiato2023/save-the-date-header-concept3.png');
   }
-  //filter: grayscale(20%);
 }
 .hero-header-strafiato, .hero.hero-strafiato2023 {
   .hero-body {
@@ -92,6 +133,7 @@
   }
   .title {
     font-size: 2.8rem;;
+      filter: drop-shadow(3px 4px 0px #fdf9e9);
     @include tablet {
       font-size: 4rem;;
     }
@@ -101,16 +143,56 @@
   }
   .subtitle {
     font-size: 2.4rem;;
+      filter: drop-shadow(3px 4px 0px #fdf9e9);
     @include tablet{
       font-size: 4.5rem;
     }
   }
   .logo-type-container {
     .logo-type {
+      height: 18rem;
+      filter: drop-shadow(3px 5px 0px #fdf9e9);
       padding: 0 1rem;
       @include tablet{
         padding: 0 0;
       }
     }
   }
+}
+
+.strafiato-inline {
+  display: inline-flex;
+  align-self: center;
+  top: .125em;
+  position: relative;
+}
+.strafiato-inline svg {
+  height: 2em;
+
+}
+
+.festival-counts {
+  background-color: palette(green, "base");
+  .item, .label {
+    text-align: center;
+    @extend .noisy-felt;
+  }
+  .item {
+    display: block;
+    font-size: 4rem;
+
+    .icon-euro {
+      width: 2.5rem;
+      height: auto;
+      margin-left: -1rem;
+
+    }
+
+  }
+  .label {
+    display: block;
+    font-size: 1.5rem;
+  }
+
+
 }

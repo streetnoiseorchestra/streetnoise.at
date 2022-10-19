@@ -70,12 +70,12 @@ h1, h2, h3, h4 {
   background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
   background-size: cover;
 }
+*/
 .hero-header {
   @extend .hero;
   background: palette(orange, "base") url('../img/background-optimized-2020.jpg') no-repeat local center center;
   background-size: cover;
 }
-*/
 
 .navbar {
   background-color: palette(orange, "base");
@@ -829,3 +829,4 @@ $transition-duration: 0.3s;
   margin: 1rem;
   border-radius: 9px;
 }
+

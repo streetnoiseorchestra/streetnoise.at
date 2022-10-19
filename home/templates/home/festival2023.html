@@ -51,7 +51,7 @@
     <div class="is-flex is-flex-direction-column is-flex-shrink-0 is-flex-grow-1">
 
       <figure class="logo-type-container container has-text-centered-desktop">
-        <img class="logo-type" src="{% static 'img/strafiato-letters-vector.svg' %}"  alt="Strafiato 2019 Street band Festival in Innsbruck"/>
+        {% include 'home/strafiato-logo-type-svg.html' with class="logo-type" %}
       </figure>
       <p class="title is-align-self-center is-spaced">
         Save The Date
@@ -62,6 +62,8 @@
     </div>
   </div>
 </section>
+
+
 
 <!--SECTION: FESTIVAL INTRO-->
 <section class="section">
@@ -75,9 +77,49 @@
         {{ self.festival_intro_text|richtext }}
       </div>
     </div>
+  </div>
+</section>
+<!-- SECTION: counters -->
+<section class="section festival-counts">
+  <div class="container">
+  <div class="columns">
+    <div class="column">
+    <div class="box">
+      <span class="item">180+</span>
+      <span class="label">Muscians</span>
     </div>
-    </section>
+    </div>
+    <div class="column">
+    <div class="box">
+      <span class="item">8</span>
+      <span class="label">Brass Bands</span>
+    </div>
+    </div>
+    <div class="column">
+    <div class="box">
+      <span class="item">4</span>
+      <span class="label">Days</span>
+    </div>
+    </div>
+    </div>
+  <div class="columns">
+    <div class="column is-half
+                is-offset-one-quarter">
 
+    <div class="box">
+      <span class="item">0
+        <span class="icon icon-euro">
+{% include 'home/euro-svg.html' %}
+        </span>
+      </span>
+      <span class="label">Eintritt Preis</span>
+    </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+{% if bandfriend.band_friend %}
 <section class="section">
   <div class="container">
     <h2 class="title has-text-centered title-section caption-text" id="lineup">
@@ -123,7 +165,8 @@
       {% endfor %}
     </div>
     </div>
-    </section>
+</section>
+{% endif %}
 
     <section class="section">
       <div class="container">
@@ -141,8 +184,7 @@
             </p>
 
             <p>
-<span class="highlight-container"><span class="highlight has-text-weight-semibold">Strafiato</span></span>,
-              ein italienisches Kunstwort, könnte man mit „überblasen“ oder
+              Strafiato, ein italienisches Kunstwort, könnte man mit „überblasen“ oder
               „hyperventiliert“ übersetzen. Darin kommt nicht nur die ungeheure
               Energiedichte dieses Blasmusik-Events, sondern auch die Verbundenheit
               mit den italienischen „bande aperte“ zum Ausdruck die für uns Ideegeber
@@ -180,7 +222,7 @@
 
         <div class="columns is-multiline">
           <div class="column is-one-quarter-desktop is-half-tablet">
-            <div class="card">
+            <div class="card is-clickable">
               <div class="card-image">
                 <figure class="image is-4by3">
                   <img src="{% static 'img/strafiato2019/edited/strafiato-select-banner-laying.jpg' %}" alt="Placeholder image"
@@ -345,18 +387,21 @@
       <div class="column is-4 is-offset-4 has-text-centered is-size-5 content">
         {{ self.festival_intro_footer |richtext }}
       </div>
+      {% if false %}
       <div class="column is-full content">
         <img src="{% static 'img/sponsors.png' %}"
                alt="Funded by Land Tirol, Stadt Innsbruck, iKB, IVB,
                Nordketerbahn, Zipfer, ECI, Town & Country Haus"
                class=""/>
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
 
 
 <!--SECTION: FESTIVAL PROGRAM-->
+{% if self.festival_program_timeline %}
 <section class="hero is-info is-bold festival-program">
   <div class="hero-body">
     <div class="container is-size-5 ">
@@ -386,5 +431,25 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="hero is-medium festival-newsletter">
+<div class="hero-body">
+<div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                  <p class="title has-text-black">SIGN UP FOR UPDATES</p>
+                    <p class="subtitle is-4 has-text-black">Be the first to know about Lineup and Program releases.</p>
+                    {% comment %}
+                    <p class="has-text-black">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
+                    {% endcomment %}
+                </div>
+                {% include "home/newsletter_subscribe_form.html"  with dark=False %}
+            </div>
+
+        </div>
+
   </div>
 </section>
