@@ -15121,12 +15121,6 @@ footer .title {
   opacity: 1;
 }
 
-.bg-pattern {
-  background-image: url("../img/bg-pattern.png");
-  background-position: 50% 50%;
-  background-size: 300px;
-}
-
 .hero-rounded {
   margin: 1rem;
   border-radius: 9px;
