@@ -99,7 +99,7 @@
 
 
   background-repeat: no-repeat;
-  background-image: url('../img/strafiato2023/save-the-date-header-concept3-800.png');
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
   background-position-y: 9%;
   background-position-x: 51%;
   @media screen and (min-width: 499px) {
@@ -132,8 +132,14 @@
     }
   }
   .title {
-    font-size: 2.8rem;;
-      filter: drop-shadow(3px 4px 0px #fdf9e9);
+    filter: drop-shadow(3px 4px 0px #fdf9e9);
+    font-size: 2.1rem;
+    @media screen and (min-width: 364px) {
+      font-size: 2.6rem;
+    }
+    @media screen and (min-width: 388px) {
+      font-size: 2.8rem;
+    }
     @include tablet {
       font-size: 4rem;;
     }
@@ -142,8 +148,11 @@
     }
   }
   .subtitle {
+    font-size: 2.1rem;;
+    filter: drop-shadow(3px 4px 0px #fdf9e9);
+    @media screen and (min-width: 364px) {
     font-size: 2.4rem;;
-      filter: drop-shadow(3px 4px 0px #fdf9e9);
+    }
     @include tablet{
       font-size: 4.5rem;
     }

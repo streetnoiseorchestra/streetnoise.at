@@ -78,7 +78,7 @@
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-image: url("../img/strafiato2023/save-the-date-header-concept3-800.png");
+  background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
   background-position-y: 9%;
   background-position-x: 51%;
 }
@@ -121,8 +121,18 @@
   }
 }
 .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
-  font-size: 2.8rem;
   filter: drop-shadow(3px 4px 0px #fdf9e9);
+  font-size: 2.1rem;
+}
+@media screen and (min-width: 364px) {
+  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
+    font-size: 2.6rem;
+  }
+}
+@media screen and (min-width: 388px) {
+  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
+    font-size: 2.8rem;
+  }
 }
 @media screen and (min-width: 769px), print {
   .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
@@ -135,8 +145,13 @@
   }
 }
 .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
-  font-size: 2.4rem;
+  font-size: 2.1rem;
   filter: drop-shadow(3px 4px 0px #fdf9e9);
+}
+@media screen and (min-width: 364px) {
+  .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
+    font-size: 2.4rem;
+  }
 }
 @media screen and (min-width: 769px), print {
   .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
