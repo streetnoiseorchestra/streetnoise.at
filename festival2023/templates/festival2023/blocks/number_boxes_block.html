@@ -1,0 +1,14 @@
+<section class="section number-boxes">
+    <div class="container">
+        <div class="columns">
+            {% for box in self.boxes %}
+            <div class="column">
+                <div class="box">
+                    <span class="item">{{ box.value }}</span>
+                    <span class="label">{{ box.label }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+<section class="section funders">
+    <div class="container">
+        <h2 class="title has-text-centered title-section caption-text" id="lineup">
+            {{ self.heading  }}
+        </h2>
+        <div class="columns">
+            {% for funder in self.funders %}
+                <div class="column">
+                    {% if funder.logo %}
+                        <figure class="image is-128x128">
+                            <a href="{{ funder.url }}" rel="nofollow" title="{{ funder.name  }}">
+                                {% image funder.logo max-256x256 class="" %}
+                        </figure>
+                    {% else %}
+                        <a href="{{ funder.url }}" rel="nofollow" title="{{ funder.name  }}">
+                            {{ funder.name  }}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="hero is-info is-bold festival-program">
+    <div class="hero-body">
+        <div class="container is-size-5 ">
+            <h1 class="title" id="">{{ self.heading }}</h1>
+            <div class="columns is-mobile is-multiline">
+                <div class="column is-two-thirds-mobile is-half-tablet is-offset-2-mobile">
+                    <div class="timeline">
+                        {% with blocks=self.timeline %}
+                            {% for block in blocks %}
+                                {{block}}
+                            {% endfor %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="column is-full-mobile is-half-tablet content">
+
+                    {% with blocks=self.descriptions %}
+                        {% for block in blocks %}
+                            {% if block.block_type == 'heading' %}
+                                <h2 class="subtitle">{{ block }}</h2>
+                            {% elif block.block_type == 'paragraph' %}
+                                {{block}}
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

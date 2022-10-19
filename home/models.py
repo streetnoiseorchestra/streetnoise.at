@@ -481,38 +481,6 @@ class FestivalPage(Page):
         return "home/festival_page.html"
 
 
-"""
-Festival Landing Page
-
-
-Save the Date (full width) w/ signup CTA
-
-IMAGE Intro Blurb
-
-Musik in der ganzen Stadt IMAGE
-
-IMAGE  Acitivist blurb
-
-Sign up for updates (full width)
-
----BLOCKS--
-
-choose template
-
-Title cenetered with line below
-Paragraph centered
-Band Friends
-Sponsor logos w/ link
-Program
-Image Grid
-
-Footer
-
-
-
-"""
-
-
 @register_snippet
 class GigType(models.Model):
     """

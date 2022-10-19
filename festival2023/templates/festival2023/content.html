@@ -1,0 +1,4 @@
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation static  app_tags %}
+{% for block in self.body %}
+    {% include_block block with block_id=block.id|replace_dashes %}
+{% endfor %}

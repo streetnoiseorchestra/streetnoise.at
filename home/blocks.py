@@ -84,11 +84,60 @@ class ButtonBlock(blocks.StructBlock):
         template = "home/blocks/button.html"
 
 
-class ImageGridBlock(blocks.StructBlock):
-    image = ImageChooserBlock()
+class AttributableImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True)
     caption = blocks.TextBlock(required=False)
+    attribution = blocks.TextBlock(required=False, verbose_name="Photographer Credit")
+    attribution_url = blocks.URLBlock(required=False, vervose_name="Photographer URL")
+
+    class Meta:
+        icon = "image"
+        label = "Image with Attribution"
+
+
+class ImageGridBlock(blocks.StructBlock):
+    images = blocks.ListBlock(
+        AttributableImageBlock(),
+        template="home/blocks/image_grid.html",
+        icon="image",
+    )
 
     class Meta:
         admin_text = "Warning: Works best with images with 4x3 ratio."
         template = "home/blocks/image_grid.html"
         icon = "image"
+        label = "Image Grid"
+
+
+class ParagraphImageBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(required=True, max_length=255)
+    image = ImageChooserBlock(required=True, group="Image")
+
+    image_alignment = blocks.ChoiceBlock(
+        required=True,
+        default="left",
+        group="Image",
+        choices=[
+            ("", "Select Image alignment"),
+            ("left", "Image Left"),
+            ("right", "Image Right"),
+        ],
+    )
+    body = blocks.RichTextBlock(
+        required=True,
+        features=[
+            "bold",
+            "italic",
+            "strikethrough",
+            "ol",
+            "ul",
+            "hr",
+            "link",
+            "document-link",
+            "blockquote",
+        ],
+    )
+
+    class Meta:
+        template = "home/blocks/paragraph_image_block.html"
+        label = "Paragraph + Image"

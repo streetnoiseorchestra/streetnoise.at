@@ -8,5 +8,12 @@ secrets
 *.dump
 *.sql
 */settings/local.py
-static/
 *.pyc
+/static
+
+streetnoise/static/*
+!streetnoise/static/**/
+streetnoise/static/img
+streetnoise/static/css/*
+!streetnoise/static/css/**/
+!streetnoise/static/css/*.css

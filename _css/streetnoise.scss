@@ -64,13 +64,11 @@ h1, h2, h3, h4 {
   height: auto;
 }
 
-/*
-.hero-header-strafiato {
+.hero-header-strafiato2019 {
   @extend .hero;
   background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
   background-size: cover;
 }
-*/
 .hero-header {
   @extend .hero;
   background: palette(orange, "base") url('../img/background-optimized-2020.jpg') no-repeat local center center;
@@ -829,4 +827,3 @@ $transition-duration: 0.3s;
   margin: 1rem;
   border-radius: 9px;
 }
-

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+  <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700|Permanent+Marker|Sedgwick+Ave+Display"
+      rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
+  <link rel="stylesheet" href="{% static 'css/festival2023.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
+  <link rel="preload" href="{% static 'fonts/feltnoisy-webfont.woff2' %}" as="font">
+
+  <meta property="og:site_name" content="Street Noise Orchestra"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
+  <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+  <meta property="twitter:site" content="@StreetNoiseIBK"/>
+  <meta property="twitter:creator" content="@StreetNoiseIBK"/>
+  <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}"/>
+  <meta name="twitter:card" content="summary" />
+  {% if self.feed_image %}
+  {% image self.feed_image width-1200 as img %}
+  <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ img.url }}"/>
+  <meta property="og:image:width" content="{{ img.width }}" />
+  <meta property="og:image:height" content="{{ img.height }}" />
+  {% endif %}
+
+  <script type="application/ld+json">
+   {
+     "@context": "http://schema.org",
+     "@type": "Festival",
+     "name": "Strafiato 2023",
+     "description": "Urban Brass Festival",
+     "startDate": "2023-07-07",
+     "endDate": "2023-07-11",
+     "eventStatus": "EventScheduled",
+     "funder": [
+       {"@type": "GovernmentService",
+        "name": "Stand Innsbruck",
+         "url": "https://www.innsbruck.gv.at/"
+       },
+
+       {"@type": "GovernmentService",
+        "name": "Land Tirol",
+         "url": "https://www.tirol.gv.at/"
+       },
+
+       {"@type": "LocalBusiness",
+        "name": "IKB",
+         "url": "https://www.ikb.at/"
+       },
+       {"@type": "LocalBusiness",
+        "name": "Treibhaus",
+         "url": "https://www.treibhaus.at/"
+       }
+
+     ],
+     "inLanguage": [
+       {
+         "@type": "Language",
+         "name": "English",
+         "alternateName": "en"
+       },
+       {
+       "@type": "Language",
+       "name": "Deutsch",
+       "alternateName": "de"
+     }
+     ],
+     "isAccessibleForFree": true,
+     "performer": [{
+       "@type": "MusicGroup",
+       "name": "Street Noise Orchestra",
+       "mainEntityOfPage": "https://streetnoise.at"
+     }],
+     "organizer": {
+       "@type": "MusicGroup",
+       "name": "Street Noise Orchestra",
+       "mainEntityOfPage": "https://streetnoise.at"
+     },
+     "keywords": ["brass band", "music festival", "innsbruck"],
+     "typicalAgeRange": "0-99"
+   }
+  </script>
+
+
+</head>
+<body class=""
+_disabled="
+             on keyup if the event's key is 'Escape'
+             remove .is-active from .modal
+             trigger keyup
+             end
+            ">
+
+{% include "festival2023/save_the_date_header.html" %}
+
+{% include 'festival2023/content.html' %}
+<section class="hero is-medium festival-newsletter">
+<div class="hero-body">
+<div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                  <p class="title has-text-black">SIGN UP FOR UPDATES</p>
+                    <p class="subtitle is-4 has-text-black">Be the first to know about Lineup and Program releases.</p>
+                    {% comment %}
+                    <p class="has-text-black">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
+                    {% endcomment %}
+                </div>
+                {% include "home/newsletter_subscribe_form.html"  with dark=False %}
+            </div>
+
+        </div>
+
+  </div>
+</section>
+
+{% include 'home/footer.html' %}
+
+<script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
+</body>
+</html>

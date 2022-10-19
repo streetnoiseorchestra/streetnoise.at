@@ -1,48 +1,54 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 
-{% with classname="{{ self.id }}_modal" %}
-    <div class="modal {{ classname }}"
-         _="on open(image_url, caption)
-                add .is-active to me
-                set [@src] of <img/> in me to image_url
-                set [@alt] of <img/> in me to caption
-                set innerText of .caption in me to caption
-            end
-            on close or keyup[key is 'Escape'] from <body/>
-                remove .is-active from me
-            end
-           "
-    >
-    <div class="modal-background"></div>
-    <div class="modal-content is-huge ">
-        <p class="image is-4by3">
-            <img src="" alt="">
-        </p>
-        <p class="caption"></p>
+<section class="section">
+    <div class="container">
+            <div class="modal modal_{{ block_id }}"
+                 _="on open(image_url, caption)
+                        add .is-active to me
+                        set [@src] of <img/> in me to image_url
+                        set [@alt] of <img/> in me to caption
+                        set innerText of .caption in me to caption
+                        end
+                        on close or keyup[key is 'Escape'] from <body/>
+                        remove .is-active from me
+                        set [@src] of <img/> in me to ''
+                        set [@alt] of <img/> in me to ''
+                        set innerText of .caption in me to 'loading...'
+                        end
+                        "
+            >
+                <div class="modal-background"></div>
+                <div class="modal-content is-huge ">
+                    <p class="image is-4by3">
+                        <img src="" alt="">
+                    </p>
+                    <p class="caption">loading...</p>
 
-    </div>
-    <button _="on click send close to .{{ classname  }}"
-            class="modal-close is-large" aria-label="close"></button>
-</div>
-<div class="columns is-multiline">
-{% for block in self %}
-    <div class="column is-one-quarter-desktop is-half-tablet">
-        <div class="card is-clickable">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    {% image block.image fill-800x600 format-webp as small  %}
-                    {% image block.image fill-1200x900 format-webp as medium  %}
-                    {% image block.image fill-2000x1500 format-webp as large  %}
-                    <img src="{{ medium.url  }}"
-                         srcset="{{ small.url }} 800w, {{ medium.url }} 1200w, {{ large.url }} 2000w"
-                         alt="{{ block.caption }}"
-                         _="on click send open(image_url:'{{ large.full_url }}', caption:'{{ block.caption }}') to .{{ classname }}"
-                    >
-                </figure>
+                </div>
+                <button _="on click send close to .modal_{{ block_id  }}"
+                        class="modal-close is-large" aria-label="close"></button>
             </div>
-        </div>
-    </div>
-{% endfor %}
-</div>
+            <div class="columns is-multiline">
+                {% for block in self.images %}
+                    <div class="column is-one-quarter-desktop is-half-tablet">
+                        <div class="card is-clickable">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    {% image block.image fill-800x600 format-webp as small  %}
+                                    {% image block.image fill-1200x900 format-webp as medium  %}
+                                    {% image block.image fill-2000x1500 format-webp as large  %}
+                                    {% image block.image original format-webp as original  %}
+                                    <img src="{{ medium.url  }}"
+                                         srcset="{{ small.url }} 800w, {{ medium.url }} 1200w, {{ large.url }} 2000w"
+                                         alt="{{ block.caption }}"
+                                         _="on click send open(image_url:'{{ original.url }}', caption:'{{ block.caption }}') to .modal_{{block_id}}"
+                                    >
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
-{% endwith %}
+    </div>
+</section>
