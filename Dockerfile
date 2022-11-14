@@ -16,12 +16,10 @@ RUN set -e; \
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV production
 
-COPY ./requirements.txt /code/requirements.txt
 RUN pip install --upgrade pip
+COPY ./requirements.txt /code/requirements.txt
 # Install any needed packages specified in requirements.txt
-RUN pip install -r /code/requirements.txt
-RUN pip install gunicorn
-
+RUN set -ex; pip install -r /code/requirements.txt; pip install gunicorn
 
 # Copy the current directory contents into the container at /code/
 COPY . /code/

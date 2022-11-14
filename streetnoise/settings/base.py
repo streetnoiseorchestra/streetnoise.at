@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.nextcloud",
+    "allauth.socialaccount.providers.keycloak",
     "home",
     "blog",
     "gigs",
@@ -210,11 +210,16 @@ ACCOUNT_USERNAME_BLACKLIST = ["admin", "god"]
 ACCOUNT_USERNAME_MIN_LENGTH = 2
 ACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOAccountAdapter"
 SOCIALACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOSocialAccountAdapter"
+SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_PROVIDERS = {
     # "nextcloud": {
     # "SERVER": "https://data.streetnoise.at",
     # },
-    "keycloak": {"KEYCLOAK_URL": "https://id.streetnoise.at/", "KEYCLOAK_REALM": "sno"},
+    "keycloak": {
+        "KEYCLOAK_URL": "https://id.streetnoise.at/",
+        "KEYCLOAK_REALM": "sno",
+        "VERIFIED_EMAIL": True,
+    },
 }
 
 # Extra Wagtail config to disable password usage (SSO should be the only way in)
