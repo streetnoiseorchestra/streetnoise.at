@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 DOCKER ?= podman
-DC ?= docker-compose
+DC ?= docker compose
 DC_ARGS ?=
 DC_BUILD_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml

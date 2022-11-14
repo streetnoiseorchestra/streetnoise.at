@@ -211,9 +211,10 @@ ACCOUNT_USERNAME_MIN_LENGTH = 2
 ACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOAccountAdapter"
 SOCIALACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOSocialAccountAdapter"
 SOCIALACCOUNT_PROVIDERS = {
-    "nextcloud": {
-        "SERVER": "https://data.streetnoise.at",
-    }
+    # "nextcloud": {
+    # "SERVER": "https://data.streetnoise.at",
+    # },
+    "keycloak": {"KEYCLOAK_URL": "https://id.streetnoise.at/", "KEYCLOAK_REALM": "sno"},
 }
 
 # Extra Wagtail config to disable password usage (SSO should be the only way in)
