@@ -92,8 +92,8 @@ class BlogIndexPage(BlogIndexPageAbstract):
 
         from home.models import HomePage2
 
-        home_page = HomePage2.objects.first()
-        context["home_page"] = home_page
+        homepage = HomePage2.objects.first()
+        context["homepage"] = homepage
 
         return context
 
@@ -166,8 +166,8 @@ class BlogPage(BlogPageAbstract):
 
         from home.models import HomePage2
 
-        home_page = HomePage2.objects.first()
-        context["home_page"] = home_page
+        homepage = HomePage2.objects.first()
+        context["homepage"] = homepage
         return context
 
     parent_page_types = ["blog.BlogIndexPage"]

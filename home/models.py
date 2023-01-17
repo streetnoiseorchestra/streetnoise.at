@@ -78,7 +78,7 @@ class BandFriend(models.Model):
 
 
 class HomePageBandFriend(Orderable, BandFriend):
-    home_page = ParentalKey(
+    homepage = ParentalKey(
         "FestivalPage", related_name="festival_bands", on_delete=models.CASCADE
     )
     band_friend = models.ForeignKey(
@@ -250,7 +250,7 @@ class HomePage2(Page):
 
         context["blogs"] = self.blogs()
         context["gigs"] = self.gigs()
-        context["home_page"] = self
+        context["homepage"] = self
         return context
 
     def gigs(self):

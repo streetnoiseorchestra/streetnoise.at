@@ -214,5 +214,5 @@ class GigPage(Page):
 
         context = super().get_context(request, *args, **kwargs)
         context["blog_index_page"] = BlogIndexPage.objects.first()
-        context["home_page"] = HomePage2.objects.first()
+        context["homepage"] = HomePage2.objects.first()
         return context
