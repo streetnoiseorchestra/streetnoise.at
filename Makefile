@@ -59,6 +59,12 @@ prod-upgrade:
 	$(MAKE) prod-migrate
 	$(DC_PROD) up -d
 
+prod-upgrade-quick:
+	$(DC_PROD) pull
+	$(DC_PROD) build $(DC_BUILD_ARGS)
+	$(DC_PROD) stop cms
+	$(DC_PROD) up -d
+
 prod-dump-db:
 	$(DC_PROD) exec db pg_dump -U streetnoise_cms streetnoise_cms > ~/$(shell date +"%Y-%m-%d")-streetnoise_cms.dump
 
