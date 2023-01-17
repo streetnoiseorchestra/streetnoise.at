@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation plausible %}
+{% load static i18n wagtailcore_tags  wagtailimages_tags  plausible %}
 <html>
     <head>
         <title>{{ page.title }}</title>
         {% include "home/header_assets.html" %}
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
         <meta property="og:site_name" content="Street Noise Orchestra"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
