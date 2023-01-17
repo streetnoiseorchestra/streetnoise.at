@@ -30,7 +30,6 @@
     {% if COMMENTS_APP == 'django_comments_xtd' %}
         {% include 'blog/blog_post_comments_xtd.html' with blog=self %}
     {% endif %}
-{% endblock %}
 
 <section class="section">
     <div class="container">
@@ -41,3 +40,6 @@
     </div>
 </section>
 {% include 'home/home_cta.html' %}
+
+
+{% endblock %}
