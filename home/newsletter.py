@@ -44,7 +44,7 @@ def first_opt_in(
     name, email, consented_at, consented_from, confirm_url_base, withdraw_url_base
 ):
 
-    subscriber = NewsletterSubscriber.objects.get_or_create(email=email)
+    subscriber, was_created = NewsletterSubscriber.objects.get_or_create(email=email)
 
     subscriber.name = name
     subscriber.first_optin_at = consented_at
