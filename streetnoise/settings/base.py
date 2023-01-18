@@ -189,7 +189,7 @@ COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 COMPRESS_CACHEABLE_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = (
-    "Street Noise Orchestra <website@notifications.streetnoise.at>"
+    "StreetNoise Orchestra <website@notifications.streetnoise.at>"
 )
 DEFAULT_FROM_EMAIL = WAGTAILADMIN_NOTIFICATION_FROM_EMAIL
 

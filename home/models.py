@@ -621,7 +621,7 @@ def send_form_mail(form):
         **form.cleaned_data
     ).strip()
 
-    sender = "Street Noise Orchestra <website@notifications.streetnoise.at>"
+    sender = "StreetNoise Orchestra <website@notifications.streetnoise.at>"
     recipients = settings.CONTACT_FORM_RECIPIENTS
 
     subject = "Gig Request from {contact_name} @ {contact_org}".format(
