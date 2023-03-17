@@ -101,28 +101,11 @@ _disabled="
              trigger keyup
              end
             ">
+{% include 'home/navigation.html' %}
 
 {% include "festival2023/save_the_date_header.html" %}
 
 {% include 'festival2023/content.html' %}
-<section class="hero is-medium festival-newsletter">
-<div class="hero-body">
-<div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-half">
-                  <p class="title has-text-black">SIGN UP FOR UPDATES</p>
-                    <p class="subtitle is-4 has-text-black">Be the first to know about Lineup and Program releases.</p>
-                    {% comment %}
-                    <p class="has-text-black">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
-                    {% endcomment %}
-                </div>
-                {% include "home/newsletter_subscribe_form.html"  with dark=False %}
-            </div>
-
-        </div>
-
-  </div>
-</section>
 
 {% include 'home/footer.html' %}
 

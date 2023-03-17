@@ -6,27 +6,6 @@
   {% include "home/header_assets.html" %}
 </head>
 <body>
-<nav class="navbar is-transparent">
-  <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-      </a>
-    </div>
-    <div class="navbar-menu" id="navMenu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <p class="buttons">
-            <a class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close"
-               href="https://streetnoise.at">
-              <span class="icon is-small">{% icon_x_mark %}</span>
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
 {% block content %}{% endblock content %}
 <script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
 {% plausible %}

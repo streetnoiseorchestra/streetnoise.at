@@ -73,6 +73,26 @@ class FooterCTABlock(blocks.StructBlock):
         template = "home/blocks/footer_cta.html"
 
 
+class NewsletterSignupBlock(blocks.StructBlock):
+    cta_title = blocks.CharBlock(blank=True, verbose_name="Title")
+    cta_subtitle = blocks.CharBlock(blank=True, verbose_name="Subtitle")
+    newsletter_type = blocks.ChoiceBlock(
+        required=True,
+        default="generic",
+        choices=[
+            ("", "Select Type of Newsletter"),
+            ("generic-newsletter", "Generic"),
+            ("festival-newsletter", "Festival (Green)"),
+        ],
+    )
+
+    class Meta:
+        icon = "placeholder"
+        label = "Newsletter Signup"
+        admin_text = "The Newsletter signup form at the bottom above the footer"
+        template = "home/blocks/newsletter_signup.html"
+
+
 class ButtonBlock(blocks.StructBlock):
     button_text = blocks.CharBlock(blank=True)
     button_url = blocks.URLBlock(label="Button link")

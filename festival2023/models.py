@@ -32,7 +32,13 @@ from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
-from home.blocks import ButtonBlock, ImageGridBlock, ParagraphImageBlock
+from home.models import HomePage2
+from home.blocks import (
+    ButtonBlock,
+    ImageGridBlock,
+    ParagraphImageBlock,
+    NewsletterSignupBlock,
+)
 from streetnoise.models import Page
 
 from .blocks import (
@@ -91,6 +97,7 @@ class FestivalPage2023(Page):
             ("lineup", LineupBlock()),
             ("funders", FundersBlock()),
             ("program", ProgramBlock()),
+            ("newsletter", NewsletterSignupBlock()),
         ],
         null=True,
         blank=True,
@@ -106,3 +113,9 @@ class FestivalPage2023(Page):
             return self.page_template
         else:
             return "festival2023/homepage.html"
+
+    def get_context(self, request):
+        context = super(FestivalPage2023, self).get_context(request)
+        homepage = HomePage2.objects.first()
+        context["homepage"] = homepage
+        return context

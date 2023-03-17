@@ -31,6 +31,9 @@ from home.blocks import (
     ImageTileBlock,
     FooterCTABlock,
     ImageGridBlock,
+    ButtonBlock,
+    ParagraphImageBlock,
+    NewsletterSignupBlock,
 )
 
 
@@ -81,6 +84,7 @@ class HomePageBandFriend(Orderable, BandFriend):
     homepage = ParentalKey(
         "FestivalPage", related_name="festival_bands", on_delete=models.CASCADE
     )
+
     band_friend = models.ForeignKey(
         "home.BandFriend", on_delete=models.CASCADE, related_name="band_friends"
     )
@@ -642,6 +646,9 @@ class GenericPage(Page):
             ("embed", EmbedBlock()),
             ("imagetile", ImageTileBlock()),
             ("footercta", FooterCTABlock()),
+            ("newsletter_signup", NewsletterSignupBlock()),
+            ("image_grid", ImageGridBlock()),
+            ("paragraph_image", ParagraphImageBlock()),
         ],
         null=True,
         blank=True,
@@ -678,6 +685,12 @@ class GenericPage(Page):
             "Call To Action + Footer",
         ),
     ]
+
+    def get_context(self, request):
+        context = super(GenericPage, self).get_context(request)
+        homepage = HomePage2.objects.first()
+        context["homepage"] = homepage
+        return context
 
 
 class DonationPage(Page):

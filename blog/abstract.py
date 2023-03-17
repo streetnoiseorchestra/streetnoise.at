@@ -27,7 +27,14 @@ from .blocks import ImageCarouselBlock
 
 from streetnoise.models import Page
 
-from home.blocks import ButtonBlock
+from home.blocks import (
+    ButtonBlock,
+    FooterCTABlock,
+    ImageGridBlock,
+    ButtonBlock,
+    ParagraphImageBlock,
+    NewsletterSignupBlock,
+)
 
 import datetime
 
@@ -179,6 +186,9 @@ class BlogPageAbstract(Page):
                 ),
             ),
             ("button", ButtonBlock()),
+            ("newsletter_signup", NewsletterSignupBlock()),
+            ("image_grid", ImageGridBlock()),
+            ("paragraph_image", ParagraphImageBlock()),
         ],
         null=True,
         blank=True,

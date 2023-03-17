@@ -1,0 +1,32 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtail_modeltranslation  %}
+{% if self.newsletter_type == "festival-newsletter"  %}
+<section class="hero is-medium {{ self.newsletter_type }}">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                    <p class="title has-text-black">{{ self.cta_title }}</p>
+                    <p class="subtitle is-4 has-text-black">{{ self.cta_subtitle }}</p>
+                    {% comment %}
+                    <p class="has-text-black">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
+                    {% endcomment %}
+                </div>
+                {% include "home/newsletter_subscribe_form.html"  with dark=False %}
+            </div>
+        </div>
+    </div>
+</section>
+{% elif self.newsletter_type == "generic-newsletter"  %}
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                    <p class="title has-text-black">{{ self.cta_title }}</p>
+                    <p class="subtitle is-4 has-text-black">{{ self.cta_subtitle }}</p>
+                    {% comment %}
+                    <p class="has-text-black">{% trans "You'll receive one email every couple weeks about upcoming gigs and news posts. You can unsubscribe at anytime." %}</p>
+                    {% endcomment %}
+                </div>
+                {% include "home/newsletter_subscribe_form.html"  with dark=False %}
+            </div>
+        </div>
+{% endif %}

@@ -3,9 +3,21 @@
     {% include "gigs/gig_schema_tag.html" %}
     {% if gig.feed_image %}
         <div class="card-image">
+            {% if with_link %}
+                {% if gig.body2 %}
+                    <a href="{% pageurl gig %}">
+                {% elif gig.link %}
+                        <a href="{{ gig.link }}">
+                {% else %}
+                            <a>
+                {% endif %}
+            {% endif %}
             <figure class="image is-2by1">
                 {% image gig.feed_image fill-800x400 %}
             </figure>
+            {% if with_link %}
+            </a>
+            {% endif %}
         </div>
     {% else %}
         <div class="card-image placeholder has-text-centered">
@@ -15,7 +27,21 @@
     <div class="card-content">
         <div class="media">
             <div class="media-content">
-                <p class="title is-3">{{ gig.title }}</p>
+                <p class="title is-3">
+                    {% if with_link %}
+                        {% if gig.body2 %}
+                            <a href="{% pageurl gig %}">
+                        {% elif gig.link %}
+                                <a href="{{ gig.link }}">
+                        {% else %}
+                                    <a>
+                        {% endif %}
+                    {% endif %}
+                    {{ gig.title }}
+                    {% if with_link %}
+                                    </a>
+                    {% endif %}
+                </p>
                 <ul>
                     <li class="is-6">
                         {% if gig.partner %}
