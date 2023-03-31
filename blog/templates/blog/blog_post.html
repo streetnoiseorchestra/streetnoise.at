@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static app_tags %}
 {% if blog.extra_css %}
 <style type="text/css">
 {{ blog.extra_css }}
@@ -66,12 +66,16 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-one-quarter is-half">
-                    <div class="news-body content">
+                    <div class="news-body">
                         {% if block.block_type == 'heading' %}
-                        <h2>{{ block.value }}</h2>
-                        {% else %}
+                        <h2 class="content">{{ block.value }}</h2>
+                        {% elif block.block_type == 'imagetile2' %}
                         <section class="block-{{ block.block_type }}">
-                            {% include_block block %}
+                            {% include_block block with block_id=block.id|replace_dashes %}
+                        </section>
+                        {% else %}
+                        <section class="block-{{ block.block_type }} content">
+                            {% include_block block with block_id=block.id|replace_dashes %}
                         </section>
                         {% endif %}
                     </div>

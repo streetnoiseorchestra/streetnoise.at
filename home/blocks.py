@@ -51,13 +51,6 @@ class InfoItemBlock(blocks.StructBlock):
         template = "home/blocks/info_item.html"
 
 
-class ImageTileBlock(blocks.StreamBlock):
-    image = ImageChooserBlock()
-
-    class Meta:
-        template = "home/blocks/image_tile.html"
-
-
 class FooterCTABlock(blocks.StructBlock):
     cta_title = blocks.CharBlock(blank=True, verbose_name="CTA Title")
     cta_subtitle = blocks.CharBlock(blank=True, verbose_name="CTA Subtitle")
@@ -113,6 +106,58 @@ class AttributableImageBlock(blocks.StructBlock):
     class Meta:
         icon = "image"
         label = "Image with Attribution"
+
+
+class ImageTileBlock(blocks.StreamBlock):
+    image = ImageChooserBlock()
+
+    class Meta:
+        template = "home/blocks/image_tile.html"
+        icon = "image"
+        label = "Image Tile (old)"
+
+
+class ImageTileBlock2Value(blocks.StructValue):
+    def image_class(self):
+        aspect_ratio = self.get("aspect_ratio")
+        if aspect_ratio == "1:1":
+            return "is-1by1"
+        if aspect_ratio == "1:1 sm":
+            return "is-128x128 p-1"
+        elif aspect_ratio == "3:2":
+            return "is-3by2"
+        elif aspect_ratio == "4:3":
+            return "is-4by3"
+        elif aspect_ratio == "16:9":
+            return "is-16by9"
+        return ""
+
+
+class ImageTileBlock2(blocks.StructBlock):
+    class Meta:
+        admin_text = "Warning: All images should have the same aspect ratio"
+        template = "home/blocks/image_tile2.html"
+        icon = "image"
+        label = "Image Tile (new)"
+        value_class = ImageTileBlock2Value
+
+    aspect_ratio = blocks.ChoiceBlock(
+        required=True,
+        default="3:2",
+        choices=[
+            ("", "Select Aspect Ratio of Images"),
+            ("1:1", "1:1 Square"),
+            ("1:1 sm", "1:1 Square (smaller)"),
+            ("3:2", "3:2"),
+            ("4:3", "4:3 (traditional)"),
+            ("16:9", "16:9 (widescreen)"),
+        ],
+    )
+
+    images = blocks.ListBlock(
+        AttributableImageBlock(),
+        icon="image",
+    )
 
 
 class ImageGridBlock(blocks.StructBlock):

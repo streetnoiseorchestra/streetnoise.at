@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail
+from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.shortcuts import render
 from datetime import date
@@ -29,6 +30,7 @@ from home.blocks import (
     MerchItemBlock,
     InfoItemBlock,
     ImageTileBlock,
+    ImageTileBlock2,
     FooterCTABlock,
     ImageGridBlock,
     ButtonBlock,
@@ -639,12 +641,42 @@ class GenericPage(Page):
     content = StreamField(
         [
             ("heading", blocks.CharBlock()),
-            ("paragraph", blocks.RichTextBlock()),
-            ("image", ImageChooserBlock()),
+            (
+                "paragraph",
+                blocks.RichTextBlock(
+                    features=[
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "h5",
+                        "bold",
+                        "italic",
+                        "strikethrough",
+                        "ol",
+                        "ul",
+                        "hr",
+                        "link",
+                        "document-link",
+                        "image",
+                        "embed",
+                        "blockquote",
+                    ]
+                ),
+            ),
+            ("image", ImageChooserBlock(icon="image")),
             ("rawhtml", blocks.RawHTMLBlock()),
             ("quote", blocks.BlockQuoteBlock()),
-            ("embed", EmbedBlock()),
+            (
+                "embed",
+                EmbedBlock(
+                    icon="media",
+                    label=_("Embed media"),
+                    help_text=_("Paste a link to a video, audio file, instagram, etc."),
+                ),
+            ),
             ("imagetile", ImageTileBlock()),
+            ("imagetile2", ImageTileBlock2()),
             ("footercta", FooterCTABlock()),
             ("newsletter_signup", NewsletterSignupBlock()),
             ("image_grid", ImageGridBlock()),
