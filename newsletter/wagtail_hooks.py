@@ -31,13 +31,9 @@ class SubscriberAdmin(ModelAdmin):
     model = NewsletterSubscriber
     menu_label = "SNOZ. Subscribers"
     menu_icon = "user"
-    list_diplay = (
+    list_display = (
         "email",
         "name",
-        "first_optin_at",
-        "double_optin_at",
-        "consented_from",
-        "consent_withdrawn_at",
         "subscribed",
     )
 
