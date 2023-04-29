@@ -26,48 +26,12 @@
   @extend .noisy-felt;
 }
 
-.hero-header-strafiato_oldXX {
-  .title, .subtitle {
-    @extend .noisy-felt;
-    color: #111;
-  }
-
-  .title {
-    font-size: 2rem;
-    @media screen and (min-width: 1024px) {
-      font-size: 3.5rem;
-    }
-  }
-
-  .subtitle {
-    font-size: 1.5rem;
-    @media screen and (min-width: 1024px) {
-      font-size: 2.5rem;
-    }
-  }
-}
-
 .hero-header-strafiato, .hero-strafiato2023_4 {
   position: relative;
   color: #000;
 }
-.hero-header-strafiato:before, .hero-strafiato2023_4:before {
-  content: "";
-  z-index: -1; // should be below the contents of the container
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-
-  background-repeat: no-repeat;
+.hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
   background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
-  background-position-y: 9%;
-  background-position-x: 51%;
-  @media screen and (min-width: 499px) {
-  background-position-y: 0;
-  }
   @media screen and (min-width: 580px) {
   background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
   }
@@ -76,6 +40,60 @@
   }
   @include desktop {
     background-image: url('../img/strafiato2023/save-the-date-header-concept3.png');
+  }
+}
+.webp {
+  .hero-header-strafiato.actual, .hero-strafiato2023_4.actual {
+    background-image: url('../img/background-optimized.webp');
+  }
+}
+.no-js, .no-webp  {
+  .hero-header-strafiato.actual, .hero-strafiato2023_4.actual {
+    background-image: url('../img/background-optimized.jpg');
+    //background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
+  }
+}
+
+.hero-header-strafiato.actual, .hero-strafiato2023_4.actual {
+  @extend .hero;
+  background-color: palette(orange, "base");
+  background-size: cover;
+
+  .title, .subtitle {
+    font-family: 'noisy-felt', cursive;
+    font-weight: 800;
+    color: #111;
+  }
+
+  .title {
+
+    font-size: 2rem;
+    @media screen and (min-width: 1024px) {
+      font-size: 3.5rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    @media screen and (min-width: 1024px) {
+      font-size: 2.5rem;
+    }
+  }
+  }
+.hero-header-strafiato:before, .hero-strafiato2023_4:before {
+  content: "";
+  z-index: -1; // should be below the contents of the container
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 9%;
+  background-position-x: 51%;
+  @media screen and (min-width: 499px) {
+    background-position-y: 0;
   }
 }
 .hero-header-strafiato, .hero.hero-strafiato2023 {
@@ -95,7 +113,7 @@
     }
   }
   .title {
-    filter: drop-shadow(3px 4px 0px #fdf9e9);
+    filter: drop-shadow(-5px 5px 0px #fdf9e9);
     font-size: 2.1rem;
     @media screen and (min-width: 364px) {
       font-size: 2.6rem;
@@ -112,7 +130,7 @@
   }
   .subtitle {
     font-size: 2.1rem;;
-    filter: drop-shadow(3px 4px 0px #fdf9e9);
+    filter: drop-shadow(-5px 5px 0px #fdf9e9);
     @media screen and (min-width: 364px) {
     font-size: 2.4rem;;
     }
@@ -147,11 +165,22 @@
   background-color: palette(green, "base");
   .item, .label {
     text-align: center;
-    @extend .noisy-felt;
+    color: palette(orange, "dark");
+    //@extend .noisy-felt;
   }
   .item {
+    font-family: 'obelix-pro', sans-serif;
     display: block;
     font-size: 4rem;
+    caret-color: rgb(0, 0, 0);
+    -webkit-text-stroke: 3.92667px rgb(0, 0, 0);
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-shadow: palette(orange, "dark") 2.92271px 2.92271px 0px;
+    line-height: 94px;
 
     .icon-euro {
       width: 2.5rem;
@@ -162,9 +191,22 @@
 
   }
   .label {
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    color: black;
     display: block;
     font-size: 1.5rem;
   }
 
 
+}
+
+.brass-festival-mark {
+  filter: drop-shadow(-5px 5px 0px #fdf9e9);
+}
+
+.date-mark {
+  text-align: center;
+  height: 6rem;
 }

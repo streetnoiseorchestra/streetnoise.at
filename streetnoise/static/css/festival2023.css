@@ -8,7 +8,7 @@
   src: url("../fonts/feltnoisy-webfont.woff2") format("woff2"), url("../fonts/feltnoisy-webfont.woff") format("woff");
   unicode-range: U+000-5FF; /* Latin glyphs */
 }
-.noisy-felt, .number-boxes .item, .number-boxes .label, .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero.hero-strafiato2023 .subtitle, .hero-header-strafiato_oldXX .title, .hero-header-strafiato_oldXX .subtitle, .title {
+.noisy-felt, .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title, .hero.hero-strafiato2023 .subtitle, .hero-strafiato2023.hero-strafiato2023_4.actual .subtitle, .title {
   font-family: "noisy-felt", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -17,29 +17,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.hero-header-strafiato_oldXX .title, .hero-header-strafiato_oldXX .subtitle {
-  color: #111;
-}
-.hero-header-strafiato_oldXX .title {
-  font-size: 2rem;
-}
-@media screen and (min-width: 1024px) {
-  .hero-header-strafiato_oldXX .title {
-    font-size: 3.5rem;
-  }
-}
-.hero-header-strafiato_oldXX .subtitle {
-  font-size: 1.5rem;
-}
-@media screen and (min-width: 1024px) {
-  .hero-header-strafiato_oldXX .subtitle {
-    font-size: 2.5rem;
-  }
-}
-
 .hero-header-strafiato, .hero-strafiato2023_4 {
   position: relative;
   color: #000;
+}
+
+.hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
+  background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
+}
+@media screen and (min-width: 580px) {
+  .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
+    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
+  }
+}
+@media screen and (min-width: 769px), print {
+  .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
+    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1200.png");
+  }
+}
+@media screen and (min-width: 1024px) {
+  .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
+    background-image: url("../img/strafiato2023/save-the-date-header-concept3.png");
+  }
+}
+
+.webp .hero-header-strafiato.actual, .webp .hero-strafiato2023_4.actual {
+  background-image: url("../img/background-optimized.webp");
+}
+
+.no-js .hero-header-strafiato.actual, .no-js .hero-strafiato2023_4.actual, .no-webp .hero-header-strafiato.actual, .no-webp .hero-strafiato2023_4.actual {
+  background-image: url("../img/background-optimized.jpg");
+}
+
+.hero-header-strafiato.actual, .hero-strafiato2023_4.actual {
+  background-color: hsl(39deg, 100%, 50%);
+  background-size: cover;
+}
+.hero-header-strafiato.actual .title, .hero-header-strafiato.actual .subtitle, .hero-strafiato2023_4.actual .title, .hero-strafiato2023_4.actual .subtitle {
+  font-family: "noisy-felt", cursive;
+  font-weight: 800;
+  color: #111;
+}
+.hero-header-strafiato.actual .title, .hero-strafiato2023_4.actual .title {
+  font-size: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  .hero-header-strafiato.actual .title, .hero-strafiato2023_4.actual .title {
+    font-size: 3.5rem;
+  }
+}
+.hero-header-strafiato.actual .subtitle, .hero-strafiato2023_4.actual .subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+@media screen and (min-width: 1024px) {
+  .hero-header-strafiato.actual .subtitle, .hero-strafiato2023_4.actual .subtitle {
+    font-size: 2.5rem;
+  }
 }
 
 .hero-header-strafiato:before, .hero-strafiato2023_4:before {
@@ -51,7 +85,6 @@
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
   background-position-y: 9%;
   background-position-x: 51%;
 }
@@ -60,84 +93,69 @@
     background-position-y: 0;
   }
 }
-@media screen and (min-width: 580px) {
-  .hero-header-strafiato:before, .hero-strafiato2023_4:before {
-    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
-  }
-}
-@media screen and (min-width: 769px), print {
-  .hero-header-strafiato:before, .hero-strafiato2023_4:before {
-    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1200.png");
-  }
-}
-@media screen and (min-width: 1024px) {
-  .hero-header-strafiato:before, .hero-strafiato2023_4:before {
-    background-image: url("../img/strafiato2023/save-the-date-header-concept3.png");
-  }
-}
 
-.hero-header-strafiato, .hero.hero-strafiato2023 {
+.hero-header-strafiato, .hero.hero-strafiato2023, .hero-strafiato2023.hero-header-strafiato.actual, .hero-strafiato2023.hero-strafiato2023_4.actual {
   color: #1d1d1b;
 }
 @media screen and (min-width: 769px), print {
-  .hero-header-strafiato .hero-body, .hero.hero-strafiato2023 .hero-body {
+  .hero-header-strafiato .hero-body, .hero.hero-strafiato2023 .hero-body, .hero-strafiato2023.hero-strafiato2023_4.actual .hero-body {
     padding: 3rem 3rem;
   }
 }
-.hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero.hero-strafiato2023 .subtitle {
+.hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title, .hero.hero-strafiato2023 .subtitle, .hero-strafiato2023.hero-strafiato2023_4.actual .subtitle {
   color: inherit;
   transform: perspective(133px) rotateX(340deg);
 }
 @media screen and (min-width: 769px), print {
-  .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero.hero-strafiato2023 .subtitle {
+  .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title, .hero.hero-strafiato2023 .subtitle, .hero-strafiato2023.hero-strafiato2023_4.actual .subtitle {
     transform: perspective(400px) rotateX(340deg);
   }
 }
-.hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
-  filter: drop-shadow(3px 4px 0px #fdf9e9);
+.hero-header-strafiato .title, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-header-strafiato.actual .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title {
+  filter: drop-shadow(-5px 5px 0px #fdf9e9);
   font-size: 2.1rem;
 }
 @media screen and (min-width: 364px) {
-  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
+  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-header-strafiato.actual .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title {
     font-size: 2.6rem;
   }
 }
 @media screen and (min-width: 388px) {
-  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
+  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-header-strafiato.actual .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title {
     font-size: 2.8rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
+  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-header-strafiato.actual .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title {
     font-size: 4rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title {
+  .hero-header-strafiato .title, .hero.hero-strafiato2023 .title, .hero-strafiato2023.hero-header-strafiato.actual .title, .hero-strafiato2023.hero-strafiato2023_4.actual .title {
     font-size: 5rem;
   }
 }
-.hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
+.hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle, .hero-strafiato2023.hero-header-strafiato.actual .subtitle, .hero-strafiato2023.hero-strafiato2023_4.actual .subtitle {
   font-size: 2.1rem;
-  filter: drop-shadow(3px 4px 0px #fdf9e9);
+  filter: drop-shadow(-5px 5px 0px #fdf9e9);
 }
 @media screen and (min-width: 364px) {
-  .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
+  .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle, .hero-strafiato2023.hero-header-strafiato.actual .subtitle, .hero-strafiato2023.hero-strafiato2023_4.actual .subtitle {
     font-size: 2.4rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle {
+  .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .subtitle, .hero-strafiato2023.hero-header-strafiato.actual .subtitle, .hero-strafiato2023.hero-strafiato2023_4.actual .subtitle {
     font-size: 4.5rem;
   }
 }
-.hero-header-strafiato .logo-type-container .logo-type, .hero.hero-strafiato2023 .logo-type-container .logo-type {
+.hero-header-strafiato .logo-type-container .logo-type, .hero.hero-strafiato2023 .logo-type-container .logo-type, .hero-strafiato2023.hero-strafiato2023_4.actual .logo-type-container .logo-type {
   height: 18rem;
   filter: drop-shadow(3px 5px 0px #fdf9e9);
   padding: 0 1rem;
 }
 @media screen and (min-width: 769px), print {
-  .hero-header-strafiato .logo-type-container .logo-type, .hero.hero-strafiato2023 .logo-type-container .logo-type {
+  .hero-header-strafiato .logo-type-container .logo-type, .hero.hero-strafiato2023 .logo-type-container .logo-type, .hero-strafiato2023.hero-strafiato2023_4.actual .logo-type-container .logo-type {
     padding: 0 0;
   }
 }
@@ -158,10 +176,21 @@
 }
 .number-boxes .item, .number-boxes .label {
   text-align: center;
+  color: hsl(35deg, 100%, 46%);
 }
 .number-boxes .item {
+  font-family: "obelix-pro", sans-serif;
   display: block;
   font-size: 4rem;
+  caret-color: rgb(0, 0, 0);
+  -webkit-text-stroke: 3.92667px rgb(0, 0, 0);
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  text-shadow: hsl(35deg, 100%, 46%) 2.92271px 2.92271px 0px;
+  line-height: 94px;
 }
 .number-boxes .item .icon-euro {
   width: 2.5rem;
@@ -169,8 +198,21 @@
   margin-left: -1rem;
 }
 .number-boxes .label {
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  color: black;
   display: block;
   font-size: 1.5rem;
+}
+
+.brass-festival-mark {
+  filter: drop-shadow(-5px 5px 0px #fdf9e9);
+}
+
+.date-mark {
+  text-align: center;
+  height: 6rem;
 }
 
 /*# sourceMappingURL=festival2023.css.map */

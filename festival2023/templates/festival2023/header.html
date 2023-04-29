@@ -1,0 +1,50 @@
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
+<section class="hero is-large hero-strafiato2023 hero-strafiato2023_4 actual">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-gapless is-multiline">
+                <div class="column is-full">
+                    <h1 class="title has-text-centered has-text-weight-bold">
+                        Streetnoise Orchestra
+                    </h1>
+                </div>
+
+                <div class="column is-full">
+                    <h2 class="subtitle has-text-centered has-text-weight-bold">
+                        presents
+                    </h2>
+                </div>
+            </div>
+            <div class="container has-text-centered-desktop">
+                <picture>
+                    <source type="image/webp" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.webp' %}">
+                    <source type="image/png" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}">
+                    <img class="logo-type" src="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}" alt="Strafiato 2023">
+                </picture>
+            </div>
+
+            <div class="columns is-gapless is-multiline  is-centered">
+                <div class="column is-half has-text-centered">
+
+                <picture>
+                    <source type="image/webp" srcset="{% static 'img/logo-mark-600w-optimized.webp' %}">
+                    <source type="image/png" srcset="{% static 'img/logo-mark-600w-optimized.png' %}">
+                    <img class="logo-mark" src="{% static 'img/logo-mark-600w-optimized.png' %}" alt="Strafiato 2023">
+                </picture>
+                </div>
+                <div class="column is-full ">
+                <picture>
+                    <source type="image/webp" srcset="{% static 'img/urban-brass-festival.webp' %}">
+                    <source type="image/png" srcset="{% static 'img/urban-brass-festival.png' %}">
+                    <img class="brass-festival-mark" src="{% static 'img/urban-brass-festival.png' %}" alt="Urban Brass Festival">
+                </picture>
+                </div>
+                <div class="column is-full date-mark">
+                    <img class="date-mark" src="{% static 'img/strafiato2023/date-mark-optimized.svg' %%}">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

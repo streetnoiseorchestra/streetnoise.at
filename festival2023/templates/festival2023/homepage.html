@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
-<html>
+<html class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,12 +103,14 @@ _disabled="
             ">
 {% include 'home/navigation.html' %}
 
-{% include "festival2023/save_the_date_header.html" %}
+{# {% include "festival2023/save_the_date_header.html" %} #}
+{% include "festival2023/header.html" %}
 
 {% include 'festival2023/content.html' %}
 
 {% include 'home/footer.html' %}
 
 <script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
+<script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
 </body>
 </html>
