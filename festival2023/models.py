@@ -98,6 +98,14 @@ class FestivalPage2023(Page):
             ("funders", FundersBlock()),
             ("program", ProgramBlock()),
             ("newsletter", NewsletterSignupBlock()),
+            (
+                "embed",
+                EmbedBlock(
+                    icon="media",
+                    label=_("Embed media"),
+                    help_text=_("Paste a link to a video, audio file, instagram, etc."),
+                ),
+            ),
         ],
         null=True,
         blank=True,
@@ -108,7 +116,7 @@ class FestivalPage2023(Page):
         StreamFieldPanel("body"),
     ]
 
-    def get_template(self, requeist, *args, **kwargs):
+    def get_template(self, request, *args, **kwargs):
         if self.page_template:
             return self.page_template
         else:
