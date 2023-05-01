@@ -1,5 +1,4 @@
 from django.db import models
-from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -99,21 +98,26 @@ class TimelineItemBlock(blocks.StructBlock):
         template = "festival2023/blocks/timeline_item.html"
 
 
-class ProgramBlock(blocks.StructBlock):
-    heading = models.CharField(max_length=100, blank=True)
-    timeline = StreamField(
+class ProgramBlock2(blocks.StructBlock):
+    heading = blocks.CharBlock(label="Program Section Heading")
+
+    timeline = blocks.StreamBlock(
         [
-            ("heading", TimelineHeaderBlock(label="Timeline Heading")),
-            ("item", TimelineItemBlock(label="Timeline Item")),
+            ("heading", TimelineHeaderBlock(label="Timeline Item Name")),
+            ("item", TimelineItemBlock(label="Timeline Item Info")),
         ],
-        null=True,
-        blank=True,
+        label="Program Timeline Items",
     )
-    descriptions = StreamField(
+    descriptions = blocks.StreamBlock(
         [
-            ("heading", blocks.CharBlock(classname="full title")),
-            ("paragraph", blocks.RichTextBlock()),
+            (
+                "heading",
+                blocks.CharBlock(classname="full title", label="Program Item Heading"),
+            ),
+            ("item", blocks.RichTextBlock(label="Program Item Description")),
         ],
-        null=True,
-        blank=True,
+        label="Program Descriptions",
     )
+
+    class Meta:
+        template = "festival2023/blocks/program_block.html"

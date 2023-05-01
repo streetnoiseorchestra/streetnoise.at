@@ -1,12 +1,13 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
 {% if self.performers %}
 <section class="section">
   <div class="container">
-    <h2 class="title has-text-centered title-section caption-text" id="lineup">
+    <h2 class="title is-2 has-text-centered title-section caption-text" id="lineup">
       {{ self.heading  }}
     </h2>
-    <div class="columns is-multiline is-desktop">
+    <div class="columns is-multiline">
       {% for band in self.performers %}
-      <div class="column is-4">
+      <div class="column column center is-half-tablet is-one-third-desktop">
         <!--      Start: Band profile-->
         <div class="tile is-child">
           <div class="card">
@@ -17,7 +18,7 @@
                     {% image band.logo max-256x256 class="is-rounded" %}
                   </figure>
                 </div>
-                <div class="media-content">
+                <div class="">
                   <p class="title is-4">
                     {{ band.name }}
                   </p>
@@ -37,7 +38,6 @@
         </div>
         <!--      End: Band profile-->
       </div>
-      {% endwith %}
       {% empty %}
       <p class="content" >Check back in January 2023 for the full band lineup</p>
       {% endfor %}

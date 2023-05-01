@@ -46,7 +46,7 @@ from .blocks import (
     LineupBlock,
     FundersBlock,
     HeadingParagraphBlock,
-    ProgramBlock,
+    ProgramBlock2,
 )
 
 
@@ -95,8 +95,8 @@ class FestivalPage2023(Page):
             ("image_grid", ImageGridBlock()),
             ("number_boxes", NumberBoxesBlock()),
             ("lineup", LineupBlock()),
-            ("funders", FundersBlock()),
-            ("program", ProgramBlock()),
+            ("funders", FundersBlock(label="Funders & Sponsors")),
+            ("program2", ProgramBlock2(label="Program")),
             ("newsletter", NewsletterSignupBlock()),
             (
                 "embed",

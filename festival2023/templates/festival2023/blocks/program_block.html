@@ -1,7 +1,7 @@
 <section class="hero is-info is-bold festival-program">
     <div class="hero-body">
         <div class="container is-size-5 ">
-            <h1 class="title" id="">{{ self.heading }}</h1>
+            <h2 class="title is-2" id="">{{ self.heading }}</h2>
             <div class="columns is-mobile is-multiline">
                 <div class="column is-two-thirds-mobile is-half-tablet is-offset-2-mobile">
                     <div class="timeline">
@@ -17,8 +17,8 @@
                     {% with blocks=self.descriptions %}
                         {% for block in blocks %}
                             {% if block.block_type == 'heading' %}
-                                <h2 class="subtitle">{{ block }}</h2>
-                            {% elif block.block_type == 'paragraph' %}
+                                <h2 class="subtitle is-3">{{ block }}</h2>
+                            {% elif block.block_type == 'item' %}
                                 {{block}}
                             {% endif %}
                         {% endfor %}

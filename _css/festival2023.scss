@@ -22,8 +22,14 @@
       -webkit-text-stroke-width: 0.2px;
       -moz-osx-font-smoothing: grayscale;
 }
+.badaboom {
+  font-family: 'obelix-pro';
+  src:  url('../fonts/badaboom-webfont.woff2') format('woff2'),
+        url('../fonts/badaboom-webfont.woff') format('woff');
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
 .title {
-  @extend .noisy-felt;
+  @extend .badaboom;
 }
 
 .hero-header-strafiato, .hero-strafiato2023_4 {
