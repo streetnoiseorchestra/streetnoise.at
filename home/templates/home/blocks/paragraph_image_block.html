@@ -1,5 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags static i18n%}
-<section class="hero is-primary is-bold">
+<section class="hero {{ self.bg_class }} is-bold">
   <div class="hero-body">
     <div class="container is-size-5 is-size-6-mobile">
       <div class="columns is-desktop {% if self.image_alignment == 'left'  %} is-flex-direction-row-reverse {% endif %}">
@@ -19,7 +19,7 @@
           <div class="slider-wir">
             <div>
               <figure class="image is-4by3">
-                  {% image self.image max-960x720 class="image-prettify" %}
+                  {% image self.image max-960x720 class=self.image_class %}
               </figure>
             </div>
           </div>

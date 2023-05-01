@@ -14649,6 +14649,15 @@ h1, h2, h3, h4 {
   color: #fff;
 }
 
+.hero.is-orange, .is-orange.hero-header-strafiato2019, .is-orange.hero-header {
+  background-color: hsl(39deg, 100%, 50%);
+  color: #fff;
+}
+
+.hero.is-white, .is-white.hero-header-strafiato2019, .is-white.hero-header {
+  background-color: white;
+}
+
 .section.is-primary .title {
   color: #fff;
 }

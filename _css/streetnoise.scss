@@ -280,6 +280,15 @@ h1, h2, h3, h4 {
   color: $primary-invert;
 }
 
+.hero.is-orange {
+  background-color: palette(orange, "base");
+  color: $primary-invert;
+}
+
+.hero.is-white {
+  background-color: white;
+}
+
 .section.is-primary .title {
   color: $primary-invert;
 }

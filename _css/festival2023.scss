@@ -216,3 +216,41 @@
   text-align: center;
   height: 6rem;
 }
+
+.festival2023 .video {
+  background-color: white;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    top: -150px;
+    right: 25%;
+    content: "";
+    background-image: url('/media/images/arrow-grunge-down1.max-960x720.png');
+    height: 100%;
+    width: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .video-container {
+    padding-top: 100px;
+  }
+  @media screen and (min-width: 1024px) {
+    &:before {
+      top: -135px;
+      right: 120px;
+      width: 270px;
+    }
+    .video-container {
+      padding-top: 75px;
+    }
+  }
+
+  @media screen and (min-width: 1216px) {
+    &:before {
+      top: -147px;
+      right: 220px;
+      width: 290px;
+    }
+  }
+}

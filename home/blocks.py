@@ -174,6 +174,26 @@ class ImageGridBlock(blocks.StructBlock):
         label = "Image Grid"
 
 
+class ParagraphImageBlock2Value(blocks.StructValue):
+    def bg_class(self):
+        bg_class = self.get("background_color")
+        if bg_class == "green":
+            return "is-primary"
+        if bg_class == "orange":
+            return "is-orange"
+        elif bg_class == "blue":
+            return "is-info"
+        elif bg_class == "white":
+            return "is-white"
+        return ""
+
+    def image_class(self):
+        with_shadow = self.get("with_shadow")
+        if with_shadow:
+            return "image-prettify"
+        return ""
+
+
 class ParagraphImageBlock(blocks.StructBlock):
     heading = blocks.CharBlock(required=True, max_length=255)
     image = ImageChooserBlock(required=True, group="Image")
@@ -186,6 +206,25 @@ class ParagraphImageBlock(blocks.StructBlock):
             ("", "Select Image alignment"),
             ("left", "Image Left"),
             ("right", "Image Right"),
+        ],
+    )
+
+    with_shadow = blocks.BooleanBlock(
+        help_text="Add a shadow to the image, good for photographs",
+        group="Image",
+        required=False,
+        default=True,
+    )
+
+    background_color = blocks.ChoiceBlock(
+        required=True,
+        default="green",
+        choices=[
+            ("", "Section Background Color"),
+            ("green", "SNO Green"),
+            ("orange", "SNO Orange"),
+            ("blue", "Blue"),
+            ("white", "White"),
         ],
     )
     body = blocks.RichTextBlock(
@@ -206,3 +245,4 @@ class ParagraphImageBlock(blocks.StructBlock):
     class Meta:
         template = "home/blocks/paragraph_image_block.html"
         label = "Paragraph + Image"
+        value_class = ParagraphImageBlock2Value
