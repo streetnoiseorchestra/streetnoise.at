@@ -20,6 +20,8 @@ from home.views import (
     newsletter_bounce,
 )
 
+from crowdfunding.views import stripe_webhooks
+
 admin.site.login = staff_member_required(login_url="/", redirect_field_name="")(
     admin.site.login
 )
@@ -46,7 +48,8 @@ urlpatterns = [
     ),
     re_path(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
     re_path(r"^newsletter/mailgun", newsletter_bounce, name="Mailgun webhooks"),
-    re_path(r"^newsletters/", include(birdsong_urls))
+    re_path(r"^newsletters/", include(birdsong_urls)),
+    re_path(r"^stripe_webhooks/", stripe_webhooks, name="stripe_webhooks"),
     # url(r'^search/$', search_views.search, name='search'),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
