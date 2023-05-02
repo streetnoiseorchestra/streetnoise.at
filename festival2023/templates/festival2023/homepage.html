@@ -95,12 +95,13 @@
 
 </head>
 <body class="festival2023"
-_disabled="
+      _disabled="
              on keyup if the event's key is 'Escape'
              remove .is-active from .modal
              trigger keyup
              end
-            ">
+             ">
+
 {% include 'home/navigation.html' %}
 {# {% include "festival2023/save_the_date_header.html" %} #}
 {% include "festival2023/header.html" %}
@@ -109,5 +110,7 @@ _disabled="
 
 <script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
 <script type="text/javascript" src="{% static 'js/streetnoise.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/crowdfunding.js' %}"></script>
 </body>
 </html>
+
