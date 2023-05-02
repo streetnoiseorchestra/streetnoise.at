@@ -1,0 +1,32 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="column center is-half-tablet is-one-third-desktop crowdfunding-reward">
+    <div class="tile is-child">
+        <div class="card bm--card-equal-height">
+            <div class="card-media">
+                <figure class ="image is-1x1">
+                {% image self.image fill-300x300 class="" %}
+                </figure>
+            </div>
+            <div class="card-content">
+                <p class="title has-text-weight-bold is-size-3">{{self.title}}
+                </p>
+                <p class="subtitle is-size-5">
+                    Mindestbeitrag: <span class="price">{{self.price}} €</span>
+                </p>
+                <p class="">{{self.description}}</p>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                    <a href="{{self.payment_link}}" class="button is-primary">
+
+                        {% if self.price == '1-9' %}
+                            Auswählen
+                        {% else %}
+                            Spende {{ self.price }}€
+                        {% endif %}
+                    </a>
+                </p>
+            </footer>
+        </div>
+    </div>
+</div>

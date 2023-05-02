@@ -279,3 +279,8 @@ MJML_EXEC_CMD = "./node_modules/.bin/mjml"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 BIRDSONG_REPLY_TO = "orchestra@streetnoise.at"
+
+WAGTAILIMAGES_FORMAT_CONVERSIONS = {
+    "bmp": "jpeg",
+    "webp": "webp",
+}

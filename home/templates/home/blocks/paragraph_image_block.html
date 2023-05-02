@@ -18,7 +18,7 @@
         <div class="column is-6-desktop slider-container">
           <div class="slider-wir">
             <div>
-              <figure class="image is-4by3">
+              <figure class="image {{ self.aspect_ratio_class }}">
                   {% image self.image max-960x720 class=self.image_class %}
               </figure>
             </div>

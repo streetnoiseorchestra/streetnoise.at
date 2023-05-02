@@ -14577,11 +14577,11 @@ h1, h2, h3, h4 {
   font-family: mono;
 }
 
-.image-prettify, .xs-feature-image-box img {
+.image-prettify, .heading-paragraph-block img, .xs-feature-image-box img {
   border-radius: 6px;
 }
 @media screen and (min-width: 1024px) {
-  .image-prettify, .xs-feature-image-box img {
+  .image-prettify, .heading-paragraph-block img, .xs-feature-image-box img {
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
   }
 }

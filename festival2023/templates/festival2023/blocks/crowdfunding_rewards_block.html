@@ -1,14 +1,21 @@
-{% load wagtailcore_tags %}
-<section class="section heading-paragraph-block">
+{% load static wagtailcore_tags wagtailimages_tags%}
+<section class="section">
   <div class="container">
+
     <h2 class="title is-2 has-text-centered title-section caption-text" id="festival">
       {{ self.heading }}
     </h2>
     <div class="separator is-centered"></div>
     <div class="columns is-multiline">
       <div class="column is-full content is-size-4">
-        {{ self.text|richtext }}
+        {{ self.description|richtext }}
       </div>
+    </div>
+
+    <div class="columns is-multiline is-variable is-centered">
+      {% for band in self.rewards %}
+        {% include_block band with block_id=block.id %}
+      {% endfor %}
     </div>
   </div>
 </section>

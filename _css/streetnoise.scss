@@ -234,6 +234,9 @@ h1, h2, h3, h4 {
   width: 370px;
   @extend .image-prettify;
 }
+.heading-paragraph-block img {
+  @extend .image-prettify;
+}
 
 .xs-feature-image-box {
   position: relative;

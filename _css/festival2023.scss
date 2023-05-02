@@ -254,3 +254,27 @@
     }
   }
 }
+
+.bm--card-equal-height {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+.bm--card-equal-height .card-footer {
+   margin-top: auto;
+}
+
+.crowdfunding-reward {
+
+ .title {
+   font-family: "Open Sans", sans-serif;
+    letter-spacing: -1px;
+    line-height: 0.8;
+    color: hsl(0deg, 0%, 29%);
+}
+ @media screen and (min-width: 769px) {
+   .card-content {
+     min-height: 300px;
+   }
+ }
+}

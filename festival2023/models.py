@@ -47,6 +47,7 @@ from .blocks import (
     FundersBlock,
     HeadingParagraphBlock,
     ProgramBlock2,
+    CrowdfundingRewardsBlock,
 )
 
 
@@ -94,6 +95,7 @@ class FestivalPage2023(Page):
             ("paragraph_image", ParagraphImageBlock()),
             ("image_grid", ImageGridBlock()),
             ("number_boxes", NumberBoxesBlock()),
+            ("crowdfunding_rewards", CrowdfundingRewardsBlock()),
             ("lineup", LineupBlock()),
             ("funders", FundersBlock(label="Funders & Sponsors")),
             ("program2", ProgramBlock2(label="Program")),

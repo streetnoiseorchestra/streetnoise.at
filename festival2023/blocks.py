@@ -121,3 +121,40 @@ class ProgramBlock2(blocks.StructBlock):
 
     class Meta:
         template = "festival2023/blocks/program_block.html"
+
+
+class CrowdfundingRewardItemBlock(blocks.StructBlock):
+    """A block for displaying a single reward for the crowdfunding campaign.
+    With the fields:
+    * title: The title of the reward
+    * description: A description of the reward
+    * image: An image for the reward
+    * price: The price of the reward
+    * payment_link: the Stripe url to the reward
+    """
+
+    title = blocks.CharBlock(required=True, max_length=255)
+    description = blocks.TextBlock(required=True, max_length=255)
+    image = ImageChooserBlock(required=False)
+    price = blocks.CharBlock(required=True, max_length=255)
+    payment_link = blocks.URLBlock(required=True)
+
+    class Meta:
+        template = "festival2023/blocks/crowdfunding_reward_item_block.html"
+        label = "Crowdfunding Reward Item"
+
+
+class CrowdfundingRewardsBlock(blocks.StructBlock):
+    """A block for displaying the rewards for the crowdfunding campaign.
+    With the fields:
+    * heading: The heading for the block
+    * rewards: A block.ListBLock list of CrowdfundingRewardItemBlock
+    """
+
+    heading = blocks.CharBlock(required=True, max_length=255)
+    description = blocks.TextBlock(required=True, max_length=255)
+    rewards = blocks.ListBlock(CrowdfundingRewardItemBlock())
+
+    class Meta:
+        template = "festival2023/blocks/crowdfunding_rewards_block.html"
+        label = "Crowdfunding Rewards"

@@ -175,6 +175,20 @@ class ImageGridBlock(blocks.StructBlock):
 
 
 class ParagraphImageBlock2Value(blocks.StructValue):
+    def aspect_ratio_class(self):
+        aspect_ratio = self.get("aspect_ratio")
+        if aspect_ratio == "1:1":
+            return "is-1by1"
+        if aspect_ratio == "1:1 sm":
+            return "is-128x128 p-1"
+        elif aspect_ratio == "3:2":
+            return "is-3by2"
+        elif aspect_ratio == "4:3":
+            return "is-4by3"
+        elif aspect_ratio == "16:9":
+            return "is-16by9"
+        return "is-4by3"
+
     def bg_class(self):
         bg_class = self.get("background_color")
         if bg_class == "green":
@@ -206,6 +220,19 @@ class ParagraphImageBlock(blocks.StructBlock):
             ("", "Select Image alignment"),
             ("left", "Image Left"),
             ("right", "Image Right"),
+        ],
+    )
+
+    aspect_ratio = blocks.ChoiceBlock(
+        required=True,
+        default="4:3",
+        choices=[
+            ("", "Select Aspect Ratio of Images"),
+            ("1:1", "1:1 Square"),
+            ("1:1 sm", "1:1 Square (smaller)"),
+            ("3:2", "3:2"),
+            ("4:3", "4:3 (traditional)"),
+            ("16:9", "16:9 (widescreen)"),
         ],
     )
 
