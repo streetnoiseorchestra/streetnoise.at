@@ -6,4 +6,7 @@ from .models import FestivalPage2023
 
 @register(FestivalPage2023)
 class FestivalPage2023TR(TranslationOptions):
-    fields = ("body",)
+    fields = (
+        "crowdfunding_body",
+        "body",
+    )

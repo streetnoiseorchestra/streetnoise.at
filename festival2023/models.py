@@ -41,6 +41,7 @@ from home.blocks import (
 )
 from streetnoise.models import Page
 
+from crowdfunding.models import Campaign, Donation
 from .blocks import (
     NumberBoxesBlock,
     LineupBlock,
@@ -83,11 +84,36 @@ Footer
 """
 
 
+def get_all_campaigns():
+    campaigns = []
+    for campaign in Campaign.objects.all():
+        campaigns.append((campaign.campaign_name, campaign.campaign_name))
+    return campaigns
+
+
 class FestivalPage2023(Page):
     page_template = models.CharField(
         default="festival2023/homepage.html",
         max_length=255,
         choices=[("festival2023/homepage.html", "Home Page")],
+    )
+
+    crowdfunding_body = StreamField(
+        [
+            ("heading_text", HeadingParagraphBlock()),
+            ("paragraph_image", ParagraphImageBlock()),
+            ("crowdfunding_rewards", CrowdfundingRewardsBlock()),
+            (
+                "embed",
+                EmbedBlock(
+                    icon="media",
+                    label=_("Embed media"),
+                    help_text=_("Paste a link to a video, audio file, instagram, etc."),
+                ),
+            ),
+        ],
+        null=True,
+        blank=True,
     )
     body = StreamField(
         [
@@ -113,9 +139,18 @@ class FestivalPage2023(Page):
         blank=True,
     )
 
+    crowdfunding_campaign = models.CharField(
+        default="festival2023/homepage.html",
+        max_length=255,
+        blank=True,
+        choices=get_all_campaigns(),
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel("page_template", classname="full title"),
-        StreamFieldPanel("body"),
+        FieldPanel("crowdfunding_campaign", classname="full title"),
+        FieldPanel("crowdfunding_body", classname="collapsible collapsed"),
+        FieldPanel("body", classname="collapsible collapsed"),
     ]
 
     def get_template(self, request, *args, **kwargs):
@@ -127,5 +162,8 @@ class FestivalPage2023(Page):
     def get_context(self, request):
         context = super(FestivalPage2023, self).get_context(request)
         homepage = HomePage2.objects.first()
+        if self.crowdfunding_campaign:
+            campaign = Campaign.objects.get(campaign_name=self.crowdfunding_campaign)
+            context["campaign"] = campaign
         context["homepage"] = homepage
         return context

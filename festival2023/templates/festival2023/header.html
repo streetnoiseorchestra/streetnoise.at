@@ -48,5 +48,7 @@
         </div>
     </div>
 
-{% include "festival2023/funding_progress.html" %}
+    {% if campaign.is_live %}
+        {% include "festival2023/funding_progress.html" %}
+    {% endif %}
 </section>

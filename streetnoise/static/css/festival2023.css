@@ -307,7 +307,7 @@
 
 .funding-bar--large {
   font-size: 24px;
-  background-color: #fff;
+  background-color: #fdfbf1;
 }
 
 .funding-bar__track {
@@ -350,23 +350,10 @@
 .funding-bar__bar {
   height: 100%;
   width: 100%;
-  background-color: hsl(106deg, 68%, 46%);
+  background-color: hsl(106deg, 68%, 43%);
   transition: width 1s ease;
   border-top-right-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
-}
-
-.funding-bar__bar--unsuccessful {
-  background-color: hsl(106deg, 68%, 43%);
-}
-
-.funding-bar__bar--cofunding {
-  background-color: #24468d;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
 }
 
 .funding-bar__target {
@@ -407,7 +394,7 @@
 .funding-bar__target--success:before {
   content: " ";
   display: block;
-  background-color: #238c87;
+  background-color: hsl(106deg, 68%, 43%);
   position: absolute;
   top: 0;
   left: 0;
@@ -420,21 +407,13 @@
 .funding-bar__target--success:after {
   content: " ";
   display: block;
-  background-color: hsl(106deg, 68%, 46%);
+  background-color: hsl(106deg, 68%, 43%);
   position: absolute;
   top: 0;
   right: 50%;
   bottom: 0;
   left: -0.5em;
   z-index: 1;
-}
-
-.funding-bar__target--success.funding-bar__target--rejected:before {
-  background-color: #304b50;
-}
-
-.funding-bar__target--success.funding-bar__target--rejected:after {
-  background-color: hsl(106deg, 68%, 43%);
 }
 
 @media (max-width: 767px) {
@@ -529,6 +508,14 @@
     padding-left: 60px;
   }
 }
+.crowdfunding .activities {
+  display: none;
+}
+
+.crowdfunding.with-backers .activities {
+  display: block;
+}
+
 .activities {
   text-align: right;
   font-size: 15px;
