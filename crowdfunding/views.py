@@ -79,11 +79,22 @@ def handle_checkout_session_succeeded(checkout_session):
     ).to_dict()
     campaign_name = None
     product_id = None
-    for line_item in expanded_session["line_items"]["data"]:
-        campaign_name = get_campaign_from_line_item(line_item)
-        if campaign_name:
-            product_id = line_item["price"]["product"]
-            break
+
+    if checkout_session["id"].startswith("cs_test_") and amount_total <= 1000:
+        campaign_name = "test-campaign"
+        product_id = "no-reward"
+    else:
+        for line_item in expanded_session["line_items"]["data"]:
+            campaign_name = get_campaign_from_line_item(line_item)
+            if campaign_name:
+                product_id = line_item["price"]["product"]
+                break
+
+    if not campaign_name:
+        logger.error(
+            f"handle_checkout_session_: failed. received stripe webhook we can't handle id={checkout_session['id']} no campaign name found"
+        )
+        return False
 
     donation = Donation.maybe_create_new(
         campaign_name,
