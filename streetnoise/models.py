@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from wagtail.core.models import Page as WagtailPage
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 
 from home.views import newsletter_subscribe, newsletter_unsubscribe
 
@@ -18,7 +18,7 @@ class Page(WagtailPage):
     )
 
     promote_panels = WagtailPage.promote_panels + [
-        ImageChooserPanel("feed_image"),
+        FieldPanel("feed_image"),
     ]
 
     def get_context(self, request):

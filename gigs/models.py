@@ -6,7 +6,7 @@ from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, FieldRowPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 from wagtail.core.fields import StreamField
 
 
@@ -66,7 +66,7 @@ GigIndexPage.content_panels = [
 
 GigIndexPage.promote_panels = [
     MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-    ImageChooserPanel("feed_image"),
+    FieldPanel("feed_image"),
 ]
 
 
@@ -157,7 +157,7 @@ class GigPage(Page):
         ),
     )
     content_panels = Page.content_panels + [
-        ImageChooserPanel(
+        FieldPanel(
             "feed_image",
         ),
         MultiFieldPanel(

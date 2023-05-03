@@ -10,7 +10,7 @@ from wagtail.admin.edit_handlers import (
     FieldRowPanel,
 )
 from wagtail.core.fields import StreamField
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 
 
 class Newsletter(Campaign):
@@ -35,7 +35,7 @@ class Newsletter(Campaign):
 
     panels = Campaign.panels + [
         FieldPanel("headline"),
-        ImageChooserPanel("header_background"),
+        FieldPanel("header_background"),
         FieldPanel("body"),
     ]
 

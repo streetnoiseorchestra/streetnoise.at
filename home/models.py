@@ -17,8 +17,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Site
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 from wagtail.snippets.models import register_snippet
 
 from streetnoise.models import Page
@@ -70,7 +69,7 @@ class BandFriend(models.Model):
                 FieldPanel("location"),
                 FieldPanel("website"),
                 FieldPanel("facebook"),
-                ImageChooserPanel("square_logo"),
+                FieldPanel("square_logo"),
             ]
         )
     ]
@@ -91,7 +90,7 @@ class HomePageBandFriend(Orderable, BandFriend):
         "home.BandFriend", on_delete=models.CASCADE, related_name="band_friends"
     )
     panels = [
-        SnippetChooserPanel("band_friend"),
+        FieldPanel("band_friend"),
     ]
 
 
@@ -227,8 +226,8 @@ class HomePage2(Page):
                 FieldPanel("join_us_title"),
                 FieldPanel("join_us_subtitle"),
                 FieldPanel("join_us_text"),
-                ImageChooserPanel("join_us_image_1"),
-                ImageChooserPanel("join_us_image_2"),
+                FieldPanel("join_us_image_1"),
+                FieldPanel("join_us_image_2"),
                 FieldPanel("join_us_infos"),
             ],
             "Join Us",
@@ -453,8 +452,8 @@ class FestivalPage(Page):
                 FieldPanel("join_us_title"),
                 FieldPanel("join_us_subtitle"),
                 FieldPanel("join_us_text"),
-                ImageChooserPanel("join_us_image_1"),
-                ImageChooserPanel("join_us_image_2"),
+                FieldPanel("join_us_image_1"),
+                FieldPanel("join_us_image_2"),
                 FieldPanel("join_us_infos"),
             ],
             "Join Us",

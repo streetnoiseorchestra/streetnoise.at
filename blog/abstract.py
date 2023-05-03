@@ -12,7 +12,7 @@ from wagtail.admin.edit_handlers import (
 from wagtail.api import APIField
 from wagtail.core.models import Page as WagtailPage
 from wagtail.images import get_image_model_string
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 from wagtail.search import index
 from wagtail.core.fields import StreamField
 from wagtail.core import blocks
@@ -303,6 +303,6 @@ class BlogPageAbstract(Page):
             ],
             heading="Tags and Categories",
         ),
-        ImageChooserPanel("header_image"),
+        FieldPanel("header_image"),
         FieldPanel("body"),
     ]
