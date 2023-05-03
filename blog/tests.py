@@ -5,7 +5,7 @@ from django.core.management import call_command
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django_comments_xtd.models import XtdComment
-from wagtail.core.models import Page
+from wagtail.models import Page
 import responses
 
 from .models import (

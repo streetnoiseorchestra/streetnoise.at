@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
@@ -10,12 +10,12 @@ from wagtail.admin.edit_handlers import (
     FieldPanel,
 )
 from wagtail.api import APIField
-from wagtail.core.models import Page as WagtailPage
+from wagtail.models import Page as WagtailPage
 from wagtail.images import get_image_model_string
 from wagtail.images.edit_handlers import FieldPanel
 from wagtail.search import index
-from wagtail.core.fields import StreamField
-from wagtail.core import blocks
+from wagtail.fields import StreamField
+from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from modelcluster.fields import ParentalKey, ParentalManyToManyField

@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -18,9 +18,9 @@ class Migration(migrations.Migration):
             name='DonationPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('donation_intro', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock())], blank=True, null=True)),
-                ('donation_intro_de', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock())], blank=True, null=True)),
-                ('donation_intro_en', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock())], blank=True, null=True)),
+                ('donation_intro', wagtail.fields.StreamField([('heading', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock())], blank=True, null=True)),
+                ('donation_intro_de', wagtail.fields.StreamField([('heading', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock())], blank=True, null=True)),
+                ('donation_intro_en', wagtail.fields.StreamField([('heading', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock())], blank=True, null=True)),
                 ('label_donation_amount', models.CharField(blank=True, max_length=100)),
                 ('label_donation_amount_de', models.CharField(blank=True, max_length=100, null=True)),
                 ('label_donation_amount_en', models.CharField(blank=True, max_length=100, null=True)),
@@ -33,9 +33,9 @@ class Migration(migrations.Migration):
                 ('thank_you', models.CharField(blank=True, help_text='The title displayed after the user successful donates.', max_length=100)),
                 ('thank_you_de', models.CharField(blank=True, help_text='The title displayed after the user successful donates.', max_length=100, null=True)),
                 ('thank_you_en', models.CharField(blank=True, help_text='The title displayed after the user successful donates.', max_length=100, null=True)),
-                ('thank_you_text', wagtail.core.fields.RichTextField(blank=True, help_text='Text displayed after the user successful donates.')),
-                ('thank_you_text_de', wagtail.core.fields.RichTextField(blank=True, help_text='Text displayed after the user successful donates.', null=True)),
-                ('thank_you_text_en', wagtail.core.fields.RichTextField(blank=True, help_text='Text displayed after the user successful donates.', null=True)),
+                ('thank_you_text', wagtail.fields.RichTextField(blank=True, help_text='Text displayed after the user successful donates.')),
+                ('thank_you_text_de', wagtail.fields.RichTextField(blank=True, help_text='Text displayed after the user successful donates.', null=True)),
+                ('thank_you_text_en', wagtail.fields.RichTextField(blank=True, help_text='Text displayed after the user successful donates.', null=True)),
             ],
             options={
                 'abstract': False,

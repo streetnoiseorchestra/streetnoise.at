@@ -5,16 +5,16 @@ from django.db import models
 from django.shortcuts import render
 from datetime import date
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     MultiFieldPanel,
     InlinePanel,
     FieldPanel,
 )
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable, Site
+from wagtail import blocks
+from wagtail.fields import RichTextField
+from wagtail.fields import StreamField
+from wagtail.models import Orderable, Site
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.edit_handlers import FieldPanel

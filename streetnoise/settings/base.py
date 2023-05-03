@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "streetnoise.apps.CustomImagesAppConfig",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.core",
+    "wagtail",
     "modelcluster",
     "taggit",
     "django.contrib.admin",

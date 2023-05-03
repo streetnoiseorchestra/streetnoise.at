@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -41,16 +41,16 @@ class Migration(migrations.Migration):
                 ('menu_contact', models.CharField(blank=True, max_length=100)),
                 ('menu_contact_de', models.CharField(blank=True, max_length=100, null=True)),
                 ('menu_contact_en', models.CharField(blank=True, max_length=100, null=True)),
-                ('about_text', wagtail.core.fields.RichTextField(blank=True, verbose_name='About SNO')),
-                ('about_text_de', wagtail.core.fields.RichTextField(blank=True, null=True, verbose_name='About SNO')),
-                ('about_text_en', wagtail.core.fields.RichTextField(blank=True, null=True, verbose_name='About SNO')),
+                ('about_text', wagtail.fields.RichTextField(blank=True, verbose_name='About SNO')),
+                ('about_text_de', wagtail.fields.RichTextField(blank=True, null=True, verbose_name='About SNO')),
+                ('about_text_en', wagtail.fields.RichTextField(blank=True, null=True, verbose_name='About SNO')),
                 ('whoweare_title', models.CharField(blank=True, max_length=100, verbose_name='Who We Are title')),
                 ('whoweare_title_de', models.CharField(blank=True, max_length=100, null=True, verbose_name='Who We Are title')),
                 ('whoweare_title_en', models.CharField(blank=True, max_length=100, null=True, verbose_name='Who We Are title')),
-                ('whoweare_text', wagtail.core.fields.RichTextField(blank=True, verbose_name='Who We Are text')),
-                ('whoweare_text_de', wagtail.core.fields.RichTextField(blank=True, null=True, verbose_name='Who We Are text')),
-                ('whoweare_text_en', wagtail.core.fields.RichTextField(blank=True, null=True, verbose_name='Who We Are text')),
-                ('whoweare_gallery', wagtail.core.fields.StreamField([('image', wagtail.images.blocks.ImageChooserBlock(label='Gallery Image'))], blank=True, null=True, verbose_name='Who We Are Gallery')),
+                ('whoweare_text', wagtail.fields.RichTextField(blank=True, verbose_name='Who We Are text')),
+                ('whoweare_text_de', wagtail.fields.RichTextField(blank=True, null=True, verbose_name='Who We Are text')),
+                ('whoweare_text_en', wagtail.fields.RichTextField(blank=True, null=True, verbose_name='Who We Are text')),
+                ('whoweare_gallery', wagtail.fields.StreamField([('image', wagtail.images.blocks.ImageChooserBlock(label='Gallery Image'))], blank=True, null=True, verbose_name='Who We Are Gallery')),
                 ('gigs_title', models.CharField(blank=True, max_length=100)),
                 ('gigs_title_de', models.CharField(blank=True, max_length=100, null=True)),
                 ('gigs_title_en', models.CharField(blank=True, max_length=100, null=True)),
@@ -63,12 +63,12 @@ class Migration(migrations.Migration):
                 ('merch_subtitle', models.CharField(blank=True, max_length=100)),
                 ('merch_subtitle_de', models.CharField(blank=True, max_length=100, null=True)),
                 ('merch_subtitle_en', models.CharField(blank=True, max_length=100, null=True)),
-                ('merch_text', wagtail.core.fields.RichTextField(blank=True, verbose_name='Merch Detail')),
-                ('merch_text_de', wagtail.core.fields.RichTextField(blank=True, null=True, verbose_name='Merch Detail')),
-                ('merch_text_en', wagtail.core.fields.RichTextField(blank=True, null=True, verbose_name='Merch Detail')),
-                ('merch_items', wagtail.core.fields.StreamField([('merch', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('price', wagtail.core.blocks.CharBlock()), ('detail', wagtail.core.blocks.CharBlock())], label='Merch Item'))], blank=True, null=True, verbose_name='Merchandise')),
-                ('merch_items_de', wagtail.core.fields.StreamField([('merch', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('price', wagtail.core.blocks.CharBlock()), ('detail', wagtail.core.blocks.CharBlock())], label='Merch Item'))], blank=True, null=True, verbose_name='Merchandise')),
-                ('merch_items_en', wagtail.core.fields.StreamField([('merch', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('price', wagtail.core.blocks.CharBlock()), ('detail', wagtail.core.blocks.CharBlock())], label='Merch Item'))], blank=True, null=True, verbose_name='Merchandise')),
+                ('merch_text', wagtail.fields.RichTextField(blank=True, verbose_name='Merch Detail')),
+                ('merch_text_de', wagtail.fields.RichTextField(blank=True, null=True, verbose_name='Merch Detail')),
+                ('merch_text_en', wagtail.fields.RichTextField(blank=True, null=True, verbose_name='Merch Detail')),
+                ('merch_items', wagtail.fields.StreamField([('merch', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('price', wagtail.blocks.CharBlock()), ('detail', wagtail.blocks.CharBlock())], label='Merch Item'))], blank=True, null=True, verbose_name='Merchandise')),
+                ('merch_items_de', wagtail.fields.StreamField([('merch', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('price', wagtail.blocks.CharBlock()), ('detail', wagtail.blocks.CharBlock())], label='Merch Item'))], blank=True, null=True, verbose_name='Merchandise')),
+                ('merch_items_en', wagtail.fields.StreamField([('merch', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('price', wagtail.blocks.CharBlock()), ('detail', wagtail.blocks.CharBlock())], label='Merch Item'))], blank=True, null=True, verbose_name='Merchandise')),
                 ('donate_title', models.CharField(blank=True, max_length=100)),
                 ('donate_title_de', models.CharField(blank=True, max_length=100, null=True)),
                 ('donate_title_en', models.CharField(blank=True, max_length=100, null=True)),
@@ -90,9 +90,9 @@ class Migration(migrations.Migration):
                 ('join_us_text', models.CharField(blank=True, max_length=100)),
                 ('join_us_text_de', models.CharField(blank=True, max_length=100, null=True)),
                 ('join_us_text_en', models.CharField(blank=True, max_length=100, null=True)),
-                ('join_us_infos', wagtail.core.fields.StreamField([('info', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('detail', wagtail.core.blocks.RichTextBlock())]))], blank=True, null=True, verbose_name='Join Us Info')),
-                ('join_us_infos_de', wagtail.core.fields.StreamField([('info', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('detail', wagtail.core.blocks.RichTextBlock())]))], blank=True, null=True, verbose_name='Join Us Info')),
-                ('join_us_infos_en', wagtail.core.fields.StreamField([('info', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('detail', wagtail.core.blocks.RichTextBlock())]))], blank=True, null=True, verbose_name='Join Us Info')),
+                ('join_us_infos', wagtail.fields.StreamField([('info', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock()), ('detail', wagtail.blocks.RichTextBlock())]))], blank=True, null=True, verbose_name='Join Us Info')),
+                ('join_us_infos_de', wagtail.fields.StreamField([('info', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock()), ('detail', wagtail.blocks.RichTextBlock())]))], blank=True, null=True, verbose_name='Join Us Info')),
+                ('join_us_infos_en', wagtail.fields.StreamField([('info', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock()), ('detail', wagtail.blocks.RichTextBlock())]))], blank=True, null=True, verbose_name='Join Us Info')),
                 ('cta_title', models.CharField(blank=True, max_length=100, verbose_name='CTA Title')),
                 ('cta_title_de', models.CharField(blank=True, max_length=100, null=True, verbose_name='CTA Title')),
                 ('cta_title_en', models.CharField(blank=True, max_length=100, null=True, verbose_name='CTA Title')),

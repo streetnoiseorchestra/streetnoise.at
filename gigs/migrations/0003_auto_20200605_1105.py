@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -16,17 +16,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gigpage',
             name='body_de',
-            field=wagtail.core.fields.RichTextField(blank=True, help_text='A sentence or two describing the gig.', null=True, verbose_name='Details'),
+            field=wagtail.fields.RichTextField(blank=True, help_text='A sentence or two describing the gig.', null=True, verbose_name='Details'),
         ),
         migrations.AddField(
             model_name='gigpage',
             name='body_en',
-            field=wagtail.core.fields.RichTextField(blank=True, help_text='A sentence or two describing the gig.', null=True, verbose_name='Details'),
+            field=wagtail.fields.RichTextField(blank=True, help_text='A sentence or two describing the gig.', null=True, verbose_name='Details'),
         ),
         migrations.AlterField(
             model_name='gigpage',
             name='body',
-            field=wagtail.core.fields.RichTextField(blank=True, help_text='A sentence or two describing the gig.', verbose_name='Details'),
+            field=wagtail.fields.RichTextField(blank=True, help_text='A sentence or two describing the gig.', verbose_name='Details'),
         ),
         migrations.AlterField(
             model_name='gigpage',

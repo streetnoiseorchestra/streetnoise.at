@@ -3,13 +3,13 @@ from django.db import models
 from birdsong.blocks import DefaultBlocks
 from birdsong.models import Campaign, Contact
 
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     FieldPanel,
     MultiFieldPanel,
     FieldRowPanel,
 )
-from wagtail.core.fields import StreamField
+from wagtail.fields import StreamField
 from wagtail.images.edit_handlers import FieldPanel
 
 

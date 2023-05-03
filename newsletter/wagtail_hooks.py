@@ -3,11 +3,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
-from wagtail.core import hooks
+from wagtail import hooks
 from wagtail.rich_text import LinkHandler
 from wagtail.rich_text.pages import PageLinkHandler
 from wagtail.documents.rich_text import DocumentLinkHandler
-from wagtail.core.models import Site
+from wagtail.models import Site
 
 from birdsong.options import CampaignAdmin
 

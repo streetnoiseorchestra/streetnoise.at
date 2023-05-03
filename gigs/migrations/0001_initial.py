@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('location', models.CharField(blank=True, max_length=255, null=True)),
                 ('partner', models.CharField(blank=True, help_text="The organization we're doing the gig for", max_length=255, null=True)),
                 ('link', models.URLField(blank=True)),
-                ('body', wagtail.core.fields.RichTextField(blank=True)),
+                ('body', wagtail.fields.RichTextField(blank=True)),
                 ('feed_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
             name='GigIndexPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True)),
                 ('feed_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={

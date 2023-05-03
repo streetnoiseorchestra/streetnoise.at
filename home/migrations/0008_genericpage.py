@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.embeds.blocks
 import wagtail.images.blocks
 
@@ -20,9 +20,9 @@ class Migration(migrations.Migration):
             name='GenericPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('content', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('rawhtml', wagtail.core.blocks.RawHTMLBlock()), ('quote', wagtail.core.blocks.BlockQuoteBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock())], blank=True, null=True)),
-                ('content_de', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('rawhtml', wagtail.core.blocks.RawHTMLBlock()), ('quote', wagtail.core.blocks.BlockQuoteBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock())], blank=True, null=True)),
-                ('content_en', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('rawhtml', wagtail.core.blocks.RawHTMLBlock()), ('quote', wagtail.core.blocks.BlockQuoteBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock())], blank=True, null=True)),
+                ('content', wagtail.fields.StreamField([('heading', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('rawhtml', wagtail.blocks.RawHTMLBlock()), ('quote', wagtail.blocks.BlockQuoteBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock())], blank=True, null=True)),
+                ('content_de', wagtail.fields.StreamField([('heading', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('rawhtml', wagtail.blocks.RawHTMLBlock()), ('quote', wagtail.blocks.BlockQuoteBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock())], blank=True, null=True)),
+                ('content_en', wagtail.fields.StreamField([('heading', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('rawhtml', wagtail.blocks.RawHTMLBlock()), ('quote', wagtail.blocks.BlockQuoteBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock())], blank=True, null=True)),
             ],
             options={
                 'abstract': False,
