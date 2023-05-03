@@ -29,8 +29,7 @@ WORKDIR /code/
 RUN npm install --omit=dev
 
 RUN set -e; \
-    python manage.py  compress --force; \
-    COLLECT_STATIC_OVERRIDE=True python manage.py collectstatic --no-post-process --noinput;
+    COLLECT_STATIC_OVERRIDE=True python manage.py collectstatic --noinput;
 
 RUN groupadd -r -g 3993 cms && useradd --uid 3993 --gid 3993 cms
 RUN chown -R cms /code
