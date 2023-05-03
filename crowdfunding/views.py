@@ -74,9 +74,6 @@ def handle_checkout_session_succeeded(checkout_session):
         backer_name = "Anonym"
     amount_total = checkout_session["amount_total"]
     creation_dt = datetime.datetime.fromtimestamp(checkout_session["created"])
-    expanded_session = stripe.checkout.Session.retrieve(
-        checkout_session["id"], expand=["line_items"]
-    ).to_dict()
     campaign_name = None
     product_id = None
 
@@ -84,6 +81,9 @@ def handle_checkout_session_succeeded(checkout_session):
         campaign_name = "test-campaign"
         product_id = "no-reward"
     else:
+        expanded_session = stripe.checkout.Session.retrieve(
+            checkout_session["id"], expand=["line_items"]
+        ).to_dict()
         for line_item in expanded_session["line_items"]["data"]:
             campaign_name = get_campaign_from_line_item(line_item)
             if campaign_name:
