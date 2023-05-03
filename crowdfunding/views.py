@@ -69,7 +69,7 @@ def handle_checkout_session_succeeded(checkout_session):
         ]:
             backer_name = field["text"].get("value")
     if backer_name:
-        backer_name = backer_name.trim()
+        backer_name = backer_name.strip()
     if not backer_name or len(backer_name) <= 1:
         backer_name = "Anonym"
     amount_total = checkout_session["amount_total"]
