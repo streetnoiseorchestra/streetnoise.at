@@ -69,6 +69,7 @@ services:
       - db_url
       - stripe_pk
       - stripe_sk
+      - stripe_endpoint_secret
       - gigo_email
       - gigo_password
       - mailgun_key
