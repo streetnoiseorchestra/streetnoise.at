@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.utils.functional import lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -92,6 +93,12 @@ def get_all_campaigns():
 
 
 class FestivalPage2023(Page):
+    def __init__(self, *args, **kwargs):
+        super(FestivalPage2023, self).__init__(*args, **kwargs)
+        self._meta.get_field("crowdfunding_campaign").choices = lazy(
+            get_all_campaigns, list
+        )()
+
     page_template = models.CharField(
         default="festival2023/homepage.html",
         max_length=255,
@@ -143,7 +150,7 @@ class FestivalPage2023(Page):
         default="festival2023/homepage.html",
         max_length=255,
         blank=True,
-        choices=get_all_campaigns(),
+        choices=[],
     )
 
     content_panels = Page.content_panels + [
