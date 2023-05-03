@@ -28,8 +28,9 @@ WORKDIR /code/
 
 RUN npm install --omit=dev
 
-# Call collectstatic with dummy environment variables:
-RUN COLLECT_STATIC_OVERRIDE=True  python manage.py collectstatic --noinput
+RUN set -e; \
+    python manage.py  compress --force; \
+    COLLECT_STATIC_OVERRIDE=True python manage.py collectstatic --no-post-process --noinput;
 
 RUN groupadd -r -g 3993 cms && useradd --uid 3993 --gid 3993 cms
 RUN chown -R cms /code

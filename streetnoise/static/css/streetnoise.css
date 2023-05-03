@@ -15153,9 +15153,15 @@ footer .title {
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: linear-gradient(to bottom, rgba(70, 184, 35, 0.1) 0%, rgba(70, 184, 35, 0.7) 95%, rgba(70, 184, 35, 0.8) 100%), url("../img/strafiato2019/edited/seegrube-bw.jpg");
   background-position-y: 50%;
   background-position-x: 51%;
+}
+.no-js .hero.festival-newsletter:before, .no-js .festival-newsletter.hero-header-strafiato2019:before, .no-js .festival-newsletter.hero-header:before, .no-webp .hero.festival-newsletter:before, .no-webp .festival-newsletter.hero-header-strafiato2019:before, .no-webp .festival-newsletter.hero-header:before {
+  background-image: linear-gradient(to bottom, rgba(70, 184, 35, 0.1) 0%, rgba(70, 184, 35, 0.7) 95%, rgba(70, 184, 35, 0.8) 100%), url("../img/strafiato2019/edited/seegrube-bw.jpg");
+}
+
+.webp .hero.festival-newsletter:before, .webp .festival-newsletter.hero-header-strafiato2019:before, .webp .festival-newsletter.hero-header:before {
+  background-image: linear-gradient(to bottom, rgba(70, 184, 35, 0.1) 0%, rgba(70, 184, 35, 0.7) 95%, rgba(70, 184, 35, 0.8) 100%), url("../img/strafiato2019/edited/seegrube-bw.webp");
 }
 
 /*# sourceMappingURL=streetnoise.css.map */

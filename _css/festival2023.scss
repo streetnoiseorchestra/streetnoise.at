@@ -163,6 +163,7 @@
     text-align: center;
     color: palette(orange, "dark");
   }
+
   .item {
     display: block;
     font-size: 4rem;
@@ -176,6 +177,12 @@
     text-shadow: palette(orange, "dark") 2.92271px 2.92271px 0px;
     line-height: 94px;
 
+    svg {
+      max-height: 4rem;
+      @include tablet {
+        max-height: 3rem;
+      }
+    }
     .icon-euro {
       width: 2.5rem;
       height: auto;
@@ -205,6 +212,18 @@
   height: 6rem;
 }
 
+.no-js, .no-webp  {
+.festival2023 .video:before {
+    background-image: url('../img/strafiato2023/arrow-grunge-down1.max-960x720.png');
+}
+}
+.webp {
+
+.festival2023 .video:before {
+    background-image: url('../img/strafiato2023/arrow-grunge-down1.max-960x720.webp');
+}
+}
+
 .festival2023 .video {
   background-color: white;
   position: relative;
@@ -214,7 +233,6 @@
     top: -150px;
     right: 25%;
     content: "";
-    background-image: url('/media/images/arrow-grunge-down1.max-960x720.png');
     height: 100%;
     width: 300px;
     background-size: contain;

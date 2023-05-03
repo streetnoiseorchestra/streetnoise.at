@@ -841,10 +841,6 @@ $transition-duration: 0.3s;
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image:
-                   linear-gradient(to bottom, rgba(70,184,35,0.1) 0%, rgba(70,184,35,0.7) 95%, rgba(70,184,35,0.8) 100%),
-
-                    url('../img/strafiato2019/edited/seegrube-bw.jpg');
   background-position-y: 50%;
   background-position-x: 51%;
   @media screen and (min-width: 499px) {
@@ -856,4 +852,20 @@ $transition-duration: 0.3s;
   @include desktop {
   }
 
+}
+
+
+.no-js, .no-webp  {
+  .hero.festival-newsletter:before {
+    background-image:
+      linear-gradient(to bottom, rgba(70,184,35,0.1) 0%, rgba(70,184,35,0.7) 95%, rgba(70,184,35,0.8) 100%),
+      url('../img/strafiato2019/edited/seegrube-bw.jpg');
+  }
+}
+.webp {
+  .hero.festival-newsletter:before {
+    background-image:
+      linear-gradient(to bottom, rgba(70,184,35,0.1) 0%, rgba(70,184,35,0.7) 95%, rgba(70,184,35,0.8) 100%),
+      url('../img/strafiato2019/edited/seegrube-bw.webp');
+  }
 }

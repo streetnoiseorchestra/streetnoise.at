@@ -18,6 +18,10 @@ fmt:
 dev-watch:
 	npm run watch
 
+dev-static:
+	 python manage.py collectstatic --clear --noinput
+	 python manage.py collectstatic --no-post-process --noinput
+
 dev-serve:
 	 python manage.py runserver 0.0.0.0:8001
 
@@ -72,3 +76,6 @@ prod-dump-db:
 
 prod-update-gigs:
 	$(DC_PROD) run cms python manage.py update-gigs-from-gigo
+
+make critical-css:
+	node acclaimed.js

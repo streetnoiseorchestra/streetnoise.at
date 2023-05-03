@@ -3,7 +3,7 @@ wagtail==4.2.3
 wagtailmenus==3.1.7
 wagtail-modeltranslation==0.13.0
 django-debug-toolbar
-django-compressor==4.1
+django-compressor==4.3.1
 django-libsass==0.9
 django-modeltranslation==0.18.9
 django-allauth==0.54.0
@@ -18,3 +18,4 @@ flake8
 django-plausible==0.4.0
 wagtail-birdsong==1.1.2
 django-mjml==1.1
+brotli==1.0.9

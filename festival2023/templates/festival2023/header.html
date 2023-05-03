@@ -1,5 +1,10 @@
 {% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
 <section class="hero is-large hero-strafiato2023 hero-strafiato2023_4 actual">
+    <picture>
+        <source type="image/webp" srcset="{% static 'img/background-optimized.webp' %}">
+        <img style="display: none;" src="{% static 'img/background-optimized.jpg' %}" alt="" fetchpriority="high">
+    </picture>
+
     <div class="hero-body">
         <div class="container">
             <div class="columns is-gapless is-multiline">
@@ -19,7 +24,7 @@
                 <picture>
                     <source type="image/webp" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.webp' %}">
                     <source type="image/png" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}">
-                    <img class="logo-type" decoding="auto" loading="eager" src="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}" alt="Strafiato 2023">
+                    <img class="logo-type" decoding="auto" loading="eager" src="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}" alt="Strafiato 2023" fetchpriority="high">
                 </picture>
             </div>
 
@@ -29,18 +34,26 @@
                 <picture>
                     <source type="image/webp" srcset="{% static 'img/logo-mark-600w-optimized.webp' %}">
                     <source type="image/png" srcset="{% static 'img/logo-mark-600w-optimized.png' %}">
-                    <img class="logo-mark" decoding="auto" loading="eager" src="{% static 'img/logo-mark-600w-optimized.png' %}" alt="Strafiato 2023">
+                    <img class="logo-mark" decoding="auto" loading="eager" src="{% static 'img/logo-mark-600w-optimized.png' %}" alt="Strafiato 2023" fetchpriority="high">
                 </picture>
                 </div>
-                <div class="column is-full ">
-                <picture>
-                    <source type="image/webp" srcset="{% static 'img/urban-brass-festival.webp' %}">
-                    <source type="image/png" srcset="{% static 'img/urban-brass-festival.png' %}">
-                    <img class="brass-festival-mark" decoding="auto" loading="eager" src="{% static 'img/urban-brass-festival.png' %}" alt="Urban Brass Festival">
-                </picture>
+                <div class="column is-full has-text-centered">
+                    <picture>
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival.webp' %}" media="(min-width: 1600px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival.png' %}" media="(min-width: 1600px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-900.webp' %}" media="(min-width: 1100px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-900.png' %}" media="(min-width: 1100px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-600.webp' %}" media="(min-width: 900px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-600.png' %}" media="(min-width: 900px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-400.webp' %}" media="(min-width: 600px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-400.png' %}" media="(min-width: 600px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-400.webp' %}">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-400.png' %}">
+                        <img class="brass-festival-mark" decoding="auto" loading="eager" src="{% static 'img/urban-brass-festival.png' %}" alt="Urban Brass Festival" fetchpriority="high">
+                    </picture>
                 </div>
                 <div class="column is-full date-mark">
-                    <img class="date-mark" decoding="auto" loading="eager" src="{% static 'img/strafiato2023/date-mark-optimized.svg' %%}">
+                    <img class="date-mark" decoding="auto" loading="eager" src="{% static 'img/strafiato2023/date-mark-optimized.svg' %%}" fetchpriority="high">
                 </div>
             </div>
 

@@ -1,0 +1,38 @@
+[
+{
+  "css": "http://localhost:8001/static/css/streetnoise.css",
+  "out": "streetnoise/static/css/streetnoise.critical.min.css",
+  "url": "http://localhost:8001",
+  "width": 1920,
+  "height": 1800,
+  "keepLargerMediaQueries": true,
+  "strict": false,
+  "blockJSRequests": true,
+  "renderWaitTime": 300,
+  "timeout": 60000,
+  "forceExclude": ["@font-face"],
+  "forceInclude": [".pic", ".pic svg", ".pic img", ".dark", ".dark .inner:not([id*=\"kss\"])", ".dark img"],
+  "phantomJsOptions": {
+    "ssl-protocol": "any",
+    "ignore-ssl-errors": true
+  }
+},
+{
+  "css": "http://localhost:8001/static/css/festival2023.css",
+  "out": "streetnoise/static/css/festival2023.critical.min.css",
+  "url": "http://localhost:8001/festival",
+  "width": 1920,
+  "height": 1800,
+  "keepLargerMediaQueries": true,
+  "strict": false,
+  "blockJSRequests": true,
+  "renderWaitTime": 300,
+  "timeout": 60000,
+  "forceExclude": ["@font-face"],
+  "forceInclude": [".pic", ".pic svg", ".pic img", ".dark", ".dark .inner:not([id*=\"kss\"])", ".dark img"],
+  "phantomJsOptions": {
+    "ssl-protocol": "any",
+    "ignore-ssl-errors": true
+  }
+}
+]

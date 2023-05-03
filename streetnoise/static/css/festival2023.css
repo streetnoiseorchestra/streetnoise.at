@@ -779,8 +779,10 @@
   line-height: 94px;
 }
 .number-boxes .item svg {
-    max-height: 4rem;
-  @include tablet {
+  max-height: 4rem;
+}
+@media screen and (min-width: 769px), print {
+  .number-boxes .item svg {
     max-height: 3rem;
   }
 }
@@ -807,6 +809,14 @@
   height: 6rem;
 }
 
+.no-js .festival2023 .video:before, .no-webp .festival2023 .video:before {
+  background-image: url("../img/strafiato2023/arrow-grunge-down1.max-960x720.png");
+}
+
+.webp .festival2023 .video:before {
+  background-image: url("../img/strafiato2023/arrow-grunge-down1.max-960x720.webp");
+}
+
 .festival2023 .video {
   background-color: white;
   position: relative;
@@ -816,7 +826,6 @@
   top: -150px;
   right: 25%;
   content: "";
-  background-image: url("/media/images/arrow-grunge-down1.max-960x720.png");
   height: 100%;
   width: 300px;
   background-size: contain;
