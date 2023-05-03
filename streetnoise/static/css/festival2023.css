@@ -778,6 +778,12 @@
   text-shadow: hsl(35deg, 100%, 46%) 2.92271px 2.92271px 0px;
   line-height: 94px;
 }
+.number-boxes .item svg {
+    max-height: 4rem;
+  @include tablet {
+    max-height: 3rem;
+  }
+}
 .number-boxes .item .icon-euro {
   width: 2.5rem;
   height: auto;
