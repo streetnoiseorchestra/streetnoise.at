@@ -46,6 +46,8 @@ dev-i18n:
 	python manage.py makemessages -l de -i 'venv*'
 	python manage.py compilemessages  -l de -i 'venv*'
 
+dev-dump-db:
+	$(DC_DEV) exec db pg_dump -U streetnoise_cms streetnoise_cms > ./$(shell date +"%Y-%m-%d")-streetnoise_cms_DEV.dump
 
 prod-migrate:
 	$(DC_PROD) run cms python manage.py migrate
