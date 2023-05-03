@@ -9,7 +9,7 @@ from wagtail.admin.edit_handlers import (
     FieldPanel,
     MultiFieldPanel,
     InlinePanel,
-    StreamFieldPanel,
+    FieldPanel,
 )
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField
@@ -193,7 +193,7 @@ class HomePage2(Page):
                 FieldPanel("about_text"),
                 FieldPanel("whoweare_title"),
                 FieldPanel("whoweare_text"),
-                StreamFieldPanel("whoweare_gallery"),
+                FieldPanel("whoweare_gallery"),
             ],
             "About SNO",
         ),
@@ -209,7 +209,7 @@ class HomePage2(Page):
                 FieldPanel("merch_title"),
                 FieldPanel("merch_subtitle"),
                 FieldPanel("merch_text"),
-                StreamFieldPanel("merch_items"),
+                FieldPanel("merch_items"),
             ],
             "Merch",
         ),
@@ -229,7 +229,7 @@ class HomePage2(Page):
                 FieldPanel("join_us_text"),
                 ImageChooserPanel("join_us_image_1"),
                 ImageChooserPanel("join_us_image_2"),
-                StreamFieldPanel("join_us_infos"),
+                FieldPanel("join_us_infos"),
             ],
             "Join Us",
         ),
@@ -409,8 +409,8 @@ class FestivalPage(Page):
         MultiFieldPanel(
             [
                 FieldPanel("festival_program_title"),
-                StreamFieldPanel("festival_program_content"),
-                StreamFieldPanel("festival_program_timeline"),
+                FieldPanel("festival_program_content"),
+                FieldPanel("festival_program_timeline"),
             ],
             "Festival Program",
         ),
@@ -419,7 +419,7 @@ class FestivalPage(Page):
                 FieldPanel("about_text"),
                 FieldPanel("whoweare_title"),
                 FieldPanel("whoweare_text"),
-                StreamFieldPanel("whoweare_gallery"),
+                FieldPanel("whoweare_gallery"),
             ],
             "About SNO",
         ),
@@ -435,7 +435,7 @@ class FestivalPage(Page):
                 FieldPanel("merch_title"),
                 FieldPanel("merch_subtitle"),
                 FieldPanel("merch_text"),
-                StreamFieldPanel("merch_items"),
+                FieldPanel("merch_items"),
             ],
             "Merch",
         ),
@@ -455,7 +455,7 @@ class FestivalPage(Page):
                 FieldPanel("join_us_text"),
                 ImageChooserPanel("join_us_image_1"),
                 ImageChooserPanel("join_us_image_2"),
-                StreamFieldPanel("join_us_infos"),
+                FieldPanel("join_us_infos"),
             ],
             "Join Us",
         ),
@@ -704,7 +704,7 @@ class GenericPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
         MultiFieldPanel(
             [
                 FieldPanel("cta_title"),
@@ -761,7 +761,7 @@ class DonationPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("donation_intro"),
+        FieldPanel("donation_intro"),
         FieldPanel("label_donation_amount"),
         FieldPanel("label_donation"),
         FieldPanel("label_donation_detail"),

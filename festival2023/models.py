@@ -17,7 +17,7 @@ from wagtail.admin.edit_handlers import (
     InlinePanel,
     MultiFieldPanel,
     FieldRowPanel,
-    StreamFieldPanel,
+    FieldPanel,
 )
 from wagtail.api import APIField
 from wagtail.core.models import Page as WagtailPage

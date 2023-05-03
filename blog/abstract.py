@@ -7,7 +7,7 @@ from wagtail.admin.edit_handlers import (
     InlinePanel,
     MultiFieldPanel,
     FieldRowPanel,
-    StreamFieldPanel,
+    FieldPanel,
 )
 from wagtail.api import APIField
 from wagtail.core.models import Page as WagtailPage
@@ -304,5 +304,5 @@ class BlogPageAbstract(Page):
             heading="Tags and Categories",
         ),
         ImageChooserPanel("header_image"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]

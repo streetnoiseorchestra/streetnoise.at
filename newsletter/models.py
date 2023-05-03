@@ -4,7 +4,7 @@ from birdsong.blocks import DefaultBlocks
 from birdsong.models import Campaign, Contact
 
 from wagtail.admin.edit_handlers import (
-    StreamFieldPanel,
+    FieldPanel,
     FieldPanel,
     MultiFieldPanel,
     FieldRowPanel,
@@ -36,7 +36,7 @@ class Newsletter(Campaign):
     panels = Campaign.panels + [
         FieldPanel("headline"),
         ImageChooserPanel("header_background"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
