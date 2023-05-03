@@ -33,17 +33,16 @@
                 <div class="column is-one-quarter-desktop is-half-tablet">
                     <div class="card is-clickable">
                         <div class="card-image">
-                            <figure class="image is-4by3">
-                                {% image block.image fill-800x600 format-webp as small  %}
-                                {% image block.image fill-1200x900 format-webp as medium  %}
-                                {% image block.image fill-2000x1500 format-webp as large  %}
+                            <picture class="image is-4by3">
+                                {% image block.image width-700 format-webp as small  %}
+                                {% image block.image width-700 format-webp format-webp as small_webp  %}
+                                <source srcset="{{ small_webp.url }}" type="image/webp">
                                 {% image block.image original format-webp as original  %}
-                                <img src="{{ medium.url  }}"
-                                     srcset="{{ small.url }} 800w, {{ medium.url }} 1200w, {{ large.url }} 2000w"
+                                <img src="{{ small.url  }}"
                                      alt="{{ block.caption }}"
                                      _="on click send open(image_url:'{{ original.url }}', caption:'{{ block.caption }}') to .modal_{{block_id}}"
                                 >
-                            </figure>
+                            </picture>
                         </div>
                     </div>
                 </div>

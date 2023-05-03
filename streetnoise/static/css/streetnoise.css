@@ -765,11 +765,6 @@ Reference: http://blog.rrwd.nl/2015/04/04/the-screen-reader-text-class-why-and-h
 }
 
 /* End: Error */
-@font-face {
-  font-family: "obelix-pro";
-  src: url("../fonts/badaboom-webfont.woff2") format("woff2"), url("../fonts/badaboom-webfont.woff") format("woff");
-  unicode-range: U+000-5FF; /* Latin glyphs */
-}
 /*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .pagination-previous,
@@ -14509,7 +14504,7 @@ h1, h2, h3, h4 {
   }
 }
 .header-title-box .title {
-  font-family: "obelix-pro", sans-serif;
+  font-family: "badaboom", sans-serif;
   color: #fff;
   width: 80%;
   text-shadow: 4px 2px 0px rgba(0, 0, 0, 0.8392156863);
@@ -14842,7 +14837,7 @@ footer .title {
   color: hsl(39deg, 100%, 50%);
   opacity: 0.7;
   font-weight: 700;
-  font-family: "obelix-pro";
+  font-family: "badaboom";
 }
 .news-category-menu ul li.current a,
 .news-category-menu ul li a:hover {
@@ -14933,7 +14928,7 @@ footer .title {
   height: 100%;
 }
 .news-single .hero .title, .news-single .hero-header-strafiato2019 .title, .news-single .hero-header .title {
-  font-family: "obelix-pro", sans-serif;
+  font-family: "badaboom", sans-serif;
   color: #fff;
   text-shadow: 4px 2px 0px rgba(0, 0, 0, 0.8392156863);
   font-weight: normal;
@@ -14961,10 +14956,10 @@ footer .title {
 }
 .news-single .news-single-intro {
   margin-top: 20px;
-  font-family: "obelix-pro", sans-serif;
+  font-family: "badaboom", sans-serif;
 }
 .news-single .news-post-footer, .news-single .title {
-  font-family: "obelix-pro";
+  font-family: "badaboom";
 }
 .news-single .news-post-author {
   margin-top: 10px;
@@ -15017,7 +15012,7 @@ footer .title {
 }
 
 .title {
-  font-family: "obelix-pro", sans-serif;
+  font-family: "badaboom", sans-serif;
 }
 
 .card.gig {

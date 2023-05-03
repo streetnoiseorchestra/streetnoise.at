@@ -14,9 +14,11 @@
             <div class="card-content">
               <div class="media">
                 <div class="media-left">
-                  <figure class="image is-128x128">
-                    {% image band.logo max-256x256 class="is-rounded" %}
-                  </figure>
+                  <picture class="image is-128x128 is-rounded">
+                    {% image band.logo max-256x256 format-webp as webp %}
+                    <source srcset="{{ webp.url }}" type="image/webp">
+                    {% image band.logo max-256x256 %}
+                  </picture>
                 </div>
                 <div class="">
                   <p class="title is-4">

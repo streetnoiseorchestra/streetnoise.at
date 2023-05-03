@@ -5,3 +5,12 @@
         <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
         <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
         <link rel="preload" href="{% static 'fonts/badaboom-webfont.woff2' %}" as="font">
+        <style>
+@font-face {
+  font-family: 'badaboom';
+  src:  local('sans-serif'), url('/static/fonts/badaboom-webfont.woff2') format('woff2'),
+        url('/static/fonts/badaboom-webfont.woff') format('woff');
+  unicode-range: U+000-5FF; /* Latin glyphs */
+  font-display: swap;
+}
+        </style>

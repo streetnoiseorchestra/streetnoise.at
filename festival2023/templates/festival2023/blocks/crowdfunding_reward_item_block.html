@@ -4,9 +4,11 @@
         <div class="card bm--card-equal-height">
             <div class="card-media">
                 <a href="{{self.payment_link}}">
-                    <figure class ="image is-1x1">
+                    <picture class="image is-1x1">
+                        {% image self.image fill-300x300 format-webp as webp %}
+                        <source srcset="{{ webp.url }}" type="image/webp">
                         {% image self.image fill-300x300 class="" %}
-                    </figure>
+                    </picture>
                 </a>
             </div>
             <div class="card-content">

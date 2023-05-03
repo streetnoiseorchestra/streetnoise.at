@@ -616,25 +616,19 @@
   color: #000;
 }
 
+/*
 .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
-  background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
-}
-@media screen and (min-width: 580px) {
-  .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
-    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
+  @media screen and (min-width: 580px) {
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
   }
-}
-@media screen and (min-width: 769px), print {
-  .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
-    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1200.png");
+  @include tablet {
+    background-image: url('../img/strafiato2023/save-the-date-header-concept3-1200.png');
   }
-}
-@media screen and (min-width: 1024px) {
-  .hero-header-strafiato.save-the-date:before, .hero-strafiato2023_4.save-the-date:before {
-    background-image: url("../img/strafiato2023/save-the-date-header-concept3.png");
+  @include desktop {
+    background-image: url('../img/strafiato2023/save-the-date-header-concept3.png');
   }
-}
-
+}*/
 .webp .hero-header-strafiato.actual, .webp .hero-strafiato2023_4.actual {
   background-image: url("../img/background-optimized.webp");
 }
@@ -772,7 +766,6 @@
   color: hsl(35deg, 100%, 46%);
 }
 .number-boxes .item {
-  font-family: "obelix-pro", sans-serif;
   display: block;
   font-size: 4rem;
   caret-color: rgb(0, 0, 0);
