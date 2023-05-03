@@ -39,6 +39,9 @@
         @media (min-width: 769px) {
             display: none;
         }
+        .activities {
+            text-align: left;
+        }
     }
 }
 .funding-bar__title {
@@ -334,8 +337,15 @@ $progress-target-color: palette(green, "base");
 
 .activities__text {
     width: calc(100% - 44px);
-    line-height: normal
+    line-height: normal;
+    @media(max-width: 300px) {
+       width: 100%;
+    }
+    @media (max-width: 768px) {
+        padding-left: 5px;
+    }
 }
+
 
 .activities__name {
     font-weight: 600;
@@ -354,13 +364,41 @@ $progress-target-color: palette(green, "base");
     height: 34px;
     margin-left: 10px;
     margin-top: 2px;
-    flex-shrink: 0
+    flex-shrink: 0;
+    @media (max-width: 768px) {
+        margin-left: 5px;
+        width: 29px;
+        height: 29px;
+    }
 }
 
 @media(min-width: 768px) {
     .activities {
         font-size:18px
     }
+}
+
+@media(max-width: 300px) {
+    .activities__item svg {
+        display: none;
+    }
+}
+
+.horizontal-giving-icon {
+    display: none;
+}
+@media(max-width: 300px) {
+  .splide__container.horizontal  {
+        display: flex
+  }
+  .horizontal-giving-icon {
+        display: block;
+        width: 60px;
+        flex-shrink: 0;
+        padding-right: 10px;
+        opacity: 0.5;
+
+  }
 }
 
 

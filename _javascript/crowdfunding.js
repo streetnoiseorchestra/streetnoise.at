@@ -21,22 +21,32 @@ document.addEventListener( 'DOMContentLoaded', function() {
                     interval: 2000,
                 }).mount();
     let perPage = 3;
-    let height = "4rem";
+    let height = "3rem";
+    if (window.screen.width < 300) {
+            perPage = 2;
+            height = "4rem";
+    } else if (window.screen.width < 400) {
+            perPage = 2;
+            height = "4rem";
+    } else if (window.screen.width > 400) {
+            perPage = 3;
+            height = "3rem";
+    }
     new Splide( '.splide__container.horizontal .splide',
-                {
-                    type: 'loop',
-                    direction: 'rtl',
-                    perPage: 2,
-                    perMove: 1,
-                    height: '4rem',
-                    arrows: false,
-                    pagination: false,
-                    paginationKeyboard: false,
-                    drag: false,
-                    autoplay: true,
-                    pauseOnOver: false,
-                    pauseOnFocus: false,
-                    interval: 2000,
-                }).mount();
+                    {
+                        type: 'loop',
+                        direction: 'rtl',
+                        perPage: perPage,
+                        perMove: 1,
+                        height: height,
+                        arrows: false,
+                        pagination: false,
+                        paginationKeyboard: false,
+                        drag: false,
+                        autoplay: true,
+                        pauseOnOver: false,
+                        pauseOnFocus: false,
+                        interval: 2000,
+                    }).mount();
     tippy('[data-tippy-content]');
 } );
