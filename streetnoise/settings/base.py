@@ -5,6 +5,12 @@ Django settings for streetnoise project.
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+# MONKEY PATCH ALERT
+# we use a custom plausible script name
+from plausible import utils
+
+utils.KNOWN_FILENAMES.append("app2.js")
+
 from django.utils.translation import gettext_lazy as _
 
 WAGTAIL_ENABLE_UPDATE_CHECK = True
@@ -24,6 +30,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.settings",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -55,7 +62,7 @@ INSTALLED_APPS = [
     "crowdfunding",
     "streetnoise",
     "wagtailmenus",
-    "plausible",
+    "plausible.contrib.wagtail",
     "mjml",
     "newsletter",
     "birdsong",
@@ -273,9 +280,6 @@ WAGTAILEMBEDS_FINDERS = [
 MAILGUN_NEWSLETTER_LIST = "news@mg.streetnoise.at"
 
 MAILGUN_NEWSLETTER_FROM = "StreetNoise Orchestra <news@mg.streetnoise.at>"
-
-PLAUSIBLE_DOMAIN = "stats.streetnoise.at"
-PLAUSIBLE_SCRIPT_NAME = "app2.js"
 
 MJML_EXEC_CMD = "./node_modules/.bin/mjml"
 
