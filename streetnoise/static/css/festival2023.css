@@ -603,9 +603,10 @@
 }
 @font-face {
   font-family: "edo_szregular";
-  src: url("../fonts/edosz-webfont.woff2") format("woff2"), url("../fonts/edosz-webfont.woff") format("woff");
+  src: local("sans-serif"), url("../fonts/edosz-webfont.woff2") format("woff2"), url("../fonts/edosz-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 .edo, .hero-header-strafiato .title, .hero-header-strafiato .subtitle, .hero.hero-strafiato2023 .title, .hero.hero-strafiato2023 .subtitle, .hero-header-strafiato.actual .title, .hero-header-strafiato.actual .subtitle, .hero-strafiato2023_4.actual .title, .hero-strafiato2023_4.actual .subtitle, .title, .funding-bar__title {
   font-family: "edo_szregular";

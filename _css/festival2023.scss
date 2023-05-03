@@ -4,12 +4,12 @@
 @import "colors";
 @import "crowdfunding";
 @font-face {
-    font-family: 'edo_szregular';
-    src: url('../fonts/edosz-webfont.woff2') format('woff2'),
-         url('../fonts/edosz-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'edo_szregular';
+  src: local('sans-serif'), url('../fonts/edosz-webfont.woff2') format('woff2'),
+       url('../fonts/edosz-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 .edo {
