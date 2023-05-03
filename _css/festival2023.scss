@@ -4,33 +4,19 @@
 @import "colors";
 @import "crowdfunding";
 @font-face {
-  font-family: 'noisy-felt';
-  font-style: normal;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-  src:  url('../fonts/feltnoisy-webfont.woff2') format('woff2'),
-  url('../fonts/feltnoisy-webfont.woff') format('woff');
-  unicode-range: U+000-5FF; /* Latin glyphs */
+    font-family: 'edo_szregular';
+    src: url('../fonts/edosz-webfont.woff2') format('woff2'),
+         url('../fonts/edosz-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
-.noisy-felt {
-      font-family: 'noisy-felt', sans-serif;
-      font-style: normal;
-      font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-      -webkit-text-stroke-width: 0.2px;
-      -moz-osx-font-smoothing: grayscale;
-}
-.badaboom {
-  font-family: 'obelix-pro';
-  src:  url('../fonts/badaboom-webfont.woff2') format('woff2'),
-        url('../fonts/badaboom-webfont.woff') format('woff');
-  unicode-range: U+000-5FF; /* Latin glyphs */
+.edo {
+  font-family: 'edo_szregular';
 }
 .title {
-  @extend .badaboom;
+  @extend .edo;
 }
 
 .hero-header-strafiato, .hero-strafiato2023_4 {
@@ -67,7 +53,7 @@
   background-size: cover;
 
   .title, .subtitle {
-    font-family: 'noisy-felt', cursive;
+    @extend .edo;
     font-weight: 800;
     color: #111;
   }
@@ -112,7 +98,7 @@
   color: #1d1d1b;
   .title, .subtitle {
     color: inherit;
-    @extend .noisy-felt;
+    @extend .edo;
 
     transform: perspective(133px) rotateX(340deg);
     @include tablet {
@@ -173,7 +159,6 @@
   .item, .label {
     text-align: center;
     color: palette(orange, "dark");
-    //@extend .noisy-felt;
   }
   .item {
     font-family: 'obelix-pro', sans-serif;
