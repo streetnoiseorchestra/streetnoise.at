@@ -63,7 +63,10 @@ def handle_checkout_session_succeeded(checkout_session):
     payment_intent = checkout_session["payment_intent"]
     backer_name = None
     for field in checkout_session["custom_fields"]:
-        if field["key"] == "nametoappearinourpubliclistofbackers":
+        if field["key"] in [
+            "nametoappearinourpubliclistofbackers",
+            "nameerscheintinderffentlichenspenderliste",
+        ]:
             backer_name = field["text"].get("value")
     if backer_name:
         backer_name = backer_name.trim()
