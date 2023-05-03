@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 secrets:
   db_password:
     file: ./secrets/db_password
@@ -16,6 +16,8 @@ secrets:
     file: ./secrets/stripe_pk
   stripe_sk:
     file: ./secrets/stripe_sk
+  stripe_endpoint_secret:
+    file: ./secrets/stripe_endpoint_secret
   gigo_password:
     file: ./secrets/gigo_password
   gigo_email:
@@ -55,6 +57,7 @@ services:
       EMAIL_HOST_FILE: /run/secrets/email_host
       STRIPE_PK_FILE: /run/secrets/stripe_pk
       STRIPE_SK_FILE: /run/secrets/stripe_sk
+      STRIPE_ENDPOINT_SECRET_FILE: /run/secrets/stripe_endpoint_secret
       GIGO_PASSWORD_FILE: /run/secrets/gigo_password
       GIGO_EMAIL_FILE: /run/secrets/gigo_email
       MAILGUN_KEY_FILE: /run/secrets/mailgun_key

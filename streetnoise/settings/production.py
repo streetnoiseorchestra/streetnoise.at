@@ -28,6 +28,7 @@ else:
     DATABASE_URL = read_env_file("DATABASE_URL")
     STRIPE_PK = read_env_file("STRIPE_PK")
     STRIPE_SK = read_env_file("STRIPE_SK")
+    STRIPE_ENDPOINT_SECRET = read_env_file("STRIPE_ENDPOINT_SECRET")
     GIGO_PASSWORD = read_env_file("GIGO_PASSWORD")
     GIGO_EMAIL = read_env_file("GIGO_EMAIL")
     MAILGUN_KEY = read_env_file("MAILGUN_KEY")
@@ -59,7 +60,11 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "handlers": {"console": {"class": "logging.StreamHandler",},},
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
     "loggers": {
         "django": {
             "handlers": ["console"],
