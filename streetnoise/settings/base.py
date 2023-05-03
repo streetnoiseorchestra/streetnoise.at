@@ -77,6 +77,10 @@ SITE_ID = 1
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.middleware.cache.UpdateCacheMiddleware",
+    "django.middleware.gzip.GZipMiddleware",
+    # "django_brotli.middleware.BrotliMiddleware",
+    "django.middleware.http.ConditionalGetMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     # LocaleMiddleware should be after SessionMiddleware and before CommonMiddleware
     "django.middleware.locale.LocaleMiddleware",

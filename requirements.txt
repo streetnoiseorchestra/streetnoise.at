@@ -19,3 +19,4 @@ django-plausible==0.4.0
 wagtail-birdsong==1.1.2
 django-mjml==1.1
 brotli==1.0.9
+django-brotli==0.2.1

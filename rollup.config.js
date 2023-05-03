@@ -19,7 +19,8 @@ export default [
     plugins: [
       resolve(), // tells Rollup how to find date-fns in node_modules
       commonjs(), // converts date-fns to ES modules
-      production && terser() // minify, but only in production
+      //production && terser() // minify, but only in production
+      terser()
     ]
   },
   {
@@ -35,7 +36,8 @@ export default [
       replace({
         'process.env.NODE_ENV': JSON.stringify('development'),
       }),
-      production && terser() // minify, but only in production
+     // production && terser() // minify, but only in production
+      terser()
     ]
   }
 ];
