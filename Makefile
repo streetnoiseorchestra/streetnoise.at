@@ -1,5 +1,5 @@
-SHELL := /bin/bash
-DOCKER ?= podman
+SHELL := /usr/bin/env bash
+DOCKER ?= docker
 DC ?= docker compose
 DC_ARGS ?=
 DC_BUILD_ARGS ?=

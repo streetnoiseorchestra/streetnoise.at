@@ -37,6 +37,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
                     {
                         type: 'loop',
                         direction: 'ltr',
+                        fixedHeight: '3.5rem',
                         perPage: perPage,
                         perMove: 1,
                         height: height,
