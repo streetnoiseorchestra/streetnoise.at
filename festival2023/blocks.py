@@ -152,7 +152,6 @@ class CrowdfundingRewardsBlock(blocks.StructBlock):
     """
 
     heading = blocks.CharBlock(required=True, max_length=255)
-    description = blocks.TextBlock(required=True, max_length=255)
     description2 = blocks.RichTextBlock(
         features=[
             "bold",
