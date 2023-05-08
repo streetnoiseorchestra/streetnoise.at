@@ -57,9 +57,11 @@ class Campaign(models.Model):
 
     @cached_property
     def backers(self):
+        b = []
         for backer in self.all_donations:
             if backer.amount > 0:
-                yield backer
+                b.append(backer)
+        return b
 
     @cached_property
     def is_successful(self):
