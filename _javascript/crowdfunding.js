@@ -36,7 +36,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
         new Splide( '.splide__container.horizontal .splide',
                     {
                         type: 'loop',
-                        direction: 'rtl',
+                        direction: 'ltr',
                         perPage: perPage,
                         perMove: 1,
                         height: height,
