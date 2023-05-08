@@ -274,7 +274,6 @@ class HomePage2(Page):
 
 
 class FestivalPage(Page):
-
     menu_festival = models.CharField(max_length=100, blank=True)
     menu_who_we_are = models.CharField(max_length=100, blank=True)
     menu_upcoming_gigs = models.CharField(max_length=100, blank=True)
@@ -480,11 +479,6 @@ class FestivalPage(Page):
             context["donation_page_url"] = url
         return context
 
-    def get_template(self, requeist, *args, **kwargs):
-        if "2023" in self.title:
-            return "home/festival2023_page.html"
-        return "home/festival_page.html"
-
 
 @register_snippet
 class GigType(models.Model):
@@ -601,27 +595,27 @@ class GigRequestPage(Page):
 def send_form_mail(form):
     message = """
     Liebe Band,
-    
+
     Someone requested a gig from the website:
-    
+
     Name:  {contact_name}
     Organization:  {contact_org}
     Email: {contact_email}
-    
+
     Date: {event_date}
     Time: {event_time}
     Deadline to decide: {deadline_date}
-    
+
     Event Type: {event_type}
     Occasion: {event_occasion}
-    
+
     Location: {location}
-    
+
     Donation: {donation_amount}
-    
+
     Details:
     {details}
-    
+
     """.format(
         **form.cleaned_data
     ).strip()
