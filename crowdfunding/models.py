@@ -1,7 +1,15 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.functional import cached_property
-from django.contrib.humanize.templatetags.humanize import intcomma
+from django.utils.timesince import timesince
+from django.utils.translation import get_language
+from django.contrib.humanize.templatetags.humanize import (
+    intcomma,
+    naturaltime,
+    naturalday,
+)
+
+from datetime import timedelta
 import logging
 
 
@@ -157,6 +165,27 @@ class Donation(models.Model):
 
     def __str__(self):
         return str(self.amount)
+
+    @property
+    def paid_at(self):
+        now = timezone.now()
+        date = self.paid_dt
+        # date = now - timedelta(days=7)
+        delta = now - date
+        lang = get_language()
+        if delta >= timedelta(days=1):
+            if lang == "de":
+                if delta.days > 1:
+                    return f"vor {delta.days} Tagen"
+                else:
+                    return f"ein Tag her"
+            else:
+                if delta.days > 1:
+                    return f"{delta.days} days ago"
+                else:
+                    return f"one day ago"
+        else:
+            return naturaltime(date)
 
     @property
     def campaign_name(self):
