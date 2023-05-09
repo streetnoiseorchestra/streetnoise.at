@@ -82,12 +82,11 @@ def handle_checkout_session_succeeded(checkout_session):
     ] in ["plink_1N3ikhGN3fhIGpkEAzmGxNAH"]:
         campaign_name = "test-campaign"
         product_id = "no-reward"
-    elif:
-        if checkout_session["id"].startswith("cs_test_") and checkout_session[
-            "payment_link"
-        ] in ["TODO"]:
-            campaign_name = "crowdfunding-2023"
-            product_id = "no-reward"
+    elif checkout_session["id"].startswith("cs_") and checkout_session[
+        "payment_link"
+    ] in ["TODO"]:
+        campaign_name = "crowdfunding-2023"
+        product_id = "no-reward"
     else:
         expanded_session = stripe.checkout.Session.retrieve(
             checkout_session["id"], expand=["line_items"]
