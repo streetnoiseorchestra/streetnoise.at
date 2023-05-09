@@ -1,4 +1,4 @@
-<section class="hero is-info is-bold festival-program">
+<section class="hero is-info is-bold festival-program" id="program">
     <div class="hero-body">
         <div class="container is-size-5 ">
             <h2 class="title is-2" id="">{{ self.heading }}</h2>
@@ -13,7 +13,6 @@
                     </div>
                 </div>
                 <div class="column is-full-mobile is-half-tablet content">
-
                     {% with blocks=self.descriptions %}
                         {% for block in blocks %}
                             {% if block.block_type == 'heading' %}
