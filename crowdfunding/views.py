@@ -84,7 +84,7 @@ def handle_checkout_session_succeeded(checkout_session):
         product_id = "no-reward"
     elif checkout_session["id"].startswith("cs_") and checkout_session[
         "payment_link"
-    ] in ["TODO"]:
+    ] in ["plink_1N5sb7GN3fhIGpkEMcekm38Y"]:
         campaign_name = "crowdfunding-2023"
         product_id = "no-reward"
     else:
