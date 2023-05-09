@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags i18n %}
 <div class="column center is-half-tablet is-one-third-desktop crowdfunding-reward">
     <div class="tile is-child">
         <div class="card bm--card-equal-height">
@@ -32,10 +32,10 @@
             <footer class="card-footer">
                 <p class="card-footer-item">
                     <a href="{{self.payment_link}}" class="button is-primary">
-                        {% if self.price == '1-9' %}
-                            Auswählen
+                        {% if self.price == '1' %}
+                            {% translate "Name your price" %}
                         {% else %}
-                            Spende {{ self.price }}€
+                            {% blocktranslate with price=self.price %}Donate {{ price }}€{% endblocktranslate %}
                         {% endif %}
                     </a>
                 </p>

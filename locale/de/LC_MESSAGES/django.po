@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 09:25+0000\n"
-"PO-Revision-Date: 2023-05-09 11:26+0200\n"
+"POT-Creation-Date: 2023-05-09 10:00+0000\n"
+"PO-Revision-Date: 2023-05-09 12:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -98,6 +98,15 @@ msgstr ""
 #: blog/abstract.py:293 blog/models.py:155
 msgid "Blog pages"
 msgstr ""
+
+#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:36
+msgid "Name your price"
+msgstr "Auswählen"
+
+#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:38
+#, python-format
+msgid "Donate %(price)s€"
+msgstr "Spende %(price)s€"
 
 #: festival2023/templates/festival2023/funding_progress.html:9
 msgid "CROWDFUNDING NOW LIVE!"
