@@ -11,6 +11,8 @@ logger = logging.getLogger(__name__)
 class Campaign(models.Model):
     campaign_name = models.CharField(max_length=50, unique=True)
     goal = models.PositiveIntegerField()
+    stretch_goal1 = models.PositiveIntegerField(null=True)
+    stretch_goal2 = models.PositiveIntegerField(null=True)
     start_dt = models.DateTimeField(default=timezone.now)
     end_dt = models.DateTimeField()
     creation_dt = models.DateTimeField(default=timezone.now)
@@ -33,7 +35,7 @@ class Campaign(models.Model):
 
     @cached_property
     def days_remaining(self):
-        return (timezone.now() - self.start_dt).days
+        return (self.end_dt - timezone.now()).days
 
     @cached_property
     def total_backers(self):
@@ -46,7 +48,10 @@ class Campaign(models.Model):
     @cached_property
     def raised_percent(self):
         total_raised = self.total_raised
-        goal = self.goal
+        goals = [
+            goal for goal in [self.goal, self.stretch_goal1, self.stretch_goal2] if goal
+        ]
+        goal = goals[0]
         return round(total_raised / goal * 100, 0)
 
     @cached_property
@@ -54,6 +59,24 @@ class Campaign(models.Model):
         total_raised = self.total_raised
         goal = self.goal
         return "{:.9f}".format(total_raised / goal * 100)
+
+    @cached_property
+    def raised_percent_css_final(self):
+        total_raised = self.total_raised
+        goal = self.final_goal
+        return "{:.9f}".format(total_raised / goal * 100)
+
+    @cached_property
+    def raised_percent_css_stretch_goal1(self):
+        total_raised = self.total_raised
+        goal = self.stretch_goal1
+        return "calc({:.9f}% + 0.5em);".format(total_raised / goal * 100)
+
+    @cached_property
+    def raised_percent_css_stretch_goal2(self):
+        total_raised = self.total_raised
+        goal = self.stretch_goal2
+        return "calc({:.9f}% + 0.5em);".format(total_raised / goal * 100)
 
     @cached_property
     def backers(self):
@@ -65,11 +88,54 @@ class Campaign(models.Model):
 
     @cached_property
     def is_successful(self):
-        return self.total_raised >= self.goal
+        if self.stretch_goal2:
+            return self.total_raised >= self.stretch_goal2
+        elif not self.stretch_goal2 and self.stretch_goal1:
+            return self.total_raised >= self.stretch_goal1
+        else:
+            return self.total_raised >= self.goal
 
     @cached_property
     def should_show_supporter_names(self):
         return self.total_backers >= 3
+
+    @cached_property
+    def goal_reached(self):
+        return self.total_raised >= self.goal
+
+    @cached_property
+    def stretch_goal1_reached(self):
+        if self.stretch_goal1:
+            return self.total_raised >= self.stretch_goal1
+        return False
+
+    @cached_property
+    def stretch_goal2_reached(self):
+        if self.stretch_goal2:
+            return self.total_raised >= self.stretch_goal2
+        return False
+
+    @cached_property
+    def in_stretch(self):
+        if self.goal_reached and (self.stretch_goal1 or self.stretch_goal2):
+            return True
+        return False
+
+    @cached_property
+    def next_level_goal(self):
+        for goal in [self.goal, self.stretch_goal1, self.stretch_goal2]:
+            if goal > self.total_raised:
+                return goal
+        return self.goal
+
+    @cached_property
+    def final_goal(self):
+        goals = [self.goal, self.stretch_goal1, self.stretch_goal2]
+        for goal in goals:
+            if self.total_raised > goal:
+                continue
+            return goal
+        return max(goals)
 
 
 class Donation(models.Model):

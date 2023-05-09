@@ -1,55 +1,152 @@
-{% load humanize %}
+{% load humanize i18n %}
 <div class="section crowdfunding {%  if campaign.should_show_supporter_names  %} with-backers {% endif %}">
     <div class="">
         <div class="columns">
             <div class ="column is-three-quarters funding-bar__container">
                 <h1 class="funding-bar__title">
-                    CROWDFUNDING JETZT LIVE
+                    {% if campaign.is_live %}
+                        <span class="live">
+                            {% translate "CROWDFUNDING NOW LIVE!" %}
+                        </span>
+                    {% elif campaign.goal_reached %}
+                        {% translate "Crowdfunding successfully finished" %}
+
+                    {% else %}
+                        {% translate "Crowdfunding finished. Thank you!" %}
+                    {% endif %}
                 </h1>
-                {#<div class="funding-bar2">   {% include 'festival2023/progress-bar-svg.html' %} </div> #}
                 <div>
-                    <div class="funding-bar funding-bar--large">
-                        <div class="funding-bar__track funding-bar__track--only">
-                            <div title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css }}%;" data-tippy-content="{{ campaign.total_raised|intcomma}} €"></div>
+                    {% if not campaign.has_ended %}
+                        <div class="funding-bar funding-bar--large">
+                            {% if campaign.goal_reached %}
+                                {% if campaign.stretch_goal1_reached %}
+                                    {% if campaign.stretch_goal2_reached %}
+                                        {# goal reached, stretch goal 1 and 2 reached !! #}
+                                        <div class="funding-bar__track funding-bar__track--1st">
+                                            <div data-tippy-content="{{ campaign.total_raised | intcomma }} €" class="funding-bar__bar" style="width: 100%;"></div>
+                                        </div>
+                                        <div  title="" class="funding-bar__target--success funding-bar__target" data-tippy-content="{% translate "Starting level" %} %: {{ campaign.goal|intcomma }} €"></div>
+
+                                        <div class="funding-bar__track funding-bar__track--2nd">
+                                            <div data-toggle="tooltip" title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css_stretch_goal1 }}" data-tippy-content="{{ campaign.total_raised|intcomma }} €"></div>
+                                        </div>
+                                        <div  title="" class="funding-bar__target--success funding-bar__target" data-tippy-content="{% translate "Level two"%}: {{ campaign.stretch_goal1|intcomma }} €"></div>
+
+                                        <div class="funding-bar__track funding-bar__track--3rd">
+                                            <div data-toggle="tooltip" title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css_stretch_goal2 }}" data-tippy-content="{{ campaign.total_raised|intcomma }} €"></div>
+                                        </div>
+                                        <div  title="" class="funding-bar__target--success funding-bar__target" data-tippy-content="{% translate "Level three"%}: {{ campaign.stretch_goal2|intcomma }} €"></div>
+                                    {% else %}
+                                        {# goal reached, stretch goal 1 reached, goal 2 not reached #}
+                                        <div class="funding-bar__track funding-bar__track--1st">
+                                            <div data-tippy-content="{{ campaign.total_raised | intcomma }} €" class="funding-bar__bar" style="width: 100%;"></div>
+                                        </div>
+                                        <div  title="" class="funding-bar__target--success funding-bar__target" data-tippy-content="{% translate "Starting level"%}: {{ campaign.goal|intcomma }} €"></div>
+
+                                        <div class="funding-bar__track funding-bar__track--2nd">
+                                            <div data-toggle="tooltip" title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css_stretch_goal1 }}" data-tippy-content="{{ campaign.total_raised|intcomma }} €"></div>
+                                        </div>
+                                        <div  title="" class="funding-bar__target--success funding-bar__target" data-tippy-content="{% translate "Level two"%}: {{ campaign.stretch_goal1|intcomma }} €"></div>
+
+                                        <div class="funding-bar__track funding-bar__track--3rd">
+                                            <div data-toggle="tooltip" title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css_stretch_goal2 }}" data-tippy-content="{{ campaign.total_raised|intcomma }} €"></div>
+                                        </div>
+                                        <div  title="" class="{% if campaign.is_successful %}funding-bar__target--success {%endif%} funding-bar__target funding-bar__target--animated" data-tippy-content="{% translate "Level three" %}: {{ campaign.stretch_goal2|intcomma }} €"></div>
+                                        <div class="funding-bar__track"></div>
+                                    {% endif %}
+                                {% else %}
+                                    {# goal reached, stretch goal 1 not reached #}
+                                    <div class="funding-bar__track funding-bar__track--1st">
+                                        <div data-tippy-content="{{ campaign.total_raised |intcomma }} €" class="funding-bar__bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div  title="" class="funding-bar__target--success funding-bar__target" data-tippy-content="{% translate "Starting level" %}: {{ campaign.goal|intcomma }} €"></div>
+                                    <div class="funding-bar__track funding-bar__track--2nd">
+                                        <div data-toggle="tooltip" title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css_stretch_goal1 }}" data-tippy-content="{{ campaign.total_raised|intcomma }} €"></div>
+                                    </div>
+                                    <div  title="" class="{% if campaign.is_successful %}funding-bar__target--success {%endif%} funding-bar__target funding-bar__target--animated" data-tippy-content="{% translate "Level two" %}: {{ campaign.stretch_goal1|intcomma }} €"></div>
+                                    <div class="funding-bar__track"></div>
+                                {% endif %}
+                            {%else %}
+                                {# goal not reached #}
+                                <div class="funding-bar__track funding-bar__track--only">
+                                    <div title="" class="funding-bar__bar" style="width: {{ campaign.raised_percent_css }}%;" data-tippy-content="{{ campaign.total_raised|intcomma}} €"></div>
+                                </div>
+                                <div  title="" class="{% if campaign.is_successful %}funding-bar__target--success {%endif%} funding-bar__target funding-bar__target--animated" data-tippy-content="Startlevel: {{ campaign.goal|intcomma }} €"></div>
+                                <div class="funding-bar__track"></div>
+                            {% endif %}
                         </div>
-                        <div  title="" class="{% if campaign.is_successful %}funding-bar__target--success {%endif%} funding-bar__target funding-bar__target--animated" data-tippy-content="{{ campaign.goal|intcomma }} €"></div>
-                        <div class="funding-bar__track"></div>
-                    </div>
+                    {% endif %}
                 </div>
-                <div class="light-facts">
-                    <div class="light-facts__fact">
-                        <div id="cf-app-funding-numbers-supporter" class="light-facts__value ">
-                            <span>
-                                {{ campaign.total_backers }}
-                            </span>
-                        </div>
-                        <div class="light-facts__caption">
-                            Unterstütz­er:innen
-                        </div>
-                    </div>
-                    <div class="light-facts__fact light-facts__fact--right">
-                        <div id="cf-app-funding-numbers-counter" class="light-facts__value ">
-                            <span>
+                {% if campaign.has_ended %}
+                    <div class="light-facts sn-text-sm-large light-facts--is-finished">
+                        <div class="light-facts__fact">
+                            <div id="cf-app-funding-numbers-supporter" class="light-facts__value">
                                 <span>
-                                    {{campaign.total_raised|intcomma}}&nbsp;€
+                                        {{ campaign.total_backers  }}
                                 </span>
-                                <span class="light-facts__add-info">
-                                    (<span>{{campaign.raised_percent}}</span>%)
-                                </span>
-                            </span>
+                            </div>
+                            <div class="light-facts__caption">
+                                {% translate "Supporters" %}
+                            </div>
                         </div>
-                        <div class="light-facts__caption">
-                            Finanzierungsziel
-                            {{campaign.goal|intcomma}}&nbsp;€
+                        <div class="light-facts__fact">
+                            <div id="cf-app-funding-numbers-counter" class="light-facts__value">
+                                <span>
+                                    <span>
+                                        {{ campaign.total_raised|intcomma  }}
+                                    </span>
+                                    €
+                                </span></div>
+                            <div class="light-facts__caption">
+                                {% translate "Raised" %}
+                            </div>
                         </div>
                     </div>
-                    <div id="cf-app-funding-numbers-time" class="light-facts__fact light-facts__fact--dotted">
-                        <div>
-                            <span class="light-facts__value">65</span>
-                            <span class="light-facts__caption">Tage</span>
+                {% else  %}
+                    <div class="light-facts">
+                        <div class="light-facts__fact">
+                            <div id="cf-app-funding-numbers-supporter" class="light-facts__value ">
+                                <span>
+                                    {{ campaign.total_backers }}
+                                </span>
+                            </div>
+                            <div class="light-facts__caption">
+                                {% translate "Supporters" %}
+                            </div>
+                        </div>
+                        <div class="light-facts__fact light-facts__fact--right">
+                            <div id="cf-app-funding-numbers-counter" class="light-facts__value ">
+                                <span>
+                                    <span>
+                                        {{campaign.total_raised|intcomma}}&nbsp;€
+                                    </span>
+                                    <span class="light-facts__add-info">
+                                        (<span>{{campaign.raised_percent}}</span>%)
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="light-facts__caption">
+                                {% if campaign.in_stretch %}
+                                    {% translate "Next level" %}
+                                    {{campaign.next_level_goal|intcomma}}&nbsp;€
+                                {% else %}
+                                    {% translate "Funding goal" %}
+                                    {{campaign.goal|intcomma}}&nbsp;€
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div id="cf-app-funding-numbers-time" class="light-facts__fact light-facts__fact--dotted">
+                            <div>
+                                <span class="light-facts__value">{{campaign.days_remaining}}</span>
+                                <span class="light-facts__caption">
+                                    {% translate "Days" %}
+                                    {% translate "Day" %}
+                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                {% endif %}
             </div>
             <div class ="column is-one-quarter splide__container vertical">
                 <div class="splide" aria-labelledby="neuere Unterstützerinnen">
