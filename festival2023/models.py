@@ -37,6 +37,7 @@ from home.models import HomePage2
 from home.blocks import (
     ButtonBlock,
     ImageGridBlock,
+    FooterCTABlock,
     ParagraphImageBlock,
     NewsletterSignupBlock,
 )
@@ -141,6 +142,7 @@ class FestivalPage2023(Page):
                     help_text=_("Paste a link to a video, audio file, instagram, etc."),
                 ),
             ),
+            ("footercta", FooterCTABlock()),
         ],
         null=True,
         blank=True,
