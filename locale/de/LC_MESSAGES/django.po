@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 10:00+0000\n"
-"PO-Revision-Date: 2023-05-09 12:01+0200\n"
+"POT-Creation-Date: 2023-05-09 10:02+0000\n"
+"PO-Revision-Date: 2023-05-09 12:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -99,11 +99,15 @@ msgstr ""
 msgid "Blog pages"
 msgstr ""
 
-#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:36
+#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:23
+msgid "Minimum donation:"
+msgstr "Mindestbeitrag:"
+
+#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:37
 msgid "Name your price"
 msgstr "Auswählen"
 
-#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:38
+#: festival2023/templates/festival2023/blocks/crowdfunding_reward_item_block.html:39
 #, python-format
 msgid "Donate %(price)s€"
 msgstr "Spende %(price)s€"
