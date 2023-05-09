@@ -139,8 +139,7 @@
                             <div>
                                 <span class="light-facts__value">{{campaign.days_remaining}}</span>
                                 <span class="light-facts__caption">
-                                    {% translate "Days" %}
-                                    {% translate "Day" %}
+                                    {%  blocktrans count campaign.days_remaining as days %}Day{% plural %}Days{% endblocktrans %}
                 </span>
                             </div>
                         </div>

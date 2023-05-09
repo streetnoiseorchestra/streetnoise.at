@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 09:01+0000\n"
-"PO-Revision-Date: 2023-05-09 11:14+0200\n"
+"POT-Creation-Date: 2023-05-09 09:25+0000\n"
+"PO-Revision-Date: 2023-05-09 11:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -146,12 +146,10 @@ msgid "Funding goal"
 msgstr "Finanzierungsziel"
 
 #: festival2023/templates/festival2023/funding_progress.html:142
-msgid "Days"
-msgstr "Tage"
-
-#: festival2023/templates/festival2023/funding_progress.html:143
 msgid "Day"
-msgstr "Tag"
+msgid_plural "Days"
+msgstr[0] "Tag"
+msgstr[1] "Tage"
 
 #: festival2023/templates/festival2023/header.html:19
 msgid "presents"
@@ -2114,3 +2112,6 @@ msgstr ""
 #, python-brace-format
 msgid "Page '{0}' copied."
 msgstr ""
+
+#~ msgid "Days"
+#~ msgstr "Tage"
