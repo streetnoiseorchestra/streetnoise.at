@@ -27,7 +27,7 @@ class Campaign(models.Model):
 
     @cached_property
     def all_donations(self):
-        return self.donations.all()
+        return self.donations.all().order_by("-paid_dt")
 
     @cached_property
     def is_live(self):
@@ -78,7 +78,8 @@ class Campaign(models.Model):
     def raised_percent_css_stretch_goal1(self):
         total_raised = self.total_raised
         goal = self.stretch_goal1
-        return "calc({:.9f}% + 0.5em);".format(total_raised / goal * 100)
+        if total_raised is not None and goal is not None:
+            return "calc({:.9f}% + 0.5em);".format(total_raised / goal * 100)
 
     @cached_property
     def raised_percent_css_stretch_goal2(self):
