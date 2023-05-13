@@ -13,9 +13,9 @@
                 {% endif %}
             {% endif %}
             <picture class="image is-2by1">
-                {% image gig.feed_image fill-800x400 format-webp as webp %}
+                {% image gig.feed_image fill-350x150 format-webp as webp %}
                 <source srcset="{{ webp.url }}" type="image/webp">
-                {% image gig.feed_image fill-800x400 %}
+                {% image gig.feed_image fill-350x150 %}
             </picture>
             {% if with_link %}
             </a>

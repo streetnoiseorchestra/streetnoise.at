@@ -15053,11 +15053,7 @@ footer .title {
 }
 
 .card.gig {
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
-  max-width: 350px;
-}
-.card.gig .card-image {
-  height: 180px;
+  width: 100%;
 }
 .card.gig .card-image.placeholder {
   display: flex;
