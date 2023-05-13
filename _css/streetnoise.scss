@@ -63,6 +63,42 @@ h1, h2, h3, h4 {
   background: palette(orange, "base") url('../img/background-2020-enhanced.jpg') no-repeat local center center;
   background-size: cover;
 }
+.festival-cta {
+  position: relative;
+  margin-top: -8rem;
+  width: 100%;
+  padding-top: 2rem;
+  background: hsl(39deg 100% 50% / 80%);
+  &:before {
+    content: ' ';
+    background: url('../img/noise.png');
+    display: block;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  }
+  .logo-mark {
+    width: 70%;
+    margin-top: -1.5rem;
+  }
+  .festival-cta-content {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  .coming-soon{
+    filter: drop-shadow(-2px 2px 0px #fdf9e9);
+  }
+  .strafiato-title {
+    width: 50%
+  }
+  .button.is-text {
+    color: black;
+  }
+}
 
 .navbar {
   background-color: palette(orange, "base");

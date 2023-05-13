@@ -29,7 +29,56 @@
     <section class="hero-header  is-fullheight-with-navbar">
         <!-- Hero header: will stick at the top -->
         <div class="hero-body is-relative">
-            <div style="" class="header-title-box">
+            <div class="festival-cta">
+                <div class="festival-cta-content">
+                    <div class="columns is-gapless is-multiline is-centered">
+                        <div class="column is-half has-text-centered">
+                            <picture>
+                                <source type="image/webp" srcset="{% static 'img/logo-mark-600w-optimized.webp' %}">
+                                <source type="image/png" srcset="{% static 'img/logo-mark-600w-optimized.png' %}">
+                                <img class="logo-mark" decoding="auto" loading="eager" src="{% static 'img/logo-mark-600w-optimized.png' %}" alt="Strafiato 2023" fetchpriority="high">
+                            </picture>
+                        </div>
+                        <div class="column is-full has-text-centered">
+                            <picture>
+                                <source type="image/webp" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.webp' %}">
+                                <source type="image/png" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}">
+                                <img class="strafiato-title" decoding="auto" loading="eager" src="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}" alt="Strafiato 2023" fetchpriority="high">
+                            </picture>
+                        </div>
+                        <div class="column is-full has-text-centered">
+                            {% get_current_language as locale %}
+                            {% if locale == 'en' %}
+                                <img class="coming-soon" src="{%  static 'img/strafiato2023/coming-soon-optimized2.svg' %}" alt="Coming Soon">
+                            {% else %}
+                                <img class="coming-soon" src="{%  static 'img/strafiato2023/kommt-bald-optimized2.svg' %}" alt="Kommt Bald">
+                            {% endif %}
+                        </div>
+
+                        <div class="column is-full has-text-centered">
+                            <div class="buttons is-centered">
+                                <a class="button is-primary" href="/festival">
+                                    <span class="icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                    <span>{% translate "Support" %}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="column is-half  is-offset-one-quarter ">
+                            <div class="buttons is-centered">
+                                <a class="button is-text"
+                                   href="/festival#crowdfunding-video">
+                                    <span><i class="fas fa-eye"></i> {% translate "Watch the video" %}</span>
+                                </a>
+                                <a class="button is-text" href="/festival#program">{% translate "Program" %}</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-title-box">
                 <h1 class="title has-text-centered">
                     StreetNoise <br>Orchestra
                 </h1>
