@@ -14433,6 +14433,9 @@ h1, h2, h3, h4 {
   background: hsl(39deg, 100%, 50%) url("../img/background-2020-enhanced.jpg") no-repeat local center center;
   background-size: cover;
 }
+.hero-header .hero-body {
+  justify-content: center;
+}
 
 .festival-cta {
   position: relative;
@@ -14440,6 +14443,11 @@ h1, h2, h3, h4 {
   width: 100%;
   padding-top: 2rem;
   background: hsla(39deg, 100%, 50%, 0.8);
+}
+@media screen and (min-width: 1024px) {
+  .festival-cta {
+    width: 70%;
+  }
 }
 .festival-cta:before {
   content: " ";

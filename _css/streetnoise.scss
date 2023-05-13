@@ -62,11 +62,17 @@ h1, h2, h3, h4 {
   @extend .hero;
   background: palette(orange, "base") url('../img/background-2020-enhanced.jpg') no-repeat local center center;
   background-size: cover;
+  .hero-body {
+  justify-content: center;
+  }
 }
 .festival-cta {
   position: relative;
   margin-top: -8rem;
   width: 100%;
+  @include desktop {
+    width: 70%;
+  }
   padding-top: 2rem;
   background: hsl(39deg 100% 50% / 80%);
   &:before {
