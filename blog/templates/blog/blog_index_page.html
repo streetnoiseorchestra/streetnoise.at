@@ -25,9 +25,11 @@
             <div class="column is-8"">
                 {% for blog in blogs|slice:":1" %}
                 <a href="{% pageurl blog %}">
-                    <figure class="image is-4by3">
+                    <picture class="image is-4by3">
+                        {% image blog.header_image fill-1000x750 format-webp as webp %}
+                        <source srcset="{{ webp.url }}" type="image/webp">
                         {% image blog.header_image fill-1000x750 %}
-                    </figure>
+                    </picture>
                 </a>
 
                 <div class="card-content is-paddingless">

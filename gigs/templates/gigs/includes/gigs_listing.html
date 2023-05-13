@@ -2,9 +2,9 @@
 
 {% if gigs %}
 <div class="">
-  <ul class="columns">
+  <ul class="columns is-multiline ">
     {% for gig in gigs %}
-      <li class="column is-flex is-one-quarter">
+      <li class="column is-flex is-one-third">
           {% include "gigs/gig_card.html" with with_link=True %}
       </li>
       {% endfor %}
