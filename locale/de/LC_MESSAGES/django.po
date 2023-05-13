@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 10:02+0000\n"
-"PO-Revision-Date: 2023-05-09 12:02+0200\n"
+"POT-Creation-Date: 2023-05-13 12:02+0000\n"
+"PO-Revision-Date: 2023-05-13 14:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -262,6 +262,18 @@ msgstr "Ja, ich bestätige"
 #: home/newsletter.py:114
 msgid "Can StreetNoise Orchestra send you emails?"
 msgstr "Kann StreetNoise Orchestra Ihnen E-Mails senden?"
+
+#: home/templates/home/home_page2.html:64
+msgid "Support"
+msgstr "Unterstützen"
+
+#: home/templates/home/home_page2.html:72
+msgid "Watch the video"
+msgstr "Schau das Video"
+
+#: home/templates/home/home_page2.html:74
+msgid "Program"
+msgstr "Programm"
 
 #: home/templates/home/newsletter.html:7
 #: home/templates/home/newsletter_subscribe.html:18
