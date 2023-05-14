@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation  %}
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation  plausible_wagtail %}
 <html class="no-js">
     <head>
         <meta charset="utf-8">
@@ -122,6 +122,7 @@
     <script type="text/javascript" src="/static/js/hyperscript@0.9.7.js"  charset="utf-8" defer></script>
     <script type="text/javascript" src="/static/js/streetnoise.js" charset="utf-8" defer></script>
     <script type="text/javascript" src="/static/js/crowdfunding.js"  charset="utf-8" defer></script>
+    {% plausible %}
 
 </body>
 </html>
