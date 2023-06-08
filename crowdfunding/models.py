@@ -152,7 +152,7 @@ class Donation(models.Model):
     campaign = models.ForeignKey(
         Campaign, on_delete=models.CASCADE, related_name="donations"
     )
-    backer_name = models.CharField(max_length=50)
+    backer_name = models.CharField(max_length=255)
     amount = models.PositiveIntegerField()
     payment_id = models.CharField(max_length=255)
     product_id = models.CharField(max_length=255)
