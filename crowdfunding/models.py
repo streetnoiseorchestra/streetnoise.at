@@ -135,7 +135,7 @@ class Campaign(models.Model):
         for goal in [self.goal, self.stretch_goal1, self.stretch_goal2]:
             if goal > self.total_raised:
                 return goal
-        return self.goal
+        return None
 
     @cached_property
     def final_goal(self):

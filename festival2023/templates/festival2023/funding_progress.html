@@ -127,8 +127,10 @@
                             </div>
                             <div class="light-facts__caption">
                                 {% if campaign.in_stretch %}
-                                    {% translate "Next level" %}
-                                    {{campaign.next_level_goal|intcomma}}&nbsp;€
+                                    {% if campaign.next_level_goal %}
+                                        {% translate "Next level" %}
+                                        {{campaign.next_level_goal|intcomma}}&nbsp;€
+                                    {% endif %}
                                 {% else %}
                                     {% translate "Funding goal" %}
                                     {{campaign.goal|intcomma}}&nbsp;€
