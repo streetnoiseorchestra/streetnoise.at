@@ -4,11 +4,11 @@
         <h2 class="title has-text-centered title-section caption-text" id="lineup">
             {{ self.heading  }}
         </h2>
-        <div class="columns">
+        <div class="columns is-multiline is-mobile">
             {% for funder in self.funders %}
-                <div class="column">
+                <div class="column is-half-mobile is-one-fifth-tablet has-text-centered">
                     {% if funder.logo %}
-                        <figure class="image is-128x128">
+                        <figure class="image is-128x128 is-inline-block">
                             <a href="{{ funder.url }}" rel="nofollow" title="{{ funder.name  }}">
                                 {% image funder.logo max-256x256 class="" %}
                         </figure>
