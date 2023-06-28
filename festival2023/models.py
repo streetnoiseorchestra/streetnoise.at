@@ -111,6 +111,7 @@ class FestivalPage2023(Page):
             ("heading_text", HeadingParagraphBlock()),
             ("paragraph_image", ParagraphImageBlock()),
             ("crowdfunding_rewards", CrowdfundingRewardsBlock()),
+            ("footercta", FooterCTABlock()),
             (
                 "embed",
                 EmbedBlock(

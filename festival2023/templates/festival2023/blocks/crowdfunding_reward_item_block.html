@@ -32,13 +32,17 @@
             </div>
             <footer class="card-footer">
                 <p class="card-footer-item">
-                    <a href="{{self.payment_link}}" class="button is-primary">
                         {% if self.price == '1' %}
+                            <a href="{{self.payment_link}}" class="button is-primary">
                             {% translate "Name your price" %}
-                        {% else %}
+                            </a>
+                        {% elif not campaign.has_ended  %}
+                            <a href="{{self.payment_link}}" class="button is-primary">
                             {% blocktranslate with price=self.price %}Donate {{ price }}€{% endblocktranslate %}
+                            </a>
+                        {% else %}
+                            {% blocktranslate with price=self.price %}No longer available.{% endblocktranslate %}
                         {% endif %}
-                    </a>
                 </p>
             </footer>
         </div>

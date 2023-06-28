@@ -1,5 +1,5 @@
 {% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation static  app_tags %}
-{% if campaign.has_started %}
+{% if campaign.has_started and not campaign.has_ended %}
     {% for block in self.crowdfunding_body %}
         {% if block.block_type == 'embed' %}
             {% include 'festival2023/blocks/embed.html' %}
@@ -15,3 +15,12 @@
         {% include_block block with block_id=block.id|replace_dashes %}
     {% endif %}
 {% endfor %}
+{% if campaign.has_ended %}
+    {% for block in self.crowdfunding_body %}
+        {% if block.block_type == 'embed' %}
+            {% include 'festival2023/blocks/embed.html' %}
+        {% else %}
+            {% include_block block with block_id=block.id|replace_dashes %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
