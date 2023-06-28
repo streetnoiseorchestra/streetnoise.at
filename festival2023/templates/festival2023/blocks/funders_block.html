@@ -9,13 +9,22 @@
                 <div class="column is-half-mobile is-one-fifth-tablet has-text-centered">
                     {% if funder.logo %}
                         <figure class="image is-128x128 is-inline-block">
+                            {% if funder.url %}
                             <a href="{{ funder.url }}" rel="nofollow" title="{{ funder.name  }}">
                                 {% image funder.logo max-256x256 class="" %}
+                            </a>
+                            {% else %}
+                                {% image funder.logo max-256x256 class="" %}
+                            {% endif %}
                         </figure>
                     {% else %}
+                        {% if funder.url %}
                         <a href="{{ funder.url }}" rel="nofollow" title="{{ funder.name  }}">
                             {{ funder.name  }}
                         </a>
+                        {% else %}
+                            {{ funder.name  }}
+                        {% endif %}
                     {% endif %}
                 </div>
             {% endfor %}
