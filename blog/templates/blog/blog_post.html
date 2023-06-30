@@ -68,7 +68,7 @@
                 <div class="column is-offset-one-quarter is-half">
                     <div class="news-body">
                         {% if block.block_type == 'heading' %}
-                        <h2 class="content">{{ block.value }}</h2>
+                        <h2 class="content title is-size-2">{{ block.value }}</h2>
                         {% elif block.block_type == 'imagetile2' %}
                         <section class="block-{{ block.block_type }}">
                             {% include_block block with block_id=block.id|replace_dashes %}
