@@ -3,15 +3,23 @@
     <div class="column">
         {% if blogs %}
         <div class="card-posts columns is-multiline news-posts">
-            {% for blog in blogs|slice:"1:" %}
+            {% for blog in blogs %}
             <div class="card-post-item is-blog column is-one-third" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
                 <div class="card card-post is-shadowless">
                     <div class="card-image">
                         <a href="{% pageurl blog %}">
                             <picture class="image is-4by3">
-                                {% image blog.header_image fill-640x480 format-webp as webp%}
+                                {% if blog.thumbnail_image %}
+                                    {% image blog.thumbnail_image fill-640x480 format-webp as webp%}
+                                {% else %}
+                                    {% image blog.header_image fill-640x480 format-webp as webp%}
+                                {% endif %}
                                 <source srcset="{{ webp.url }}" type="image/webp">
-                                {% image blog.header_image fill-640x480 %}
+                                {% if blog.thumbnail_image %}
+                                    {% image blog.thumbnail_image fill-640x480 %}
+                                {% else %}
+                                    {% image blog.header_image fill-640x480 %}
+                                {% endif %}
                             </picture>
                         </a>
                     </div>

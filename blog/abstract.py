@@ -220,7 +220,18 @@ class BlogPageAbstract(Page):
         on_delete=models.SET_NULL,
         related_name="+",
         verbose_name=_("Header image"),
+        help_text=_("Should be at least 1908x700 pixels."),
     )
+
+    thumbnail_image = models.ForeignKey(
+        get_image_model_string(),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text=_("Should be 4:3 aspect ratio, at least 1000x750 pixels"),
+    )
+
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         blank=True,
@@ -304,5 +315,6 @@ class BlogPageAbstract(Page):
             heading="Tags and Categories",
         ),
         FieldPanel("header_image"),
+        FieldPanel("thumbnail_image"),
         FieldPanel("body"),
     ]

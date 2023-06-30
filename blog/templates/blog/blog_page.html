@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static i18n %}
 
 {% block head_meta %}
 <meta property="og:type" content="article"/>
@@ -34,9 +34,11 @@
 <section class="section">
     <div class="container">
         <div class="level">
-            <h1 class="title">More News</h1>
+            <h1 class="title">
+                {% translate "More News" %}
+            </h1>
         </div>
-        {% include "blog/blog_tile_list.html" %}
+        {% include "blog/blog_tile_list.html" with blogs=blogs %}
     </div>
 </section>
 {% include 'home/home_cta.html' %}

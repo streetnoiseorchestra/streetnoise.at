@@ -26,9 +26,17 @@
                 {% for blog in blogs|slice:":1" %}
                 <a href="{% pageurl blog %}">
                     <picture class="image is-4by3">
-                        {% image blog.header_image fill-1000x750 format-webp as webp %}
+                        {% if blog.thumbnail_image %}
+                            {% image blog.thumbnail_image fill-1000x750 format-webp as webp %}
+                        {% else %}
+                            {% image blog.header_image fill-1000x750 format-webp as webp %}
+                        {% endif %}
                         <source srcset="{{ webp.url }}" type="image/webp">
-                        {% image blog.header_image fill-1000x750 %}
+                        {% if blog.thumbnail_image %}
+                            {% image blog.thumbnail_image fill-1000x750 %}
+                        {% else %}
+                            {% image blog.header_image fill-1000x750 %}
+                        {% endif %}
                     </picture>
                 </a>
 
@@ -94,7 +102,7 @@
 {% include 'home/newsletter.html' %}
 <section class="section">
     <div class="container">
-        {% include "blog/blog_tile_list.html" %}
+        {% include "blog/blog_tile_list.html" with blogs=blogs %}
     </div>
 </section>
 
