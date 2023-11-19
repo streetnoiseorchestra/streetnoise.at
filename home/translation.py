@@ -1,16 +1,15 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
+from wagtailmenus.models.menuitems import FlatMenuItem, MainMenuItem
 
 from .models import (
-    HomePage2,
+    DonationPage,
     FestivalPage,
+    GenericPage,
     GigRequestPage,
     GigType,
-    DonationPage,
-    GenericPage,
+    HomePage2,
 )
-
-from wagtailmenus.models.menuitems import MainMenuItem, FlatMenuItem
 
 
 @register(HomePage2)

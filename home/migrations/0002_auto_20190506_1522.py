@@ -4,115 +4,114 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0001_initial'),
+        ("home", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='homepage',
-            name='menu_contact',
+            model_name="homepage",
+            name="menu_contact",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_contact_de',
+            model_name="homepage",
+            name="menu_contact_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_contact_en',
+            model_name="homepage",
+            name="menu_contact_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_festival',
+            model_name="homepage",
+            name="menu_festival",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_festival_de',
+            model_name="homepage",
+            name="menu_festival_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_festival_en',
+            model_name="homepage",
+            name="menu_festival_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_join_us',
+            model_name="homepage",
+            name="menu_join_us",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_join_us_de',
+            model_name="homepage",
+            name="menu_join_us_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_join_us_en',
+            model_name="homepage",
+            name="menu_join_us_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_merch',
+            model_name="homepage",
+            name="menu_merch",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_merch_de',
+            model_name="homepage",
+            name="menu_merch_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_merch_en',
+            model_name="homepage",
+            name="menu_merch_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_request_gig',
+            model_name="homepage",
+            name="menu_request_gig",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_request_gig_de',
+            model_name="homepage",
+            name="menu_request_gig_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_request_gig_en',
+            model_name="homepage",
+            name="menu_request_gig_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_upcoming_gigs',
+            model_name="homepage",
+            name="menu_upcoming_gigs",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_upcoming_gigs_de',
+            model_name="homepage",
+            name="menu_upcoming_gigs_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_upcoming_gigs_en',
+            model_name="homepage",
+            name="menu_upcoming_gigs_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_who_we_are',
+            model_name="homepage",
+            name="menu_who_we_are",
             field=models.CharField(blank=True, max_length=100),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_who_we_are_de',
+            model_name="homepage",
+            name="menu_who_we_are_de",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='menu_who_we_are_en',
+            model_name="homepage",
+            name="menu_who_we_are_en",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
     ]

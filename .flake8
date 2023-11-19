@@ -1,0 +1,5 @@
+[flake8]
+min_python_version = 3.11.0
+extend-ignore = E501,E203
+ban-relative-imports = false
+max-line-length = 120

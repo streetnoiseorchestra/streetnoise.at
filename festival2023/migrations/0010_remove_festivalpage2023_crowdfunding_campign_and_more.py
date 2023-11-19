@@ -4,19 +4,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('festival2023', '0009_festivalpage2023_crowdfunding_campign'),
+        ("festival2023", "0009_festivalpage2023_crowdfunding_campign"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='festivalpage2023',
-            name='crowdfunding_campign',
+            model_name="festivalpage2023",
+            name="crowdfunding_campign",
         ),
         migrations.AddField(
-            model_name='festivalpage2023',
-            name='crowdfunding_campaign',
-            field=models.CharField(blank=True, choices=[('test', 'test')], default='festival2023/homepage.html', max_length=255),
+            model_name="festivalpage2023",
+            name="crowdfunding_campaign",
+            field=models.CharField(
+                blank=True, choices=[("test", "test")], default="festival2023/homepage.html", max_length=255
+            ),
         ),
     ]

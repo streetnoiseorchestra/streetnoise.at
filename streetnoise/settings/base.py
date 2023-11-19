@@ -199,9 +199,7 @@ WAGTAIL_SITE_NAME = "streetnoise"
 BASE_URL = "https://streetnoise.at"
 WAGTAILADMIN_BASE_URL = "https://streetnoise.at"
 
-WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = (
-    "StreetNoise Orchestra <website@notifications.streetnoise.at>"
-)
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = "StreetNoise Orchestra <website@notifications.streetnoise.at>"
 DEFAULT_FROM_EMAIL = WAGTAILADMIN_NOTIFICATION_FROM_EMAIL
 
 LOGIN_URL = "/login/"

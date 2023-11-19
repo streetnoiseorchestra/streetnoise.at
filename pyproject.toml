@@ -32,11 +32,23 @@ brotli = "1.0.9"
 django-brotli = "0.2.1"
 
 [tool.poetry.dev-dependencies]
-black = "^23.11.0"
-flake8 = "^6.1.0"
 libsass = "0.22.0"
+flake8 = "*"
+black = "*"
+bandit = "*"
+isort = "*"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.isort]
+py_version = 310
+profile = "black"
+src_paths = ["gm", "tests"]
+
+[tool.black]
+line-length = 120
+target-version = ['py311']

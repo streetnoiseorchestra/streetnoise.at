@@ -1,10 +1,8 @@
 from django.db import models
 from django.urls import reverse
-
-from wagtail.models import Page as WagtailPage
-from wagtail.images.edit_handlers import FieldPanel
-
 from home.views import newsletter_subscribe, newsletter_unsubscribe
+from wagtail.images.edit_handlers import FieldPanel
+from wagtail.models import Page as WagtailPage
 
 
 class Page(WagtailPage):

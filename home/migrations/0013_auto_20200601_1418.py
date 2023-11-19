@@ -5,18 +5,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('wagtailimages', '0022_uploadedimage'),
-        ('wagtailcore', '0045_assign_unlock_grouppagepermission'),
-        ('contenttypes', '0002_remove_content_type_name'),
-        ('home', '0012_auto_20190726_1722'),
+        ("wagtailimages", "0022_uploadedimage"),
+        ("wagtailcore", "0045_assign_unlock_grouppagepermission"),
+        ("contenttypes", "0002_remove_content_type_name"),
+        ("home", "0012_auto_20190726_1722"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='HomePage',
-            new_name='FestivalPage',
+            old_name="HomePage",
+            new_name="FestivalPage",
         ),
     ]

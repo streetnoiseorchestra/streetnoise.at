@@ -1,18 +1,16 @@
-from django.utils.html import escape
+from birdsong.options import CampaignAdmin
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.html import escape
 from django.utils.http import urlencode
-
-from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from wagtail import hooks
-from wagtail.rich_text import LinkHandler
-from wagtail.rich_text.pages import PageLinkHandler
+from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from wagtail.documents.rich_text import DocumentLinkHandler
 from wagtail.models import Site
+from wagtail.rich_text import LinkHandler
+from wagtail.rich_text.pages import PageLinkHandler
 
-from birdsong.options import CampaignAdmin
-
-from .models import Newsletter, NewsletterSubscriber
 from .filters import ContactFilter
+from .models import Newsletter, NewsletterSubscriber
 
 
 @modeladmin_register
@@ -132,16 +130,11 @@ def register_link_handler(context):
 from birdsong.views import editor
 from django import shortcuts
 from django.template import loader
-from wagtail import hooks
-from wagtail import rich_text
+from wagtail import hooks, rich_text
 
 
-def birdsong_render(
-    request, template_name, context, content_type=None, status=None, using=None
-):
-    with hooks.register_temporarily(
-        "register_rich_text_features", register_link_handler(context)
-    ):
+def birdsong_render(request, template_name, context, content_type=None, status=None, using=None):
+    with hooks.register_temporarily("register_rich_text_features", register_link_handler(context)):
         rich_text.features.has_scanned_for_features = False
         return shortcuts.render(
             request,
@@ -154,9 +147,7 @@ def birdsong_render(
 
 
 def birdsong_render_to_string(template, context):
-    with hooks.register_temporarily(
-        "register_rich_text_features", register_link_handler
-    ):
+    with hooks.register_temporarily("register_rich_text_features", register_link_handler):
         rich_text.features.has_scanned_for_features = False
         return loader.render_to_string(template, context)
 

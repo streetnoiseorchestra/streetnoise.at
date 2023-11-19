@@ -1,6 +1,7 @@
 import logging
-from allauth.account.models import EmailAddress
+
 from allauth.account.adapter import DefaultAccountAdapter
+from allauth.account.models import EmailAddress
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 
 logger = logging.getLogger(__name__)
@@ -45,9 +46,7 @@ class SNOSocialAccountAdapter(DefaultSocialAccountAdapter):
         # check if given email address already exists as a verified email on
         # an existing user's account
         try:
-            existing_email = EmailAddress.objects.get(
-                email__iexact=email.email, verified=True
-            )
+            existing_email = EmailAddress.objects.get(email__iexact=email.email, verified=True)
         except EmailAddress.DoesNotExist:
             return
 

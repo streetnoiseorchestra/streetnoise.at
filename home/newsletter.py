@@ -2,18 +2,15 @@ import hashlib
 import hmac
 import json
 import logging
-from hmac import compare_digest
 from datetime import datetime
+from hmac import compare_digest
 
 import requests
-
 from django.conf import settings
-from django.utils.translation import gettext as _
-from django.utils.http import urlencode
 from django.http import HttpResponse, JsonResponse
-
+from django.utils.http import urlencode
+from django.utils.translation import gettext as _
 from newsletter.models import NewsletterSubscriber
-
 
 # Bounce score added to the user when a temporary bounce happens.
 SOFT_BOUNCE_SCORE = 1
@@ -40,10 +37,7 @@ def validate_confirmation_code(user_code, email, secret):
     return compare_digest(good_code.encode("utf-8"), user_code.encode("utf-8"))
 
 
-def first_opt_in(
-    name, email, consented_at, consented_from, confirm_url_base, withdraw_url_base
-):
-
+def first_opt_in(name, email, consented_at, consented_from, confirm_url_base, withdraw_url_base):
     subscriber, was_created = NewsletterSubscriber.objects.get_or_create(email=email)
 
     subscriber.name = name
@@ -99,9 +93,7 @@ def unsubscribe(email, consent_withdrawn_at):
 
 def send_double_optin_email(name, email, confirm_url, withdraw_url):
     payload = {
-        "confirm_title": _(
-            "Confirm to receive StreetNoise Orchestra announcements and updates."
-        ),
+        "confirm_title": _("Confirm to receive StreetNoise Orchestra announcements and updates."),
         "confirm_msg": _(
             "We take privacy seriously, we'll only use your information to send you an update every so often. You can always contact us at orchestra@streetnoise.at"
         ),
@@ -147,17 +139,13 @@ def update_list_member(member):
 
 
 def valid_mailgun_signature(api_key, token, timestamp, signature):
-    real_hash = hmac.new(
-        key=api_key, msg=f"{timestamp}{token}", digestmod=hashlib.sha256()
-    ).hexdigest()
+    real_hash = hmac.new(key=api_key, msg=f"{timestamp}{token}", digestmod=hashlib.sha256()).hexdigest()
     return signature == real_hash
 
 
 def mailgun_handle_bounce(params):
     signature = params["signature"]
-    if not valid_mailgun_signature(
-        signature["token"], signature["timestamp"], signature["signature"]
-    ):
+    if not valid_mailgun_signature(signature["token"], signature["timestamp"], signature["signature"]):
         logger.error("Invalid mailgun signature on bounce webhook")
         return HttpResponse(401)
 
@@ -192,9 +180,7 @@ def process_bounce(message_id, to_address, bounce_score, error_code):
     old_score = subscriber.bounce_score
     new_score = subscriber.bounce_score + bounce_score
     subscriber.bounce_score = new_score
-    subscriber.reset_bounce_score_on = datetime.utcnow() + datetime.timedelta(
-        days=RESET_BOUNCE_AFTER_DAYS
-    )
+    subscriber.reset_bounce_score_on = datetime.utcnow() + datetime.timedelta(days=RESET_BOUNCE_AFTER_DAYS)
 
     if new_score >= RESET_BOUNCE_AFTER_DAYS:
         subscriber.subscribed = False

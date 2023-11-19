@@ -4,40 +4,39 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0010_auto_20190726_1707'),
+        ("home", "0010_auto_20190726_1707"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='genericpage',
-            name='cta_button1',
-            field=models.CharField(blank=True, max_length=100, verbose_name='CTA Button 1 Text'),
+            model_name="genericpage",
+            name="cta_button1",
+            field=models.CharField(blank=True, max_length=100, verbose_name="CTA Button 1 Text"),
         ),
         migrations.AddField(
-            model_name='genericpage',
-            name='cta_button1_url',
+            model_name="genericpage",
+            name="cta_button1_url",
             field=models.URLField(blank=True),
         ),
         migrations.AddField(
-            model_name='genericpage',
-            name='cta_button2',
-            field=models.CharField(blank=True, max_length=100, verbose_name='CTA Button 2 Text'),
+            model_name="genericpage",
+            name="cta_button2",
+            field=models.CharField(blank=True, max_length=100, verbose_name="CTA Button 2 Text"),
         ),
         migrations.AddField(
-            model_name='genericpage',
-            name='cta_button2_url',
+            model_name="genericpage",
+            name="cta_button2_url",
             field=models.URLField(blank=True),
         ),
         migrations.AddField(
-            model_name='genericpage',
-            name='cta_subtitle',
-            field=models.CharField(blank=True, max_length=100, verbose_name='CTA Subtitle'),
+            model_name="genericpage",
+            name="cta_subtitle",
+            field=models.CharField(blank=True, max_length=100, verbose_name="CTA Subtitle"),
         ),
         migrations.AddField(
-            model_name='genericpage',
-            name='cta_title',
-            field=models.CharField(blank=True, max_length=100, verbose_name='CTA Title'),
+            model_name="genericpage",
+            name="cta_title",
+            field=models.CharField(blank=True, max_length=100, verbose_name="CTA Title"),
         ),
     ]

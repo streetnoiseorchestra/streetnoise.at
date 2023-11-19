@@ -4,9 +4,11 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
+
 @register.filter
 def replace_dashes(string):
-    return string.replace('-', '_')
+    return string.replace("-", "_")
+
 
 @register.simple_tag
 def use_conventional_auth():

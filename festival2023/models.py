@@ -1,58 +1,47 @@
-from django.core.exceptions import ValidationError
-from django.utils.functional import lazy
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from crowdfunding.models import Campaign, Donation
+from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.db import models
-from django import forms
-from django.utils.translation import gettext_lazy as _
-from django.shortcuts import get_object_or_404
-from django.template.defaultfilters import slugify
-from wagtail.snippets.models import register_snippet
-from taggit.models import Tag
+from django.core.exceptions import ValidationError
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from django.template.defaultfilters import slugify
+from django.utils.functional import lazy
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    FieldRowPanel,
-    FieldPanel,
-)
-from wagtail.api import APIField
-from wagtail.models import Page as WagtailPage
-from wagtail.images import get_image_model_string
-from wagtail.images.edit_handlers import FieldPanel
-from wagtail.search import index
-from wagtail.fields import StreamField
-from wagtail import blocks
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.embeds.blocks import EmbedBlock
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from modelcluster.tags import ClusterTaggableManager
-from taggit.models import TaggedItemBase
-
-from home.models import HomePage2
 from home.blocks import (
     ButtonBlock,
-    ImageGridBlock,
     FooterCTABlock,
-    ParagraphImageBlock,
+    ImageGridBlock,
     NewsletterSignupBlock,
+    ParagraphImageBlock,
 )
+from home.models import HomePage2
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.tags import ClusterTaggableManager
 from streetnoise.models import Page
+from taggit.models import Tag, TaggedItemBase
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
+from wagtail.api import APIField
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.fields import StreamField
+from wagtail.images import get_image_model_string
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import FieldPanel
+from wagtail.models import Page as WagtailPage
+from wagtail.search import index
+from wagtail.snippets.models import register_snippet
 
-from crowdfunding.models import Campaign, Donation
 from .blocks import (
-    NumberBoxesBlock,
-    LineupBlock,
+    CrowdfundingRewardsBlock,
     FundersBlock,
     HeadingParagraphBlock,
+    LineupBlock,
+    NumberBoxesBlock,
     ProgramBlock2,
-    CrowdfundingRewardsBlock,
 )
-
 
 """
 Festival Landing Page
@@ -96,9 +85,7 @@ def get_all_campaigns():
 class FestivalPage2023(Page):
     def __init__(self, *args, **kwargs):
         super(FestivalPage2023, self).__init__(*args, **kwargs)
-        self._meta.get_field("crowdfunding_campaign").choices = lazy(
-            get_all_campaigns, list
-        )()
+        self._meta.get_field("crowdfunding_campaign").choices = lazy(get_all_campaigns, list)()
 
     page_template = models.CharField(
         default="festival2023/homepage.html",

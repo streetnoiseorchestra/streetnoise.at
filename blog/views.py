@@ -1,8 +1,9 @@
-from django.contrib.syndication.views import Feed
-from django.utils.feedgenerator import Atom1Feed
-from .models import BlogIndexPage, BlogPage, BlogCategory
-from django.shortcuts import get_object_or_404
 from django.conf import settings
+from django.contrib.syndication.views import Feed
+from django.shortcuts import get_object_or_404
+from django.utils.feedgenerator import Atom1Feed
+
+from .models import BlogCategory, BlogIndexPage, BlogPage
 
 
 def tag_view(request, tag):

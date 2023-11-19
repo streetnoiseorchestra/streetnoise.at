@@ -6,20 +6,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailmenus', '0012_auto_20160419_0039'),
+        ("wagtailmenus", "0012_auto_20160419_0039"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='flatmenuitem',
-            name='allow_subnav',
-            field=models.BooleanField(default=False, verbose_name='allow sub-navigation for this item'),
+            model_name="flatmenuitem",
+            name="allow_subnav",
+            field=models.BooleanField(default=False, verbose_name="allow sub-navigation for this item"),
         ),
         migrations.AlterField(
-            model_name='mainmenuitem',
-            name='allow_subnav',
-            field=models.BooleanField(default=True, verbose_name='allow sub-navigation for this item'),
+            model_name="mainmenuitem",
+            name="allow_subnav",
+            field=models.BooleanField(default=True, verbose_name="allow sub-navigation for this item"),
         ),
     ]

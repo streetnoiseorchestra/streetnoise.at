@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0005_auto_20200608_0800'),
+        ("blog", "0005_auto_20200608_0800"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpage',
-            name='extra_css',
-            field=models.TextField(blank=True, verbose_name='Extra CSS'),
+            model_name="blogpage",
+            name="extra_css",
+            field=models.TextField(blank=True, verbose_name="Extra CSS"),
         ),
     ]

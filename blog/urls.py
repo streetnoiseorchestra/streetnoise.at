@@ -1,6 +1,6 @@
 from django.urls import include, re_path
-from . import views
 
+from . import views
 
 app_name = "blog"
 

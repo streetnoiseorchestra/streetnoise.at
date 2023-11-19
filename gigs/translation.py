@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import GigPage, GigIndexPage
+from .models import GigIndexPage, GigPage
 
 
 @register(GigIndexPage)

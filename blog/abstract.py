@@ -1,44 +1,35 @@
+import datetime
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    FieldRowPanel,
-    FieldPanel,
-)
-from wagtail.api import APIField
-from wagtail.models import Page as WagtailPage
-from wagtail.images import get_image_model_string
-from wagtail.images.edit_handlers import FieldPanel
-from wagtail.search import index
-from wagtail.fields import StreamField
-from wagtail import blocks
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.embeds.blocks import EmbedBlock
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from modelcluster.tags import ClusterTaggableManager
-from taggit.models import TaggedItemBase
-
-from .utils import unique_slugify
-from .blocks import ImageCarouselBlock
-
-from streetnoise.models import Page
-
 from home.blocks import (
     ButtonBlock,
     FooterCTABlock,
     ImageGridBlock,
     ImageTileBlock,
     ImageTileBlock2,
-    ButtonBlock,
-    ParagraphImageBlock,
     NewsletterSignupBlock,
+    ParagraphImageBlock,
 )
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.tags import ClusterTaggableManager
+from streetnoise.models import Page
+from taggit.models import TaggedItemBase
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
+from wagtail.api import APIField
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.fields import StreamField
+from wagtail.images import get_image_model_string
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import FieldPanel
+from wagtail.models import Page as WagtailPage
+from wagtail.search import index
 
-import datetime
+from .blocks import ImageCarouselBlock
+from .utils import unique_slugify
 
 
 class BlogIndexPageAbstract(Page):
@@ -245,13 +236,9 @@ class BlogPageAbstract(Page):
     search_fields = Page.search_fields + [
         index.SearchField("body"),
     ]
-    blog_categories = ParentalManyToManyField(
-        "BlogCategory", through="BlogCategoryBlogPage", blank=True
-    )
+    blog_categories = ParentalManyToManyField("BlogCategory", through="BlogCategoryBlogPage", blank=True)
 
-    hide_author = models.BooleanField(
-        default=False, help_text="Hide the author sign-off."
-    )
+    hide_author = models.BooleanField(default=False, help_text="Hide the author sign-off.")
     hide_header_title = models.BooleanField(
         default=False,
         help_text="Hide the blog title from the header image on the blog post page.",

@@ -4,30 +4,53 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailmenus', '0023_remove_use_specific'),
+        ("wagtailmenus", "0023_remove_use_specific"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='flatmenuitem',
-            name='link_text_de',
-            field=models.CharField(blank=True, help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.", max_length=255, null=True, verbose_name='link text'),
+            model_name="flatmenuitem",
+            name="link_text_de",
+            field=models.CharField(
+                blank=True,
+                help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.",
+                max_length=255,
+                null=True,
+                verbose_name="link text",
+            ),
         ),
         migrations.AddField(
-            model_name='flatmenuitem',
-            name='link_text_en',
-            field=models.CharField(blank=True, help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.", max_length=255, null=True, verbose_name='link text'),
+            model_name="flatmenuitem",
+            name="link_text_en",
+            field=models.CharField(
+                blank=True,
+                help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.",
+                max_length=255,
+                null=True,
+                verbose_name="link text",
+            ),
         ),
         migrations.AddField(
-            model_name='mainmenuitem',
-            name='link_text_de',
-            field=models.CharField(blank=True, help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.", max_length=255, null=True, verbose_name='link text'),
+            model_name="mainmenuitem",
+            name="link_text_de",
+            field=models.CharField(
+                blank=True,
+                help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.",
+                max_length=255,
+                null=True,
+                verbose_name="link text",
+            ),
         ),
         migrations.AddField(
-            model_name='mainmenuitem',
-            name='link_text_en',
-            field=models.CharField(blank=True, help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.", max_length=255, null=True, verbose_name='link text'),
+            model_name="mainmenuitem",
+            name="link_text_en",
+            field=models.CharField(
+                blank=True,
+                help_text="Provide the text to use for a custom URL, or set on an internal page link to use instead of the page's title.",
+                max_length=255,
+                null=True,
+                verbose_name="link text",
+            ),
         ),
     ]

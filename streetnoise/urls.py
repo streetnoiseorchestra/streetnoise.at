@@ -1,30 +1,22 @@
+from birdsong import urls as birdsong_urls
+from crowdfunding.views import stripe_webhooks
 from django.conf import settings
-from django.urls import include, re_path, path
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.urls import path
-from wagtail.admin import urls as wagtailadmin_urls
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
+from django.urls import include, path, re_path
+from home.views import (
+    newsletter_bounce,
+    newsletter_confirm,
+    newsletter_subscribe,
+    newsletter_unsubscribe,
+)
 from wagtail import urls as wagtail_urls
+from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from birdsong import urls as birdsong_urls
-
-from django.contrib import admin
-from django.contrib.auth.decorators import login_required
-from django.contrib.admin.views.decorators import staff_member_required
-
-from home.views import (
-    newsletter_subscribe,
-    newsletter_confirm,
-    newsletter_unsubscribe,
-    newsletter_bounce,
-)
-
-from crowdfunding.views import stripe_webhooks
-
-admin.site.login = staff_member_required(login_url="/", redirect_field_name="")(
-    admin.site.login
-)
+admin.site.login = staff_member_required(login_url="/", redirect_field_name="")(admin.site.login)
 
 # from search import views as search_views
 

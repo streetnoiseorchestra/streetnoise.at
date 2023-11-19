@@ -1,20 +1,16 @@
 from datetime import date, datetime
-from django.utils.translation import gettext_lazy as _
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel
-from wagtail.fields import RichTextField
-from wagtail.models import Page
-from wagtail.images.edit_handlers import FieldPanel
-from wagtail.fields import StreamField
-
-
-from wagtail import blocks
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.embeds.blocks import EmbedBlock
-
+from django.utils.translation import gettext_lazy as _
 from home.blocks import ButtonBlock
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, MultiFieldPanel
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.fields import RichTextField, StreamField
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import FieldPanel
+from wagtail.models import Page
 
 
 class GigIndexPage(Page):
@@ -100,9 +96,7 @@ class GigPage(Page):
         blank=True,
         help_text=_("A link to a blog, facebook page, or other site about this gig."),
     )
-    body = RichTextField(
-        _("Details"), blank=True, help_text=_("A sentence or two describing the gig.")
-    )
+    body = RichTextField(_("Details"), blank=True, help_text=_("A sentence or two describing the gig."))
 
     body2 = StreamField(
         [

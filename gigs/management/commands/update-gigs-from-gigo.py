@@ -1,16 +1,14 @@
 import re
 
-from django.core.management.base import BaseCommand, CommandError
+import dateutil
+import gigs
+import requests
+from dateutil.parser import parse as _parse_date
 from django.conf import settings
 from django.contrib.auth.models import User
-
-import requests
-import dateutil
-from dateutil.parser import parse as _parse_date
-
-import gigs
-from home.models import HomePage2, FestivalPage
-from gigs.models import GigPage, GigIndexPage
+from django.core.management.base import BaseCommand, CommandError
+from gigs.models import GigIndexPage, GigPage
+from home.models import FestivalPage, HomePage2
 
 auth_url = "https://www.gig-o-matic.com/api/authenticate"
 agenda_url = "https://www.gig-o-matic.com/api/agenda"
@@ -114,9 +112,7 @@ class Command(BaseCommand):
                 gig_page.date_to = date_to
                 gig_page.location = location
                 gig_page.body = details
-                gig_page.save_revision(
-                    submitted_for_moderation=True, user=User.objects.all().first()
-                )
+                gig_page.save_revision(submitted_for_moderation=True, user=User.objects.all().first())
 
             except GigPage.DoesNotExist:
                 # create new gig page
@@ -135,6 +131,4 @@ class Command(BaseCommand):
                 )
                 gig_page.live = False
                 root_page.add_child(instance=gig_page)
-                gig_page.save_revision(
-                    submitted_for_moderation=True, user=User.objects.all().first()
-                )
+                gig_page.save_revision(submitted_for_moderation=True, user=User.objects.all().first())

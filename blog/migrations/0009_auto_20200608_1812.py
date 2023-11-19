@@ -4,25 +4,42 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0008_auto_20200608_1445'),
+        ("blog", "0008_auto_20200608_1445"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpage',
-            name='intro_de',
-            field=models.CharField(blank=True, help_text='A short summary of the post in one or two sentences.', max_length=512, null=True, verbose_name='Post summary'),
+            model_name="blogpage",
+            name="intro_de",
+            field=models.CharField(
+                blank=True,
+                help_text="A short summary of the post in one or two sentences.",
+                max_length=512,
+                null=True,
+                verbose_name="Post summary",
+            ),
         ),
         migrations.AddField(
-            model_name='blogpage',
-            name='intro_en',
-            field=models.CharField(blank=True, help_text='A short summary of the post in one or two sentences.', max_length=512, null=True, verbose_name='Post summary'),
+            model_name="blogpage",
+            name="intro_en",
+            field=models.CharField(
+                blank=True,
+                help_text="A short summary of the post in one or two sentences.",
+                max_length=512,
+                null=True,
+                verbose_name="Post summary",
+            ),
         ),
         migrations.AlterField(
-            model_name='blogpage',
-            name='intro',
-            field=models.CharField(blank=True, help_text='A short summary of the post in one or two sentences.', max_length=512, null=True, verbose_name='Post summary'),
+            model_name="blogpage",
+            name="intro",
+            field=models.CharField(
+                blank=True,
+                help_text="A short summary of the post in one or two sentences.",
+                max_length=512,
+                null=True,
+                verbose_name="Post summary",
+            ),
         ),
     ]

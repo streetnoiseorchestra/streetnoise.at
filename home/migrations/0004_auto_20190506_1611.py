@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0003_dataprivacypage_impressumpage'),
+        ("home", "0003_dataprivacypage_impressumpage"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bandfriend',
-            name='facebook',
+            model_name="bandfriend",
+            name="facebook",
             field=models.URLField(blank=True),
         ),
         migrations.AlterField(
-            model_name='bandfriend',
-            name='website',
+            model_name="bandfriend",
+            name="website",
             field=models.URLField(blank=True),
         ),
     ]

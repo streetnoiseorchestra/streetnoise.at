@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0002_auto_20150226_2305'),
+        ("blog", "0002_auto_20150226_2305"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='blogcategoryblogpage',
+            name="blogcategoryblogpage",
             options={},
         ),
         migrations.RemoveField(
-            model_name='blogcategoryblogpage',
-            name='sort_order',
+            model_name="blogcategoryblogpage",
+            name="sort_order",
         ),
     ]

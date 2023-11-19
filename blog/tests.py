@@ -1,23 +1,23 @@
 import doctest
 import json
 
-from django.core.management import call_command
+import responses
 from django.contrib.auth.models import User
+from django.core.management import call_command
 from django.test import TestCase
 from django_comments_xtd.models import XtdComment
 from wagtail.models import Page
-import responses
 
+from . import wp_xml_parser
+from .management.commands.wordpress_to_wagtail import Command
 from .models import (
-    BlogPage,
-    BlogTag,
-    BlogPageTag,
-    BlogIndexPage,
     BlogCategory,
     BlogCategoryBlogPage,
+    BlogIndexPage,
+    BlogPage,
+    BlogPageTag,
+    BlogTag,
 )
-from .management.commands.wordpress_to_wagtail import Command
-from . import wp_xml_parser
 from .wordpress_import import WordpressImport
 
 
@@ -26,8 +26,8 @@ def load_tests(loader, tests, ignore):
     return tests
 
 
-from django.urls import reverse
 from django.contrib.auth.models import Group
+from django.urls import reverse
 
 
 class BlogTests(TestCase):
@@ -36,9 +36,7 @@ class BlogTests(TestCase):
         self.user = User.objects.create_user("test", "test@test.test", "pass")
         self.xml_path = "example_export.xml"
         self.blog_index = home.add_child(
-            instance=BlogIndexPage(
-                title="Blog Index", slug="blog", search_description="x", owner=self.user
-            )
+            instance=BlogIndexPage(title="Blog Index", slug="blog", search_description="x", owner=self.user)
         )
 
     def test_index(self):
@@ -86,12 +84,8 @@ class BlogTests(TestCase):
             )
         )
 
-        with self.settings(
-            BLOG_LIMIT_AUTHOR_CHOICES_GROUP=None, BLOG_LIMIT_AUTHOR_CHOICES_ADMIN=False
-        ):
-            response = self.client.get(
-                reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True
-            )
+        with self.settings(BLOG_LIMIT_AUTHOR_CHOICES_GROUP=None, BLOG_LIMIT_AUTHOR_CHOICES_ADMIN=False):
+            response = self.client.get(reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True)
             self.assertEqual(response.status_code, 200)
             self.assertContains(response, "mr.staff")
             self.assertNotContains(response, "mr.author")
@@ -100,9 +94,7 @@ class BlogTests(TestCase):
             BLOG_LIMIT_AUTHOR_CHOICES_GROUP=bloggers,
             BLOG_LIMIT_AUTHOR_CHOICES_ADMIN=False,
         ):
-            response = self.client.get(
-                reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True
-            )
+            response = self.client.get(reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True)
             self.assertEqual(response.status_code, 200)
             self.assertNotContains(response, "mr.staff")
             self.assertContains(response, "mr.author")
@@ -111,9 +103,7 @@ class BlogTests(TestCase):
             BLOG_LIMIT_AUTHOR_CHOICES_GROUP=bloggers,
             BLOG_LIMIT_AUTHOR_CHOICES_ADMIN=True,
         ):
-            response = self.client.get(
-                reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True
-            )
+            response = self.client.get(reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True)
             self.assertEqual(response.status_code, 200)
             self.assertContains(response, "mr.staff")
             self.assertContains(response, "mr.author")
@@ -122,9 +112,7 @@ class BlogTests(TestCase):
             BLOG_LIMIT_AUTHOR_CHOICES_GROUP=[bloggers, others],
             BLOG_LIMIT_AUTHOR_CHOICES_ADMIN=False,
         ):
-            response = self.client.get(
-                reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True
-            )
+            response = self.client.get(reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True)
             self.assertEqual(response.status_code, 200)
             self.assertNotContains(response, "mr.staff")
             self.assertContains(response, "mr.author")
@@ -133,9 +121,7 @@ class BlogTests(TestCase):
             BLOG_LIMIT_AUTHOR_CHOICES_GROUP=[bloggers, others],
             BLOG_LIMIT_AUTHOR_CHOICES_ADMIN=True,
         ):
-            response = self.client.get(
-                reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True
-            )
+            response = self.client.get(reverse("wagtailadmin_pages:edit", args=(blog_page.id,)), follow=True)
             self.assertEqual(response.status_code, 200)
             self.assertContains(response, "mr.staff")
             self.assertContains(response, "mr.author")
@@ -149,9 +135,7 @@ class BlogTests(TestCase):
                 owner=self.user,
             )
         )
-        res = self.client.get(
-            "{0}{1}/rss/".format(self.blog_index.url, self.blog_index.slug)
-        )
+        res = self.client.get("{0}{1}/rss/".format(self.blog_index.url, self.blog_index.slug))
         self.assertContains(res, "Blog Page")
         self.assertContains(res, "<rss")
         self.assertContains(res, 'version="2.0"')
@@ -166,9 +150,7 @@ class BlogTests(TestCase):
                 owner=self.user,
             )
         )
-        res = self.client.get(
-            "{0}{1}/atom/".format(self.blog_index.url, self.blog_index.slug)
-        )
+        res = self.client.get("{0}{1}/atom/".format(self.blog_index.url, self.blog_index.slug))
         self.assertContains(res, "Blog Page")
         self.assertContains(res, "<feed")
         self.assertContains(res, 'xmlns="http://' 'www.w3.org/2005/Atom"')
@@ -229,12 +211,8 @@ class BlogTests(TestCase):
         command.handle(xml=self.xml_path, blog_index="blog")
         self.assertEquals(Page.objects.all().count(), 6)
         self.assertEquals(BlogPage.objects.all().count(), 3)
-        page = BlogPage.objects.filter(
-            slug="10-things-super-successful-people-do-during-lunch"
-        ).get()
-        self.assertEqual(
-            page.title, "10 Things Super Successful People Do During Lunch"
-        )
+        page = BlogPage.objects.filter(slug="10-things-super-successful-people-do-during-lunch").get()
+        self.assertEqual(page.title, "10 Things Super Successful People Do During Lunch")
         self.assertEqual(
             page.body,
             "<p>Before you spend another lunch scarfing down food at your desk with your eyes glued to your computer screen, here's some food for thought.</p>",
@@ -254,9 +232,7 @@ class BlogTests(TestCase):
         self.assertEqual(parent_category.slug, "marketing-2")
 
         # Assert that <p> tags were added to the post that didn't contain them
-        page = BlogPage.objects.filter(
-            slug="asa-releases-2013-economic-analysis-of-staffing-industry-trends"
-        ).get()
+        page = BlogPage.objects.filter(slug="asa-releases-2013-economic-analysis-of-staffing-industry-trends").get()
         self.assertEqual(
             page.body,
             '<p>The American Staffing Association has released its 2013 economic analysis,"Navigating the 1% Economy." Written by ASA chief operating officer Steven P. Berchem, CSP, the report takes an in-depth look at recent staffing employment trends and what these suggest about the current economic environment and future labor market conditions.</p>',
@@ -266,9 +242,7 @@ class BlogTests(TestCase):
         """
         Comment data in XML should be inserted and threaded correctly
         """
-        call_command(
-            "wordpress_to_wagtail", "blog", xml=self.xml_path, import_comments=True
-        )
+        call_command("wordpress_to_wagtail", "blog", xml=self.xml_path, import_comments=True)
         comments = XtdComment.objects.all()
         self.assertEqual(comments.count(), 2)
         parent_comment = XtdComment.objects.get(level=0)
@@ -276,7 +250,7 @@ class BlogTests(TestCase):
         self.assertEqual(parent_comment.id, child_comment.parent_id)
 
     def test_unique_category_slug(self):
-        """ Ensure unique slugs are generated without erroring """
+        """Ensure unique slugs are generated without erroring"""
         BlogCategory.objects.create(name="one")
         BlogCategory.objects.create(name="one#")
         BlogCategory.objects.create(name="one!")
@@ -299,9 +273,7 @@ class BlogAPIImportTests(TestCase):
         home = Page.objects.get(slug="home")
         self.user = User.objects.create_user("test", "test@test.test", "pass")
         blog_index = home.add_child(
-            instance=BlogIndexPage(
-                title="Blog Index", slug="blog", search_description="x", owner=self.user
-            )
+            instance=BlogIndexPage(title="Blog Index", slug="blog", search_description="x", owner=self.user)
         )
 
         importer = WordpressImport(url, create_users=True)

@@ -1,41 +1,35 @@
+import uuid
+from datetime import date
+
+from blog.models import BlogIndexPage, BlogPage
 from django.conf import settings
 from django.core.mail import send_mail
-from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.shortcuts import render
-from datetime import date
-from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import (
-    FieldPanel,
-    MultiFieldPanel,
-    InlinePanel,
-    FieldPanel,
-)
-from wagtail import blocks
-from wagtail.fields import RichTextField
-from wagtail.fields import StreamField
-from wagtail.models import Orderable, Site
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.edit_handlers import FieldPanel
-from wagtail.snippets.models import register_snippet
-
-from streetnoise.models import Page
-from blog.models import BlogPage, BlogIndexPage
-
+from django.utils.translation import gettext_lazy as _
 from home.blocks import (
-    TimelineHeaderBlock,
-    TimelineItemBlock,
-    MerchItemBlock,
-    InfoItemBlock,
-    ImageTileBlock,
-    ImageTileBlock2,
+    ButtonBlock,
     FooterCTABlock,
     ImageGridBlock,
-    ButtonBlock,
-    ParagraphImageBlock,
+    ImageTileBlock,
+    ImageTileBlock2,
+    InfoItemBlock,
+    MerchItemBlock,
     NewsletterSignupBlock,
+    ParagraphImageBlock,
+    TimelineHeaderBlock,
+    TimelineItemBlock,
 )
+from modelcluster.fields import ParentalKey
+from streetnoise.models import Page
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.fields import RichTextField, StreamField
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import FieldPanel
+from wagtail.models import Orderable, Site
+from wagtail.snippets.models import register_snippet
 
 
 @register_snippet
@@ -82,13 +76,9 @@ class BandFriend(models.Model):
 
 
 class HomePageBandFriend(Orderable, BandFriend):
-    homepage = ParentalKey(
-        "FestivalPage", related_name="festival_bands", on_delete=models.CASCADE
-    )
+    homepage = ParentalKey("FestivalPage", related_name="festival_bands", on_delete=models.CASCADE)
 
-    band_friend = models.ForeignKey(
-        "home.BandFriend", on_delete=models.CASCADE, related_name="band_friends"
-    )
+    band_friend = models.ForeignKey("home.BandFriend", on_delete=models.CASCADE, related_name="band_friends")
     panels = [
         FieldPanel("band_friend"),
     ]
@@ -102,15 +92,9 @@ class HomePage2(Page):
     menu_join_us = models.CharField(max_length=100, blank=True)
     menu_request_gig = models.CharField(max_length=100, blank=True)
     menu_contact = models.CharField(max_length=100, blank=True)
-    about_text = RichTextField(
-        blank=True, features=["bold", "italic", "link"], verbose_name="About SNO"
-    )
-    whoweare_title = models.CharField(
-        max_length=100, blank=True, verbose_name="Who We Are title"
-    )
-    whoweare_text = RichTextField(
-        blank=True, features=["bold", "italic", "link"], verbose_name="Who We Are text"
-    )
+    about_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="About SNO")
+    whoweare_title = models.CharField(max_length=100, blank=True, verbose_name="Who We Are title")
+    whoweare_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="Who We Are text")
     whoweare_gallery = StreamField(
         [
             ("image", ImageChooserBlock(label="Gallery Image")),
@@ -125,9 +109,7 @@ class HomePage2(Page):
 
     merch_title = models.CharField(max_length=100, blank=True)
     merch_subtitle = models.CharField(max_length=100, blank=True)
-    merch_text = RichTextField(
-        blank=True, features=["bold", "italic", "link"], verbose_name="Merch Detail"
-    )
+    merch_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="Merch Detail")
     merch_items = StreamField(
         [
             ("merch", MerchItemBlock(label="Merch Item")),
@@ -159,20 +141,12 @@ class HomePage2(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    join_us_infos = StreamField(
-        [("info", InfoItemBlock())], null=True, blank=True, verbose_name="Join Us Info"
-    )
+    join_us_infos = StreamField([("info", InfoItemBlock())], null=True, blank=True, verbose_name="Join Us Info")
 
     cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
-    cta_subtitle = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Subtitle"
-    )
-    cta_button1 = models.CharField(
-        max_length=100, blank=True, verbose_name="Request Gig Button"
-    )
-    cta_button2 = models.CharField(
-        max_length=100, blank=True, verbose_name="Contact Us Button"
-    )
+    cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
+    cta_button1 = models.CharField(max_length=100, blank=True, verbose_name="Request Gig Button")
+    cta_button2 = models.CharField(max_length=100, blank=True, verbose_name="Contact Us Button")
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -284,12 +258,8 @@ class FestivalPage(Page):
     festival_intro_title = models.CharField(max_length=100, blank=True)
     festival_intro_title2 = models.CharField(max_length=100, blank=True)
     festival_intro_text = RichTextField(blank=True, features=["bold", "italic", "link"])
-    festival_intro_text2 = RichTextField(
-        blank=True, features=["bold", "italic", "link"]
-    )
-    festival_intro_footer = RichTextField(
-        blank=True, features=["bold", "italic", "link"]
-    )
+    festival_intro_text2 = RichTextField(blank=True, features=["bold", "italic", "link"])
+    festival_intro_footer = RichTextField(blank=True, features=["bold", "italic", "link"])
     festival_program_title = models.CharField(max_length=100, blank=True)
     festival_program_timeline = StreamField(
         [
@@ -308,15 +278,9 @@ class FestivalPage(Page):
         blank=True,
     )
 
-    about_text = RichTextField(
-        blank=True, features=["bold", "italic", "link"], verbose_name="About SNO"
-    )
-    whoweare_title = models.CharField(
-        max_length=100, blank=True, verbose_name="Who We Are title"
-    )
-    whoweare_text = RichTextField(
-        blank=True, features=["bold", "italic", "link"], verbose_name="Who We Are text"
-    )
+    about_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="About SNO")
+    whoweare_title = models.CharField(max_length=100, blank=True, verbose_name="Who We Are title")
+    whoweare_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="Who We Are text")
     whoweare_gallery = StreamField(
         [
             ("image", ImageChooserBlock(label="Gallery Image")),
@@ -331,9 +295,7 @@ class FestivalPage(Page):
 
     merch_title = models.CharField(max_length=100, blank=True)
     merch_subtitle = models.CharField(max_length=100, blank=True)
-    merch_text = RichTextField(
-        blank=True, features=["bold", "italic", "link"], verbose_name="Merch Detail"
-    )
+    merch_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="Merch Detail")
     merch_items = StreamField(
         [
             ("merch", MerchItemBlock(label="Merch Item")),
@@ -365,20 +327,12 @@ class FestivalPage(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    join_us_infos = StreamField(
-        [("info", InfoItemBlock())], null=True, blank=True, verbose_name="Join Us Info"
-    )
+    join_us_infos = StreamField([("info", InfoItemBlock())], null=True, blank=True, verbose_name="Join Us Info")
 
     cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
-    cta_subtitle = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Subtitle"
-    )
-    cta_button1 = models.CharField(
-        max_length=100, blank=True, verbose_name="Request Gig Button"
-    )
-    cta_button2 = models.CharField(
-        max_length=100, blank=True, verbose_name="Contact Us Button"
-    )
+    cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
+    cta_button1 = models.CharField(max_length=100, blank=True, verbose_name="Request Gig Button")
+    cta_button2 = models.CharField(max_length=100, blank=True, verbose_name="Contact Us Button")
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -518,9 +472,7 @@ class GigRequestPage(Page):
     intro_text = RichTextField(blank=True, features=["bold", "italic", "link"])
     label_contact_name = models.CharField(max_length=100, blank=True)
     label_contact_email = models.CharField(max_length=100, blank=True)
-    label_contact_org = models.CharField(
-        max_length=100, blank=True, verbose_name="Label Contact Organization"
-    )
+    label_contact_org = models.CharField(max_length=100, blank=True, verbose_name="Label Contact Organization")
     label_event_date = models.CharField(max_length=100, blank=True)
     label_event_time = models.CharField(max_length=100, blank=True)
     label_deadline_date = models.CharField(max_length=100, blank=True)
@@ -535,9 +487,7 @@ class GigRequestPage(Page):
     details = RichTextField(blank=True, features=["bold", "italic", "link", "ol", "ul"])
 
     thank_you = models.CharField(max_length=100, blank=True)
-    thank_you_text = RichTextField(
-        blank=True, features=["bold", "italic", "link", "ol", "ul"]
-    )
+    thank_you_text = RichTextField(blank=True, features=["bold", "italic", "link", "ol", "ul"])
 
     content_panels = Page.content_panels + [
         FieldPanel("intro_text"),
@@ -623,9 +573,7 @@ def send_form_mail(form):
     sender = "StreetNoise Orchestra <website@notifications.streetnoise.at>"
     recipients = settings.CONTACT_FORM_RECIPIENTS
 
-    subject = "Gig Request from {contact_name} @ {contact_org}".format(
-        **form.cleaned_data
-    )
+    subject = "Gig Request from {contact_name} @ {contact_org}".format(**form.cleaned_data)
     send_mail(subject, message, sender, recipients)
     return True
 
@@ -680,21 +628,11 @@ class GenericPage(Page):
     )
 
     cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
-    cta_subtitle = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Subtitle"
-    )
-    cta_button1 = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Button 1 Text"
-    )
-    cta_button1_url = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Button 1 Link"
-    )
-    cta_button2 = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Button 2 Text"
-    )
-    cta_button2_url = models.CharField(
-        max_length=100, blank=True, verbose_name="CTA Button 2 Link"
-    )
+    cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
+    cta_button1 = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 1 Text")
+    cta_button1_url = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 1 Link")
+    cta_button2 = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 2 Text")
+    cta_button2_url = models.CharField(max_length=100, blank=True, verbose_name="CTA Button 2 Link")
 
     content_panels = Page.content_panels + [
         FieldPanel("content"),
@@ -763,9 +701,9 @@ class DonationPage(Page):
     ]
 
     def serve(self, request):
-        from home.forms import DonationForm
         import stripe
         from django.templatetags.static import static
+        from home.forms import DonationForm
 
         site = Site.find_for_request(request)
 
@@ -791,15 +729,11 @@ class DonationPage(Page):
                 )
                 self.checkout_session_id = session.id
                 self.stripe_pk = settings.STRIPE_PK
-                return render(
-                    request, "home/donation_checkout.html", {"page": self, "form": form}
-                )
+                return render(request, "home/donation_checkout.html", {"page": self, "form": form})
         elif request.GET.get("checkout", False) == "success":
             return render(request, "home/donation_success.html", {"page": self})
         elif request.GET.get("amount"):
-            form = DonationForm(
-                initial={"donation_amount": request.GET.get("amount", 0)}
-            )
+            form = DonationForm(initial={"donation_amount": request.GET.get("amount", 0)})
         else:
             form = DonationForm()
 

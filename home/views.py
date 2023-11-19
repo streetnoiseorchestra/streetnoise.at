@@ -1,16 +1,11 @@
 from datetime import datetime
 
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from django.urls import reverse
+from django.shortcuts import render
 from django.templatetags.static import static
+from django.urls import reverse
 
-from .newsletter import (
-    first_opt_in,
-    second_opt_in,
-    unsubscribe,
-    mailgun_handle_bounce,
-)
+from .newsletter import first_opt_in, mailgun_handle_bounce, second_opt_in, unsubscribe
 
 
 def is_ajax(request):
@@ -25,9 +20,7 @@ def handle_newsletter_subscribe(form, host):
     consented_from = "NewsLetterSubscribeForm"
     confirm_url = "https://{}{}".format(host, reverse(newsletter_confirm))
     withdraw_url = "https://{}{}".format(host, reverse(newsletter_unsubscribe))
-    return first_opt_in(
-        name, email, consented_at, consented_from, confirm_url, withdraw_url
-    )
+    return first_opt_in(name, email, consented_at, consented_from, confirm_url, withdraw_url)
 
 
 def ajax_newsletter_subscribe(request):

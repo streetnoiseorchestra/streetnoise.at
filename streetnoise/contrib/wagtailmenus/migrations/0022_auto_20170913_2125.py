@@ -6,18 +6,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailmenus', '0021_auto_20170106_2352'),
+        ("wagtailmenus", "0021_auto_20170106_2352"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='flatmenuitem',
-            options={'ordering': ('sort_order',), 'verbose_name': 'menu item', 'verbose_name_plural': 'menu items'},
+            name="flatmenuitem",
+            options={"ordering": ("sort_order",), "verbose_name": "menu item", "verbose_name_plural": "menu items"},
         ),
         migrations.AlterModelOptions(
-            name='mainmenuitem',
-            options={'ordering': ('sort_order',), 'verbose_name': 'menu item', 'verbose_name_plural': 'menu items'},
+            name="mainmenuitem",
+            options={"ordering": ("sort_order",), "verbose_name": "menu item", "verbose_name_plural": "menu items"},
         ),
     ]

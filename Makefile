@@ -5,6 +5,7 @@ DC_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
 DC_DEV ?= sudo docker compose $(DC_ARGS) -f docker-compose.dev.yml
 DB_DUMP ?= ./streetnoise_cms.dump
+SRC = home gigs festival2023 blog crowdfunding streetnoise newsletter
 dev-db-up:
 	 $(DC_DEV) up -d
 
@@ -76,3 +77,9 @@ critical-css:
 
 freeze:
 	poetry export  --format=requirements.txt > requirements.frozen.txt
+
+
+check:
+	poetry run black $(SRC)
+	poetry run isort --profile black $(SRC)
+	poetry run flake8 $(SRC)

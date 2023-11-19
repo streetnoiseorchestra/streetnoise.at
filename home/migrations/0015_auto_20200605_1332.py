@@ -4,23 +4,22 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailcore', '0045_assign_unlock_grouppagepermission'),
-        ('wagtailforms', '0004_add_verbose_name_plural'),
-        ('wagtailredirects', '0006_redirect_increase_max_length'),
-        ('home', '0014_homepage2'),
+        ("wagtailcore", "0045_assign_unlock_grouppagepermission"),
+        ("wagtailforms", "0004_add_verbose_name_plural"),
+        ("wagtailredirects", "0006_redirect_increase_max_length"),
+        ("home", "0014_homepage2"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='impressumpage',
-            name='page_ptr',
+            model_name="impressumpage",
+            name="page_ptr",
         ),
         migrations.DeleteModel(
-            name='DataPrivacyPage',
+            name="DataPrivacyPage",
         ),
         migrations.DeleteModel(
-            name='ImpressumPage',
+            name="ImpressumPage",
         ),
     ]

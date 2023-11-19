@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-
-from .models import Donation, Campaign
+from .models import Campaign, Donation
 
 
 @admin.register(Campaign)

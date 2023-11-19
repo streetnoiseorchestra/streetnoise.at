@@ -1,6 +1,5 @@
-from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
-
 from home.models import BandFriend
+from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 
 
 @modeladmin_register

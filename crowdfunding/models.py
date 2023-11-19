@@ -1,17 +1,16 @@
+import logging
+from datetime import timedelta
+
+from django.contrib.humanize.templatetags.humanize import (
+    intcomma,
+    naturalday,
+    naturaltime,
+)
 from django.db import models
 from django.utils import timezone
 from django.utils.functional import cached_property
 from django.utils.timesince import timesince
 from django.utils.translation import get_language
-from django.contrib.humanize.templatetags.humanize import (
-    intcomma,
-    naturaltime,
-    naturalday,
-)
-
-from datetime import timedelta
-import logging
-
 
 logger = logging.getLogger(__name__)
 
@@ -56,9 +55,7 @@ class Campaign(models.Model):
     @cached_property
     def raised_percent(self):
         total_raised = self.total_raised
-        goals = [
-            goal for goal in [self.goal, self.stretch_goal1, self.stretch_goal2] if goal
-        ]
+        goals = [goal for goal in [self.goal, self.stretch_goal1, self.stretch_goal2] if goal]
         goal = goals[0]
         return round(total_raised / goal * 100, 0)
 
@@ -149,9 +146,7 @@ class Campaign(models.Model):
 
 class Donation(models.Model):
     payment_id = models.CharField(max_length=255, unique=True)
-    campaign = models.ForeignKey(
-        Campaign, on_delete=models.CASCADE, related_name="donations"
-    )
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name="donations")
     backer_name = models.CharField(max_length=255)
     amount = models.PositiveIntegerField()
     payment_id = models.CharField(max_length=255)
@@ -199,9 +194,7 @@ class Donation(models.Model):
         return self.amount
 
     @staticmethod
-    def maybe_create_new(
-        campaign_name, payment_id, product_id, backer_name, amount_total, creation_dt
-    ):
+    def maybe_create_new(campaign_name, payment_id, product_id, backer_name, amount_total, creation_dt):
         campaign = Campaign.objects.get(campaign_name=campaign_name)
         try:
             donation = Donation.objects.get(payment_id=payment_id)
@@ -219,7 +212,5 @@ class Donation(models.Model):
                 product_id=product_id,
             )
             donation.save()
-            logger.info(
-                f"created donation id={donation.id} amount={donation.amount} payment_id={donation.payment_id}"
-            )
+            logger.info(f"created donation id={donation.id} amount={donation.amount} payment_id={donation.payment_id}")
             return donation

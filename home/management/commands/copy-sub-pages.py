@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-
-from home.models import HomePage2, FestivalPage
+from home.models import FestivalPage, HomePage2
 
 
 class Command(BaseCommand):

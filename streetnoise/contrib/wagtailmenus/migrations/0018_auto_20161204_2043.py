@@ -6,25 +6,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailmenus', '0017_auto_20161013_1658'),
+        ("wagtailmenus", "0017_auto_20161013_1658"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='flatmenu',
-            name='handle',
-            field=models.SlugField(help_text='Used to reference this menu in templates etc. Must be unique for the selected site.', max_length=100, verbose_name='handle'),
+            model_name="flatmenu",
+            name="handle",
+            field=models.SlugField(
+                help_text="Used to reference this menu in templates etc. Must be unique for the selected site.",
+                max_length=100,
+                verbose_name="handle",
+            ),
         ),
         migrations.AlterField(
-            model_name='flatmenu',
-            name='heading',
-            field=models.CharField(blank=True, help_text='If supplied, appears above the menu when rendered.', max_length=255, verbose_name='heading'),
+            model_name="flatmenu",
+            name="heading",
+            field=models.CharField(
+                blank=True,
+                help_text="If supplied, appears above the menu when rendered.",
+                max_length=255,
+                verbose_name="heading",
+            ),
         ),
         migrations.AlterField(
-            model_name='flatmenu',
-            name='title',
-            field=models.CharField(help_text='For internal reference only.', max_length=255, verbose_name='title'),
+            model_name="flatmenu",
+            name="title",
+            field=models.CharField(help_text="For internal reference only.", max_length=255, verbose_name="title"),
         ),
     ]

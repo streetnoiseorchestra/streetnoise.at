@@ -4,15 +4,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('crowdfunding', '0002_donation_paid_dt_donation_payment_id_and_more'),
+        ("crowdfunding", "0002_donation_paid_dt_donation_payment_id_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='donation',
-            old_name='payment_link',
-            new_name='product_id',
+            model_name="donation",
+            old_name="payment_link",
+            new_name="product_id",
         ),
     ]

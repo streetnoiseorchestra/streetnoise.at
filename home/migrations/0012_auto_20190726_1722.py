@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0011_auto_20190726_1714'),
+        ("home", "0011_auto_20190726_1714"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='genericpage',
-            name='cta_button1_url',
-            field=models.CharField(blank=True, max_length=100, verbose_name='CTA Button 1 Link'),
+            model_name="genericpage",
+            name="cta_button1_url",
+            field=models.CharField(blank=True, max_length=100, verbose_name="CTA Button 1 Link"),
         ),
         migrations.AlterField(
-            model_name='genericpage',
-            name='cta_button2_url',
-            field=models.CharField(blank=True, max_length=100, verbose_name='CTA Button 2 Link'),
+            model_name="genericpage",
+            name="cta_button2_url",
+            field=models.CharField(blank=True, max_length=100, verbose_name="CTA Button 2 Link"),
         ),
     ]

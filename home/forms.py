@@ -12,14 +12,10 @@ class GigRequestForm(forms.Form):
     widget = forms.TextInput(attrs={"class": "input is-large"})
     widget_date = forms.TextInput(attrs={"class": "input is-large", "type": "date"})
     contact_name = forms.CharField(max_length=100, widget=widget)
-    contact_email = forms.EmailField(
-        widget=forms.TextInput(attrs={"class": "input is-large", "type": "email"})
-    )
+    contact_email = forms.EmailField(widget=forms.TextInput(attrs={"class": "input is-large", "type": "email"}))
     contact_org = forms.CharField(max_length=100, widget=widget)
     event_date = forms.DateField(widget=widget_date)
-    event_time = forms.TimeField(
-        widget=forms.TextInput(attrs={"class": "input is-large", "type": "time"})
-    )
+    event_time = forms.TimeField(widget=forms.TextInput(attrs={"class": "input is-large", "type": "time"}))
     deadline_date = forms.DateField(widget=widget_date)
     event_type = forms.ModelChoiceField(
         queryset=GigType.objects.all(), widget=forms.Select(attrs={"class": "is-large"})
@@ -27,9 +23,7 @@ class GigRequestForm(forms.Form):
     event_occasion = forms.CharField(max_length=100, widget=widget)
     location = forms.CharField(max_length=255, widget=widget)
     donation_amount = forms.IntegerField(widget=widget, required=False)
-    details = forms.CharField(
-        widget=forms.Textarea(attrs={"class": "textarea is-large"})
-    )
+    details = forms.CharField(widget=forms.Textarea(attrs={"class": "textarea is-large"}))
 
     class Meta:
         model = GigRequest
@@ -49,9 +43,7 @@ class GigRequestForm(forms.Form):
 
 
 class DonationForm(forms.Form):
-    widget = forms.TextInput(
-        attrs={"class": "input is-large", "type": "number", "required": True}
-    )
+    widget = forms.TextInput(attrs={"class": "input is-large", "type": "number", "required": True})
     donation_amount = forms.IntegerField(widget=widget, required=False)
 
 

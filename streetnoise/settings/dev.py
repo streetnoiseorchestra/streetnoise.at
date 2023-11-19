@@ -2,9 +2,7 @@ import dj_database_url
 
 from .base import *
 
-DATABASE_URL = os.environ.get(
-    "DATABASE_URL", "postgres://streetnoise_cms:dev@localhost/streetnoise_cms"
-)
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgres://streetnoise_cms:dev@localhost/streetnoise_cms")
 
 
 MAILGUN_KEY = os.environ.get("MAILGUN_KEY")

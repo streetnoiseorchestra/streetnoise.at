@@ -1,7 +1,6 @@
 from datetime import date
 
 from django import template
-
 from gigs.models import GigPage
 
 register = template.Library()

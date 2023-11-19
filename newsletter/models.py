@@ -1,14 +1,7 @@
-from django.db import models
-
 from birdsong.blocks import DefaultBlocks
 from birdsong.models import Campaign, Contact
-
-from wagtail.admin.panels import (
-    FieldPanel,
-    FieldPanel,
-    MultiFieldPanel,
-    FieldRowPanel,
-)
+from django.db import models
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.images.edit_handlers import FieldPanel
 
@@ -18,9 +11,7 @@ class Newsletter(Campaign):
         verbose_name = "SNOZeitung Issue"
         verbose_name_plural = "SNOZeitung Issues"
 
-    headline = models.CharField(
-        max_length=255, help_text="The headline to use for the newsletter."
-    )
+    headline = models.CharField(max_length=255, help_text="The headline to use for the newsletter.")
 
     header_background = models.ForeignKey(
         "wagtailimages.Image",
@@ -56,18 +47,12 @@ class NewsletterSubscriber(Contact):
         null=True,
         help_text="When the subscriber confirmed their email address",
     )
-    consented_from = models.CharField(
-        max_length=255, blank=True, null=True, help_text="Where/How the user consented"
-    )
+    consented_from = models.CharField(max_length=255, blank=True, null=True, help_text="Where/How the user consented")
     consent_withdrawn_at = models.CharField(
         max_length=255, blank=True, null=True, help_text="When the user unsubscribed"
     )
-    subscribed = models.BooleanField(
-        default=False, help_text="If the user should recieve emails or not"
-    )
-    bounce_score = models.IntegerField(
-        default=0, help_text="The subscriber's current bounce score"
-    )
+    subscribed = models.BooleanField(default=False, help_text="If the user should recieve emails or not")
+    bounce_score = models.IntegerField(default=0, help_text="The subscriber's current bounce score")
     reset_bounce_score_on = models.DateTimeField(
         blank=True, null=True, help_text="When the bounce score should be reset"
     )

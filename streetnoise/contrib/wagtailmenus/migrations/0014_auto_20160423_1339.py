@@ -6,20 +6,27 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailmenus', '0013_auto_20160423_1124'),
+        ("wagtailmenus", "0013_auto_20160423_1124"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='flatmenuitem',
-            name='allow_subnav',
-            field=models.BooleanField(default=False, help_text='NOTE: The sub-menu might might not be displayed, even if checked. It depends on how the menu is being used within your project.', verbose_name='allow sub-menu for this item'),
+            model_name="flatmenuitem",
+            name="allow_subnav",
+            field=models.BooleanField(
+                default=False,
+                help_text="NOTE: The sub-menu might might not be displayed, even if checked. It depends on how the menu is being used within your project.",
+                verbose_name="allow sub-menu for this item",
+            ),
         ),
         migrations.AlterField(
-            model_name='mainmenuitem',
-            name='allow_subnav',
-            field=models.BooleanField(default=True, help_text='NOTE: The sub-menu might might not be displayed, even if checked. It depends on how the menu is being used within your project.', verbose_name='allow sub-menu for this item'),
+            model_name="mainmenuitem",
+            name="allow_subnav",
+            field=models.BooleanField(
+                default=True,
+                help_text="NOTE: The sub-menu might might not be displayed, even if checked. It depends on how the menu is being used within your project.",
+                verbose_name="allow sub-menu for this item",
+            ),
         ),
     ]

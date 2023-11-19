@@ -1,8 +1,8 @@
 import re
 
 from django.utils.translation import gettext_lazy as _
-
 from wagtail.embeds.finders.base import EmbedFinder
+
 
 # class AudioFinder(EmbedFinder):
 class AudioFinder(EmbedFinder):
