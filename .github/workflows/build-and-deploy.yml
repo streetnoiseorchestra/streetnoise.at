@@ -86,7 +86,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           touch ~/.ssh/known_hosts
           chmod 640 ~/.ssh/known_hosts
-          ssh-keyscan -t ssh-ed25519 ${{ secrets.SERVER_SSH }} >> ~/.ssh/known_hosts
+          ssh-keyscan -t ssh-ed25519 ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploy the service
-        run: ssh ${{ secrets.SERVER_SSH }} '/usr/local/bin/deploy-service streetnoise.at'
+        run: ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} '/usr/local/bin/deploy-service streetnoise.at'
