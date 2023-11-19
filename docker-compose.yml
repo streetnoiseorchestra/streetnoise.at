@@ -47,6 +47,7 @@ services:
     expose:
       - "6379"
   cms:
+    image: ghcr.io/streetnoiseorchestra/streetnoise.at:main
     restart: always
     environment:
       DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret
@@ -75,9 +76,6 @@ services:
       - mailgun_key
     volumes:
       - /srv/streetnoise.at/media:/code/media:rw
-    build:
-      context: .
-      dockerfile: ./Dockerfile
     links:
       - db:db
       - redis:redis
