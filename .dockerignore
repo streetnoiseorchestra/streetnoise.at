@@ -15,3 +15,5 @@ static
 secrets
 Dockerfile
 docker-compose*
+*.dump
+.venv
