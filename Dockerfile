@@ -8,12 +8,13 @@ ARG VERSION=unknown
 
 # Install nodejs
 RUN set -e; \
-  echo "deb https://deb.nodesource.com/node_20.x buster main" > /etc/apt/sources.list.d/nodesource.list; \
+  DEB_CODENAME=$(grep -oP '^VERSION_CODENAME=\K.*' /etc/os-release); \
+  echo "deb https://deb.nodesource.com/node_20.x $DEB_CODENAME main" > /etc/apt/sources.list.d/nodesource.list; \
   wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -; \
   apt-get update; \
   apt-get install -yqq nodejs; \
   pip install -U pip; \
-  npm i -g npm@^20; \
+  npm i -g npm@^10; \
   rm -rf /var/lib/apt/lists/*
 
 # Set environment varibles
