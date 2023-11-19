@@ -89,4 +89,4 @@ jobs:
           ssh-keyscan -t ssh-ed25519 ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploy the service
-        run: ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} '/usr/local/bin/deploy-service' 'streetnoise.at'
+        run: ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} /usr/local/bin/deploy-service streetnoise.at
