@@ -8,6 +8,7 @@
     pkgs.poetry
     pkgs.watchexec
     pkgs.zsh
+    pkgs.chromium
   ];
 
   LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
@@ -30,5 +31,7 @@ in
       export POETRY_VIRTUALENVS_IN_PROJECT="${POETRY_VIRTUALENVS_IN_PROJECT}"
       export POETRY_VIRTUALENVS_PATH="${POETRY_VIRTUALENVS_PATH}"
       export POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON="${POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON}"
+      export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true;
+      export PUPPETEER_EXECUTABLE_PATH="${pkgs.chromium.outPath}/bin/chromium";
     '';
   }

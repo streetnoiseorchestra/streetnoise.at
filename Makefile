@@ -74,7 +74,7 @@ prod-dump-db:
 prod-update-gigs:
 	$(DC_PROD) run cms python manage.py update-gigs-from-gigo
 
-make critical-css:
+critical-css:
 	node acclaimed.js
 
 freeze:
