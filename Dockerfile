@@ -1,15 +1,15 @@
 # Use an official Python runtime as a parent image
-FROM docker.io/library/python:3.10
+FROM docker.io/library/python:3.11
 LABEL maintainer="Casey Link"
 
 # Install nodejs
 RUN set -e; \
-  echo "deb https://deb.nodesource.com/node_16.x buster main" > /etc/apt/sources.list.d/nodesource.list; \
+  echo "deb https://deb.nodesource.com/node_20.x buster main" > /etc/apt/sources.list.d/nodesource.list; \
   wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -; \
   apt-get update; \
   apt-get install -yqq nodejs; \
   pip install -U pip; \
-  npm i -g npm@^8; \
+  npm i -g npm@^20; \
   rm -rf /var/lib/apt/lists/*
 
 # Set environment varibles
@@ -17,9 +17,9 @@ ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV production
 
 RUN pip install --upgrade pip
-COPY ./requirements.txt /code/requirements.txt
+COPY requirements.frozen.txt /code/requirements.frozen.txt
 # Install any needed packages specified in requirements.txt
-RUN set -ex; pip install -r /code/requirements.txt; pip install gunicorn
+RUN set -ex; pip install -r /code/requirements.frozen.txt; pip install gunicorn
 
 # Copy the current directory contents into the container at /code/
 COPY . /code/

@@ -1,10 +1,10 @@
 SHELL := /usr/bin/env bash
-DOCKER ?= docker
+DOCKER ?= sudo docker
 DC ?= docker compose
 DC_ARGS ?=
 DC_BUILD_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
-DC_DEV ?= docker-compose $(DC_ARGS) -f docker-compose.dev.yml
+DC_DEV ?= sudo docker compose $(DC_ARGS) -f docker-compose.dev.yml
 DB_DUMP ?= ./streetnoise_cms.dump
 dev-db-up:
 	 $(DC_DEV) up -d
@@ -19,11 +19,11 @@ dev-watch:
 	npm run watch
 
 dev-static:
-	 python manage.py collectstatic --clear --noinput
-	 python manage.py collectstatic --no-post-process --noinput
+	 poetry run python manage.py collectstatic --clear --noinput
+	 poetry run python manage.py collectstatic --no-post-process --noinput
 
 dev-serve:
-	 python manage.py runserver 0.0.0.0:8001
+	 poetry run python manage.py runserver 0.0.0.0:8001
 
 dev-reset:
 	$(DC_DEV) down
@@ -36,16 +36,16 @@ dev-reset:
 serve: dev-migrate dev-serve
 
 dev-makemigrations:
-	python manage.py makemigrations
+	poetry run python manage.py makemigrations
 
 dev-migrate: #dev-makemigrations
-	python manage.py migrate
-	python manage.py sync_page_translation_fields
-	python manage.py update_translation_fields
+	poetry run python manage.py migrate
+	poetry run python manage.py sync_page_translation_fields
+	poetry run python manage.py update_translation_fields
 
 dev-i18n:
-	python manage.py makemessages -l de -i 'venv*'
-	python manage.py compilemessages  -l de -i 'venv*'
+	poetry run python manage.py makemessages -l de -i 'venv*'
+	poetry run python manage.py compilemessages  -l de -i 'venv*'
 
 dev-dump-db:
 	$(DC_DEV) exec db pg_dump -U streetnoise_cms streetnoise_cms > ./$(shell date +"%Y-%m-%d")-streetnoise_cms_DEV.dump
@@ -76,3 +76,6 @@ prod-update-gigs:
 
 make critical-css:
 	node acclaimed.js
+
+freeze:
+	poetry export  --format=requirements.txt > requirements.frozen.txt

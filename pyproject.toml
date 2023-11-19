@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "cms"
+version = "0.1.0"
+description = ""
+authors = ["Casey Link <unnamedrambler@gmail.com>"]
+license = "AGPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = ">=4.1,<4.2"
+wagtail = "4.2.3"
+wagtailmenus = "3.1.7"
+wagtail-modeltranslation = "0.13.0"
+django-debug-toolbar = "^4.2.0"
+django-compressor = "4.3.1"
+django-libsass = "0.9"
+django-modeltranslation = "0.18.9"
+django-allauth = "0.54.0"
+dj-database-url = "2.0.0"
+psycopg2-binary = "2.9.6"
+whitenoise = "6.4.0"
+stripe = "5.4.0"
+python-dateutil = "2.8.2"
+django-plausible = "0.4.0"
+wagtail-birdsong = "1.1.2"
+django-mjml = "1.1"
+brotli = "1.0.9"
+django-brotli = "0.2.1"
+
+[tool.poetry.dev-dependencies]
+black = "^23.11.0"
+flake8 = "^6.1.0"
+libsass = "0.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
