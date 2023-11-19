@@ -2,6 +2,10 @@
 FROM docker.io/library/python:3.11
 LABEL maintainer="Casey Link"
 
+ARG BUILD_DATE=unknown
+ARG VERSION=unknown
+
+
 # Install nodejs
 RUN set -e; \
   echo "deb https://deb.nodesource.com/node_20.x buster main" > /etc/apt/sources.list.d/nodesource.list; \
@@ -38,3 +42,10 @@ RUN mkdir /code/media
 
 EXPOSE 8000
 CMD exec gunicorn streetnoise.wsgi:application --bind 0.0.0.0:8000 --workers 3
+
+
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.created=${BUILD_DATE}
+LABEL org.opencontainers.image.documentation="https://github.com/streetnoiseorchestra/streetnoise.at"
+LABEL org.opencontainers.image.source="https://github.com/streetnoiseorchestra/streetnoise.at"
+LABEL org.opencontainers.image.vendor="StreetNoise Orchestra"
