@@ -6,6 +6,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL", "postgres://streetnoise_cms:dev@lo
 
 
 MAILGUN_KEY = os.environ.get("MAILGUN_KEY")
+SNORGA_SHARED_TOKEN = os.environ.get("SNORGA_SHARED_TOKEN")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

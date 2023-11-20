@@ -24,6 +24,8 @@ secrets:
     file: ./secrets/gigo_email
   mailgun_key:
     file: ./secrets/mailgun_key
+  snorga_shared_token:
+    file: ./secrets/snorga_shared_token
 services:
   db:
     environment:
@@ -62,6 +64,7 @@ services:
       GIGO_PASSWORD_FILE: /run/secrets/gigo_password
       GIGO_EMAIL_FILE: /run/secrets/gigo_email
       MAILGUN_KEY_FILE: /run/secrets/mailgun_key
+      SNORGA_SHARED_TOKEN: /run/secrets/snorga_shared_token
     secrets:
       - django_secret
       - email_password

@@ -1,0 +1,69 @@
+{% extends "home/info_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static i18n %}
+
+{% block content %}
+{% include 'home/navigation.html' %}
+    <div class="container">
+        <section class="section is-white">
+            <div class="pl-2 columns is-centered">
+                <div class="column is-three-quarters has-text-centered">
+                    <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
+                        {{ page.title }}
+                    </h1>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-three-quarters content">
+                    <ul>
+                        <li>{% trans "Status" %}: {{ page.status }}</li>
+                        {% if page.composition_credits %}
+                        <li>{% trans "Composition Credits" %}: {{ page.composition_credits }}</li>
+                        {% endif %}
+                        {% if page.arrangement_credits %}
+                        <li>{% trans "Arrangement Credits" %}: {{ page.arrangement_credits }}</li>
+                        {% endif %}
+                        {% if page.last_played_date %}
+                        <li>{% trans "Last Played" %}: {{  page.last_played_date | date:"F jS, Y" }}</li>
+                        {% endif %}
+                    </ul>
+                    <div class="content">
+                        {{ page.description| richtext }}
+                    </div>
+
+                    {% if page.lyrics %}
+                        <h3 class="subtitle is-spaced is-size-3-desktop is-size-3-tablet is-size-4-mobile">
+                            {% trans "Lyrics" %}
+                        </h3>
+                        <div class="content">
+                            <blockquote>
+                                {{ page.lyrics | richtext }}
+                            </blockquote>
+                        </div>
+                    {% endif %}
+
+                    {% if page.arrangement_notes %}
+                        <h3 class="subtitle is-spaced is-size-3-desktop is-size-3-tablet is-size-4-mobile">
+                            {% trans "Arrangement Notes" %}
+                        </h3>
+                        <div class="content">
+                            {{ page.arrangement_notes | richtext }}
+                        </div>
+                    {% endif %}
+                    <h3 class="subtitle is-spaced is-size-3-desktop is-size-3-tablet is-size-4-mobile">
+                            {% trans "Sheet Music" %}
+                    </h3>
+                    <div class="content">
+                        {% blocktrans %}
+                        We'd be happy to share our sheet music for this song! Just get in touch with us
+                        {% endblocktrans %} <a href="mailto:orchestra@streetnoise.at">orchestra@streetnoise.at</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+{% include 'home/home_cta.html' %}
+
+
+{% endblock %}

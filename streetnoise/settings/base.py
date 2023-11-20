@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "home",
     "blog",
     "gigs",
+    "songs",
     "festival2023",
     "crowdfunding",
     "streetnoise",
@@ -221,9 +222,6 @@ ACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOAccountAdapter"
 SOCIALACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOSocialAccountAdapter"
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_PROVIDERS = {
-    # "nextcloud": {
-    # "SERVER": "https://data.streetnoise.at",
-    # },
     "keycloak": {
         "KEYCLOAK_URL": "https://id.streetnoise.at/",
         "KEYCLOAK_REALM": "sno",

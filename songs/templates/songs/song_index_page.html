@@ -1,0 +1,122 @@
+{% extends "home/info_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static i18n%}
+
+{% block content %}
+    {% include 'home/navigation.html' %}
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+
+    <script type="text/javascript">
+     function compareCol(col, dir, a, b) {
+         var aVal = a.children[col].innerText;
+         var bVal = b.children[col].innerText;
+         if (dir === "asc") {
+             if (aVal < bVal) {
+                 return -1;
+             } else if (aVal > bVal) {
+                 return 1;
+             } else {
+                 return 0;
+             }
+         } else {
+
+             if (aVal > bVal) {
+                 return -1;
+             } else if (aVal < bVal) {
+                 return 1;
+             } else {
+                 return 0;
+             }
+         }
+     }
+    </script>
+    <script type="text/hyperscript">
+     behavior Sortable
+        on click from <th/>
+            -- get all the headers and the index of the column
+            set headers to <th/> in me
+            set col to headers.indexOf(target)
+
+            -- get the table body and the rows as an array
+            set tbody to the first <tbody/> in me
+            set rowArray to (<tr/> in tbody) as Array
+
+            -- if this is a first click on this header
+            -- clear the data-ascending attribute on any other header
+            if target @data-ascending is null
+                remove @data-ascending from headers
+            end
+
+            -- sort the array depending on the ascending header
+            if target @data-ascending is 'true'
+                set target @data-ascending to 'false'
+                rowArray.sort(\ row1, row2 -> compareCol(col, "desc", row1, row2))
+            else
+                set target @data-ascending to 'true'
+                rowArray.sort(\ row1, row2 -> compareCol(col, "asc", row1, row2))
+            end
+
+            -- merge back into the tbody
+            for row in rowArray
+                tbody.append(row)
+            end
+        end
+     end
+    </script>
+
+
+    <section class="section">
+        <div class="container">
+            <div class="pl-2 columns is-centered">
+                <div class="column is-three-quarters has-text-centered">
+                    <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
+                        {{ page.title }}
+                    </h1>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-three-quarters content">
+                    {{ page.intro | richtext }}
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-three-quarters content">
+                    <style >
+
+                     .songs th:hover {
+                         cursor: pointer;
+                     }
+
+                     .songs td, .songs th {
+                         padding: 5px;
+                     }
+
+
+                    </style>
+
+                    <table _="install Sortable" class="table is-striped songs mt-2">
+                        <thead>
+                            <tr>
+                                <th>Song</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for song in page.songs %}
+                                <tr>
+                                    <td><a href="{% pageurl song %}">{{  song.title }}</a></td>
+                                    <td>
+                                        {{ song.status }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    {% include 'home/footer_cta.html' %}
+    {% include 'home/footer.html' %}
+{% endblock %}

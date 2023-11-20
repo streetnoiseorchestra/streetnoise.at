@@ -32,6 +32,7 @@ else:
     GIGO_PASSWORD = read_env_file("GIGO_PASSWORD")
     GIGO_EMAIL = read_env_file("GIGO_EMAIL")
     MAILGUN_KEY = read_env_file("MAILGUN_KEY")
+    SNORGA_SHARED_TOKEN = read_env_file("SNORGA_SHARED_TOKEN")
 
 
 GIGO_BAND = "SNO"

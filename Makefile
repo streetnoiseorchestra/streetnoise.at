@@ -5,7 +5,7 @@ DC_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
 DC_DEV ?= sudo docker compose $(DC_ARGS) -f docker-compose.dev.yml
 DB_DUMP ?= ./streetnoise_cms.dump
-SRC = home gigs festival2023 blog crowdfunding streetnoise newsletter
+SRC = home gigs festival2023 blog crowdfunding streetnoise newsletter songs
 dev-db-up:
 	 $(DC_DEV) up -d
 

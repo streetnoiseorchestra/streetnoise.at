@@ -1,11 +1,13 @@
+import logging
 from datetime import datetime
 
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from django.templatetags.static import static
 from django.urls import reverse
 
 from .newsletter import first_opt_in, mailgun_handle_bounce, second_opt_in, unsubscribe
+
+logger = logging.getLogger(__name__)
 
 
 def is_ajax(request):
