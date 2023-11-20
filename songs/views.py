@@ -25,20 +25,25 @@ def song_page_update(payload) -> bool:
     lyrics = payload.get("lyrics")
     last_played_date = payload.get("last_played_date")
     description = payload.get("description")
+    arrangement_notes = payload.get("arrangement_notes")
 
     if last_played_date:
         last_played_date = dateutil.parser.isoparse(last_played_date)
 
+    should_publish = description and len(description) > 20
     try:
         song_page = SongPage.objects.get(snorga_id=snorga_id).specific
         song_page.title = title
         song_page.arrangement_credits = arrangement_credits
         song_page.composition_credits = composition_credits
+        song_page.arrangement_notes = arrangement_notes
         song_page.status = status
         song_page.lyrics = lyrics
         song_page.last_played_date = last_played_date
         song_page.description = description
-        song_page.save_revision(user=User.objects.all().first())
+        revision = song_page.save_revision(user=User.objects.all().first())
+        if should_publish:
+            revision.publish()
         return False
     except SongPage.DoesNotExist:
         song_page = SongPage(
@@ -48,11 +53,11 @@ def song_page_update(payload) -> bool:
             status=status,
             arrangement_credits=arrangement_credits,
             composition_credits=composition_credits,
+            arrangement_notes=arrangement_notes,
             lyrics=lyrics,
             last_played_date=last_played_date,
             description=description,
         )
-        should_publish = description and len(description) > 20
         if should_publish:
             song_page.live = True
         else:

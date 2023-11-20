@@ -14,7 +14,7 @@ class SongIndexPage(Page):
     @property
     def songs(self):
         songs = SongPage.objects.descendant_of(self).live()
-        songs = sorted(songs, key=lambda x: (x.title, 0 if x.status == "active" else 1))
+        songs = sorted(songs, key=lambda x: (x.status, x.title))
         return songs
 
     def get_context(self, request):
@@ -43,7 +43,9 @@ class SongPage(Page):
     composition_credits = models.CharField(max_length=255, null=True, blank=True)
     status = models.CharField(max_length=255, choices=Status.choices, default=Status.ACTIVE)
     description = RichTextField(_("Description"), blank=True, help_text=_("A sentence or two describing the song."))
-    arrangement_notes = RichTextField(_("Arrangement Notes"), blank=True, help_text=_("Our notes for the arrangement"))
+    arrangement_notes = RichTextField(
+        _("Arrangement Notes"), blank=True, help_text=_("Our notes for the arrangement"), null=True
+    )
     lyrics = RichTextField(_("Lyrics"), blank=True, null=True)
     last_played_date = models.DateField(_("Last Played"), blank=True, null=True)
 
