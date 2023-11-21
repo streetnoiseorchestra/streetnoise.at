@@ -7,6 +7,9 @@ asgiref==3.7.2 ; python_version >= "3.11" and python_version < "4.0" \
 beautifulsoup4==4.11.2 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:0e79446b10b3ecb499c1556f7e228a53e64a2bfcebd455f370d8927cb5b59e39 \
     --hash=sha256:bc4bdda6717de5a2987436fb8d72f45dc90dd856bdfd512a1314ce90349a0106
+bleach==4.1.0 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:0900d8b37eba61a802ee40ac0061f8c2b5dee29c1927dd1d233e075ebf5a71da \
+    --hash=sha256:4d2651ab93271d1129ac9cbc679f524565cc8a1b791909c4a51eac4446a15994
 brotli==1.0.9 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:02177603aaca36e1fd21b091cb742bb3b305a569e2402f1ca38af471777fb019 \
     --hash=sha256:11d3283d89af7033236fa4e73ec2cbe743d4f6a81d41bd234f24bf63dde979df \
@@ -338,12 +341,18 @@ libsass==0.22.0 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:65455a2728b696b62100eb5932604aa13a29f4ac9a305d95773c14aaa7200aaf \
     --hash=sha256:89c5ce497fcf3aba1dd1b19aae93b99f68257e5f2026b731b00a872f13324c7f \
     --hash=sha256:f1efc1b612299c88aec9e39d6ca0c266d360daa5b19d9430bdeaffffa86993f9
+markdown==3.5.1 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:5874b47d4ee3f0b14d764324d2c94c03ea66bee56f2d929da9f2508d65e722dc \
+    --hash=sha256:b65d7beb248dc22f2e8a31fb706d93798093c308dc1aba295aedeb9d41a813bd
 oauthlib==3.2.2 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca \
     --hash=sha256:9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918
 openpyxl==3.1.2 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:a6f5977418eff3b2d5500d54d9db50c8277a368436f4e4f8ddb1be3422870184 \
     --hash=sha256:f91456ead12ab3c6c2e9491cf33ba6d08357d802192379bb482f1033ade496f5
+packaging==23.2 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5 \
+    --hash=sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7
 pillow==9.5.0 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:07999f5834bdc404c442146942a2ecadd1cb6292f5229f4ed3b31e0a108746b1 \
     --hash=sha256:0852ddb76d85f127c135b6dd1f0bb88dbb9ee990d2cd9aa9e28526c93e794fba \
@@ -570,6 +579,9 @@ urllib3==2.1.0 ; python_version >= "3.11" and python_version < "4.0" \
 wagtail-birdsong==1.1.2 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:14eb2163a4c0720754eca8e3de13e681f1dfc380f407e36abb30b2f5980ebdf9 \
     --hash=sha256:6a5d8d9dfd0a4b752b1a3c5c2a06e048d1e0fb047853d78ca5e8a2cea9198ea7
+wagtail-markdown==0.11.1 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:3d2c5dcfac718c3fc03f2ed05aca535b2aa70f71254599505ee272c54437db21 \
+    --hash=sha256:afcb64efac5b1b57de9f7cc475987c0c7dec5b669833e4617ec4658880de0f77
 wagtail-modeltranslation==0.13.0 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:4df791bc18716e6ca93a2af141486c4fc3eca544ef3872d6031d3cb34927b09e \
     --hash=sha256:6b37924e8132c1adb470678494a073bd2e1b634969ce0f09ddfe016b26003b60
