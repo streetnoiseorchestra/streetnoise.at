@@ -3,9 +3,26 @@
 
 {% block content %}
 {% include 'home/navigation.html' %}
-    <div class="container">
-        <section class="section is-white">
-            <div class="pl-2 columns is-centered">
+    <section class="section is-white">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-three-quarters">
+                    <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                        <ul>
+                            <li>
+                                <a href="{% pageurl homepage %}" title="StreetNoise Orchestra">
+                                    <span class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+                                    </span>
+                                </a>
+                            </li>
+                            <li><a href="{% pageurl page.parent %}">{{ page.parent.title }}</a></li>
+                            <li class="is-active"><a href="{% pageurl page %}" aria-current="page">{{ page.title }}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="columns is-centered">
                 <div class="column is-three-quarters">
                     <h1 class="subtitle is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
                         {{ page.title }}
@@ -17,13 +34,13 @@
                     <ul>
                         <li>{% trans "Status" %}: {{ page.status }}</li>
                         {% if page.composition_credits %}
-                        <li>{% trans "Composition Credits" %}: {{ page.composition_credits }}</li>
+                            <li>{% trans "Composition Credits" %}: {{ page.composition_credits }}</li>
                         {% endif %}
                         {% if page.arrangement_credits %}
-                        <li>{% trans "Arrangement Credits" %}: {{ page.arrangement_credits }}</li>
+                            <li>{% trans "Arrangement Credits" %}: {{ page.arrangement_credits }}</li>
                         {% endif %}
                         {% if page.last_played_date %}
-                        <li>{% trans "Last Played" %}: {{  page.last_played_date | date:"F jS, Y" }}</li>
+                            <li>{% trans "Last Played" %}: {{  page.last_played_date | date:"F jS, Y" }}</li>
                         {% endif %}
                     </ul>
                     <div class="content">
@@ -48,19 +65,19 @@
                         </div>
                     {% endif %}
                     <h3 class="subtitle is-spaced is-size-3-desktop is-size-3-tablet is-size-4-mobile">
-                            {% trans "Sheet Music" %}
+                        {% trans "Sheet Music" %}
                     </h3>
                     <div class="content">
                         {% blocktrans %}
-                        We'd be happy to share our sheet music for this song! Just get in touch with us
+                            We'd be happy to share our sheet music for this song! Just get in touch with us
                         {% endblocktrans %} <a href="mailto:orchestra@streetnoise.at">orchestra@streetnoise.at</a>
 
                     </div>
 
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 {% include 'home/home_cta.html' %}
 
 

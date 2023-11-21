@@ -74,3 +74,7 @@ class SongPage(Page):
         context["homepage"] = HomePage2.objects.first()
         print(context)
         return context
+
+    @property
+    def parent(self):
+        return self.get_parent()
