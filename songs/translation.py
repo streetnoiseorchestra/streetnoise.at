@@ -6,7 +6,7 @@ from .models import SongIndexPage, SongPage
 
 @register(SongIndexPage)
 class SongIndexPageTR(TranslationOptions):
-    pass
+    fields = ("intro",)
 
 
 @register(SongPage)
