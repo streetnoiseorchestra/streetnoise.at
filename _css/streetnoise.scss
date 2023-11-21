@@ -167,26 +167,26 @@ h1, h2, h3, h4 {
 .header-title-box {
   position: absolute;
   width: 100%;
-  bottom: -1em;
+  bottom: 8em;
   display: flex;
   justify-content: center;
   flex-direction: column;
   @include desktop {
-  align-items: center;
+    bottom: -1em;
+    align-items: center;
   }
   .title {
     font-family: 'badaboom', sans-serif;
     color: #fff;
     width: 80%;
     text-shadow: 4px 2px 0px #000000d6;
-    margin: 0;
-    font-size: 3rem;
+    margin: 0 auto;
+    font-size: 3.1rem;
     font-weight: normal;
 
     @include desktop {
       font-weight: 800;
       line-height: 4rem;
-      margin: 0 auto;
       font-size: 3.5rem;
     }
   }
@@ -202,7 +202,6 @@ h1, h2, h3, h4 {
     padding: 4px 8px;
     @include desktop {
       line-height: 3rem;
-      margin: 0 auto;
       font-size: 2rem;
     }
   }
