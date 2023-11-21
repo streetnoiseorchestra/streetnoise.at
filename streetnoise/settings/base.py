@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
+    "wagtailmarkdown",
     "modelcluster",
     "taggit",
     "django.contrib.admin",
@@ -292,3 +293,15 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 DATA_UPLOAD_MAX_NUMBER_FILES = 1000
 BLOG_PAGINATION_PER_PAGE = 50
+
+# ref: https://github.com/torchbox/wagtail-markdown
+WAGTAILMARKDOWN = {
+    "autodownload_fontawesome": False,
+    "allowed_tags": [],  # optional. a list of HTML tags. e.g. ['div', 'p', 'a']
+    "allowed_styles": [],  # optional. a list of styles
+    "allowed_attributes": {},  # optional. a dict with HTML tag as key and a list of attributes as value
+    "allowed_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
+    "extensions": [],  # optional. a list of python-markdown supported extensions
+    "extension_configs": {},  # optional. a dictionary with the extension name as key, and its configuration as value
+    "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
+}

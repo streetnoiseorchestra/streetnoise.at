@@ -6,6 +6,7 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.images.edit_handlers import FieldPanel
 from wagtail.models import Page
+from wagtailmarkdown.fields import MarkdownField
 
 
 class SongIndexPage(Page):
@@ -42,11 +43,11 @@ class SongPage(Page):
     arrangement_credits = models.CharField(max_length=255, null=True, blank=True)
     composition_credits = models.CharField(max_length=255, null=True, blank=True)
     status = models.CharField(max_length=255, choices=Status.choices, default=Status.ACTIVE)
-    description = RichTextField(_("Description"), blank=True, help_text=_("A sentence or two describing the song."))
-    arrangement_notes = RichTextField(
+    description = MarkdownField(_("Description"), blank=True, help_text=_("A sentence or two describing the song."))
+    arrangement_notes = MarkdownField(
         _("Arrangement Notes"), blank=True, help_text=_("Our notes for the arrangement"), null=True
     )
-    lyrics = RichTextField(_("Lyrics"), blank=True, null=True)
+    lyrics = MarkdownField(_("Lyrics"), blank=True, null=True)
     last_played_date = models.DateField(_("Last Played"), blank=True, null=True)
 
     content_panels = Page.content_panels + [

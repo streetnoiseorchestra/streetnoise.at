@@ -1,5 +1,5 @@
 {% extends "home/info_base.html" %}
-{% load wagtailcore_tags wagtailimages_tags static i18n %}
+{% load wagtailcore_tags wagtailimages_tags static i18n wagtailmarkdown %}
 
 {% block content %}
 {% include 'home/navigation.html' %}
@@ -27,7 +27,7 @@
                         {% endif %}
                     </ul>
                     <div class="content">
-                        {{ page.description| richtext }}
+                        {{ page.description | markdown }}
                     </div>
 
                     {% if page.lyrics %}
@@ -36,7 +36,7 @@
                         </h3>
                         <div class="content">
                             <blockquote>
-                                {{ page.lyrics | richtext }}
+                                {{ page.lyrics | markdown }}
                             </blockquote>
                         </div>
                     {% endif %}
@@ -46,7 +46,7 @@
                             {% trans "Arrangement Notes" %}
                         </h3>
                         <div class="content">
-                            {{ page.arrangement_notes | richtext }}
+                            {{ page.arrangement_notes | markdown }}
                         </div>
                     {% endif %}
                     <h3 class="subtitle is-spaced is-size-3-desktop is-size-3-tablet is-size-4-mobile">

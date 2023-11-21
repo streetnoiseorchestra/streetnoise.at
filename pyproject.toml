@@ -30,6 +30,7 @@ wagtail-birdsong = "1.1.2"
 django-mjml = "1.1"
 brotli = "1.0.9"
 django-brotli = "0.2.1"
+wagtail-markdown = "^0.11.1"
 
 [tool.poetry.dev-dependencies]
 libsass = "0.22.0"
