@@ -15,7 +15,8 @@
     "postcss-cli": "^7.1.1",
     "rollup": "^2.13.1",
     "rollup-plugin-terser": "^6.1.0",
-    "sass": "^1.54.9"
+    "sass": "^1.54.9",
+    "shell-quote": ">=1.7.3"
   },
   "scripts": {
     "css-deploy": "npm run css-build && npm run css-postcss",
