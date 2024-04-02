@@ -12,7 +12,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 django = ">=4.1,<4.2"
-wagtail = "4.2.3"
+wagtail = "4.2.4"
 wagtailmenus = "3.1.7"
 wagtail-modeltranslation = "0.13.0"
 django-debug-toolbar = "^4.2.0"
