@@ -17,6 +17,12 @@ RUN set -e; \
   npm i -g npm@^10; \
   rm -rf /var/lib/apt/lists/*
 
+
+RUN set -e; \
+  apt-get update; \
+  apt-get install -yqq libmagickwand-dev imagemagick; \
+  rm -rf /var/lib/apt/lists/*
+
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV production
@@ -24,7 +30,7 @@ ENV DJANGO_ENV production
 RUN pip install --upgrade pip
 COPY requirements.frozen.txt /code/requirements.frozen.txt
 # Install any needed packages specified in requirements.txt
-RUN set -ex; pip install -r /code/requirements.frozen.txt; pip install gunicorn
+RUN set -ex; pip install -r /code/requirements.frozen.txt; pip install gunicorn wand
 
 # Copy the current directory contents into the container at /code/
 COPY . /code/
