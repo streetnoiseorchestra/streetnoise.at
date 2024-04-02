@@ -28,6 +28,8 @@ def handle_newsletter_subscribe(form, host):
 def ajax_newsletter_subscribe(request):
     from home.forms import NewsletterSubscribeForm
 
+    # Disable subscription because of scammers
+    return JsonResponse({"errors": "go away scammers"}, status=401)
     form = NewsletterSubscribeForm(request.POST)
     if not form.is_valid():
         return JsonResponse({"errors": form.errors}, status=400)
@@ -42,6 +44,8 @@ def ajax_newsletter_subscribe(request):
 def newsletter_subscribe(request):
     from home.forms import NewsletterSubscribeForm
 
+    # Disable subscription because of scammers
+    return HttpResponse(status=401)
     if request.method == "POST":
         return ajax_newsletter_subscribe(request)
     else:
