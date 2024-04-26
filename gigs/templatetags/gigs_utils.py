@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("gigs/includes/gigs_listing.html", takes_context=True)
-def upcoming_gigs(context, count=3):
+def upcoming_gigs(context, count=9):
     gigs = GigPage.objects.filter(live=True)
     gigs = gigs.filter(date_from__gte=date.today())
     gigs = gigs.all().order_by("date_from")
