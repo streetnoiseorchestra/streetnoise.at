@@ -1,10 +1,8 @@
-_*
 node_modules
 venv
 *.sqlite3
 media
 *iml
-rollup*js
 .idea
 __pycache__
 *.dump
