@@ -14403,7 +14403,10 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -14494,7 +14497,15 @@ h1, h2, h3, h4 {
   color: inherit;
 }
 
-.navbar-menu.is-active a:active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+.navbar-menu.is-active a:active,
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active {
   background-color: hsl(35deg, 100%, 46%);
   color: #fff;
 }
@@ -14589,7 +14600,7 @@ h1, h2, h3, h4 {
 }
 
 .cta {
-  background: #FFFFFF !important;
+  background: #ffffff !important;
   padding: 40px 0;
   color: #333333;
 }
@@ -14676,7 +14687,8 @@ h1, h2, h3, h4 {
   }
 }
 
-.section.call-to-action .title, .section.call-to-action p {
+.section.call-to-action .title,
+.section.call-to-action p {
   color: #fff;
   margin-bottom: 0;
 }
@@ -15000,7 +15012,8 @@ footer .title {
   margin-top: 20px;
   font-family: "badaboom", sans-serif;
 }
-.news-single .news-post-footer, .news-single .title {
+.news-single .news-post-footer,
+.news-single .title {
   font-family: "badaboom";
 }
 .news-single .news-post-author {
@@ -15091,7 +15104,8 @@ footer .title {
   width: 1.5rem;
 }
 
-.highlight-container, .highlight {
+.highlight-container,
+.highlight {
   position: relative;
 }
 
@@ -15113,54 +15127,6 @@ footer .title {
   left: -1px;
   border-radius: 20% 25% 20% 24%;
   padding: 10px 3px 3px 10px;
-}
-
-.modal {
-  display: flex;
-  visibility: hidden;
-}
-.modal .modal-background {
-  transition: opacity 0.3s;
-  opacity: 0;
-  background-color: rgba(10, 10, 10, 0.86);
-}
-.modal.is-active {
-  visibility: visible;
-}
-.modal.is-active .modal-background {
-  opacity: 1;
-}
-.modal .modal-content {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.modal .modal-content.is-huge {
-  width: 100%;
-  margin: 0px 20px;
-  max-height: calc(100vh - 40px);
-}
-@media screen and (min-width: 769px) {
-  .modal .modal-content.is-huge {
-    width: 100%;
-    margin: 0px 20px;
-    max-height: calc(100vh - 40px);
-  }
-}
-.modal .modal-content.is-tiny {
-  max-width: 400px;
-}
-.modal .modal-content.is-image {
-  text-align: center;
-}
-.modal .modal-content.is-image.is-huge {
-  width: auto;
-}
-.modal .modal-content.is-image img {
-  max-height: calc(100vh - 50px);
-}
-.modal.is-active .modal-content {
-  transform: scale(1);
-  opacity: 1;
 }
 
 .hero-rounded {
@@ -15194,7 +15160,10 @@ footer .title {
   background-position-y: 50%;
   background-position-x: 51%;
 }
-.no-js .hero.festival-newsletter:before, .no-js .festival-newsletter.hero-header-strafiato2019:before, .no-js .festival-newsletter.hero-header:before, .no-webp .hero.festival-newsletter:before, .no-webp .festival-newsletter.hero-header-strafiato2019:before, .no-webp .festival-newsletter.hero-header:before {
+.no-js .hero.festival-newsletter:before, .no-js .festival-newsletter.hero-header-strafiato2019:before, .no-js .festival-newsletter.hero-header:before,
+.no-webp .hero.festival-newsletter:before,
+.no-webp .festival-newsletter.hero-header-strafiato2019:before,
+.no-webp .festival-newsletter.hero-header:before {
   background-image: linear-gradient(to bottom, rgba(70, 184, 35, 0.1) 0%, rgba(70, 184, 35, 0.7) 95%, rgba(70, 184, 35, 0.8) 100%), url("../img/strafiato2019/edited/seegrube-bw.jpg");
 }
 

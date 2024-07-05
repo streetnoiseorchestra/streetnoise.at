@@ -10,7 +10,6 @@ secrets
 */settings/local.py
 *.pyc
 /static
-
-
+*.css.map
 .direnv
 .env
