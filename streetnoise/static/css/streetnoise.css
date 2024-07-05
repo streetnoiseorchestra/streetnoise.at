@@ -15171,4 +15171,29 @@ footer .title {
   background-image: linear-gradient(to bottom, rgba(70, 184, 35, 0.1) 0%, rgba(70, 184, 35, 0.7) 95%, rgba(70, 184, 35, 0.8) 100%), url("../img/strafiato2019/edited/seegrube-bw.webp");
 }
 
+.modal .modal-content.is-huge {
+  width: 100%;
+  margin: 0px 20px;
+  max-height: calc(100vh - 40px);
+}
+@media screen and (min-width: 769px) {
+  .modal .modal-content.is-huge {
+    width: 100%;
+    margin: 0px 20px;
+    max-height: calc(100vh - 40px);
+  }
+}
+.modal .modal-content.is-tiny {
+  max-width: 400px;
+}
+.modal .modal-content.is-image {
+  text-align: center;
+}
+.modal .modal-content.is-image.is-huge {
+  width: auto;
+}
+.modal .modal-content.is-image img {
+  max-height: calc(100vh - 50px);
+}
+
 /*# sourceMappingURL=streetnoise.css.map */
