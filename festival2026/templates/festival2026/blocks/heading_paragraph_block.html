@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+<section class="section heading-paragraph-block">
+  <div class="container">
+    <h2 class="title is-2 has-text-centered title-section caption-text">
+      {{ self.heading }}
+    </h2>
+    <div class="separator is-centered"></div>
+    <div class="columns is-multiline">
+      <div class="column is-full content is-size-4">
+        {{ self.text|richtext }}
+      </div>
+    </div>
+  </div>
+</section>

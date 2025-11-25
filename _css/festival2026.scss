@@ -1,0 +1,286 @@
+@charset "utf-8";
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+@import "../node_modules/bulma/sass/utilities/mixins";
+@import "colors";
+@import "crowdfunding";
+@font-face {
+  font-family: 'edo_szregular';
+  src: local('sans-serif'), url('../fonts/edosz-webfont.woff2') format('woff2'),
+       url('../fonts/edosz-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.edo {
+  font-family: 'edo_szregular';
+}
+.title {
+  @extend .edo;
+}
+
+.hero-header-strafiato, .hero-strafiato2026_4 {
+  position: relative;
+  color: #000;
+}
+
+/*
+.hero-header-strafiato.save-the-date:before, .hero-strafiato2026_4.save-the-date:before {
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
+  @media screen and (min-width: 580px) {
+  background-image: url('../img/strafiato2023/save-the-date-header-concept3-1024.png');
+  }
+  @include tablet {
+    background-image: url('../img/strafiato2023/save-the-date-header-concept3-1200.png');
+  }
+  @include desktop {
+    background-image: url('../img/strafiato2023/save-the-date-header-concept3.png');
+  }
+}*/
+
+.webp {
+  .hero-header-strafiato.actual, .hero-strafiato2026_4.actual {
+    background-image: url('../img/background-optimized.webp');
+  }
+}
+.no-js, .no-webp  {
+  .hero-header-strafiato.actual, .hero-strafiato2026_4.actual {
+    background-image: url('../img/background-optimized.jpg');
+    //background: #ffa500 url('../img/background-optimized.jpg') no-repeat local center center;
+  }
+}
+
+.hero-header-strafiato.actual, .hero-strafiato2026_4.actual {
+  @extend .hero;
+  background-color: palette(orange, "base");
+  background-size: cover;
+
+  .title, .subtitle {
+    @extend .edo;
+    font-weight: 800;
+    color: #111;
+  }
+
+  .title {
+
+    font-size: 2rem;
+    @media screen and (min-width: 1024px) {
+      font-size: 3.5rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    @media screen and (min-width: 1024px) {
+      font-size: 2.5rem;
+    }
+  }
+  }
+.hero-header-strafiato:before, .hero-strafiato2026_4:before {
+  content: "";
+  z-index: -1; // should be below the contents of the container
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 9%;
+  background-position-x: 51%;
+  @media screen and (min-width: 499px) {
+    background-position-y: 0;
+  }
+}
+.hero-header-strafiato, .hero.hero-strafiato2026 {
+  .hero-body {
+    @include tablet {
+      padding: 3rem 3rem;
+    }
+  }
+  color: #1d1d1b;
+  .title, .subtitle {
+    color: inherit;
+    @extend .edo;
+
+    transform: perspective(133px) rotateX(340deg);
+    @include tablet {
+      transform: perspective(400px) rotateX(340deg);
+    }
+  }
+  .title {
+    filter: drop-shadow(-5px 5px 0px #fdf9e9);
+    font-size: 2.1rem;
+    @media screen and (min-width: 364px) {
+      font-size: 2.6rem;
+    }
+    @media screen and (min-width: 388px) {
+      font-size: 2.8rem;
+    }
+    @include tablet {
+      font-size: 4rem;;
+    }
+    @include desktop {
+      font-size: 5rem;;
+    }
+  }
+  .subtitle {
+    font-size: 2.1rem;;
+    filter: drop-shadow(-5px 5px 0px #fdf9e9);
+    @media screen and (min-width: 364px) {
+    font-size: 2.4rem;;
+    }
+    @include tablet{
+      font-size: 4.5rem;
+    }
+  }
+  .logo-type-container {
+    .logo-type {
+      height: 18rem;
+      filter: drop-shadow(3px 5px 0px #fdf9e9);
+      padding: 0 1rem;
+      @include tablet{
+        padding: 0 0;
+      }
+    }
+  }
+}
+
+.strafiato-inline {
+  display: inline-flex;
+  align-self: center;
+  top: .125em;
+  position: relative;
+}
+.strafiato-inline svg {
+  height: 2em;
+
+}
+
+.number-boxes {
+  background-color: palette(green, "base");
+  .item, .label {
+    text-align: center;
+    color: palette(orange, "dark");
+  }
+
+  .item {
+    display: block;
+    font-size: 4rem;
+    caret-color: rgb(0, 0, 0);
+    -webkit-text-stroke: 3.92667px rgb(0, 0, 0);
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-shadow: palette(orange, "dark") 2.92271px 2.92271px 0px;
+    line-height: 94px;
+
+    svg {
+      max-height: 4rem;
+      @include tablet {
+        max-height: 3rem;
+      }
+    }
+    .icon-euro {
+      width: 2.5rem;
+      height: auto;
+      margin-left: -1rem;
+
+    }
+
+  }
+  .label {
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    color: black;
+    display: block;
+    font-size: 1.5rem;
+  }
+
+
+}
+
+.brass-festival-mark {
+  filter: drop-shadow(-5px 5px 0px #fdf9e9);
+}
+
+.date-mark {
+  text-align: center;
+  height: 6rem;
+}
+
+.no-js, .no-webp  {
+.festival2026 .video:before {
+    background-image: url('../img/strafiato2023/arrow-grunge-down1.max-960x720.png');
+}
+}
+.webp {
+
+.festival2026 .video:before {
+    background-image: url('../img/strafiato2023/arrow-grunge-down1.max-960x720.webp');
+}
+}
+
+.festival2026 .video {
+  background-color: white;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    top: -150px;
+    right: 25%;
+    content: "";
+    height: 100%;
+    width: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .video-container {
+    padding-top: 100px;
+  }
+  @media screen and (min-width: 1024px) {
+    &:before {
+      top: -135px;
+      right: 120px;
+      width: 270px;
+    }
+    .video-container {
+      padding-top: 75px;
+    }
+  }
+
+  @media screen and (min-width: 1216px) {
+    &:before {
+      top: -147px;
+      right: 220px;
+      width: 290px;
+    }
+  }
+}
+
+.bm--card-equal-height {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+.bm--card-equal-height .card-footer {
+   margin-top: auto;
+}
+
+.crowdfunding-reward {
+
+ .title {
+   font-family: "Open Sans", sans-serif;
+    letter-spacing: -1px;
+    line-height: 0.8;
+    color: hsl(0deg, 0%, 29%);
+}
+ @media screen and (min-width: 769px) {
+   .card-content {
+     min-height: 300px;
+   }
+ }
+}

@@ -1,0 +1,50 @@
+{% load static wagtailcore_tags wagtailimages_tags i18n %}
+<div class="column center is-half-tablet is-one-third-desktop crowdfunding-reward">
+    <div class="tile is-child">
+        <div class="card bm--card-equal-height">
+            <div class="card-media">
+                <a href="{{self.payment_link}}">
+                    <picture class="image is-1x1">
+                        {% image self.image fill-300x300 format-webp as webp %}
+                        <source srcset="{{ webp.url }}" type="image/webp">
+                        {% image self.image fill-300x300 class="" %}
+                    </picture>
+                </a>
+            </div>
+            <div class="card-content">
+                <p class="title has-text-weight-bold is-size-3">
+
+                    <a href="{{self.payment_link}}" class="has-text-dark">
+                        {{self.title}}
+                    </a>
+                </p>
+                <p class="subtitle is-size-5">
+                    <a href="{{self.payment_link}}" class="has-text-dark">
+                        {% translate "Minimum donation:" %}
+                        <span class="price">{{self.price}} €</span>
+                    </a>
+                </p>
+                <p class="">
+                    <a href="{{self.payment_link}}" class="has-text-dark">
+                        {{self.description}}
+                    </a>
+                </p>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                        {% if self.price == '1' %}
+                            <a href="{{self.payment_link}}" class="button is-primary">
+                            {% translate "Name your price" %}
+                            </a>
+                        {% elif not campaign.has_ended  %}
+                            <a href="{{self.payment_link}}" class="button is-primary">
+                            {% blocktranslate with price=self.price %}Donate {{ price }}€{% endblocktranslate %}
+                            </a>
+                        {% else %}
+                            {% blocktranslate with price=self.price %}No longer available.{% endblocktranslate %}
+                        {% endif %}
+                </p>
+            </footer>
+        </div>
+    </div>
+</div>

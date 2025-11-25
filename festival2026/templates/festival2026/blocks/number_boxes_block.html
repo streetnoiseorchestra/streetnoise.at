@@ -1,0 +1,31 @@
+{% load static i18n  wagtail_modeltranslation %}
+<section class="section number-boxes">
+    <div class="container">
+        <div class="columns">
+            {% for box in self.boxes %}
+            <div class="column">
+                <div class="box">
+                    <span class="item">
+                        {% if box.value == "200" %}
+                            {% include "festival2026/two-hundred.svg" %}
+                        {% elif box.value == "8" %}
+                            {% include "festival2026/nine.svg" %}
+                        {% elif box.value == "9" %}
+                            {% include "festival2026/nine.svg" %}
+                        {% elif box.value == "4" %}
+                            {% include "festival2026/four.svg" %}
+                        {% elif box.value == "FREE" %}
+                            {% include "festival2026/free.svg" %}
+                        {% elif box.value == "FREIER" %}
+                            {% include "festival2026/freier.svg" %}
+                        {% else %}
+                            {{ box.value }}
+                        {% endif %}
+                    </span>
+                    <span class="label">{{ box.label }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

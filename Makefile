@@ -76,7 +76,7 @@ critical-css:
 	node acclaimed.js
 
 freeze:
-	uv export --format requirements-txt > requirements.txt
+	uv export --format requirements-txt > requirements.frozen.txt
 
 
 check:

@@ -1,0 +1,67 @@
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation %}
+<section class="hero is-large hero-strafiato2026 hero-strafiato2026_4 actual">
+    <picture>
+        <source type="image/webp" srcset="{% static 'img/background-optimized.webp' %}">
+        <img style="display: none;" src="{% static 'img/background-optimized.jpg' %}" alt="" fetchpriority="high">
+    </picture>
+
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-gapless is-multiline">
+                <div class="column is-full">
+                    <h1 class="title has-text-centered has-text-weight-bold">
+                        StreetNoise Orchestra
+                    </h1>
+                </div>
+
+                <div class="column is-full">
+                    <h2 class="subtitle has-text-centered has-text-weight-bold">
+                        {% translate "presents" %}
+                    </h2>
+                </div>
+            </div>
+            <div class="container has-text-centered-desktop">
+                <picture>
+                    <source type="image/webp" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.webp' %}">
+                    <source type="image/png" srcset="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}">
+                    <img class="logo-type" decoding="auto" loading="eager" src="{% static 'img/strafiato2023/strafiato-black-on-white-text-960.png' %}" alt="Strafiato 2023" fetchpriority="high">
+                </picture>
+            </div>
+
+            <div class="columns is-gapless is-multiline  is-centered">
+                <div class="column is-half has-text-centered">
+
+                <picture>
+                    <source type="image/webp" srcset="{% static 'img/logo-mark-600w-optimized.webp' %}">
+                    <source type="image/png" srcset="{% static 'img/logo-mark-600w-optimized.png' %}">
+                    <img class="logo-mark" decoding="auto" loading="eager" src="{% static 'img/logo-mark-600w-optimized.png' %}" alt="Strafiato 2026" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="column is-full has-text-centered">
+                    <picture>
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival.webp' %}" media="(min-width: 1600px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival.png' %}" media="(min-width: 1600px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-900.webp' %}" media="(min-width: 1100px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-900.png' %}" media="(min-width: 1100px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-600.webp' %}" media="(min-width: 900px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-600.png' %}" media="(min-width: 900px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-400.webp' %}" media="(min-width: 600px)">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-400.png' %}" media="(min-width: 600px)">
+                        <source type="image/webp" srcset="{% static 'img/urban-brass-festival-400.webp' %}">
+                        <source type="image/png" srcset="{% static 'img/urban-brass-festival-400.png' %}">
+                        <img class="brass-festival-mark" decoding="auto" loading="eager" src="{% static 'img/urban-brass-festival.png' %}" alt="Urban Brass Festival" fetchpriority="high">
+                    </picture>
+                </div>
+                <div class="column is-full date-mark">
+                    <img class="date-mark" decoding="auto" loading="eager" src="{% static 'img/strafiato2026/date-mark.optimized2.svg' %%}" fetchpriority="high">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    {% if campaign.has_started %}
+        {% include "festival2026/funding_progress.html" %}
+    {% endif %}
+</section>

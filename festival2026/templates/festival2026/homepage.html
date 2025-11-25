@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags wagtail_modeltranslation  plausible_wagtail %}
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         document.documentElement.classList.remove("no-js");
+        </script>
+        <title>{{ page.title }}</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+              integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+              crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="{% static 'css/streetnoise.critical.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/festival2026.critical.min.css' %}">
+
+        <link rel="preload" href="{% static 'css/streetnoise.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="{% static 'css/streetnoise.css' %}"></noscript>
+        <link rel="preload" href="{% static 'css/festival2026.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="{% static 'css/festival2026.css' %}"></noscript>
+
+
+        <link rel="stylesheet" href="{% static 'css/streetnoise.css' %}">
+        <link rel="stylesheet" href="{% static 'css/festival2026.css' %}">
+
+        <link rel="shortcut icon" href="{% static 'img/megaphone-icon.png' %}">
+        <link rel="preload" href="{% static 'fonts/edosz-webfont.woff2' %}" as="font">
+
+        <meta property="og:site_name" content="StreetNoise Orchestra"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
+        <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+        <meta property="twitter:site" content="@StreetNoiseIBK"/>
+        <meta property="twitter:creator" content="@StreetNoiseIBK"/>
+        <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}"/>
+        <meta name="twitter:card" content="summary" />
+        {% if self.feed_image %}
+            {% image self.feed_image width-1200 as img %}
+            <meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ img.url }}"/>
+            <meta property="og:image:width" content="{{ img.width }}" />
+            <meta property="og:image:height" content="{{ img.height }}" />
+        {% endif %}
+
+        <script type="application/ld+json">
+         {
+             "@context": "http://schema.org",
+             "@type": "Festival",
+             "name": "Strafiato 2026",
+             "description": "Urban Brass Festival",
+             "startDate": "2026-04-30",
+             "endDate": "2026-05-03",
+             "eventStatus": "EventScheduled",
+             "funder": [
+             ],
+             "inLanguage": [
+                 {
+                     "@type": "Language",
+                     "name": "English",
+                     "alternateName": "en"
+                 },
+                 {
+                     "@type": "Language",
+                     "name": "Deutsch",
+                     "alternateName": "de"
+                 }
+             ],
+             "isAccessibleForFree": true,
+             "performer": [{
+                 "@type": "MusicGroup",
+                 "name": "StreetNoise Orchestra",
+                 "mainEntityOfPage": "https://streetnoise.at"
+             }],
+             "organizer": {
+                 "@type": "MusicGroup",
+                 "name": "StreetNoise Orchestra",
+                 "mainEntityOfPage": "https://streetnoise.at"
+             },
+             "keywords": ["brass band", "music festival", "innsbruck"],
+             "typicalAgeRange": "0-99"
+         }
+        </script>
+
+
+    </head>
+<body class="festival2026"
+      _disabled="
+             on keyup if the event's key is 'Escape'
+             remove .is-active from .modal
+             trigger keyup
+             end
+             ">
+
+    {% include 'home/navigation.html' %}
+    {# {% include "festival2026/save_the_date_header.html" %} #}
+    {% include "festival2026/header.html" %}
+    {% include 'festival2026/content.html' %}
+    {% include 'home/footer.html' %}
+
+    <script type="text/javascript" src="/static/js/hyperscript@0.9.7.js"  charset="utf-8" defer></script>
+    <script type="text/javascript" src="/static/js/streetnoise.js" charset="utf-8" defer></script>
+    <script type="text/javascript" src="/static/js/crowdfunding.js"  charset="utf-8" defer></script>
+    {% plausible %}
+
+</body>
+</html>

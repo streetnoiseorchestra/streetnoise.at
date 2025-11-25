@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "gigs",
     "songs",
     "festival2023",
+    "festival2026",
     "crowdfunding",
     "streetnoise",
     "wagtailmenus",

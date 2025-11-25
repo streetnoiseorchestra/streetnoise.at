@@ -1,0 +1,49 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% if self.performers %}
+<section class="section" id="lineup">
+  <div class="container">
+    <h2 class="title is-2 has-text-centered title-section caption-text" id="lineup">
+      {{ self.heading  }}
+    </h2>
+    <div class="columns is-multiline">
+      {% for band in self.performers %}
+      <div class="column column center is-half-tablet is-one-third-desktop">
+        <!--      Start: Band profile-->
+        <div class="tile is-child">
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <picture class="image is-128x128 is-rounded">
+                    {% image band.logo max-256x256 format-webp as webp %}
+                    <source srcset="{{ webp.url }}" type="image/webp">
+                    {% image band.logo max-256x256 %}
+                  </picture>
+                </div>
+                <div class="">
+                  <p class="title is-4">
+                    {{ band.name }}
+                  </p>
+                  <p class="subtitle is-6">{{ band.location }}</p>
+                </div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              {% if band.website %}
+              <p class="card-footer-item"><span><a href="{{ band.website }}">website</a></span></p>
+              {% endif %}
+              {% if band.social %}
+              <p class="card-footer-item"><span><a href="{{band.social}}">social</a></span></p>
+              {% endif %}
+            </footer>
+          </div>
+        </div>
+        <!--      End: Band profile-->
+      </div>
+      {% empty %}
+      <p class="content" >Check back in January 2026 for the full band lineup</p>
+      {% endfor %}
+    </div>
+    </div>
+</section>
+{% endif %}
