@@ -6,7 +6,7 @@ Built using [Wagtail](https://wagtail.org/).
 
 Licensed under GNU Affero General Public License v3.0 or later
 
-(C) 2019-2023 Casey Link
+(C) 2019-2025 Casey Link
 
 ### Dev Notes
 
