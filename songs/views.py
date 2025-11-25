@@ -34,6 +34,7 @@ def song_page_update(payload) -> bool:
     try:
         song_page = SongPage.objects.get(snorga_id=snorga_id).specific
         song_page.title = title
+        was_live = song_page.live
         song_page.arrangement_credits = arrangement_credits
         song_page.composition_credits = composition_credits
         song_page.arrangement_notes = arrangement_notes
@@ -42,7 +43,7 @@ def song_page_update(payload) -> bool:
         song_page.last_played_date = last_played_date
         song_page.description = description
         revision = song_page.save_revision(user=User.objects.all().first())
-        if should_publish:
+        if should_publish and was_live:
             revision.publish()
         return False
     except SongPage.DoesNotExist:
