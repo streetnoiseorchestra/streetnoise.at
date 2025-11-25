@@ -5,15 +5,19 @@ ARG BUILD_DATE=unknown
 ARG VERSION=unknown
 
 
-RUN set -e; \
-  DEB_CODENAME=$(grep -oP '^VERSION_CODENAME=\K.*' /etc/os-release); \
-  echo "deb https://deb.nodesource.com/node_20.x $DEB_CODENAME main" > /etc/apt/sources.list.d/nodesource.list; \
-  wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -; \
-  apt-get update; \
-  apt-get install -yqq nodejs; \
-  pip install -U pip; \
-  npm i -g npm@^10; \
-  rm -rf /var/lib/apt/lists/*
+RUN set -e ; apt-get update \
+    && apt-get install -y ca-certificates curl gnupg \
+    && mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+     | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && NODE_MAJOR=22 \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
+     | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update \
+    && apt-get install nodejs -y \
+    && apt-get clean \
+    && pip install -U pip \
+    && rm -rf /var/lib/apt/lists/*
 
 
 RUN set -e; \
