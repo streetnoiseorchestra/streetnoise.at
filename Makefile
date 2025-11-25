@@ -1,9 +1,9 @@
 SHELL := /usr/bin/env bash
-DOCKER ?= sudo docker
+DOCKER ?= podman
 DC ?= docker compose
 DC_ARGS ?=
 DC_PROD ?= $(DC) $(DC_ARGS) -f docker-compose.yml
-DC_DEV ?= sudo docker compose $(DC_ARGS) -f docker-compose.dev.yml
+DC_DEV ?= docker compose $(DC_ARGS) -f docker-compose.dev.yml
 DB_DUMP ?= ./streetnoise_cms.dump
 SRC = home gigs festival2023 blog crowdfunding streetnoise newsletter songs
 dev-db-up:
@@ -19,11 +19,11 @@ dev-watch:
 	npm run watch
 
 dev-static:
-	 poetry run python manage.py collectstatic --clear --noinput
-	 poetry run python manage.py collectstatic --no-post-process --noinput
+	 uv run python manage.py collectstatic --clear --noinput
+	 uv run python manage.py collectstatic --no-post-process --noinput
 
 dev-serve:
-	 poetry run python manage.py runserver 0.0.0.0:8001
+	 uv run python manage.py runserver 0.0.0.0:8001
 
 dev-reset:
 	$(DC_DEV) down
@@ -36,16 +36,16 @@ dev-reset:
 serve: dev-migrate dev-serve
 
 dev-makemigrations:
-	poetry run python manage.py makemigrations
+	uv run python manage.py makemigrations
 
 dev-migrate: #dev-makemigrations
-	poetry run python manage.py migrate
-	poetry run python manage.py sync_page_translation_fields
-	poetry run python manage.py update_translation_fields
+	uv run python manage.py migrate
+	uv run python manage.py sync_page_translation_fields
+	uv run python manage.py update_translation_fields
 
 dev-i18n:
-	poetry run python manage.py makemessages -l de -i 'venv*'
-	poetry run python manage.py compilemessages  -l de -i 'venv*'
+	uv run python manage.py makemessages -l de -i 'venv*'
+	uv run python manage.py compilemessages  -l de -i 'venv*'
 
 dev-dump-db:
 	$(DC_DEV) exec db pg_dump -U streetnoise_cms streetnoise_cms > ./$(shell date +"%Y-%m-%d")-streetnoise_cms_DEV.dump
@@ -76,10 +76,10 @@ critical-css:
 	node acclaimed.js
 
 freeze:
-	poetry export  --format=requirements.txt > requirements.frozen.txt
+	uv export --format requirements-txt > requirements.txt
 
 
 check:
-	poetry run black $(SRC)
-	poetry run isort --profile black $(SRC)
-	poetry run flake8 $(SRC)
+	uv run black $(SRC)
+	uv run isort --profile black $(SRC)
+	uv run flake8 $(SRC)
