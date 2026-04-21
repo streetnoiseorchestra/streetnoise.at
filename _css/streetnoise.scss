@@ -61,14 +61,23 @@ h4 {
 }
 .hero-header {
   @extend .hero;
-  background: palette(orange, "base") url("../img/background-2020-enhanced.jpg")
-    no-repeat local center center;
+  background: palette(orange, "base")
+    url("../img/strafiato2023/save-the-date-header-concept3-800.png")
+    no-repeat local center top;
   background-size: cover;
+  @media screen and (min-width: 580px) {
+    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1024.png");
+  }
+  @include tablet {
+    background-image: url("../img/strafiato2023/save-the-date-header-concept3-1200.png");
+  }
+  @include desktop {
+    background-image: url("../img/strafiato2023/save-the-date-header-concept3.png");
+  }
   .hero-body {
     justify-content: center;
   }
 }
-/*
 .festival-cta {
   position: relative;
   margin-top: -8rem;
@@ -79,12 +88,12 @@ h4 {
   padding-top: 2rem;
   background: hsl(39deg 100% 50% / 80%);
   &:before {
-    content: ' ';
-    background: url('../img/noise.png');
+    content: " ";
+    background: url("../img/noise.png");
     display: block;
     position: absolute;
     left: 0;
-    top:0;
+    top: 0;
     width: 100%;
     height: 100%;
     opacity: 0.3;
@@ -98,16 +107,17 @@ h4 {
     position: relative;
     padding-bottom: 2rem;
   }
-  .coming-soon{
+  .date-mark {
+    height: 6rem;
     filter: drop-shadow(-2px 2px 0px #fdf9e9);
   }
   .strafiato-title {
-    width: 50%
+    width: 50%;
   }
   .button.is-text {
     color: black;
   }
-}*/
+}
 
 .navbar {
   background-color: palette(orange, "base");
