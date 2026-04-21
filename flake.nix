@@ -33,7 +33,7 @@
         };
         shellHook = ''
           unset PYTHONPATH
-          uv sync
+          uv sync --python ${pkgs.python311}/bin/python3.11
           #. .venv/bin/activate
         '';
       };
