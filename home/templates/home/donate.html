@@ -2,13 +2,12 @@
 <!--SECTION: DONATE-->
 <section class="hero is-warning is-bold" id="donation">
   <div class="hero-body">
-    <div class="container ">
+    <div class="container">
       <div class="columns">
         <div
-            class="column is-half is-offset-one-quarter cta theme-custom-box-shadow has-text-centered content">
-          <h1 class="title" id="support">
-            {{ self.donate_title }}
-          </h1>
+          class="column is-half is-offset-one-quarter cta theme-custom-box-shadow has-text-centered content"
+        >
+          <h1 class="title" id="support">{{ self.donate_title }}</h1>
           <div class="columns is-multiline is-centered content">
             <!--
             <div class="column is-5">
@@ -44,15 +43,19 @@
             </div>
             -->
             <div class="column is-6">
-              <p class="title is-4">
-                {{ self.donate_offline }}
+              <p class="title is-4">{{ self.donate_offline }}</p>
+              <p class="">
+                <strong>StreetNoiseOrchestra (SNO)</strong><br />
+                <strong>IBAN:</strong>
+                <span class="iban">AT 89 2050 3033 0228 5360</span>
               </p>
-              <p class=""><strong>StreetNoise Orchestra (SNO)</strong><br/>
-                <strong>IBAN:</strong> <span class="iban">AT 89 2050 3033 0228 5360</span></p>
             </div>
           </div>
           <p class="is-small content">
-            <a class="button is-text is-small" href="mailto:orchestra@streetnoise.at">
+            <a
+              class="button is-text is-small"
+              href="mailto:orchestra@streetnoise.at"
+            >
               {{ self.donate_footer }}
             </a>
           </p>
