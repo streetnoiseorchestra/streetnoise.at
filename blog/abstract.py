@@ -186,6 +186,7 @@ class BlogPageAbstract(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
     intro = models.CharField(
         max_length=512,

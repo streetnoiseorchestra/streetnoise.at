@@ -109,6 +109,7 @@ class FestivalPage2023(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
     body = StreamField(
         [
@@ -133,6 +134,7 @@ class FestivalPage2023(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     crowdfunding_campaign = models.CharField(

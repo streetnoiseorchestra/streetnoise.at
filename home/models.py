@@ -101,6 +101,7 @@ class HomePage2(Page):
         null=True,
         blank=True,
         verbose_name="Who We Are Gallery",
+        use_json_field=True,
     )
 
     gigs_title = models.CharField(max_length=100, blank=True)
@@ -116,6 +117,7 @@ class HomePage2(Page):
         null=True,
         blank=True,
         verbose_name="Merchandise",
+        use_json_field=True,
     )
 
     donate_title = models.CharField(max_length=100, blank=True)
@@ -140,7 +142,13 @@ class HomePage2(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    join_us_infos = StreamField([("info", InfoItemBlock())], null=True, blank=True, verbose_name="Join Us Info")
+    join_us_infos = StreamField(
+        [("info", InfoItemBlock())],
+        null=True,
+        blank=True,
+        verbose_name="Join Us Info",
+        use_json_field=True,
+    )
 
     cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
     cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
@@ -267,6 +275,7 @@ class FestivalPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
     festival_program_content = StreamField(
         [
@@ -275,6 +284,7 @@ class FestivalPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     about_text = RichTextField(blank=True, features=["bold", "italic", "link"], verbose_name="About SNO")
@@ -287,6 +297,7 @@ class FestivalPage(Page):
         null=True,
         blank=True,
         verbose_name="Who We Are Gallery",
+        use_json_field=True,
     )
 
     gigs_title = models.CharField(max_length=100, blank=True)
@@ -302,6 +313,7 @@ class FestivalPage(Page):
         null=True,
         blank=True,
         verbose_name="Merchandise",
+        use_json_field=True,
     )
 
     donate_title = models.CharField(max_length=100, blank=True)
@@ -326,7 +338,13 @@ class FestivalPage(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    join_us_infos = StreamField([("info", InfoItemBlock())], null=True, blank=True, verbose_name="Join Us Info")
+    join_us_infos = StreamField(
+        [("info", InfoItemBlock())],
+        null=True,
+        blank=True,
+        verbose_name="Join Us Info",
+        use_json_field=True,
+    )
 
     cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
     cta_subtitle = models.CharField(max_length=100, blank=True, verbose_name="CTA Subtitle")
@@ -624,6 +642,7 @@ class GenericPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     cta_title = models.CharField(max_length=100, blank=True, verbose_name="CTA Title")
@@ -663,6 +682,7 @@ class DonationPage(Page):
         ],
         null=True,
         blank=True,
+        use_json_field=True,
     )
 
     label_donation_amount = models.CharField(max_length=100, blank=True)

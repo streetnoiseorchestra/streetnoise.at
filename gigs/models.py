@@ -137,6 +137,7 @@ class GigPage(Page):
         null=True,
         blank=True,
         help_text=_("A sentence or two describing the gig."),
+        use_json_field=True,
     )
     feed_image = models.ForeignKey(
         "wagtailimages.Image",

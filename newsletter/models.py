@@ -21,7 +21,7 @@ class Newsletter(Campaign):
         on_delete=models.SET_NULL,
     )
 
-    body = StreamField(DefaultBlocks())
+    body = StreamField(DefaultBlocks(), use_json_field=True)
 
     panels = Campaign.panels + [
         FieldPanel("headline"),
