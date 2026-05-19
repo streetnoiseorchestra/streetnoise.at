@@ -5,7 +5,12 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from home.blocks import ButtonBlock
 from wagtail import blocks
-from wagtail.admin.panels import FieldPanel, FieldRowPanel, MultiFieldPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    FieldRowPanel,
+    MultiFieldPanel,
+    TitleFieldPanel,
+)
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
@@ -55,7 +60,7 @@ class GigIndexPage(Page):
 
 
 GigIndexPage.content_panels = [
-    FieldPanel("title", classname="full title"),
+    TitleFieldPanel("title"),
     FieldPanel("intro", classname="full"),
 ]
 

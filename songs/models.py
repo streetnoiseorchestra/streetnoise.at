@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, TitleFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
 from wagtailmarkdown.fields import MarkdownField
@@ -27,7 +27,7 @@ class SongIndexPage(Page):
 
 
 SongIndexPage.content_panels = [
-    FieldPanel("title", classname="full title"),
+    TitleFieldPanel("title"),
     FieldPanel("intro", classname="full"),
 ]
 

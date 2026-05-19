@@ -18,7 +18,13 @@ from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from streetnoise.models import Page
 from taggit.models import TaggedItemBase
 from wagtail import blocks
-from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    FieldRowPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    TitleFieldPanel,
+)
 from wagtail.api import APIField
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import StreamField
@@ -292,7 +298,7 @@ class BlogPageAbstract(Page):
 
     api_fields = [APIField("body")]
     content_panels = [
-        FieldPanel("title", classname="full title"),
+        TitleFieldPanel("title"),
         FieldPanel("intro", classname="full"),
         MultiFieldPanel(
             [
