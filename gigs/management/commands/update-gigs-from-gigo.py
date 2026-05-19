@@ -112,7 +112,7 @@ class Command(BaseCommand):
                 gig_page.date_to = date_to
                 gig_page.location = location
                 gig_page.body = details
-                gig_page.save_revision(submitted_for_moderation=True, user=User.objects.all().first())
+                gig_page.save_revision(user=User.objects.all().first())
 
             except GigPage.DoesNotExist:
                 # create new gig page
@@ -131,4 +131,4 @@ class Command(BaseCommand):
                 )
                 gig_page.live = False
                 root_page.add_child(instance=gig_page)
-                gig_page.save_revision(submitted_for_moderation=True, user=User.objects.all().first())
+                gig_page.save_revision(user=User.objects.all().first())
