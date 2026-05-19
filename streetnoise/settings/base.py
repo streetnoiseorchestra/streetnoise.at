@@ -63,6 +63,10 @@ INSTALLED_APPS = [
     "festival2026",
     "crowdfunding",
     "streetnoise",
+    # wagtailmenus emits wagtailadmin.W002 for MainMenu/FlatMenu content_panels/settings_panels.
+    # Upstream says this is a false positive because its admin uses custom edit handlers:
+    # https://github.com/jazzband/wagtailmenus/issues/464
+    # Do not add SILENCED_SYSTEM_CHECKS for W002; it can hide real warnings elsewhere.
     "streetnoise.apps.StreetnoiseWagtailMenusAppConfig",
     "streetnoise.apps.StreetnoisePlausibleAppConfig",
 ]
