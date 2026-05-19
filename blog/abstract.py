@@ -13,8 +13,8 @@ from home.blocks import (
     NewsletterSignupBlock,
     ParagraphImageBlock,
 )
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from modelcluster.tags import ClusterTaggableManager
 from streetnoise.models import Page
 from taggit.models import TaggedItemBase
 from wagtail import blocks
@@ -24,7 +24,6 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import StreamField
 from wagtail.images import get_image_model_string
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.images.edit_handlers import FieldPanel
 from wagtail.models import Page as WagtailPage
 from wagtail.search import index
 

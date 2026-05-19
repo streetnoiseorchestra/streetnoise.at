@@ -3,7 +3,6 @@ from birdsong.models import Campaign, Contact
 from django.db import models
 from wagtail.admin.panels import FieldPanel, FieldRowPanel, MultiFieldPanel
 from wagtail.fields import StreamField
-from wagtail.images.edit_handlers import FieldPanel
 
 
 class Newsletter(Campaign):

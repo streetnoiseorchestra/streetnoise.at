@@ -27,7 +27,6 @@ from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.images.edit_handlers import FieldPanel
 from wagtail.models import Orderable, Site
 from wagtail.snippets.models import register_snippet
 
