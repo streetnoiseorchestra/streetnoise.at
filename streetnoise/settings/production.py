@@ -52,9 +52,6 @@ ALLOWED_HOSTS = ["test.streetnoise.at", "streetnoise.at"]
 
 ADMINS = (("Casey Link", "me+streetnoiseat@caseylink.com"),)
 
-MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
