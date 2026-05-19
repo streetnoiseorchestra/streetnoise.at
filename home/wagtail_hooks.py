@@ -1,9 +1,13 @@
 from home.models import BandFriend
-from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.views.snippets import SnippetViewSet
 
 
-@modeladmin_register
-class BandFriendAdmin(ModelAdmin):
-    menu_label = "Band Friends"
-    menu_icon = "suitcase"  # change as required
+class BandFriendViewSet(SnippetViewSet):
     model = BandFriend
+    icon = "suitcase"
+    menu_label = "Band Friends"
+    add_to_admin_menu = True
+
+
+register_snippet(BandFriendViewSet)

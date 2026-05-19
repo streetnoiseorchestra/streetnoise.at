@@ -31,11 +31,10 @@ from wagtail.models import Orderable, Site
 from wagtail.snippets.models import register_snippet
 
 
-@register_snippet
 class BandFriend(models.Model):
     """
     A Django model to define the bread type
-    It uses the `@register_snippet` decorator to allow it to be accessible
+    It is registered as a Wagtail snippet in home/wagtail_hooks.py
     via the Snippets UI. In the BreadPage model you'll see we use a ForeignKey
     to create the relationship between BreadType and BreadPage. This allows a
     single relationship (e.g only one BreadType can be added) that is one-way
