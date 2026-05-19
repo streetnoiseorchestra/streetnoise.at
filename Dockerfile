@@ -38,7 +38,7 @@ WORKDIR /code/
 
 RUN set -e; \
     corepack enable; \
-    corepack prepare pnpm@10.33.4 --activate; \
+    corepack prepare pnpm@10 --activate; \
     pnpm install --frozen-lockfile --ignore-scripts; \
     pwd; \
     ls -al; \
