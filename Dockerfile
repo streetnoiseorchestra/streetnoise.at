@@ -52,7 +52,7 @@ USER cms
 RUN mkdir /code/media
 
 EXPOSE 8000
-CMD exec gunicorn streetnoise.wsgi:application --bind 0.0.0.0:8000 --workers 4
+CMD exec gunicorn streetnoise.wsgi:application --bind 0.0.0.0:8000 --workers 4 --no-control-socket
 
 
 LABEL org.opencontainers.image.version=${VERSION}
