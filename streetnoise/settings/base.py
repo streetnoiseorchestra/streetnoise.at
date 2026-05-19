@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     "wagtail_modeltranslation",
     "wagtail_modeltranslation.makemigrations",
     "wagtail_modeltranslation.migrate",
-    "wagtail.contrib.modeladmin",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.settings",
@@ -64,7 +63,7 @@ INSTALLED_APPS = [
     "festival2026",
     "crowdfunding",
     "streetnoise",
-    "wagtailmenus",
+    "streetnoise.apps.StreetnoiseWagtailMenusAppConfig",
     "streetnoise.apps.StreetnoisePlausibleAppConfig",
 ]
 
