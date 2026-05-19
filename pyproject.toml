@@ -10,7 +10,7 @@ authors = [
 ]
 
 dependencies = [
-  "django>=4.2,<5.0",
+  "django>=5.2,<6.0",
   "wagtail>=7.3,<7.4",
   "wagtailmenus==4.0.7",
   "wagtail-modeltranslation==0.16.0",
