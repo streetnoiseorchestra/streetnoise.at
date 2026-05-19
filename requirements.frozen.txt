@@ -270,7 +270,6 @@ django==4.1.13 \
     #   django-brotli
     #   django-debug-toolbar
     #   django-filter
-    #   django-mjml
     #   django-modelcluster
     #   django-modeltranslation
     #   django-permissionedforms
@@ -313,12 +312,6 @@ django-libsass==0.9 \
     --hash=sha256:5234d29100889cac79e36a0f44207ec6d275adfd2da1acb6a94b55c89fe2bd97 \
     --hash=sha256:bfbbb55a8950bb40fa04dd416605f92da34ad1f303b10a41abc3232386ec27b5
     # via cms
-django-mjml==1.1 \
-    --hash=sha256:1a057d790227ea30fe4088eebfcfd5993e4e92840021034a1415d5b5c7997841 \
-    --hash=sha256:30a57d83c2257a998530032bb5f8fe2c1ca582ec021f884fed2798ec7ab993a9
-    # via
-    #   cms
-    #   wagtail-birdsong
 django-modelcluster==6.3 \
     --hash=sha256:0caed8a0e889f3abb92f144670878a466ef954ffa6c4c7b9c80e6426b720a49d \
     --hash=sha256:a8783d6565a0663f41cd6003ea361c3a5711e8a2a326160f1ec1eceb3e973d4f
@@ -654,13 +647,8 @@ wagtail==4.2.4 \
     --hash=sha256:93e8d39a14a44099ca620e46613a3a2319b1d10c622dc7f0ff8658807b18190c
     # via
     #   cms
-    #   wagtail-birdsong
     #   wagtail-markdown
     #   wagtail-modeltranslation
-wagtail-birdsong==1.1.2 \
-    --hash=sha256:14eb2163a4c0720754eca8e3de13e681f1dfc380f407e36abb30b2f5980ebdf9 \
-    --hash=sha256:6a5d8d9dfd0a4b752b1a3c5c2a06e048d1e0fb047853d78ca5e8a2cea9198ea7
-    # via cms
 wagtail-markdown==0.11.1 \
     --hash=sha256:3d2c5dcfac718c3fc03f2ed05aca535b2aa70f71254599505ee272c54437db21 \
     --hash=sha256:afcb64efac5b1b57de9f7cc475987c0c7dec5b669833e4617ec4658880de0f77

@@ -1,4 +1,3 @@
-from birdsong import urls as birdsong_urls
 from crowdfunding.views import stripe_webhooks
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
@@ -6,12 +5,6 @@ from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.urls import include, path, re_path
-from home.views import (
-    newsletter_bounce,
-    newsletter_confirm,
-    newsletter_subscribe,
-    newsletter_unsubscribe,
-)
 from songs.views import song_update_handler
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
@@ -28,20 +21,6 @@ urlpatterns = [
     re_path(r"", include("allauth.urls")),  # Creates urls like yourwebsite.com/login/
     re_path(r"^accounts/", include("allauth.urls")),
     re_path(r"^blog/", include("blog.urls", namespace="blog"), name="blog"),
-    re_path(r"^newsletter/subscribe/", newsletter_subscribe, name="Subscribe"),
-    path(
-        "newsletter/unsubscribe/<str:subscriber_email>",
-        newsletter_unsubscribe,
-        name="newsletter_unsubscribe_email",
-    ),
-    re_path(
-        r"^newsletter/unsubscribe/$",
-        newsletter_unsubscribe,
-        name="newsletter_unsubscribe",
-    ),
-    re_path(r"^newsletter/confirm/", newsletter_confirm, name="Confirm Subscription"),
-    re_path(r"^newsletter/mailgun", newsletter_bounce, name="Mailgun webhooks"),
-    re_path(r"^newsletters/", include(birdsong_urls)),
     re_path(r"^stripe_webhooks/", stripe_webhooks, name="stripe_webhooks"),
     path("api/song/", song_update_handler, name="song_update"),
     # url(r'^search/$', search_views.search, name='search'),

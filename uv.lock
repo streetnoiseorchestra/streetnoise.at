@@ -293,14 +293,12 @@ dependencies = [
     { name = "django-compressor" },
     { name = "django-debug-toolbar" },
     { name = "django-libsass" },
-    { name = "django-mjml" },
     { name = "django-modeltranslation" },
     { name = "django-plausible" },
     { name = "psycopg2-binary" },
     { name = "python-dateutil" },
     { name = "stripe" },
     { name = "wagtail" },
-    { name = "wagtail-birdsong" },
     { name = "wagtail-markdown" },
     { name = "wagtail-modeltranslation" },
     { name = "wagtailmenus" },
@@ -327,14 +325,12 @@ requires-dist = [
     { name = "django-compressor", specifier = "==4.3.1" },
     { name = "django-debug-toolbar", specifier = ">=4.2.0,<5.0.0" },
     { name = "django-libsass", specifier = "==0.9" },
-    { name = "django-mjml", specifier = "==1.1" },
     { name = "django-modeltranslation", specifier = "==0.18.9" },
     { name = "django-plausible", specifier = "==0.4.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.11,<3.0.0" },
     { name = "python-dateutil", specifier = "==2.8.2" },
     { name = "stripe", specifier = "==5.4.0" },
     { name = "wagtail", specifier = "==4.2.4" },
-    { name = "wagtail-birdsong", specifier = "==1.1.2" },
     { name = "wagtail-markdown", specifier = ">=0.11.1,<0.12.0" },
     { name = "wagtail-modeltranslation", specifier = "==0.13.0" },
     { name = "wagtailmenus", specifier = "==3.1.7" },
@@ -555,18 +551,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/d2/6c/fe7c95536eed569960daf139726c8f83eaf8c4ae01d908c22d94d60f31c2/django-libsass-0.9.tar.gz", hash = "sha256:bfbbb55a8950bb40fa04dd416605f92da34ad1f303b10a41abc3232386ec27b5", size = 6754, upload-time = "2021-07-08T14:16:55.346Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1b/ee/65935acc5a36c418fa17d5190a4aeb339cfdf98b6a93ca1c59134cf1e6aa/django_libsass-0.9-py3-none-any.whl", hash = "sha256:5234d29100889cac79e36a0f44207ec6d275adfd2da1acb6a94b55c89fe2bd97", size = 6572, upload-time = "2021-07-08T14:16:53.501Z" },
-]
-
-[[package]]
-name = "django-mjml"
-version = "1.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/75/e4/9f35561f0020eaa15a211e27dd155f17343fde1cd84195cadd95c79a1537/django-mjml-1.1.tar.gz", hash = "sha256:1a057d790227ea30fe4088eebfcfd5993e4e92840021034a1415d5b5c7997841", size = 8233, upload-time = "2023-04-10T23:25:42.926Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/47/32/a17778bb4c71f99f58d04795d239b23075cff85c8b113677db0306009eed/django_mjml-1.1-py3-none-any.whl", hash = "sha256:30a57d83c2257a998530032bb5f8fe2c1ca582ec021f884fed2798ec7ab993a9", size = 7741, upload-time = "2023-04-10T23:25:40.615Z" },
 ]
 
 [[package]]
@@ -1234,19 +1218,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/57/7c/df75a8e04873a40b0dc0d4c58c6f3beac6351a9680ce634e7a956c893ec9/wagtail-4.2.4.tar.gz", hash = "sha256:4bf146194e1725cd4305bf1998f507d46f587e207d609bc2ec73a6c5cce04410", size = 6097317, upload-time = "2023-05-25T13:28:41.994Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/37/3b/1186b2c8c1822af5c408d89dbb1d84b29dddd3d044d018c88a426bdbca0f/wagtail-4.2.4-py3-none-any.whl", hash = "sha256:93e8d39a14a44099ca620e46613a3a2319b1d10c622dc7f0ff8658807b18190c", size = 8741418, upload-time = "2023-05-25T13:28:31.959Z" },
-]
-
-[[package]]
-name = "wagtail-birdsong"
-version = "1.1.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django-mjml" },
-    { name = "wagtail" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/56/8a/bc009b24b730188246955956c420cbad84929adce069d7c033472b13608a/wagtail-birdsong-1.1.2.tar.gz", hash = "sha256:6a5d8d9dfd0a4b752b1a3c5c2a06e048d1e0fb047853d78ca5e8a2cea9198ea7", size = 17280, upload-time = "2023-01-23T00:33:47.459Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/e5/fc/31fc75ff2651c3663e0fc6007e94ba29d27aef345b7f918fa5d516c29197/wagtail_birdsong-1.1.2-py3-none-any.whl", hash = "sha256:14eb2163a4c0720754eca8e3de13e681f1dfc380f407e36abb30b2f5980ebdf9", size = 23441, upload-time = "2023-01-23T00:33:44.963Z" },
 ]
 
 [[package]]

@@ -66,9 +66,6 @@ INSTALLED_APPS = [
     "streetnoise",
     "wagtailmenus",
     "streetnoise.apps.StreetnoisePlausibleAppConfig",
-    "mjml",
-    "newsletter",
-    "birdsong",
 ]
 
 MIGRATION_MODULES = {
@@ -274,15 +271,8 @@ WAGTAILEMBEDS_FINDERS = [
 ]
 
 
-MAILGUN_NEWSLETTER_LIST = "news@mg.streetnoise.at"
-
-MAILGUN_NEWSLETTER_FROM = "StreetNoise Orchestra <news@mg.streetnoise.at>"
-
-MJML_EXEC_CMD = "./node_modules/.bin/mjml"
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-BIRDSONG_REPLY_TO = "orchestra@streetnoise.at"
 
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {
     "bmp": "jpeg",

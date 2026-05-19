@@ -1,6 +1,4 @@
 from django.db import models
-from django.urls import reverse
-from home.views import newsletter_subscribe, newsletter_unsubscribe
 from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page as WagtailPage
 
@@ -28,8 +26,6 @@ class Page(WagtailPage):
         #    url = donation_page.get_url()
         #    context["donation_form"] = DonationForm()
         #    context["donation_page_url"] = url
-        context["subscribe_page_url"] = reverse(newsletter_subscribe)
-        context["unsubscribe_page_url"] = reverse(newsletter_unsubscribe)
         return context
 
     class Meta:
