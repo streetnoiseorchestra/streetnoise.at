@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     "crowdfunding",
     "streetnoise",
     "wagtailmenus",
-    "plausible.contrib.wagtail",
+    "streetnoise.apps.StreetnoisePlausibleAppConfig",
     "mjml",
     "newsletter",
     "birdsong",
