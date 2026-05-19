@@ -16,7 +16,7 @@ fmt:
 	black --exclude "(.*/migrations/.*|node_modules|.git)" .
 
 dev-watch:
-	npm run watch
+	pnpm run watch
 
 dev-static:
 	 uv run python manage.py collectstatic --clear --noinput
@@ -50,11 +50,12 @@ dev-i18n:
 dev-dump-db:
 	$(DC_DEV) exec db pg_dump -U streetnoise_cms streetnoise_cms > ./$(shell date +"%Y-%m-%d")-streetnoise_cms_DEV.dump
 
+# Deploy wrapper/server operator must run this target or the equivalent sequence after pulling a new image.
 prod-migrate:
 	$(DC_PROD) run cms python manage.py migrate
 	$(DC_PROD) run cms python manage.py sync_page_translation_fields
 	$(DC_PROD) run cms python manage.py update_translation_fields
-
+	$(DC_PROD) run cms python manage.py rebuild_references_index --verbosity 1
 prod-upgrade:
 	$(DC_PROD) pull
 	$(DC_PROD) stop cms

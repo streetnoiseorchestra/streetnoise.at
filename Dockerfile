@@ -37,13 +37,14 @@ COPY . /code/
 WORKDIR /code/
 
 RUN set -e; \
-    npm install; \
+    corepack enable; \
+    corepack prepare pnpm@10.33.4 --activate; \
+    pnpm install --frozen-lockfile --ignore-scripts; \
     pwd; \
     ls -al; \
-    npm run build; \
+    pnpm run build; \
     COLLECT_STATIC_OVERRIDE=True python manage.py collectstatic --noinput; \
-    rm -rf node_modules ./_*; \
-    npm install --omit=dev;
+    rm -rf node_modules ./_*;
 
 RUN groupadd -r -g 3993 cms && useradd --uid 3993 --gid 3993 cms
 RUN chown -R cms /code
