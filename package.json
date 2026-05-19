@@ -1,6 +1,7 @@
 {
   "name": "streetnoise-at",
   "version": "0.0.2",
+  "packageManager": "pnpm@10.33.4",
   "description": "",
   "author": "Casey Link",
   "license": "GPLv3+",
