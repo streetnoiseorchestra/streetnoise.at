@@ -11,9 +11,9 @@ asgiref==3.11.0 \
 bandit==1.9.2 \
     --hash=sha256:32410415cd93bf9c8b91972159d5cf1e7f063a9146d70345641cd3877de348ce \
     --hash=sha256:bda8d68610fc33a6e10b7a8f1d61d92c8f6c004051d5e946406be1fb1b16a868
-beautifulsoup4==4.11.2 \
-    --hash=sha256:0e79446b10b3ecb499c1556f7e228a53e64a2bfcebd455f370d8927cb5b59e39 \
-    --hash=sha256:bc4bdda6717de5a2987436fb8d72f45dc90dd856bdfd512a1314ce90349a0106
+beautifulsoup4==4.14.3 \
+    --hash=sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb \
+    --hash=sha256:6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86
     # via wagtail
 black==25.11.0 \
     --hash=sha256:0a1d40348b6621cc20d3d7530a5b8d67e9714906dfd7346338249ad9c6cedf2b \
@@ -261,9 +261,9 @@ dj-database-url==2.0.0 \
     --hash=sha256:9c9e5f7224f62635a787e9cc3c6762c9be2b19541a21e3c08fa573bd01609b4b \
     --hash=sha256:a35a9f0f43775ca6f90d819dc456233ef7bcc76b47377d5d908b75c7eb320624
     # via cms
-django==4.2.30 \
-    --hash=sha256:4d07aaf1c62f9984842b67c2874ebbf7056a17be253860299b93ae1881faad65 \
-    --hash=sha256:4ebc7a434e3819db6cf4b399fb5b3f536310a30e8486f08b66886840be84b37c
+django==5.2.14 \
+    --hash=sha256:58a63ba841662e5c686b57ba1fec52ddd68c0b93bd96ac3029d55728f00bf8a2 \
+    --hash=sha256:6f712143bd3064310d1f50fac859c3e9a274bdcfc9595339853be7779297fc76
     # via
     #   cms
     #   dj-database-url
@@ -282,6 +282,7 @@ django==4.2.30 \
     #   django-treebeard
     #   djangorestframework
     #   laces
+    #   modelsearch
     #   wagtail
     #   wagtail-modeltranslation
 django-allauth==0.54.0 \
@@ -317,9 +318,9 @@ django-libsass==0.9 \
     --hash=sha256:5234d29100889cac79e36a0f44207ec6d275adfd2da1acb6a94b55c89fe2bd97 \
     --hash=sha256:bfbbb55a8950bb40fa04dd416605f92da34ad1f303b10a41abc3232386ec27b5
     # via cms
-django-modelcluster==6.3 \
-    --hash=sha256:0caed8a0e889f3abb92f144670878a466ef954ffa6c4c7b9c80e6426b720a49d \
-    --hash=sha256:a8783d6565a0663f41cd6003ea361c3a5711e8a2a326160f1ec1eceb3e973d4f
+django-modelcluster==6.5 \
+    --hash=sha256:459cbf0fb3bbc8c15ea9a2a062abc0d1ef935a38e04aa8ac3cb241c826bbc6dd \
+    --hash=sha256:469b380a294027d5211d0e5d5746e0381f445b058d2229977a58fe0f1c58a596
     # via wagtail
 django-modeltranslation==0.19.17 \
     --hash=sha256:13bd9cab4e4aed0bef5624c17a7da2ac8c5538f0650adbd89ce8c878cbef02fd \
@@ -343,13 +344,15 @@ django-taggit==6.1.0 \
     --hash=sha256:ab776264bbc76cb3d7e49e1bf9054962457831bd21c3a42db9138b41956e4cf0 \
     --hash=sha256:c4d1199e6df34125dd36db5eb0efe545b254dec3980ce5dd80e6bab3e78757c3
     # via wagtail
-django-tasks==0.6.1 \
-    --hash=sha256:4086e7eb9e965f79c4ac76f5c3690ec3bf41c461585237b71b4bde729ced9826 \
-    --hash=sha256:b3648e28bdcda809cb7831f3aff98aa46c327025447c462b8943cce9dfbb0281
-    # via wagtail
-django-treebeard==4.7.1 \
-    --hash=sha256:846e462904b437155f76e04907ba4e48480716855f88b898df4122bdcfbd6e98 \
-    --hash=sha256:995c7120153ab999898fe3043bbdcd8a0fc77cc106eb94de7350e9d02c885135
+django-tasks==0.12.0 \
+    --hash=sha256:58be66c1e487da32a3ce7320bd1949d0d1dc381b9004819f92591eb37fb2c1b8 \
+    --hash=sha256:ffcc1d7bdfad3bc5ef9c2d498596c6546484c9ec6b182fb9709c691eb66a8709
+    # via
+    #   modelsearch
+    #   wagtail
+django-treebeard==5.1.0 \
+    --hash=sha256:8ac2ba41307469a679c98188124933bc3baade36b02480343d1a301a1fca0700 \
+    --hash=sha256:d0f68fcf1b49158e38d2322aa62a37bc0b89452d66a16f88e58dbe076d043c28
     # via wagtail
 djangorestframework==3.15.1 \
     --hash=sha256:3ccc0475bce968608cf30d07fb17d8e52d1d7fc8bfe779c905463200750cbca6 \
@@ -405,6 +408,10 @@ mdurl==0.1.2 \
     --hash=sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8 \
     --hash=sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba
     # via markdown-it-py
+modelsearch==1.3.1 \
+    --hash=sha256:a92847f01788d0d615e8715fabb8e823029288840297fb9e7235ee03ad49b6a8 \
+    --hash=sha256:f3b2e304dbef9f7c838423f591cfe0c60f4cef584bae8793d2aa8ac35a3c46e0
+    # via wagtail
 mypy-extensions==1.1.0 \
     --hash=sha256:1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505 \
     --hash=sha256:52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558
@@ -634,10 +641,6 @@ pytokens==0.3.0 \
     --hash=sha256:2f932b14ed08de5fcf0b391ace2642f858f1394c0857202959000b68ed7a458a \
     --hash=sha256:95b2b5eaf832e469d141a378872480ede3f251a5a5041b8ec6e581d3ac71bbf3
     # via black
-pytz==2025.2 \
-    --hash=sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3 \
-    --hash=sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00
-    # via django-modelcluster
 pyyaml==6.0.3 \
     --hash=sha256:00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c \
     --hash=sha256:02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3 \
@@ -748,6 +751,7 @@ typing-extensions==4.15.0 \
     --hash=sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466 \
     --hash=sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548
     # via
+    #   beautifulsoup4
     #   dj-database-url
     #   django-stubs-ext
     #   django-tasks
@@ -759,17 +763,17 @@ urllib3==2.5.0 \
     --hash=sha256:3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760 \
     --hash=sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc
     # via requests
-wagtail==6.4.2 \
-    --hash=sha256:1ceff33a6edae02668d8cd08ea77fc7c1d9835986cb1b75a8fa1b353535ddd90 \
-    --hash=sha256:fcf39430e5fb856674c0cfa3cda67591b44214cc5a99c9308019140eb26ddb42
+wagtail==7.4 \
+    --hash=sha256:24a4d55e6bed22ccce4aae1b3f7e22a46605c4bc4dc9894d5a415cde418840c6 \
+    --hash=sha256:9570c51d61ee524cc5558a84df40e2ccc03f7c50c6dad343644a45d037096d13
     # via
     #   cms
     #   wagtail-markdown
     #   wagtail-modeltranslation
     #   wagtailmenus
-wagtail-markdown==0.11.1 \
-    --hash=sha256:3d2c5dcfac718c3fc03f2ed05aca535b2aa70f71254599505ee272c54437db21 \
-    --hash=sha256:afcb64efac5b1b57de9f7cc475987c0c7dec5b669833e4617ec4658880de0f77
+wagtail-markdown==0.13.0 \
+    --hash=sha256:7631d702358df59318d3b5f225762c5ab28b93a9d40f4b39bb531f9bf8e3ce60 \
+    --hash=sha256:e35c2d36ac06d74203ba02127edb9bebe1ff026ba5363dbbc101da1c81740b57
     # via cms
 wagtail-modeltranslation==0.16.0 \
     --hash=sha256:2978cbfd7ec173f9767880fa7fcb4f4c915426e636faf82b052053873dfd94bb \
