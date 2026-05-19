@@ -26,8 +26,8 @@ RUN set -e; \
   rm -rf /var/lib/apt/lists/*
 
 # Set environment varibles
-ENV PYTHONUNBUFFERED 1
-ENV DJANGO_ENV production
+ENV PYTHONUNBUFFERED=1
+ENV DJANGO_ENV=production
 
 RUN pip install --upgrade pip
 COPY requirements.frozen.txt /code/requirements.frozen.txt
@@ -52,7 +52,7 @@ USER cms
 RUN mkdir /code/media
 
 EXPOSE 8000
-CMD exec gunicorn streetnoise.wsgi:application --bind 0.0.0.0:8000 --workers 4 --no-control-socket
+CMD ["gunicorn", "streetnoise.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--no-control-socket"]
 
 
 LABEL org.opencontainers.image.version=${VERSION}
