@@ -41,7 +41,6 @@
     "bulma-accordion": "^2.0.1",
     "bulma-extensions": "^6.2.7",
     "mediaelement": "^4.2.16",
-    "mjml": "^4.13.0",
     "tippy.js": "^6.3.7"
   }
 }
