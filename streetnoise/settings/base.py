@@ -229,7 +229,7 @@ SOCIALACCOUNT_ADAPTER = "streetnoise.auth_adapter.SNOSocialAccountAdapter"
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_PROVIDERS = {
     "keycloak": {
-        "KEYCLOAK_URL": "https://id.streetnoise.at/",
+        "KEYCLOAK_URL": "https://id.streetnoise.at",
         "KEYCLOAK_REALM": "sno",
         "VERIFIED_EMAIL": True,
     },
